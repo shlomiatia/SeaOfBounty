@@ -225,6 +225,8 @@ func get_reachable_tiles(start_pos: Vector2i, max_distance: int) -> Array[Vector
 
     var start_world_pos = map.map_to_local(start_pos)
 
+    reachable.append(start_pos)
+
     for dx in range(-max_distance, max_distance + 1):
         for dy in range(-max_distance, max_distance + 1):
             var manhattan_dist = abs(dx) + abs(dy)
