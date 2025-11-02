@@ -22,5 +22,5 @@ tile_set = ExtResource("2_7hpp4")
 navigation_enabled = false
 
 [node name="Player" type="Sprite2D" parent="."]
-position = Vector2(41, 678)
+position = Vector2(513, 429)
 texture = ExtResource("2_5l6vl")

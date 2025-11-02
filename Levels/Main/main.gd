@@ -146,19 +146,19 @@ func get_transform_for_straight(direction: Vector2i) -> int:
 
 func get_transform_for_turn(prev_dir: Vector2i, next_dir: Vector2i) -> int:
     if prev_dir.x > 0 and next_dir.y > 0:
-        return TileTransform.ROTATE_0
-    elif prev_dir.y < 0 and next_dir.x > 0:
-        return TileTransform.ROTATE_0
-    elif prev_dir.x < 0 and next_dir.y < 0:
-        return TileTransform.ROTATE_180
-    elif prev_dir.y > 0 and next_dir.x < 0:
-        return TileTransform.ROTATE_180
-    elif prev_dir.x > 0 and next_dir.y < 0:
         return TileTransform.ROTATE_270
+    elif prev_dir.y < 0 and next_dir.x > 0:
+        return TileTransform.ROTATE_180
+    elif prev_dir.x < 0 and next_dir.y < 0:
+        return TileTransform.ROTATE_90
+    elif prev_dir.y > 0 and next_dir.x < 0:
+        return TileTransform.ROTATE_0
+    elif prev_dir.x > 0 and next_dir.y < 0:
+        return TileTransform.ROTATE_0
     elif prev_dir.y > 0 and next_dir.x > 0:
         return TileTransform.ROTATE_90
     elif prev_dir.x < 0 and next_dir.y > 0:
-        return TileTransform.ROTATE_90
+        return TileTransform.ROTATE_180
     elif prev_dir.y < 0 and next_dir.x < 0:
         return TileTransform.ROTATE_270
 
