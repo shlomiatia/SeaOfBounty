@@ -15,9 +15,12 @@ enum TileTransform {
 @onready var movement_preview: TileMapLayer = $MovementPreview
 
 var last_hovered_tile: Vector2i = Vector2i(-1000, -1000)
+var is_moving: bool = false
+var movement_speed: float = 400.0
 
 func _process(_delta: float) -> void:
-    handle_mouse_hover()
+    if not is_moving:
+        handle_mouse_hover()
 
 
 func handle_mouse_hover() -> void:
@@ -38,11 +41,15 @@ func handle_mouse_hover() -> void:
 
 
 func _input(event: InputEvent) -> void:
+    if is_moving:
+        return
+
     if event is InputEventMouseButton:
         if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
             handle_left_click(event.position)
         if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
             possible_movement.clear()
+            movement_preview.clear()
 
 
 func handle_left_click(mouse_pos: Vector2) -> void:
@@ -56,8 +63,57 @@ func handle_left_click(mouse_pos: Vector2) -> void:
         int(mouse_pos.y / 80)
     )
 
+    var tile_data = possible_movement.get_cell_source_id(clicked_grid_pos)
+    if tile_data != -1:
+        move_player_to(clicked_grid_pos)
+        return
+
     if clicked_grid_pos == player_grid_pos:
         highlight_possible_movement(player_grid_pos)
+
+
+func move_player_to(target_grid_pos: Vector2i) -> void:
+    var player_grid_pos = Vector2i(
+        int(player.position.x / 80),
+        int(player.position.y / 80)
+    )
+
+    var start_world_pos = map.map_to_local(player_grid_pos)
+    var target_world_pos = map.map_to_local(target_grid_pos)
+    var path = find_navigation_path(start_world_pos, target_world_pos)
+
+    if path.size() == 0:
+        return
+
+    var tile_path: Array[Vector2i] = []
+    var current_tile = map.local_to_map(path[0])
+    tile_path.append(current_tile)
+
+    for i in range(1, path.size()):
+        var next_tile = map.local_to_map(path[i])
+        if next_tile != current_tile:
+            tile_path.append(next_tile)
+            current_tile = next_tile
+
+    possible_movement.clear()
+    movement_preview.clear()
+
+    is_moving = true
+    await animate_along_path(tile_path)
+    is_moving = false
+
+
+func animate_along_path(tile_path: Array[Vector2i]) -> void:
+    for i in range(1, tile_path.size()):
+        var target_tile = tile_path[i]
+        var target_world_pos = map.map_to_local(target_tile)
+
+        var tween = create_tween()
+        var distance = player.position.distance_to(target_world_pos)
+        var duration = distance / movement_speed
+
+        tween.tween_property(player, "position", target_world_pos, duration)
+        await tween.finished
 
 
 func highlight_possible_movement(grid_pos: Vector2i) -> void:
@@ -105,7 +161,6 @@ func preview_movement_path(target_pos: Vector2i) -> void:
         elif i > 0:
             var prev_dir = get_direction_between(tile_path[i - 1], tile_path[i])
             var next_dir = get_direction_between(tile_path[i], tile_path[i + 1])
-            print("Prev Dir: ", prev_dir, " Next Dir: ", next_dir)
 
             if prev_dir == next_dir:
                 var straight_tile = Vector2i(0, 1)
