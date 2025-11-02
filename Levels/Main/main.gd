@@ -5,6 +5,7 @@ const MAX_MOVEMENT := 4
 @onready var player: Node2D = $Player
 @onready var map: TileMapLayer = $Map
 @onready var possible_movement: TileMapLayer = $PossibleMovement
+@onready var movement_preview: TileMapLayer = $MovementPreview
 
 func _input(event: InputEvent) -> void:
     if event is InputEventMouseButton:

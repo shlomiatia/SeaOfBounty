@@ -17,6 +17,9 @@ modulate = Color(0.215686, 0.427451, 0.0117647, 1)
 tile_set = ExtResource("2_7hpp4")
 navigation_enabled = false
 
+[node name="MovementPreview" type="TileMapLayer" parent="."]
+navigation_enabled = false
+
 [node name="Player" type="Sprite2D" parent="."]
 position = Vector2(41, 678)
 texture = ExtResource("2_5l6vl")
