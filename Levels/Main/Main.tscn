@@ -18,6 +18,7 @@ tile_set = ExtResource("2_7hpp4")
 navigation_enabled = false
 
 [node name="MovementPreview" type="TileMapLayer" parent="."]
+tile_set = ExtResource("2_7hpp4")
 navigation_enabled = false
 
 [node name="Player" type="Sprite2D" parent="."]

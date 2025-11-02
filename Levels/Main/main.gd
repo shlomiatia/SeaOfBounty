@@ -2,10 +2,40 @@ class_name Main extends Node2D
 
 const MAX_MOVEMENT := 4
 
+enum TileTransform {
+	ROTATE_0 = 0,
+	ROTATE_90 = TileSetAtlasSource.TRANSFORM_TRANSPOSE | TileSetAtlasSource.TRANSFORM_FLIP_H,
+	ROTATE_180 = TileSetAtlasSource.TRANSFORM_FLIP_H | TileSetAtlasSource.TRANSFORM_FLIP_V,
+	ROTATE_270 = TileSetAtlasSource.TRANSFORM_TRANSPOSE | TileSetAtlasSource.TRANSFORM_FLIP_V,
+}
+
 @onready var player: Node2D = $Player
 @onready var map: TileMapLayer = $Map
 @onready var possible_movement: TileMapLayer = $PossibleMovement
 @onready var movement_preview: TileMapLayer = $MovementPreview
+
+var last_hovered_tile: Vector2i = Vector2i(-1000, -1000)
+
+func _process(_delta: float) -> void:
+    handle_mouse_hover()
+
+
+func handle_mouse_hover() -> void:
+    var mouse_pos = get_global_mouse_position()
+    var hovered_grid_pos = Vector2i(
+        int(mouse_pos.x / 80),
+        int(mouse_pos.y / 80)
+    )
+
+    if hovered_grid_pos != last_hovered_tile:
+        last_hovered_tile = hovered_grid_pos
+
+        var tile_data = possible_movement.get_cell_source_id(hovered_grid_pos)
+        if tile_data != -1:
+            preview_movement_path(hovered_grid_pos)
+        else:
+            movement_preview.clear()
+
 
 func _input(event: InputEvent) -> void:
     if event is InputEventMouseButton:
@@ -37,6 +67,102 @@ func highlight_possible_movement(grid_pos: Vector2i) -> void:
 
     for tile_pos in reachable_tiles:
         possible_movement.set_cell(tile_pos, 0, Vector2i(0, 0))
+
+
+func preview_movement_path(target_pos: Vector2i) -> void:
+    movement_preview.clear()
+
+    var player_grid_pos = Vector2i(
+        int(player.position.x / 80),
+        int(player.position.y / 80)
+    )
+
+    var start_world_pos = map.map_to_local(player_grid_pos)
+    var target_world_pos = map.map_to_local(target_pos)
+    var path = find_navigation_path(start_world_pos, target_world_pos)
+
+    if path.size() == 0:
+        return
+
+    var tile_path: Array[Vector2i] = []
+    var current_tile = map.local_to_map(path[0])
+    tile_path.append(current_tile)
+
+    for i in range(1, path.size()):
+        var next_tile = map.local_to_map(path[i])
+        if next_tile != current_tile:
+            tile_path.append(next_tile)
+            current_tile = next_tile
+
+    for i in range(tile_path.size()):
+        var tile_pos = tile_path[i]
+
+        if i == tile_path.size() - 1:
+            var direction = get_direction_from_previous(tile_path, i)
+            var arrow_tile = Vector2i(1, 0)
+            var tile_transform = get_transform_for_arrow(direction)
+            movement_preview.set_cell(tile_pos, 0, arrow_tile, tile_transform)
+        elif i > 0:
+            var prev_dir = get_direction_between(tile_path[i - 1], tile_path[i])
+            var next_dir = get_direction_between(tile_path[i], tile_path[i + 1])
+            print("Prev Dir: ", prev_dir, " Next Dir: ", next_dir)
+
+            if prev_dir == next_dir:
+                var straight_tile = Vector2i(0, 1)
+                var tile_transform = get_transform_for_straight(prev_dir)
+                movement_preview.set_cell(tile_pos, 0, straight_tile, tile_transform)
+            else:
+                var turn_tile = Vector2i(1, 1)
+                var tile_transform = get_transform_for_turn(prev_dir, next_dir)
+                movement_preview.set_cell(tile_pos, 0, turn_tile, tile_transform)
+
+
+func get_direction_between(from: Vector2i, to: Vector2i) -> Vector2i:
+    return Vector2i(sign(to.x - from.x), sign(to.y - from.y))
+
+
+func get_direction_from_previous(tile_path: Array[Vector2i], index: int) -> Vector2i:
+    if index > 0:
+        return get_direction_between(tile_path[index - 1], tile_path[index])
+    return Vector2i(0, 0)
+
+
+func get_transform_for_arrow(direction: Vector2i) -> int:
+    if direction.y > 0:
+        return TileTransform.ROTATE_180
+    elif direction.x < 0:
+        return TileTransform.ROTATE_270
+    elif direction.y < 0:
+        return TileTransform.ROTATE_0
+    else:
+        return TileTransform.ROTATE_90
+
+
+func get_transform_for_straight(direction: Vector2i) -> int:
+    if direction.y != 0:
+        return TileTransform.ROTATE_90
+    return TileTransform.ROTATE_0
+
+
+func get_transform_for_turn(prev_dir: Vector2i, next_dir: Vector2i) -> int:
+    if prev_dir.x > 0 and next_dir.y > 0:
+        return TileTransform.ROTATE_0
+    elif prev_dir.y < 0 and next_dir.x > 0:
+        return TileTransform.ROTATE_0
+    elif prev_dir.x < 0 and next_dir.y < 0:
+        return TileTransform.ROTATE_180
+    elif prev_dir.y > 0 and next_dir.x < 0:
+        return TileTransform.ROTATE_180
+    elif prev_dir.x > 0 and next_dir.y < 0:
+        return TileTransform.ROTATE_270
+    elif prev_dir.y > 0 and next_dir.x > 0:
+        return TileTransform.ROTATE_90
+    elif prev_dir.x < 0 and next_dir.y > 0:
+        return TileTransform.ROTATE_90
+    elif prev_dir.y < 0 and next_dir.x < 0:
+        return TileTransform.ROTATE_270
+
+    return TileTransform.ROTATE_0
 
 
 func get_reachable_tiles(start_pos: Vector2i, max_distance: int) -> Array[Vector2i]:

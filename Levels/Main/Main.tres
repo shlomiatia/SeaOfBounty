@@ -1,20 +1,23 @@
-[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://dy500uswj08ie"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://dy500uswj08ie"]
 
 [ext_resource type="Texture2D" uid="uid://cibgr2kd341oe" path="res://Levels/Main/tilemap.png" id="1_y730k"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_u6233"]
-vertices = PackedVector2Array(40, 40, -40, 40, -40, -40, 40, -40)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-40, -40, 40, -40, 40, 40, -40, 40)])
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_bh8mx"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_udbyl"]
+vertices = PackedVector2Array(40, -10.5, 40, 15.1172, 18.6875, 14.2813, 16.5859, -11.7578, -40, 13.0156, -40, -12.1797, -14.0703, -11.3359, -14.9063, 14.6953, -11.9688, -40, 16.1719, -40, 14.4922, 40, -14.4922, 40)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(6, 8, 9, 3, 7), PackedInt32Array(2, 10, 11, 7, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-40, -12.1792, -14.0691, -11.3393, -11.9693, -40, 16.169, -40, 16.589, -11.7593, 40, -10.4993, 40, 15.1191, 18.6888, 14.2791, 14.4891, 40, -14.4891, 40, -14.9091, 14.6991, -40, 13.0192)])
 agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1dnag"]
 texture = ExtResource("1_y730k")
 texture_region_size = Vector2i(80, 80)
 0:0/0 = 0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_bh8mx")
 1:0/0 = 0
 2:0/0 = 0
-2:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_u6233")
+2:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_udbyl")
 1:1/0 = 0
 0:1/0 = 0
 
