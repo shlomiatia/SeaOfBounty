@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://bblitdo328h8a"]
 
 [ext_resource type="Script" path="res://Levels/Main/main.gd" id="1_8ofus"]
-[ext_resource type="Texture2D" uid="uid://nn6ukgxtb8wh" path="res://Levels/Main/2.png" id="2_5l6vl"]
 [ext_resource type="PackedScene" uid="uid://b6mjpkkw6ptwr" path="res://Entities/Map/map.tscn" id="2_avnir"]
 [ext_resource type="PackedScene" uid="uid://dwli7df7clyar" path="res://Entities/MovementPreview/movement_preview.tscn" id="4_7l01x"]
+[ext_resource type="PackedScene" uid="uid://bpjyyq3jpll14" path="res://Entities/Hero/Hero.tscn" id="5_2rmff"]
 [ext_resource type="PackedScene" uid="uid://651dykxujrqp" path="res://Entities/PossibleMovement/possible_movement.tscn" id="5_7hfyt"]
 
 [node name="Main" type="Node2D"]
@@ -18,6 +18,6 @@ map = NodePath("../Map")
 map = NodePath("../Map")
 possible_movement = NodePath("../PossibleMovement")
 
-[node name="Player" type="Sprite2D" parent="."]
-position = Vector2(513, 429)
-texture = ExtResource("2_5l6vl")
+[node name="Hero" parent="." node_paths=PackedStringArray("map") instance=ExtResource("5_2rmff")]
+position = Vector2(415, 438)
+map = NodePath("../Map")
