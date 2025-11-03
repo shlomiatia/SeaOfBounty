@@ -29,17 +29,7 @@ func _input(event: InputEvent) -> void:
 
 func handle_mouse_hover() -> void:
     var mouse_pos = get_global_mouse_position()
-    var hovered_grid_pos = map.local_to_map(mouse_pos)
-
-    if hovered_grid_pos != last_hovered_tile:
-        last_hovered_tile = hovered_grid_pos
-
-        var tile_data = possible_movement.get_cell_source_id(hovered_grid_pos)
-        if tile_data != -1:
-            movement_preview.preview_movement_path(player.position, hovered_grid_pos)
-        else:
-            movement_preview.clear()
-
+    movement_preview.preview_movement_path(player.position, mouse_pos)
 
 func handle_left_click(mouse_pos: Vector2) -> void:
     var player_grid_pos = map.local_to_map(player.position)

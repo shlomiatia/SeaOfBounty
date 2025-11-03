@@ -14,8 +14,9 @@ script = ExtResource("1_8ofus")
 [node name="PossibleMovement" parent="." node_paths=PackedStringArray("map") instance=ExtResource("5_7hfyt")]
 map = NodePath("../Map")
 
-[node name="MovementPreview" parent="." node_paths=PackedStringArray("map") instance=ExtResource("4_7l01x")]
+[node name="MovementPreview" parent="." node_paths=PackedStringArray("map", "possible_movement") instance=ExtResource("4_7l01x")]
 map = NodePath("../Map")
+possible_movement = NodePath("../PossibleMovement")
 
 [node name="Player" type="Sprite2D" parent="."]
 position = Vector2(513, 429)
