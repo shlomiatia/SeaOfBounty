@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwli7df7clyar"]
+
+[ext_resource type="TileSet" uid="uid://dy500uswj08ie" path="res://Levels/Main/Main.tres" id="1_pjk3s"]
+[ext_resource type="Script" path="res://Entities/MovementPreview/movement_preview.gd" id="2_1saas"]
+
+[node name="MovementPreview" type="TileMapLayer"]
+tile_set = ExtResource("1_pjk3s")
+navigation_enabled = false
+script = ExtResource("2_1saas")
