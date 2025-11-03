@@ -4,6 +4,9 @@ class_name Hero extends Node2D
 @export var max_movement := 4
 const movement_speed: float = 400.0
 
+func _ready() -> void:
+    position = map.map_to_local(map.local_to_map(position))
+
 func move_to(target_grid_pos: Vector2i) -> void:
     var player_grid_pos := map.local_to_map(position)
     var start_world_pos := map.map_to_local(player_grid_pos)

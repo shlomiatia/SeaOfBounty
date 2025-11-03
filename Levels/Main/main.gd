@@ -8,7 +8,6 @@ const MAX_MOVEMENT := 4
 @onready var movement_preview: MovementPreview = $MovementPreview
 
 var is_moving: bool = false
-var movement_speed: float = 400.0
 
 func _process(_delta: float) -> void:
     if is_moving:
