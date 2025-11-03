@@ -22,24 +22,6 @@ func _process(_delta: float) -> void:
     if not is_moving:
         handle_mouse_hover()
 
-
-func handle_mouse_hover() -> void:
-    var mouse_pos = get_global_mouse_position()
-    var hovered_grid_pos = Vector2i(
-        int(mouse_pos.x / 80),
-        int(mouse_pos.y / 80)
-    )
-
-    if hovered_grid_pos != last_hovered_tile:
-        last_hovered_tile = hovered_grid_pos
-
-        var tile_data = possible_movement.get_cell_source_id(hovered_grid_pos)
-        if tile_data != -1:
-            preview_movement_path(hovered_grid_pos)
-        else:
-            movement_preview.clear()
-
-
 func _input(event: InputEvent) -> void:
     if is_moving:
         return
@@ -51,19 +33,99 @@ func _input(event: InputEvent) -> void:
             possible_movement.clear()
             movement_preview.clear()
 
+func handle_mouse_hover() -> void:
+    var mouse_pos = get_global_mouse_position()
+    var hovered_grid_pos = map.local_to_map(mouse_pos)
+
+    if hovered_grid_pos != last_hovered_tile:
+        last_hovered_tile = hovered_grid_pos
+
+        var tile_data = possible_movement.get_cell_source_id(hovered_grid_pos)
+        if tile_data != -1:
+            preview_movement_path(hovered_grid_pos)
+        else:
+            movement_preview.clear()
+
+func preview_movement_path(target_pos: Vector2i) -> void:
+    movement_preview.clear()
+
+    var player_grid_pos := map.local_to_map(player.position)
+    var start_world_pos := map.map_to_local(player_grid_pos)
+    var target_world_pos := map.map_to_local(target_pos)
+    var tile_path := find_tile_path(start_world_pos, target_world_pos)
+
+    for i in range(tile_path.size()):
+        var tile_pos = tile_path[i]
+
+        if i == tile_path.size() - 1:
+            var direction = get_direction_from_previous(tile_path, i)
+            var arrow_tile = Vector2i(1, 0)
+            var tile_transform = get_transform_for_arrow(direction)
+            movement_preview.set_cell(tile_pos, 0, arrow_tile, tile_transform)
+        elif i > 0:
+            var prev_dir = get_direction_between(tile_path[i - 1], tile_path[i])
+            var next_dir = get_direction_between(tile_path[i], tile_path[i + 1])
+
+            if prev_dir == next_dir:
+                var straight_tile = Vector2i(0, 1)
+                var tile_transform = get_transform_for_straight(prev_dir)
+                movement_preview.set_cell(tile_pos, 0, straight_tile, tile_transform)
+            else:
+                var turn_tile = Vector2i(1, 1)
+                var tile_transform = get_transform_for_turn(prev_dir, next_dir)
+                movement_preview.set_cell(tile_pos, 0, turn_tile, tile_transform)
+
+func get_direction_from_previous(tile_path: Array[Vector2i], index: int) -> Vector2i:
+    if index > 0:
+        return get_direction_between(tile_path[index - 1], tile_path[index])
+    return Vector2i(0, 0)
+
+func get_direction_between(from: Vector2i, to: Vector2i) -> Vector2i:
+    return Vector2i(sign(to.x - from.x), sign(to.y - from.y))
+
+
+func get_transform_for_arrow(direction: Vector2i) -> int:
+    if direction.y > 0:
+        return TileTransform.ROTATE_180
+    elif direction.x < 0:
+        return TileTransform.ROTATE_270
+    elif direction.y < 0:
+        return TileTransform.ROTATE_0
+    else:
+        return TileTransform.ROTATE_90
+
+
+func get_transform_for_straight(direction: Vector2i) -> int:
+    if direction.y != 0:
+        return TileTransform.ROTATE_90
+    return TileTransform.ROTATE_0
+
+func get_transform_for_turn(prev_dir: Vector2i, next_dir: Vector2i) -> int:
+    if prev_dir.x > 0 and next_dir.y > 0:
+        return TileTransform.ROTATE_270
+    elif prev_dir.y < 0 and next_dir.x > 0:
+        return TileTransform.ROTATE_180
+    elif prev_dir.x < 0 and next_dir.y < 0:
+        return TileTransform.ROTATE_90
+    elif prev_dir.y > 0 and next_dir.x < 0:
+        return TileTransform.ROTATE_0
+    elif prev_dir.x > 0 and next_dir.y < 0:
+        return TileTransform.ROTATE_0
+    elif prev_dir.y > 0 and next_dir.x > 0:
+        return TileTransform.ROTATE_90
+    elif prev_dir.x < 0 and next_dir.y > 0:
+        return TileTransform.ROTATE_180
+    elif prev_dir.y < 0 and next_dir.x < 0:
+        return TileTransform.ROTATE_270
+
+    return TileTransform.ROTATE_0
+
 
 func handle_left_click(mouse_pos: Vector2) -> void:
-    var player_grid_pos = Vector2i(
-        int(player.position.x / 80),
-        int(player.position.y / 80)
-    )
-
-    var clicked_grid_pos = Vector2i(
-        int(mouse_pos.x / 80),
-        int(mouse_pos.y / 80)
-    )
-
+    var player_grid_pos = map.local_to_map(player.position)
+    var clicked_grid_pos := map.local_to_map(mouse_pos)
     var tile_data = possible_movement.get_cell_source_id(clicked_grid_pos)
+
     if tile_data != -1:
         move_player_to(clicked_grid_pos)
         return
@@ -73,27 +135,10 @@ func handle_left_click(mouse_pos: Vector2) -> void:
 
 
 func move_player_to(target_grid_pos: Vector2i) -> void:
-    var player_grid_pos = Vector2i(
-        int(player.position.x / 80),
-        int(player.position.y / 80)
-    )
-
-    var start_world_pos = map.map_to_local(player_grid_pos)
-    var target_world_pos = map.map_to_local(target_grid_pos)
-    var path = find_navigation_path(start_world_pos, target_world_pos)
-
-    if path.size() == 0:
-        return
-
-    var tile_path: Array[Vector2i] = []
-    var current_tile = map.local_to_map(path[0])
-    tile_path.append(current_tile)
-
-    for i in range(1, path.size()):
-        var next_tile = map.local_to_map(path[i])
-        if next_tile != current_tile:
-            tile_path.append(next_tile)
-            current_tile = next_tile
+    var player_grid_pos := map.local_to_map(player.position)
+    var start_world_pos := map.map_to_local(player_grid_pos)
+    var target_world_pos := map.map_to_local(target_grid_pos)
+    var tile_path := find_tile_path(start_world_pos, target_world_pos)
 
     possible_movement.clear()
     movement_preview.clear()
@@ -125,101 +170,6 @@ func highlight_possible_movement(grid_pos: Vector2i) -> void:
         possible_movement.set_cell(tile_pos, 0, Vector2i(0, 0))
 
 
-func preview_movement_path(target_pos: Vector2i) -> void:
-    movement_preview.clear()
-
-    var player_grid_pos = Vector2i(
-        int(player.position.x / 80),
-        int(player.position.y / 80)
-    )
-
-    var start_world_pos = map.map_to_local(player_grid_pos)
-    var target_world_pos = map.map_to_local(target_pos)
-    var path = find_navigation_path(start_world_pos, target_world_pos)
-
-    if path.size() == 0:
-        return
-
-    var tile_path: Array[Vector2i] = []
-    var current_tile = map.local_to_map(path[0])
-    tile_path.append(current_tile)
-
-    for i in range(1, path.size()):
-        var next_tile = map.local_to_map(path[i])
-        if next_tile != current_tile:
-            tile_path.append(next_tile)
-            current_tile = next_tile
-
-    for i in range(tile_path.size()):
-        var tile_pos = tile_path[i]
-
-        if i == tile_path.size() - 1:
-            var direction = get_direction_from_previous(tile_path, i)
-            var arrow_tile = Vector2i(1, 0)
-            var tile_transform = get_transform_for_arrow(direction)
-            movement_preview.set_cell(tile_pos, 0, arrow_tile, tile_transform)
-        elif i > 0:
-            var prev_dir = get_direction_between(tile_path[i - 1], tile_path[i])
-            var next_dir = get_direction_between(tile_path[i], tile_path[i + 1])
-
-            if prev_dir == next_dir:
-                var straight_tile = Vector2i(0, 1)
-                var tile_transform = get_transform_for_straight(prev_dir)
-                movement_preview.set_cell(tile_pos, 0, straight_tile, tile_transform)
-            else:
-                var turn_tile = Vector2i(1, 1)
-                var tile_transform = get_transform_for_turn(prev_dir, next_dir)
-                movement_preview.set_cell(tile_pos, 0, turn_tile, tile_transform)
-
-
-func get_direction_between(from: Vector2i, to: Vector2i) -> Vector2i:
-    return Vector2i(sign(to.x - from.x), sign(to.y - from.y))
-
-
-func get_direction_from_previous(tile_path: Array[Vector2i], index: int) -> Vector2i:
-    if index > 0:
-        return get_direction_between(tile_path[index - 1], tile_path[index])
-    return Vector2i(0, 0)
-
-
-func get_transform_for_arrow(direction: Vector2i) -> int:
-    if direction.y > 0:
-        return TileTransform.ROTATE_180
-    elif direction.x < 0:
-        return TileTransform.ROTATE_270
-    elif direction.y < 0:
-        return TileTransform.ROTATE_0
-    else:
-        return TileTransform.ROTATE_90
-
-
-func get_transform_for_straight(direction: Vector2i) -> int:
-    if direction.y != 0:
-        return TileTransform.ROTATE_90
-    return TileTransform.ROTATE_0
-
-
-func get_transform_for_turn(prev_dir: Vector2i, next_dir: Vector2i) -> int:
-    if prev_dir.x > 0 and next_dir.y > 0:
-        return TileTransform.ROTATE_270
-    elif prev_dir.y < 0 and next_dir.x > 0:
-        return TileTransform.ROTATE_180
-    elif prev_dir.x < 0 and next_dir.y < 0:
-        return TileTransform.ROTATE_90
-    elif prev_dir.y > 0 and next_dir.x < 0:
-        return TileTransform.ROTATE_0
-    elif prev_dir.x > 0 and next_dir.y < 0:
-        return TileTransform.ROTATE_0
-    elif prev_dir.y > 0 and next_dir.x > 0:
-        return TileTransform.ROTATE_90
-    elif prev_dir.x < 0 and next_dir.y > 0:
-        return TileTransform.ROTATE_180
-    elif prev_dir.y < 0 and next_dir.x < 0:
-        return TileTransform.ROTATE_270
-
-    return TileTransform.ROTATE_0
-
-
 func get_reachable_tiles(start_pos: Vector2i, max_distance: int) -> Array[Vector2i]:
     var reachable: Array[Vector2i] = []
 
@@ -234,36 +184,30 @@ func get_reachable_tiles(start_pos: Vector2i, max_distance: int) -> Array[Vector
                 var tile_pos = Vector2i(start_pos.x + dx, start_pos.y + dy)
                 var target_world_pos = map.map_to_local(tile_pos)
 
-                var path = find_navigation_path(start_world_pos, target_world_pos)
+                var path = find_tile_path(start_world_pos, target_world_pos)
 
-
-                if path.size() > 0:
-                    var path_length = calculate_path_length_in_tiles(path)
-                    if path_length <= max_distance:
-                        reachable.append(tile_pos)
+                if path.size() <= max_distance:
+                    reachable.append(tile_pos)
 
     return reachable
 
 
-func find_navigation_path(from: Vector2, to: Vector2) -> PackedVector2Array:
+func find_tile_path(from: Vector2, to: Vector2) -> Array[Vector2i]:
     var navigation_map = map.get_navigation_map()
 
     var path = NavigationServer2D.map_get_path(navigation_map, from, to, true)
 
-    return path
-
-
-func calculate_path_length_in_tiles(path: PackedVector2Array) -> int:
-    if path.size() < 2:
-        return 0
-
-    var tile_count = 0
+    if path.size() == 0:
+        return []
+    
+    var tile_path: Array[Vector2i] = []
     var current_tile = map.local_to_map(path[0])
+    tile_path.append(current_tile)
 
     for i in range(1, path.size()):
         var next_tile = map.local_to_map(path[i])
         if next_tile != current_tile:
-            tile_count += 1
+            tile_path.append(next_tile)
             current_tile = next_tile
 
-    return tile_count
+    return tile_path
