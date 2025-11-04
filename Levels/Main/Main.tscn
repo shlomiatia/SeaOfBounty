@@ -1,13 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://bblitdo328h8a"]
+[gd_scene load_steps=7 format=3 uid="uid://bblitdo328h8a"]
 
 [ext_resource type="Script" path="res://Levels/Main/main.gd" id="1_8ofus"]
 [ext_resource type="PackedScene" uid="uid://b6mjpkkw6ptwr" path="res://Entities/Map/map.tscn" id="2_avnir"]
+[ext_resource type="AudioStream" uid="uid://lurv6r8u6g0q" path="res://Levels/Main/Pirate stuff.mp3" id="2_cvbam"]
 [ext_resource type="PackedScene" uid="uid://dwli7df7clyar" path="res://Entities/MovementPreview/movement_preview.tscn" id="4_7l01x"]
 [ext_resource type="PackedScene" uid="uid://bpjyyq3jpll14" path="res://Entities/Hero/Hero.tscn" id="5_2rmff"]
 [ext_resource type="PackedScene" uid="uid://651dykxujrqp" path="res://Entities/PossibleMovement/possible_movement.tscn" id="5_7hfyt"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_8ofus")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_cvbam")
+autoplay = true
 
 [node name="Map" parent="." instance=ExtResource("2_avnir")]
 
