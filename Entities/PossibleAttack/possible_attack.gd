@@ -3,7 +3,7 @@ class_name PossibleAttack extends TileMapLayer
 @export var possible_movement: PossibleMovement
 
 
-func highlight_possible_attack() -> void:
+func highlight_possible_attack(excluded_tiles: Array[Vector2i] = []) -> void:
     clear()
 
     # Get all filled cells from possible_movement
@@ -24,6 +24,10 @@ func highlight_possible_attack() -> void:
 
         for offset in adjacent_offsets:
             var adjacent_cell = cell + offset
+
+            # Skip if this tile is excluded (e.g., hero tiles)
+            if excluded_tiles.has(adjacent_cell):
+                continue
 
             # Check if this adjacent cell is empty in possible_movement
             var adjacent_tile_data = possible_movement.get_cell_source_id(adjacent_cell)
