@@ -4,6 +4,7 @@ const MAX_MOVEMENT := 4
 
 @onready var map: Map = $Map
 @onready var possible_movement: PossibleMovement = $PossibleMovement
+@onready var attack_range: AttackRange = $AttackRange
 @onready var possible_attack: PossibleAttack = $PossibleAttack
 @onready var movement_preview: MovementPreview = $MovementPreview
 
@@ -43,15 +44,14 @@ func handle_left_click(mouse_pos: Vector2) -> void:
         if clicked_grid_pos == hero_grid_pos:
             current_hero = hero
             clear()
-
-            # Collect excluded tiles (all heroes and enemies)
             var excluded_tiles = get_excluded_tiles()
-
-            # Collect only hero tiles for attack exclusion
             var hero_tiles = get_hero_tiles()
+            var enemy_tiles = get_enemy_tiles()
 
             possible_movement.highlight_possible_movement(hero_grid_pos, MAX_MOVEMENT, excluded_tiles)
-            possible_attack.highlight_possible_attack(hero_tiles)
+            attack_range.highlight_attack_range(hero_tiles)
+            possible_attack.highlight_possible_attack(enemy_tiles)
+
             return
 
     if current_hero:
@@ -91,7 +91,18 @@ func get_hero_tiles() -> Array[Vector2i]:
 
     return hero_tiles
 
+func get_enemy_tiles() -> Array[Vector2i]:
+    var enemy_tiles: Array[Vector2i] = []
+
+    var enemies = get_tree().get_nodes_in_group("enemies")
+    for enemy in enemies:
+        var enemy_grid_pos = map.local_to_map(enemy.position)
+        enemy_tiles.append(enemy_grid_pos)
+
+    return enemy_tiles
+
 func clear() -> void:
     possible_movement.clear()
+    attack_range.clear()
     possible_attack.clear()
     movement_preview.clear()

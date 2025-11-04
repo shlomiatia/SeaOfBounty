@@ -1,133 +1,51 @@
 shader_type canvas_item;
 
-uniform float aspectRatio = 1.0f;
-uniform float pixelization = 2048.0f;
+uniform int OCTAVE = 6;
+uniform float mulscale = 5.0;
+uniform float height = 0.6;
+uniform float tide = 0.1;
+uniform float foamthickness = 0.1;
+uniform float timescale = 1.0;
+uniform float waterdeep = 0.3;
+uniform vec4 WATER_COL : source_color = vec4(0.04, 0.38, 0.88, 1.0);
+uniform vec4 WATER2_COL : source_color = vec4(0.04, 0.35, 0.78, 1.0);
+uniform vec4 FOAM_COL : source_color = vec4(0.8125, 0.9609, 0.9648, 1.0);
 
-uniform sampler2D waterDepthGradient : hint_default_black;
-
-uniform vec4 causticColor = vec4(0.455f, 0.773f, 0.765f, 1.0f);
-uniform vec4 causticHighlightColor = vec4(0.741f, 0.894f, 0.898f, 1.0f);
-uniform sampler2D causticTexture : hint_default_white, repeat_enable;
-uniform sampler2D causticHighlightTexture : hint_default_white, repeat_enable;
-uniform sampler2D causticNoiseTexture : hint_default_white, repeat_enable;
-uniform sampler2D causticFadeNoiseTexture : hint_default_white, repeat_enable;
-uniform float causticScale = 12.0f;
-uniform float causticSpeed = 0.005f;
-uniform float causticMovementAmount = 0.15f;
-uniform float causticFaderMultiplier = 1.45f;
-
-uniform vec4 specularColor = vec4(1.0f, 1.0f, 1.0f, 1.0f);
-uniform sampler2D specularNoiseTexture : hint_default_white, repeat_enable;
-uniform sampler2D specularMovementLeftNoiseTexture : hint_default_white, repeat_enable;
-uniform sampler2D specularMovementRightNoiseTexture : hint_default_white, repeat_enable;
-uniform float specularThreshold = 0.35f;
-uniform float specularSpeed = 0.025f;
-uniform float specularScale = 15.0f;
-
-uniform vec4 foamColor = vec4(1.0f, 1.0f, 1.0f, 1.0f);
-uniform sampler2D foamTexture : hint_default_white, repeat_enable;
-uniform float foamIntensity = 0.2f;
-uniform float foamScale = 15.0f;
-
-uniform vec4 outlineColor = vec4(0.675f, 0.86f, 1.0f, 1.0f);
-uniform float generalTransparency = 1.0f;
-
-
-// ------------------------------------------------------------------------------------
-// Helper functions
-
-// Blends two vec2's by subtracting them. Compare this to Photoshop blend mode "Subtract".
-// Source:
-// https://docs.unity3d.com/Packages/com.unity.shadergraph@6.9/manual/Blend-Node.html
-vec2 blendSubtract_vec2(vec2 base, vec2 blend, float opacity)
-{
-	vec2 result = base - blend;
-	return mix(base, result, opacity);
+float rand(vec2 input){
+	return fract(sin(dot(input, vec2(23.53, 44.0))) * 42350.45);
 }
 
-// Blends two floats by subtracting them. Compare this to Photoshop blend mode "Subtract".
-// Source:
-// https://docs.unity3d.com/Packages/com.unity.shadergraph@6.9/manual/Blend-Node.html
-float blendSubtract_float(float base, float blend, float opacity)
-{
-	float result = base - blend;
-	return mix(base, result, opacity);
+float perlin(vec2 input){
+	vec2 i = floor(input);
+	vec2 j = fract(input);
+	vec2 coord = smoothstep(0.0, 1.0, j);
+
+	float a = rand(i);
+	float b = rand(i + vec2(1.0, 0.0));
+	float c = rand(i + vec2(0.0, 1.0));
+	float d = rand(i + vec2(1.0, 1.0));
+	return mix(mix(a, b, coord.x), mix(c, d, coord.x), coord.y);
 }
 
-// Blends two vec2's by overlaying them. Compare this to Photoshop blend mode "Overlay".
-// Source:
-// https://docs.unity3d.com/Packages/com.unity.shadergraph@6.9/manual/Blend-Node.html
-float blendOverlay_float(float base, float blend, float opacity)
-{
-	float result1 = 1.0f - 2.0f * (1.0f - base) * (1.0f - blend);
-    float result2 = 2.0f * base * blend;
-    float zeroOrOne = step(0.5f, base);
-    float res = result2 * zeroOrOne + (1.0 - zeroOrOne) * result1;
-    return mix(base, res, opacity);
+float fbm(vec2 input){
+	float value = 0.0;
+	float scale = 0.5;
+
+	for(int i = 0; i < OCTAVE; i++){
+		value += perlin(input) * scale;
+		input *= 2.0;
+		scale *= 0.5;
+	}
+	return value;
 }
 
-// Pixelizes the given coordinate.
-vec2 pixelizeCoordinates(vec2 coordinates)
-{
-	return floor(coordinates * pixelization) / pixelization;
-}
-
-// Applies the aspect ratio to the coordinates.
-vec2 applyAspectRatio(vec2 coordinates)
-{
-	return vec2(coordinates.x, coordinates.y * aspectRatio);
-}
-
-// ------------------------------------------------------------------------------------
-// Shader layers
-
-vec4 caustics(vec2 pixelizedCoordinates)
-{
-	vec4 causticNoise = texture(causticNoiseTexture, TIME * causticSpeed + pixelizedCoordinates);
-	vec2 noiseCoordinates = blendSubtract_vec2(pixelizedCoordinates * causticScale, causticNoise.rg, causticMovementAmount);
-	vec4 causticHighlight = texture(causticHighlightTexture, noiseCoordinates) * causticHighlightColor;
-	vec4 caustic = texture(causticTexture, noiseCoordinates) * causticColor;
-	vec4 interpolatedCaustics = mix(caustic, causticHighlight, causticHighlight.a);
-	float fadeNoise = texture(causticFadeNoiseTexture, noiseCoordinates).r * causticFaderMultiplier;
-	return vec4(interpolatedCaustics.r, interpolatedCaustics.g, interpolatedCaustics.b, clamp(interpolatedCaustics.a - fadeNoise, 0.0, 1.0));
-}
-
-vec4 specular(vec2 pixelizedCoordinates)
-{
-	vec2 scaledCoordinates = pixelizedCoordinates * specularScale;
-	float specularNoise = texture(specularNoiseTexture, scaledCoordinates).r;
-	float leftScrollingNoise = texture(specularMovementLeftNoiseTexture, scaledCoordinates + vec2(TIME * specularSpeed, 0.0f)).r;
-	float rightScrollingNoise = texture(specularMovementRightNoiseTexture, scaledCoordinates + vec2(TIME * specularSpeed * -1.0f, 0.0f)).r;
-	return step(specularThreshold, blendSubtract_float(blendOverlay_float(leftScrollingNoise, rightScrollingNoise, 1.0f), specularNoise, 1.0f)) * specularColor;
-}
-
-vec4 foam(vec2 pixelizedCoordinates, vec4 mainTexColor)
-{
-	vec4 colorizedFoam = texture(foamTexture, pixelizedCoordinates * foamScale) * foamColor;
-	float intensity = clamp(mainTexColor.g * mainTexColor.a - foamIntensity, 0.0f, 1.0f);
-	return vec4(colorizedFoam.r, colorizedFoam.g, colorizedFoam.b, colorizedFoam.a * intensity);
-}
-
-// ------------------------------------------------------------------------------------
-// Fragment Shader code
-
-void fragment() 
-{
-	vec2 pixelizedCoordinates = pixelizeCoordinates(applyAspectRatio(UV));
-	vec4 mainTex = texture(TEXTURE, UV);
-	vec4 depthBasedWaterColor = texture(waterDepthGradient, vec2(1.0f - mainTex.b, 1.0f));
-	
-	vec4 finalCaustics = caustics(pixelizedCoordinates);	
-	vec4 finalSpecular = specular(pixelizedCoordinates);
-	vec4 finalFoam = foam(pixelizedCoordinates, mainTex);
-	
-	vec4 waterWithCausticLayer = mix(depthBasedWaterColor, finalCaustics, finalCaustics.a);
-	vec4 waterWithCausticAndSpecularLayer = mix(waterWithCausticLayer, finalSpecular, ceil(finalCaustics.a) * finalSpecular.a);
-	vec4 waterWithCausticAndSpecularAndFoamLayer = mix(waterWithCausticAndSpecularLayer, finalFoam, finalFoam.a);
-	
-	float outline = mainTex.a * mainTex.r;
-	vec4 finalOutlineColor = outline * outlineColor;
-	
-	vec4 finalRGBColor = mix(waterWithCausticAndSpecularAndFoamLayer, finalOutlineColor, outline);
-	COLOR = vec4(finalRGBColor.r, finalRGBColor.g, finalRGBColor.b, mainTex.b * generalTransparency);
+void fragment(){
+	float newtime = TIME * timescale;
+	float fbmval = fbm(vec2(UV.x * mulscale + 0.2 * sin(0.3 * newtime) + 0.15 * newtime, -0.05 * newtime + UV.y * mulscale + 0.1 * cos(0.68 * newtime)));
+	float fbmvalshadow = fbm(vec2(UV.x * mulscale + 0.2 * sin(-0.6 * newtime + 25.0 * UV.y) + 0.15 * newtime + 3.0, -0.05 * newtime + UV.y * mulscale + 0.13 * cos(-0.68 * newtime)) - 7.0 + 0.1 * sin(0.43 * newtime));
+	float myheight = height + tide * sin(newtime + 5.0 * UV.x - 8.0 * UV.y);
+	float shadowheight = height + tide * 1.3 * cos(newtime + 2.0 * UV.x - 2.0 * UV.y);
+	float withinFoam = step(myheight, fbmval) * step(fbmval, myheight + foamthickness);
+	float shadow = (1.0 - withinFoam) * step(shadowheight, fbmvalshadow) * step(fbmvalshadow, shadowheight + foamthickness * 0.7);
+	COLOR = withinFoam * FOAM_COL + shadow * WATER2_COL + ((1.0 - withinFoam) * (1.0 - shadow)) * WATER_COL;
 }

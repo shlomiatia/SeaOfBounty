@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(move possible_attack.gd attack_range.gd)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
