@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bpjyyq3jpll14"]
 
-[ext_resource type="Script" path="res://Entities/Hero/hero.gd" id="1_a0dpv"]
+[ext_resource type="Script" uid="uid://d8t4yv5hkf4c" path="res://Entities/Hero/hero.gd" id="1_a0dpv"]
 [ext_resource type="Texture2D" uid="uid://dunw6tetneoi0" path="res://Textures/ship_right.tres" id="2_etf4g"]
 
 [node name="Hero" type="Node2D" groups=["heroes"]]

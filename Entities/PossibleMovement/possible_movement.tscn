@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://651dykxujrqp"]
 
 [ext_resource type="TileSet" uid="uid://dy500uswj08ie" path="res://Levels/Main/Main.tres" id="1_j1fd0"]
-[ext_resource type="Script" path="res://Entities/PossibleMovement/possible_movement.gd" id="2_pv1re"]
+[ext_resource type="Script" uid="uid://ql2f3kgjmt26" path="res://Entities/PossibleMovement/possible_movement.gd" id="2_pv1re"]
 
 [node name="PossibleMovement" type="TileMapLayer"]
 modulate = Color(0.215686, 0.427451, 0.0117647, 1)

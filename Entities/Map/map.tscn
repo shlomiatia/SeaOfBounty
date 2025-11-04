@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=4 uid="uid://b6mjpkkw6ptwr"]
 
 [ext_resource type="TileSet" uid="uid://dy500uswj08ie" path="res://Levels/Main/Main.tres" id="1_xwvqu"]
-[ext_resource type="Script" path="res://Entities/Map/map.gd" id="2_nxccx"]
+[ext_resource type="Script" uid="uid://cpddfo3yor1lh" path="res://Entities/Map/map.gd" id="2_nxccx"]
 
 [node name="Map" type="TileMapLayer"]
 modulate = Color(0.00784314, 0.290196, 0.792157, 1)

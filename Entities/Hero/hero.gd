@@ -1,6 +1,6 @@
 class_name Hero extends Node2D
 
-const movement_speed: float = 400.0
+const movement_speed: float = 300.0
 
 @export var map: Map
 @export var max_movement := 4

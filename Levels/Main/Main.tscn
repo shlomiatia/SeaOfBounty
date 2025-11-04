@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bblitdo328h8a"]
 
-[ext_resource type="Script" path="res://Levels/Main/main.gd" id="1_8ofus"]
+[ext_resource type="Script" uid="uid://currcp3fjqvdh" path="res://Levels/Main/main.gd" id="1_8ofus"]
 [ext_resource type="PackedScene" uid="uid://b6mjpkkw6ptwr" path="res://Entities/Map/map.tscn" id="2_avnir"]
 [ext_resource type="AudioStream" uid="uid://lurv6r8u6g0q" path="res://Levels/Main/Pirate stuff.mp3" id="2_cvbam"]
 [ext_resource type="PackedScene" uid="uid://dwli7df7clyar" path="res://Entities/MovementPreview/movement_preview.tscn" id="4_7l01x"]
@@ -29,4 +29,5 @@ position = Vector2(415, 438)
 map = NodePath("../Map")
 
 [node name="Battle" parent="." instance=ExtResource("7_tftr3")]
+visible = false
 position = Vector2(640, 360)
