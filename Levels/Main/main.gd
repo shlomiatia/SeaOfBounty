@@ -2,12 +2,12 @@ class_name Main extends Node2D
 
 const MAX_MOVEMENT := 4
 
-@onready var hero: Hero = $Hero
 @onready var map: Map = $Map
 @onready var possible_movement: PossibleMovement = $PossibleMovement
 @onready var possible_attack: PossibleAttack = $PossibleAttack
 @onready var movement_preview: MovementPreview = $MovementPreview
 
+var current_hero: Hero = null
 var is_moving: bool = false
 
 func _process(_delta: float) -> void:
@@ -27,26 +27,37 @@ func _input(event: InputEvent) -> void:
             clear()
 
 func handle_mouse_hover() -> void:
-    var mouse_pos = get_global_mouse_position()
-    movement_preview.preview_movement_path(hero.position, mouse_pos)
-
-func handle_left_click(mouse_pos: Vector2) -> void:
-    var player_grid_pos = map.local_to_map(hero.position)
-    var clicked_grid_pos := map.local_to_map(mouse_pos)
-    var tile_data = possible_movement.get_cell_source_id(clicked_grid_pos)
-
-    if tile_data != -1:
-        clear()
-        is_moving = true
-        hero.move_to(clicked_grid_pos)
-        is_moving = false
+    if !current_hero:
         return
 
-    clear()
+    var mouse_pos = get_global_mouse_position()
+    movement_preview.preview_movement_path(current_hero.position, mouse_pos)
 
-    if clicked_grid_pos == player_grid_pos:
-        possible_movement.highlight_possible_movement(player_grid_pos, MAX_MOVEMENT)
-        possible_attack.highlight_possible_attack()
+func handle_left_click(mouse_pos: Vector2) -> void:
+    var clicked_grid_pos := map.local_to_map(mouse_pos)
+
+    var heroes = get_tree().get_nodes_in_group("heroes")
+
+    for hero in heroes:
+        var hero_grid_pos = map.local_to_map(hero.position)
+        if clicked_grid_pos == hero_grid_pos:
+            current_hero = hero
+            clear()
+            possible_movement.highlight_possible_movement(hero_grid_pos, MAX_MOVEMENT)
+            possible_attack.highlight_possible_attack()
+            return
+
+    if current_hero:
+        var tile_data = possible_movement.get_cell_source_id(clicked_grid_pos)
+
+        if tile_data != -1:
+            clear()
+            is_moving = true
+            current_hero.move_to(clicked_grid_pos)
+            is_moving = false
+            return
+
+    clear()
 
 func clear() -> void:
     possible_movement.clear()

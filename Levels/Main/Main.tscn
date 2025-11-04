@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bblitdo328h8a"]
+[gd_scene load_steps=10 format=3 uid="uid://bblitdo328h8a"]
 
 [ext_resource type="Script" uid="uid://currcp3fjqvdh" path="res://Levels/Main/main.gd" id="1_8ofus"]
 [ext_resource type="PackedScene" uid="uid://b6mjpkkw6ptwr" path="res://Entities/Map/map.tscn" id="2_avnir"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bpjyyq3jpll14" path="res://Entities/Hero/Hero.tscn" id="5_2rmff"]
 [ext_resource type="PackedScene" uid="uid://651dykxujrqp" path="res://Entities/PossibleMovement/possible_movement.tscn" id="5_7hfyt"]
 [ext_resource type="PackedScene" uid="uid://df84bkpjfqdm5" path="res://Entities/Battle/Battle.tscn" id="7_tftr3"]
+[ext_resource type="PackedScene" uid="uid://deyjjg04j726o" path="res://Entities/Enemy/Enemy.tscn" id="9_yjhx0"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_8ofus")
@@ -32,6 +33,18 @@ possible_movement = NodePath("../PossibleMovement")
 position = Vector2(415, 438)
 map = NodePath("../Map")
 
+[node name="Hero2" parent="." node_paths=PackedStringArray("map") instance=ExtResource("5_2rmff")]
+position = Vector2(907, 266)
+map = NodePath("../Map")
+
 [node name="Battle" parent="." instance=ExtResource("7_tftr3")]
 visible = false
 position = Vector2(640, 360)
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("map") instance=ExtResource("9_yjhx0")]
+position = Vector2(892, 414)
+map = NodePath("../Map")
+
+[node name="Enemy2" parent="." node_paths=PackedStringArray("map") instance=ExtResource("9_yjhx0")]
+position = Vector2(217, 182)
+map = NodePath("../Map")
