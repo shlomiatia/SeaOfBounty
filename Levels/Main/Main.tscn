@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dwli7df7clyar" path="res://Entities/MovementPreview/movement_preview.tscn" id="4_7l01x"]
 [ext_resource type="PackedScene" uid="uid://bpjyyq3jpll14" path="res://Entities/Hero/Hero.tscn" id="5_2rmff"]
 [ext_resource type="PackedScene" uid="uid://651dykxujrqp" path="res://Entities/PossibleMovement/possible_movement.tscn" id="5_7hfyt"]
-[ext_resource type="PackedScene" uid="uid://dx5eqw4ffmyug" path="res://Entities/BattleMeter/BattleMeter.tscn" id="7_ay7sx"]
+[ext_resource type="PackedScene" uid="uid://df84bkpjfqdm5" path="res://Entities/Battle/Battle.tscn" id="7_tftr3"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_8ofus")
@@ -28,5 +28,5 @@ possible_movement = NodePath("../PossibleMovement")
 position = Vector2(415, 438)
 map = NodePath("../Map")
 
-[node name="BattleMeter" parent="." instance=ExtResource("7_ay7sx")]
-position = Vector2(214, 284)
+[node name="Battle" parent="." instance=ExtResource("7_tftr3")]
+position = Vector2(640, 360)

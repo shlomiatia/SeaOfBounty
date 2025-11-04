@@ -6,16 +6,13 @@ signal indicator_stopped(value: float)
 
 var tween: Tween
 
-func _ready() -> void:
-    animate_indicator()
-
 func _input(event: InputEvent) -> void:
     if event is InputEventMouseButton and event.pressed:
         if !tween:
             return
-        stop_indicator()
+        stop()
 
-func animate_indicator() -> void:
+func start() -> void:
     var start_pos = Vector2(0, -55)
     indicator.position = start_pos
     var end_pos = start_pos + Vector2(0, 110)
@@ -26,7 +23,7 @@ func animate_indicator() -> void:
     tween.tween_property(indicator, "position", start_pos, 1.0).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
 
 
-func stop_indicator() -> void:
+func stop() -> void:
     if tween:
         tween.kill()
     tween = null
