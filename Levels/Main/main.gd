@@ -43,7 +43,11 @@ func handle_left_click(mouse_pos: Vector2) -> void:
         if clicked_grid_pos == hero_grid_pos:
             current_hero = hero
             clear()
-            possible_movement.highlight_possible_movement(hero_grid_pos, MAX_MOVEMENT)
+
+            # Collect excluded tiles (all heroes and enemies except the current hero)
+            var excluded_tiles = get_excluded_tiles()
+
+            possible_movement.highlight_possible_movement(hero_grid_pos, MAX_MOVEMENT, excluded_tiles)
             possible_attack.highlight_possible_attack()
             return
 
@@ -58,6 +62,21 @@ func handle_left_click(mouse_pos: Vector2) -> void:
             return
 
     clear()
+
+func get_excluded_tiles() -> Array[Vector2i]:
+    var excluded: Array[Vector2i] = []
+
+    var heroes = get_tree().get_nodes_in_group("heroes")
+    for hero in heroes:
+        var hero_grid_pos = map.local_to_map(hero.position)
+        excluded.append(hero_grid_pos)
+
+    var enemies = get_tree().get_nodes_in_group("enemies")
+    for enemy in enemies:
+        var enemy_grid_pos = map.local_to_map(enemy.position)
+        excluded.append(enemy_grid_pos)
+
+    return excluded
 
 func clear() -> void:
     possible_movement.clear()
