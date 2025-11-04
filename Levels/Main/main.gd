@@ -1,12 +1,11 @@
 class_name Main extends Node2D
 
-const MAX_MOVEMENT := 4
-
 @onready var map: Map = $Map
 @onready var possible_movement: PossibleMovement = $PossibleMovement
 @onready var attack_range: AttackRange = $AttackRange
 @onready var possible_attack: PossibleAttack = $PossibleAttack
 @onready var movement_preview: MovementPreview = $MovementPreview
+@onready var battle: Battle = $Battle
 
 var current_hero: Hero = null
 var is_moving: bool = false
@@ -32,6 +31,14 @@ func handle_mouse_hover() -> void:
         return
 
     var mouse_pos = get_global_mouse_position()
+    var hovered_grid_pos = map.local_to_map(mouse_pos)
+
+    var enemies = get_tree().get_nodes_in_group("enemies")
+    for enemy in enemies:
+        var enemy_grid_pos = map.local_to_map(enemy.position)
+        if hovered_grid_pos == enemy_grid_pos:
+            return
+
     movement_preview.preview_movement_path(current_hero.position, mouse_pos)
 
 func handle_left_click(mouse_pos: Vector2) -> void:
@@ -48,19 +55,35 @@ func handle_left_click(mouse_pos: Vector2) -> void:
             var hero_tiles = get_hero_tiles()
             var enemy_tiles = get_enemy_tiles()
 
-            possible_movement.highlight_possible_movement(hero_grid_pos, MAX_MOVEMENT, excluded_tiles)
+            possible_movement.highlight_possible_movement(hero_grid_pos, hero.max_movement, excluded_tiles)
             attack_range.highlight_attack_range(hero_tiles)
             possible_attack.highlight_possible_attack(enemy_tiles)
 
             return
 
     if current_hero:
+        var attack_tile_data = possible_attack.get_cell_source_id(clicked_grid_pos)
+
+        if attack_tile_data != -1:
+            var target_pos = movement_preview.last_hovered_tile
+
+            if target_pos != Vector2i(-1000, -1000):
+                clear()
+                is_moving = true
+                await current_hero.move_to(target_pos)
+                battle.visible = true
+                await battle.start()
+                battle.visible = false
+                is_moving = false
+
+                return
+
         var tile_data = possible_movement.get_cell_source_id(clicked_grid_pos)
 
         if tile_data != -1:
             clear()
             is_moving = true
-            current_hero.move_to(clicked_grid_pos)
+            await current_hero.move_to(clicked_grid_pos)
             is_moving = false
             return
 

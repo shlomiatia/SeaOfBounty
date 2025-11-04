@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://df84bkpjfqdm5"]
+[gd_scene load_steps=6 format=3 uid="uid://df84bkpjfqdm5"]
 
+[ext_resource type="Script" uid="uid://rv4o85qoqody" path="res://Entities/Battle/battle.gd" id="1_h3cav"]
 [ext_resource type="Texture2D" uid="uid://bwbh30ul1pwc4" path="res://Textures/IMG_3280.png" id="1_wdmrn"]
 [ext_resource type="PackedScene" uid="uid://dx5eqw4ffmyug" path="res://Entities/BattleMeter/BattleMeter.tscn" id="2_eg80a"]
 [ext_resource type="FontFile" uid="uid://b0b25mglr4vix" path="res://Fonts/04B_30__.TTF" id="3_fimoo"]
@@ -9,6 +10,7 @@ Label/font_sizes/font_size = 24
 Label/fonts/font = ExtResource("3_fimoo")
 
 [node name="Battle" type="Node2D"]
+script = ExtResource("1_h3cav")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_wdmrn")
