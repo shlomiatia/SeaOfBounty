@@ -5,6 +5,7 @@ const MAX_MOVEMENT := 4
 @onready var hero: Hero = $Hero
 @onready var map: Map = $Map
 @onready var possible_movement: PossibleMovement = $PossibleMovement
+@onready var possible_attack: PossibleAttack = $PossibleAttack
 @onready var movement_preview: MovementPreview = $MovementPreview
 
 var is_moving: bool = false
@@ -23,8 +24,7 @@ func _input(event: InputEvent) -> void:
         if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
             handle_left_click(event.position)
         if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
-            possible_movement.clear()
-            movement_preview.clear()
+            clear()
 
 func handle_mouse_hover() -> void:
     var mouse_pos = get_global_mouse_position()
@@ -36,12 +36,19 @@ func handle_left_click(mouse_pos: Vector2) -> void:
     var tile_data = possible_movement.get_cell_source_id(clicked_grid_pos)
 
     if tile_data != -1:
-        possible_movement.clear()
-        movement_preview.clear()
+        clear()
         is_moving = true
         hero.move_to(clicked_grid_pos)
         is_moving = false
         return
 
+    clear()
+
     if clicked_grid_pos == player_grid_pos:
         possible_movement.highlight_possible_movement(player_grid_pos, MAX_MOVEMENT)
+        possible_attack.highlight_possible_attack()
+
+func clear() -> void:
+    possible_movement.clear()
+    possible_attack.clear()
+    movement_preview.clear()

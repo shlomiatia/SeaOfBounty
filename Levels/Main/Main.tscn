@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bblitdo328h8a"]
+[gd_scene load_steps=9 format=3 uid="uid://bblitdo328h8a"]
 
 [ext_resource type="Script" uid="uid://currcp3fjqvdh" path="res://Levels/Main/main.gd" id="1_8ofus"]
 [ext_resource type="PackedScene" uid="uid://b6mjpkkw6ptwr" path="res://Entities/Map/map.tscn" id="2_avnir"]
 [ext_resource type="AudioStream" uid="uid://lurv6r8u6g0q" path="res://Levels/Main/Pirate stuff.mp3" id="2_cvbam"]
 [ext_resource type="PackedScene" uid="uid://dwli7df7clyar" path="res://Entities/MovementPreview/movement_preview.tscn" id="4_7l01x"]
+[ext_resource type="PackedScene" uid="uid://na0rwtfxdj4y" path="res://Entities/PossibleAttack/PossibleAttack.tscn" id="5_1ujb0"]
 [ext_resource type="PackedScene" uid="uid://bpjyyq3jpll14" path="res://Entities/Hero/Hero.tscn" id="5_2rmff"]
 [ext_resource type="PackedScene" uid="uid://651dykxujrqp" path="res://Entities/PossibleMovement/possible_movement.tscn" id="5_7hfyt"]
 [ext_resource type="PackedScene" uid="uid://df84bkpjfqdm5" path="res://Entities/Battle/Battle.tscn" id="7_tftr3"]
@@ -19,6 +20,9 @@ autoplay = true
 
 [node name="PossibleMovement" parent="." node_paths=PackedStringArray("map") instance=ExtResource("5_7hfyt")]
 map = NodePath("../Map")
+
+[node name="PossibleAttack" parent="." node_paths=PackedStringArray("possible_movement") instance=ExtResource("5_1ujb0")]
+possible_movement = NodePath("../PossibleMovement")
 
 [node name="MovementPreview" parent="." node_paths=PackedStringArray("map", "possible_movement") instance=ExtResource("4_7l01x")]
 map = NodePath("../Map")
