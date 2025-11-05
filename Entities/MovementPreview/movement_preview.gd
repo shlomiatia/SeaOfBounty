@@ -20,9 +20,6 @@ func preview_movement_path(source_pos: Vector2, target_pos: Vector2) -> void:
         var tile_data = possible_movement.get_cell_source_id(hovered_grid_pos)
         clear()
         var player_grid_pos := map.local_to_map(source_pos)
-        if player_grid_pos == hovered_grid_pos:
-            last_hovered_tile = hovered_grid_pos
-            return
         if tile_data != -1:
             last_hovered_tile = hovered_grid_pos
             var start_world_pos := map.map_to_local(player_grid_pos)

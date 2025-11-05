@@ -64,9 +64,9 @@ func handle_left_click(mouse_pos: Vector2) -> void:
         var attack_tile_data = possible_attack.get_cell_source_id(clicked_grid_pos)
         var target_pos = movement_preview.last_hovered_tile
 
+        is_moving = true
         if target_pos != Vector2i.MIN:
             clear()
-            is_moving = true
             await current_hero.move_to(target_pos)
             if attack_tile_data != -1:
                 battle.visible = true
@@ -80,6 +80,7 @@ func handle_left_click(mouse_pos: Vector2) -> void:
     for enemy in enemies:
         var enemy_grid_pos = map.local_to_map(enemy.position)
         if clicked_grid_pos == enemy_grid_pos:
+            current_hero = null
             clear()
             var hero_tiles = map.get_hero_tiles()
             var enemy_tiles = map.get_enemy_tiles()
@@ -92,10 +93,10 @@ func handle_left_click(mouse_pos: Vector2) -> void:
             return
 
 
+    current_hero = null
     clear()
 
 func clear() -> void:
-    current_hero = null
     possible_movement.clear()
     attack_range.clear()
     possible_attack.clear()
