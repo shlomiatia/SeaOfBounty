@@ -63,13 +63,11 @@ max_movement = 5
 position = Vector2(348, 145)
 map = NodePath("../Map")
 
-[node name="Enemy" parent="." node_paths=PackedStringArray("map") instance=ExtResource("9_yjhx0")]
+[node name="Enemy" parent="." instance=ExtResource("9_yjhx0")]
 position = Vector2(532, 245)
-map = NodePath("../Map")
 
-[node name="Enemy2" parent="." node_paths=PackedStringArray("map") instance=ExtResource("9_yjhx0")]
+[node name="Enemy2" parent="." instance=ExtResource("9_yjhx0")]
 position = Vector2(79, 92)
-map = NodePath("../Map")
 
 [node name="Battle" parent="." instance=ExtResource("7_tftr3")]
 visible = false

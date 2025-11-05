@@ -75,9 +75,27 @@ func handle_left_click(mouse_pos: Vector2) -> void:
             is_moving = false
             return
 
+    var enemies = get_tree().get_nodes_in_group("enemies")
+
+    for enemy in enemies:
+        var enemy_grid_pos = map.local_to_map(enemy.position)
+        if clicked_grid_pos == enemy_grid_pos:
+            clear()
+            var hero_tiles = map.get_hero_tiles()
+            var enemy_tiles = map.get_enemy_tiles()
+            var excluded_tiles = hero_tiles + enemy_tiles
+
+            possible_movement.highlight_possible_movement(enemy_grid_pos, enemy.max_movement, excluded_tiles)
+            attack_range.highlight_attack_range(enemy_tiles)
+            possible_attack.highlight_possible_attack(hero_tiles)
+
+            return
+
+
     clear()
 
 func clear() -> void:
+    current_hero = null
     possible_movement.clear()
     attack_range.clear()
     possible_attack.clear()

@@ -1,6 +1,9 @@
 class_name Map extends TileMapLayer
 
 func find_tile_path(from: Vector2, to: Vector2) -> Array[Vector2i]:
+    for enemy_tile in get_enemy_tiles():
+        set_cell(enemy_tile)
+    update_internals()
     var navigation_map = get_navigation_map()
     var path = NavigationServer2D.map_get_path(navigation_map, from, to, true)
 
