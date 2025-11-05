@@ -33,9 +33,8 @@ func handle_mouse_hover() -> void:
     var mouse_pos = get_global_mouse_position()
     var hovered_grid_pos = map.local_to_map(mouse_pos)
 
-    var enemies = get_tree().get_nodes_in_group("enemies")
-    for enemy in enemies:
-        var enemy_grid_pos = map.local_to_map(enemy.position)
+    var enemy_tiles = get_enemy_tiles()
+    for enemy_grid_pos in enemy_tiles:
         if hovered_grid_pos == enemy_grid_pos:
             return
 
@@ -51,9 +50,9 @@ func handle_left_click(mouse_pos: Vector2) -> void:
         if clicked_grid_pos == hero_grid_pos:
             current_hero = hero
             clear()
-            var excluded_tiles = get_excluded_tiles()
             var hero_tiles = get_hero_tiles()
             var enemy_tiles = get_enemy_tiles()
+            var excluded_tiles = hero_tiles + enemy_tiles
 
             possible_movement.highlight_possible_movement(hero_grid_pos, hero.max_movement, excluded_tiles)
             attack_range.highlight_attack_range(hero_tiles)
@@ -63,61 +62,31 @@ func handle_left_click(mouse_pos: Vector2) -> void:
 
     if current_hero:
         var attack_tile_data = possible_attack.get_cell_source_id(clicked_grid_pos)
+        var target_pos = movement_preview.last_hovered_tile
 
-        if attack_tile_data != -1:
-            var target_pos = movement_preview.last_hovered_tile
-
-            if target_pos != Vector2i(-1000, -1000):
-                clear()
-                is_moving = true
-                await current_hero.move_to(target_pos)
+        if target_pos != Vector2i.MIN:
+            clear()
+            is_moving = true
+            await current_hero.move_to(target_pos)
+            if attack_tile_data != -1:
                 battle.visible = true
                 await battle.start()
                 battle.visible = false
-                is_moving = false
-
-                return
-
-        var tile_data = possible_movement.get_cell_source_id(clicked_grid_pos)
-
-        if tile_data != -1:
-            clear()
-            is_moving = true
-            await current_hero.move_to(clicked_grid_pos)
             is_moving = false
             return
 
     clear()
 
-func get_excluded_tiles() -> Array[Vector2i]:
-    var excluded: Array[Vector2i] = []
-
-    var heroes = get_tree().get_nodes_in_group("heroes")
-    for hero in heroes:
-        var hero_grid_pos = map.local_to_map(hero.position)
-        excluded.append(hero_grid_pos)
-
-    var enemies = get_tree().get_nodes_in_group("enemies")
-    for enemy in enemies:
-        var enemy_grid_pos = map.local_to_map(enemy.position)
-        excluded.append(enemy_grid_pos)
-
-    return excluded
-
 func get_hero_tiles() -> Array[Vector2i]:
-    var hero_tiles: Array[Vector2i] = []
-
-    var heroes = get_tree().get_nodes_in_group("heroes")
-    for hero in heroes:
-        var hero_grid_pos = map.local_to_map(hero.position)
-        hero_tiles.append(hero_grid_pos)
-
-    return hero_tiles
+    return get_group_tiles("heroes")
 
 func get_enemy_tiles() -> Array[Vector2i]:
+    return get_group_tiles("enemies")
+
+func get_group_tiles(group: String) -> Array[Vector2i]:
     var enemy_tiles: Array[Vector2i] = []
 
-    var enemies = get_tree().get_nodes_in_group("enemies")
+    var enemies = get_tree().get_nodes_in_group(group)
     for enemy in enemies:
         var enemy_grid_pos = map.local_to_map(enemy.position)
         enemy_tiles.append(enemy_grid_pos)

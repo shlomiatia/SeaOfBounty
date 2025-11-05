@@ -10,18 +10,18 @@ enum TileTransform {
 @export var map: Map
 @export var possible_movement: PossibleMovement
 
-var last_hovered_tile: Vector2i = Vector2i(-1000, -1000)
+var last_hovered_tile: Vector2i = Vector2i.MIN
 
 func preview_movement_path(source_pos: Vector2, target_pos: Vector2) -> void:
     var hovered_grid_pos = map.local_to_map(target_pos)
 
-    if possible_movement && hovered_grid_pos != last_hovered_tile:
-        last_hovered_tile = hovered_grid_pos
-
+    if hovered_grid_pos != last_hovered_tile:
+        last_hovered_tile = Vector2i.MIN
         var tile_data = possible_movement.get_cell_source_id(hovered_grid_pos)
 
         clear()
         if tile_data != -1:
+            last_hovered_tile = hovered_grid_pos
             var player_grid_pos := map.local_to_map(source_pos)
             var start_world_pos := map.map_to_local(player_grid_pos)
             var target_world_pos := map.map_to_local(hovered_grid_pos)

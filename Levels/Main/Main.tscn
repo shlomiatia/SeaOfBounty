@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://currcp3fjqvdh" path="res://Levels/Main/main.gd" id="1_8ofus"]
 [ext_resource type="PackedScene" uid="uid://b6mjpkkw6ptwr" path="res://Entities/Map/map.tscn" id="2_avnir"]
-[ext_resource type="AudioStream" uid="uid://lurv6r8u6g0q" path="res://Levels/Main/Pirate stuff.mp3" id="2_cvbam"]
+[ext_resource type="AudioStream" uid="uid://b6o4hojkk5pt3" path="res://Music/Pirate stuff slow.mp3" id="2_ehtx6"]
 [ext_resource type="PackedScene" uid="uid://dwli7df7clyar" path="res://Entities/MovementPreview/movement_preview.tscn" id="4_7l01x"]
 [ext_resource type="Shader" uid="uid://ca4g76sf7n4rv" path="res://Levels/Main/Main.gdshader" id="4_dl1uj"]
 [ext_resource type="PackedScene" uid="uid://bpjyyq3jpll14" path="res://Entities/Hero/Hero.tscn" id="5_2rmff"]
@@ -25,7 +25,7 @@ shader_parameter/offset = Vector2(0, 0)
 script = ExtResource("1_8ofus")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_cvbam")
+stream = ExtResource("2_ehtx6")
 autoplay = true
 
 [node name="Map" parent="." instance=ExtResource("2_avnir")]
