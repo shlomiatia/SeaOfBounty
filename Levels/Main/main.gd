@@ -8,16 +8,16 @@ class_name Main extends Node2D
 @onready var battle: Battle = $Battle
 
 var current_hero: Hero = null
-var is_moving: bool = false
+var is_input_disabled: bool = false
 
 func _process(_delta: float) -> void:
-    if is_moving:
+    if is_input_disabled:
         return
     
     handle_mouse_hover()
 
 func _input(event: InputEvent) -> void:
-    if is_moving:
+    if is_input_disabled:
         return
 
     if event is InputEventMouseButton:
@@ -66,7 +66,7 @@ func handle_left_click(mouse_pos: Vector2) -> void:
 
         
         if can_move || can_attack(clicked_grid_pos):
-            is_moving = true
+            is_input_disabled = true
             clear()
             if can_move:
                 await current_hero.move_to(target_pos)
@@ -74,7 +74,7 @@ func handle_left_click(mouse_pos: Vector2) -> void:
                 battle.visible = true
                 await battle.start()
                 battle.visible = false
-            is_moving = false
+            is_input_disabled = false
             return
 
     var enemies = get_tree().get_nodes_in_group("enemies")
