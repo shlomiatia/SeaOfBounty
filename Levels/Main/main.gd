@@ -61,14 +61,16 @@ func handle_left_click(mouse_pos: Vector2) -> void:
             return
 
     if current_hero:
-        var attack_tile_data = possible_attack.get_cell_source_id(clicked_grid_pos)
         var target_pos = movement_preview.last_hovered_tile
+        var can_move = target_pos != Vector2i.MIN
 
-        is_moving = true
-        if target_pos != Vector2i.MIN:
+        
+        if can_move || can_attack(clicked_grid_pos):
+            is_moving = true
             clear()
-            await current_hero.move_to(target_pos)
-            if attack_tile_data != -1:
+            if can_move:
+                await current_hero.move_to(target_pos)
+            if is_adjcent_to_hero(clicked_grid_pos):
                 battle.visible = true
                 await battle.start()
                 battle.visible = false
@@ -95,6 +97,27 @@ func handle_left_click(mouse_pos: Vector2) -> void:
 
     current_hero = null
     clear()
+
+func can_attack(target_pos: Vector2i) -> bool:
+    var attack_tile_data = possible_attack.get_cell_source_id(target_pos)
+    if attack_tile_data == -1:
+        return false
+
+    return is_adjcent_to_hero(target_pos)
+
+    
+func is_adjcent_to_hero(target_pos: Vector2i) -> bool:
+    if !current_hero:
+        return false
+
+    var current_hero_tile = map.local_to_map(current_hero.position)
+    var is_adjacent = (
+        target_pos == current_hero_tile + Vector2i(1, 0) or
+        target_pos == current_hero_tile + Vector2i(-1, 0) or
+        target_pos == current_hero_tile + Vector2i(0, 1) or
+        target_pos == current_hero_tile + Vector2i(0, -1)
+    )
+    return is_adjacent
 
 func clear() -> void:
     possible_movement.clear()

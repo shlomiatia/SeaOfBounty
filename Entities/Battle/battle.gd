@@ -10,11 +10,11 @@ func start() -> void:
     var attack_value = await battle_meter.indicator_stopped
     label.text = "Inflicted " + str(attack_value * 100) + "% damage"
 
-    await get_tree().create_timer(2.0).timeout
+    await get_tree().create_timer(1.0).timeout
 
     label.text = "Defend"
     battle_meter.start("defense")
     var defend_value = await battle_meter.indicator_stopped
     label.text = "Blocked " + str(defend_value * 100) + "% damage"
 
-    await get_tree().create_timer(2.0).timeout
+    await get_tree().create_timer(1.0).timeout
