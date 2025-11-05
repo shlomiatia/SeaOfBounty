@@ -5,7 +5,7 @@ const movement_speed: float = 300.0
 @export var map: Map
 @export var max_movement := 4
 
-@onready var sprite2d = $Sprite2D
+@onready var animated_sprite_2d = $AnimatedSprite2D
 
 func _ready() -> void:
     position = map.map_to_local(map.local_to_map(position))
@@ -38,11 +38,12 @@ func animate_along_path(tile_path: Array[Vector2i]) -> void:
 
 func update_sprite_for_direction(direction: Vector2) -> void:
     if abs(direction.x) > abs(direction.y):
-        sprite2d.texture = load("res://Textures/ship_right.tres")
-        sprite2d.flip_h = direction.x < 0
+        if direction.x < 0:
+            animated_sprite_2d.play("left")
+        else:
+            animated_sprite_2d.play("right")
     else:
         if direction.y < 0:
-            sprite2d.texture = load("res://Textures/ship_up.tres")
+            animated_sprite_2d.play("up")
         else:
-            sprite2d.texture = load("res://Textures/ship_down.tres")
-        sprite2d.flip_h = false
+            animated_sprite_2d.play("down")

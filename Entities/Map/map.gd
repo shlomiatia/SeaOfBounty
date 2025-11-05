@@ -2,7 +2,6 @@ class_name Map extends TileMapLayer
 
 func find_tile_path(from: Vector2, to: Vector2) -> Array[Vector2i]:
     var navigation_map = get_navigation_map()
-
     var path = NavigationServer2D.map_get_path(navigation_map, from, to, true)
 
     if path.size() == 0:

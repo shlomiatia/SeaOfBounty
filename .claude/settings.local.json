@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(move possible_attack.gd attack_range.gd)"
+      "Bash(move possible_attack.gd attack_range.gd)",
+      "Bash(cat:*)"
     ],
     "deny": [],
     "ask": []
