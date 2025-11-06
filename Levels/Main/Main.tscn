@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://currcp3fjqvdh" path="res://Levels/Main/main.gd" id="1_8ofus"]
 [ext_resource type="PackedScene" uid="uid://b6mjpkkw6ptwr" path="res://Entities/Map/map.tscn" id="2_avnir"]
 [ext_resource type="Theme" uid="uid://b6vxvs080c1o3" path="res://Themes/Label.tres" id="2_dchpf"]
-[ext_resource type="AudioStream" uid="uid://b6o4hojkk5pt3" path="res://Music/Pirate stuff slow.mp3" id="2_ehtx6"]
+[ext_resource type="AudioStream" uid="uid://dgjv5hbpkte7m" path="res://Music/pirate banjo menu.mp3" id="3_gjnf0"]
 [ext_resource type="PackedScene" uid="uid://dwli7df7clyar" path="res://Entities/MovementPreview/movement_preview.tscn" id="4_7l01x"]
 [ext_resource type="Shader" uid="uid://ca4g76sf7n4rv" path="res://Levels/Main/Main.gdshader" id="4_dl1uj"]
 [ext_resource type="PackedScene" uid="uid://bpjyyq3jpll14" path="res://Entities/Hero/Hero.tscn" id="5_2rmff"]
@@ -58,7 +58,7 @@ text = "Your Turn"
 horizontal_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_ehtx6")
+stream = ExtResource("3_gjnf0")
 autoplay = true
 
 [node name="Map" parent="." instance=ExtResource("2_avnir")]
@@ -85,15 +85,18 @@ possible_movement = NodePath("../PossibleMovement")
 
 [node name="Hero" parent="." instance=ExtResource("5_2rmff")]
 position = Vector2(201, 304)
+max_movement = 5
 
 [node name="Hero2" parent="." instance=ExtResource("5_2rmff")]
 position = Vector2(348, 145)
 
 [node name="Enemy" parent="." instance=ExtResource("9_yjhx0")]
 position = Vector2(532, 245)
+max_movement = 3
 
 [node name="Enemy2" parent="." instance=ExtResource("9_yjhx0")]
 position = Vector2(79, 92)
+max_movement = 3
 
 [node name="Battle" parent="." instance=ExtResource("7_tftr3")]
 visible = false
