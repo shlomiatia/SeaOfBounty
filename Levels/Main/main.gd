@@ -48,41 +48,14 @@ func handle_mouse_hover() -> void:
 func handle_left_click(mouse_pos: Vector2) -> void:
     var clicked_grid_pos := map.local_to_map(mouse_pos)
 
-    var heroes = get_tree().get_nodes_in_group("heroes")
-
-    for hero in heroes:
-        if highlight_movement_and_attack(clicked_grid_pos, "heroes"):
-            return
+    if highlight_movement_and_attack(clicked_grid_pos, "heroes"):
+        return
         
-    if current_hero && !current_hero in moved_heroes:
-        var target_pos = movement_preview.last_hovered_tile
-        var can_move = target_pos != Vector2i.MIN
+    if await move_and_attack(clicked_grid_pos):
+        return
 
-        if can_move || can_attack(clicked_grid_pos):
-            is_input_disabled = true
-            clear()
-            if can_move:
-                await current_hero.move_to(target_pos)
-            if is_adjcent_to_hero(clicked_grid_pos):
-                battle.visible = true
-                await battle.start()
-                battle.visible = false
-
-            current_hero.modulate = Color(0.5, 0.5, 0.5)
-            moved_heroes.append(current_hero)
-            current_hero = null
-
-            is_input_disabled = false
-
-            check_all_heroes_moved()
-            return
-
-    var enemies = get_tree().get_nodes_in_group("enemies")
-
-    for enemy in enemies:
-        if highlight_movement_and_attack(clicked_grid_pos, "enemies"):
-            return
-
+    if highlight_movement_and_attack(clicked_grid_pos, "enemies"):
+        return
 
     current_hero = null
     clear()
@@ -105,6 +78,31 @@ func highlight_movement_and_attack(clicked_grid_pos: Vector2i, group: String) ->
 
             return true
 
+    return false
+
+func move_and_attack(clicked_grid_pos: Vector2i) -> bool:
+    if current_hero && !current_hero in moved_heroes:
+        var target_pos = movement_preview.last_hovered_tile
+        var can_move = target_pos != Vector2i.MIN
+
+        if can_move || can_attack(clicked_grid_pos):
+            is_input_disabled = true
+            clear()
+            if can_move:
+                await current_hero.move_to(target_pos)
+            if is_adjcent_to_hero(clicked_grid_pos):
+                battle.visible = true
+                await battle.start()
+                battle.visible = false
+
+            current_hero.modulate = Color(0.5, 0.5, 0.5)
+            moved_heroes.append(current_hero)
+            current_hero = null
+
+            is_input_disabled = false
+
+            check_all_heroes_moved()
+            return true
     return false
 
 func can_attack(target_pos: Vector2i) -> bool:
