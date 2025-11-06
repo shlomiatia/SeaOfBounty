@@ -13,18 +13,45 @@ enum TileTransform {
 var last_hovered_tile: Vector2i = Vector2i.MIN
 
 func preview_movement_path(source_pos: Vector2, target_pos: Vector2) -> void:
+    var player_grid_pos := map.local_to_map(source_pos)
     var hovered_grid_pos = map.local_to_map(target_pos)
 
     var enemy_tiles = map.get_enemy_tiles()
     for enemy_grid_pos in enemy_tiles:
         if hovered_grid_pos == enemy_grid_pos:
-            return
+            if last_hovered_tile != Vector2i.MIN:
+                return
+            var adjacent_offsets = [
+                Vector2i(1, 0),
+                Vector2i(-1, 0),
+                Vector2i(0, 1),
+                Vector2i(0, -1)
+            ]
+
+            for offset in adjacent_offsets:
+                var adjacent_tile = enemy_grid_pos + offset
+                if adjacent_tile == player_grid_pos:
+                    return
+
+            var found_adjacent_tile: Vector2i = Vector2i.MIN
+            for offset in adjacent_offsets:
+                var adjacent_tile = enemy_grid_pos + offset
+                var tile_data = possible_movement.get_cell_source_id(adjacent_tile)
+                if tile_data != -1:
+                    found_adjacent_tile = adjacent_tile
+                    break
+
+            if found_adjacent_tile == Vector2i.MIN:
+                return
+
+            hovered_grid_pos = found_adjacent_tile
+            break
 
     if hovered_grid_pos != last_hovered_tile:
         last_hovered_tile = Vector2i.MIN
         var tile_data = possible_movement.get_cell_source_id(hovered_grid_pos)
         clear()
-        var player_grid_pos := map.local_to_map(source_pos)
+        
         if tile_data != -1:
             last_hovered_tile = hovered_grid_pos
             var start_world_pos := map.map_to_local(player_grid_pos)
@@ -70,7 +97,6 @@ func get_transform_for_arrow(direction: Vector2i) -> int:
         return TileTransform.ROTATE_0
     else:
         return TileTransform.ROTATE_90
-
 
 func get_transform_for_straight(direction: Vector2i) -> int:
     if direction.y != 0:

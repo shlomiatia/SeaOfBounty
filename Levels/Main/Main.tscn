@@ -33,7 +33,7 @@ shader_parameter/x_amount = 0.1
 shader_parameter/y_amount = 1.0
 shader_parameter/tint = Color(0.00784314, 0.290196, 0.792157, 1)
 shader_parameter/scale = Vector2(5, 2.8125)
-shader_parameter/zoom = Vector2(0, 2.65734)
+shader_parameter/zoom = Vector2(0, 1.815)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_8ofus")
@@ -61,16 +61,15 @@ horizontal_alignment = 1
 stream = ExtResource("3_gjnf0")
 autoplay = true
 
-[node name="Map" parent="." instance=ExtResource("2_avnir")]
-visible = false
-z_index = -11
-
 [node name="ColorRect" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_ehtx6")
 position = Vector2(320, 180)
 scale = Vector2(5, 2.8125)
 texture = ExtResource("13_06dpk")
 script = ExtResource("14_gjnf0")
+
+[node name="Map" parent="." instance=ExtResource("2_avnir")]
+visible = false
 
 [node name="PossibleMovement" parent="." instance=ExtResource("5_7hfyt")]
 
