@@ -28,7 +28,7 @@ func start(mode: String = "attack") -> void:
     var initial_duration = distance / 110.0
 
     tween = create_tween()
-    tween.tween_property(indicator, "position", target_pos, initial_duration).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+    tween.tween_property(indicator, "position", target_pos, initial_duration).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
     tween.tween_callback(_start_looping_tween.bind(start_pos, end_pos, go_up))
 
 
