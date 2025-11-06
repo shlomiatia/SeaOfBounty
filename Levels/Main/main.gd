@@ -99,6 +99,7 @@ func move_and_attack(clicked_grid_pos: Vector2i) -> bool:
             return true
     return false
 
+
 func can_attack(target_pos: Vector2i) -> bool:
     var attack_tile_data = possible_attack.get_cell_source_id(target_pos)
     if attack_tile_data == -1:
@@ -127,27 +128,27 @@ func clear() -> void:
     movement_preview.clear()
 
 func start_player_turn() -> void:
-    is_input_disabled = false
     moved_heroes.clear()
+    is_input_disabled = false
 
     var heroes = get_tree().get_nodes_in_group("heroes")
     for hero in heroes:
         hero.modulate = Color(1, 1, 1)
 
-    turn_label.text = "Your Turn"
-    turn_label.visible = true
-    turn_label.modulate.a = 1.0
+    start_turn("Player Turn")
 
-    await get_tree().create_timer(1.0).timeout
-    var tween = create_tween()
-    tween.tween_property(turn_label, "modulate:a", 0.0, 0.5)
-    await tween.finished
-    turn_label.visible = false
 
 func start_enemy_turn() -> void:
     is_input_disabled = true
 
-    turn_label.text = "Enemy Turn"
+    start_turn("Enemy Turn")
+
+    # TODO: Add enemy AI logic here
+
+    start_player_turn()
+
+func start_turn(text: String) -> void:
+    turn_label.text = text
     turn_label.visible = true
     turn_label.modulate.a = 1.0
 
@@ -156,10 +157,6 @@ func start_enemy_turn() -> void:
     tween.tween_property(turn_label, "modulate:a", 0.0, 0.5)
     await tween.finished
     turn_label.visible = false
-
-    # TODO: Add enemy AI logic here
-
-    start_player_turn()
 
 func check_all_heroes_moved() -> void:
     var heroes = get_tree().get_nodes_in_group("heroes")

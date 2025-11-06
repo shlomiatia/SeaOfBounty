@@ -1,12 +1,14 @@
 class_name Map extends TileMapLayer
 
-func find_tile_path(from: Vector2, to: Vector2) -> Array[Vector2i]:
+func find_tile_path(from: Vector2, to: Vector2, to_opponent: bool = false) -> Array[Vector2i]:
     var from_tile = local_to_map(from)
     var to_tile = local_to_map(to)
 
     var occupied_tiles: Array[Vector2i] = []
     occupied_tiles.append_array(get_hero_tiles())
     occupied_tiles.append_array(get_enemy_tiles())
+    if to_opponent:
+        occupied_tiles.erase(to_tile)
 
     var open_set: Array[Vector2i] = [from_tile]
     var came_from: Dictionary = {}
