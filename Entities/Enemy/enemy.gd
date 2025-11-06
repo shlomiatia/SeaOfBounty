@@ -1,9 +1,6 @@
-class_name Enemey extends Node2D
+class_name Enemey extends Unit
 
-@export var max_movement: int = 3
-@onready var map: Map = $/root/Main/Map
+@onready var map: Map = $"../Map"
 
 func _ready() -> void:
-    var tile = map.local_to_map(position)
-    position = map.map_to_local(tile)
-    #map.set_cell(tile)
+    position = map.map_to_local(map.local_to_map(position))

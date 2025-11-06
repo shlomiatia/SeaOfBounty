@@ -61,7 +61,7 @@ script = ExtResource("1_a0dpv")
 sprite_frames = SubResource("SpriteFrames_57f1h")
 animation = &"up"
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+[node name="Reflection" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
 z_index = -10
 position = Vector2(0, 10)
 sprite_frames = SubResource("SpriteFrames_57f1h")

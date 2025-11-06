@@ -1,8 +1,15 @@
 class_name AttackRange extends TileMapLayer
 
+@onready var map: Map = $"../Map"
 @export var possible_movement: PossibleMovement
 
-func highlight_attack_range(excluded_tiles: Array[Vector2i] = []) -> void:
+func highlight_attack_range(unit: Unit) -> void:
+    var excluded_tiles: Array[Vector2i] = []
+    if unit.is_in_group("heroes"):
+        excluded_tiles = map.get_hero_tiles()
+    else:
+        excluded_tiles = map.get_enemy_tiles()
+
     clear()
 
     var filled_cells = possible_movement.get_used_cells()

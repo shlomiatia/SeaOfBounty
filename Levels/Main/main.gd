@@ -51,24 +51,12 @@ func handle_left_click(mouse_pos: Vector2) -> void:
     var heroes = get_tree().get_nodes_in_group("heroes")
 
     for hero in heroes:
-        var hero_grid_pos = map.local_to_map(hero.position)
-        if clicked_grid_pos == hero_grid_pos:
-            current_hero = hero
-            clear()
-            var hero_tiles = map.get_hero_tiles()
-            var enemy_tiles = map.get_enemy_tiles()
-            var excluded_tiles = hero_tiles + enemy_tiles
-
-            possible_movement.highlight_possible_movement(hero_grid_pos, hero.max_movement, excluded_tiles)
-            attack_range.highlight_attack_range(hero_tiles)
-            possible_attack.highlight_possible_attack(enemy_tiles)
-
+        if highlight_movement_and_attack(clicked_grid_pos, "heroes"):
             return
-
+        
     if current_hero && !current_hero in moved_heroes:
         var target_pos = movement_preview.last_hovered_tile
         var can_move = target_pos != Vector2i.MIN
-
 
         if can_move || can_attack(clicked_grid_pos):
             is_input_disabled = true
@@ -92,23 +80,32 @@ func handle_left_click(mouse_pos: Vector2) -> void:
     var enemies = get_tree().get_nodes_in_group("enemies")
 
     for enemy in enemies:
-        var enemy_grid_pos = map.local_to_map(enemy.position)
-        if clicked_grid_pos == enemy_grid_pos:
-            current_hero = null
-            clear()
-            var hero_tiles = map.get_hero_tiles()
-            var enemy_tiles = map.get_enemy_tiles()
-            var excluded_tiles = hero_tiles + enemy_tiles
-
-            possible_movement.highlight_possible_movement(enemy_grid_pos, enemy.max_movement, excluded_tiles)
-            attack_range.highlight_attack_range(enemy_tiles)
-            possible_attack.highlight_possible_attack(hero_tiles)
-
+        if highlight_movement_and_attack(clicked_grid_pos, "enemies"):
             return
 
 
     current_hero = null
     clear()
+
+func highlight_movement_and_attack(clicked_grid_pos: Vector2i, group: String) -> bool:
+    var entities = get_tree().get_nodes_in_group(group)
+
+    for entity in entities:
+        var entity_grid_pos = map.local_to_map(entity.position)
+        if clicked_grid_pos == entity_grid_pos:
+            if group == "heroes":
+                current_hero = entity
+            else:
+                current_hero = null
+            clear()
+
+            possible_movement.highlight_possible_movement(clicked_grid_pos, entity.max_movement)
+            attack_range.highlight_attack_range(entity)
+            possible_attack.highlight_possible_attack(entity)
+
+            return true
+
+    return false
 
 func can_attack(target_pos: Vector2i) -> bool:
     var attack_tile_data = possible_attack.get_cell_source_id(target_pos)

@@ -72,27 +72,22 @@ scale = Vector2(5, 2.8125)
 texture = ExtResource("13_06dpk")
 script = ExtResource("14_gjnf0")
 
-[node name="PossibleMovement" parent="." node_paths=PackedStringArray("map") instance=ExtResource("5_7hfyt")]
-map = NodePath("../Map")
+[node name="PossibleMovement" parent="." instance=ExtResource("5_7hfyt")]
 
 [node name="AttackRange" parent="." node_paths=PackedStringArray("possible_movement") instance=ExtResource("6_ehtx6")]
 possible_movement = NodePath("../PossibleMovement")
 
-[node name="PossibleAttack" parent="." node_paths=PackedStringArray("attack_range") instance=ExtResource("7_ehtx6")]
-attack_range = NodePath("../AttackRange")
+[node name="PossibleAttack" parent="." instance=ExtResource("7_ehtx6")]
 
 [node name="MovementPreview" parent="." node_paths=PackedStringArray("map", "possible_movement") instance=ExtResource("4_7l01x")]
 map = NodePath("../Map")
 possible_movement = NodePath("../PossibleMovement")
 
-[node name="Hero" parent="." node_paths=PackedStringArray("map") instance=ExtResource("5_2rmff")]
+[node name="Hero" parent="." instance=ExtResource("5_2rmff")]
 position = Vector2(201, 304)
-map = NodePath("../Map")
-max_movement = 5
 
-[node name="Hero2" parent="." node_paths=PackedStringArray("map") instance=ExtResource("5_2rmff")]
+[node name="Hero2" parent="." instance=ExtResource("5_2rmff")]
 position = Vector2(348, 145)
-map = NodePath("../Map")
 
 [node name="Enemy" parent="." instance=ExtResource("9_yjhx0")]
 position = Vector2(532, 245)

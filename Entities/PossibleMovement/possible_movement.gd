@@ -1,20 +1,25 @@
 class_name PossibleMovement extends TileMapLayer
 
-@export var map: Map
+@onready var map: Map = $"../Map"
 
-func highlight_possible_movement(grid_pos: Vector2i, max_movement: int, excluded_tiles: Array[Vector2i] = []) -> void:
+func highlight_possible_movement(grid_pos: Vector2i, max_movement: int) -> void:
     clear()
 
-    var reachable_tiles = get_reachable_tiles(grid_pos, max_movement, excluded_tiles)
+    var reachable_tiles = get_reachable_tiles(grid_pos, max_movement)
 
     for tile_pos in reachable_tiles:
         set_cell(tile_pos, 0, Vector2i(0, 0))
 
 
-func get_reachable_tiles(start_pos: Vector2i, max_distance: int, excluded_tiles: Array[Vector2i] = []) -> Array[Vector2i]:
+func get_reachable_tiles(start_pos: Vector2i, max_distance: int) -> Array[Vector2i]:
     var reachable: Array[Vector2i] = []
 
     var start_world_pos = map.map_to_local(start_pos)
+
+    var hero_tiles = map.get_hero_tiles()
+    var enemy_tiles = map.get_enemy_tiles()
+    var excluded_tiles = hero_tiles + enemy_tiles
+
 
     if not excluded_tiles.has(start_pos):
         reachable.append(start_pos)
