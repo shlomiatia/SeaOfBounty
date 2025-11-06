@@ -68,9 +68,7 @@ func move_and_attack(clicked_grid_pos: Vector2i) -> bool:
             if can_move:
                 await current_hero.move_to(target_pos)
             if is_adjcent_to_hero(clicked_grid_pos):
-                battle.visible = true
                 await battle.start()
-                battle.visible = false
 
             current_hero.modulate = Color(0.5, 0.5, 0.5)
             moved_heroes.append(current_hero)
@@ -165,17 +163,13 @@ func execute_enemy_ai() -> void:
             continue
 
         if shortest_path.size() == 2:
-            battle.visible = true
             await battle.start()
-            battle.visible = false
 
         elif shortest_path.size() <= enemy.max_movement + 2:
             var target_tile = shortest_path[shortest_path.size() - 2]
             await enemy.move_to(target_tile)
 
-            battle.visible = true
             await battle.start()
-            battle.visible = false
 
         else:
             var tiles_to_move = min(enemy.max_movement, shortest_path.size() - 1)
