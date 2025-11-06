@@ -36,12 +36,6 @@ func handle_mouse_hover() -> void:
         return
 
     var mouse_pos = get_global_mouse_position()
-    var hovered_grid_pos = map.local_to_map(mouse_pos)
-
-    var enemy_tiles = map.get_enemy_tiles()
-    for enemy_grid_pos in enemy_tiles:
-        if hovered_grid_pos == enemy_grid_pos:
-            return
 
     movement_preview.preview_movement_path(current_hero.position, mouse_pos)
 

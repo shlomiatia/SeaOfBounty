@@ -15,6 +15,11 @@ var last_hovered_tile: Vector2i = Vector2i.MIN
 func preview_movement_path(source_pos: Vector2, target_pos: Vector2) -> void:
     var hovered_grid_pos = map.local_to_map(target_pos)
 
+    var enemy_tiles = map.get_enemy_tiles()
+    for enemy_grid_pos in enemy_tiles:
+        if hovered_grid_pos == enemy_grid_pos:
+            return
+
     if hovered_grid_pos != last_hovered_tile:
         last_hovered_tile = Vector2i.MIN
         var tile_data = possible_movement.get_cell_source_id(hovered_grid_pos)
