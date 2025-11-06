@@ -1,9 +1,7 @@
 class_name Main extends Node2D
 
 @onready var map: Map = $Map
-@onready var possible_movement: PossibleMovement = $PossibleMovement
-@onready var attack_range: AttackRange = $AttackRange
-@onready var possible_attack: PossibleAttack = $PossibleAttack
+@onready var movement_overlay: MovementOverlay = $MovementOverlay
 @onready var movement_preview: MovementPreview = $MovementPreview
 @onready var battle: Battle = $Battle
 @onready var turn_label: Label = $CanvasLayer/TurnLabel
@@ -42,37 +40,22 @@ func handle_mouse_hover() -> void:
 func handle_left_click(mouse_pos: Vector2) -> void:
     var clicked_grid_pos := map.local_to_map(mouse_pos)
 
-    if highlight_movement_and_attack(clicked_grid_pos, "heroes"):
+    var entity = movement_overlay.highlight_movement_and_attack(clicked_grid_pos, "heroes")
+    if entity != null:
+        current_hero = entity
         return
         
     if await move_and_attack(clicked_grid_pos):
         return
 
-    if highlight_movement_and_attack(clicked_grid_pos, "enemies"):
+    entity = movement_overlay.highlight_movement_and_attack(clicked_grid_pos, "enemies")
+    if entity != null:
+        current_hero = null
         return
 
     current_hero = null
     clear()
 
-func highlight_movement_and_attack(clicked_grid_pos: Vector2i, group: String) -> bool:
-    var entities = get_tree().get_nodes_in_group(group)
-
-    for entity in entities:
-        var entity_grid_pos = map.local_to_map(entity.position)
-        if clicked_grid_pos == entity_grid_pos:
-            if group == "heroes":
-                current_hero = entity
-            else:
-                current_hero = null
-            clear()
-
-            possible_movement.highlight_possible_movement(clicked_grid_pos, entity.max_movement)
-            attack_range.highlight_attack_range(entity)
-            possible_attack.highlight_possible_attack(entity)
-
-            return true
-
-    return false
 
 func move_and_attack(clicked_grid_pos: Vector2i) -> bool:
     if current_hero && !current_hero in moved_heroes:
@@ -101,7 +84,7 @@ func move_and_attack(clicked_grid_pos: Vector2i) -> bool:
 
 
 func can_attack(target_pos: Vector2i) -> bool:
-    var attack_tile_data = possible_attack.get_cell_source_id(target_pos)
+    var attack_tile_data = movement_overlay.possible_attack.get_cell_source_id(target_pos)
     if attack_tile_data == -1:
         return false
 
@@ -122,9 +105,7 @@ func is_adjcent_to_hero(target_pos: Vector2i) -> bool:
     return is_adjacent
 
 func clear() -> void:
-    possible_movement.clear()
-    attack_range.clear()
-    possible_attack.clear()
+    movement_overlay.clear()
     movement_preview.clear()
 
 func start_player_turn() -> void:
@@ -137,13 +118,12 @@ func start_player_turn() -> void:
 
     start_turn("Player Turn")
 
-
 func start_enemy_turn() -> void:
     is_input_disabled = true
 
     start_turn("Enemy Turn")
 
-    # TODO: Add enemy AI logic here
+    await execute_enemy_ai()
 
     start_player_turn()
 
@@ -162,3 +142,42 @@ func check_all_heroes_moved() -> void:
     var heroes = get_tree().get_nodes_in_group("heroes")
     if moved_heroes.size() >= heroes.size():
         start_enemy_turn()
+
+func execute_enemy_ai() -> void:
+    var enemies = get_tree().get_nodes_in_group("enemies")
+    var heroes = get_tree().get_nodes_in_group("heroes")
+
+    for enemy in enemies:
+        var enemy_pos = enemy.position
+        var shortest_path: Array[Vector2i] = []
+        var nearest_hero: Unit = null
+
+        for hero in heroes:
+            var hero_pos = hero.position
+            var path = map.find_tile_path(enemy_pos, hero_pos, true)
+
+            if path.size() > 0:
+                if shortest_path.size() == 0 or path.size() < shortest_path.size():
+                    shortest_path = path
+                    nearest_hero = hero
+
+        if shortest_path.size() == 0 or nearest_hero == null:
+            continue
+
+        if shortest_path.size() == 2:
+            battle.visible = true
+            await battle.start()
+            battle.visible = false
+
+        elif shortest_path.size() <= enemy.max_movement + 2:
+            var target_tile = shortest_path[shortest_path.size() - 2]
+            await enemy.move_to(target_tile)
+
+            battle.visible = true
+            await battle.start()
+            battle.visible = false
+
+        else:
+            var tiles_to_move = min(enemy.max_movement, shortest_path.size() - 1)
+            var target_tile = shortest_path[tiles_to_move]
+            await enemy.move_to(target_tile)

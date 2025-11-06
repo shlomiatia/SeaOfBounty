@@ -1,6 +1,6 @@
 class_name AttackRange extends TileMapLayer
 
-@onready var map: Map = $"../Map"
+@onready var map: Map = $"../../Map"
 @export var possible_movement: PossibleMovement
 
 func highlight_attack_range(unit: Unit) -> void:

@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://lfbidqmbpqnv"]
+
+[ext_resource type="Script" uid="uid://ceur8xdi58keu" path="res://Entities/MovementOverlay/movement_overlay.gd" id="1_8kkbl"]
+[ext_resource type="PackedScene" uid="uid://651dykxujrqp" path="res://Entities/PossibleMovement/possible_movement.tscn" id="1_d6q3l"]
+[ext_resource type="PackedScene" uid="uid://3hq2khbvxpgv" path="res://Entities/AttackRange/AttackRange.tscn" id="2_8kkbl"]
+[ext_resource type="PackedScene" uid="uid://na0rwtfxdj4y" path="res://Entities/PossibleAttack/PossibleAttack.tscn" id="3_4wfw7"]
+
+[node name="MovementOverlay" type="Node2D"]
+script = ExtResource("1_8kkbl")
+
+[node name="PossibleMovement" parent="." instance=ExtResource("1_d6q3l")]
+
+[node name="AttackRange" parent="." node_paths=PackedStringArray("possible_movement") instance=ExtResource("2_8kkbl")]
+possible_movement = NodePath("../PossibleMovement")
+
+[node name="PossibleAttack" parent="." instance=ExtResource("3_4wfw7")]

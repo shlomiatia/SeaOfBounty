@@ -7,8 +7,8 @@ enum TileTransform {
     ROTATE_270 = TileSetAtlasSource.TRANSFORM_TRANSPOSE | TileSetAtlasSource.TRANSFORM_FLIP_V,
 }
 
-@export var map: Map
-@export var possible_movement: PossibleMovement
+@onready var map: Map = $"../Map"
+@onready var possible_movement: PossibleMovement = $"../MovementOverlay/PossibleMovement"
 
 var last_hovered_tile: Vector2i = Vector2i.MIN
 

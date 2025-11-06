@@ -1,7 +1,7 @@
 class_name PossibleAttack extends TileMapLayer
 
 @onready var attack_range: AttackRange = $"../AttackRange"
-@onready var map: Map = $"../Map"
+@onready var map: Map = $"../../Map"
 
 func highlight_possible_attack(unit: Unit) -> void:
     clear()

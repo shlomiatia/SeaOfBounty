@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bblitdo328h8a"]
+[gd_scene load_steps=16 format=3 uid="uid://bblitdo328h8a"]
 
 [ext_resource type="Script" uid="uid://currcp3fjqvdh" path="res://Levels/Main/main.gd" id="1_8ofus"]
 [ext_resource type="PackedScene" uid="uid://b6mjpkkw6ptwr" path="res://Entities/Map/map.tscn" id="2_avnir"]
@@ -7,10 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dwli7df7clyar" path="res://Entities/MovementPreview/movement_preview.tscn" id="4_7l01x"]
 [ext_resource type="Shader" uid="uid://ca4g76sf7n4rv" path="res://Levels/Main/Main.gdshader" id="4_dl1uj"]
 [ext_resource type="PackedScene" uid="uid://cry71kc5pmanp" path="res://Entities/Hero/Hero.tscn" id="5_2rmff"]
-[ext_resource type="PackedScene" uid="uid://651dykxujrqp" path="res://Entities/PossibleMovement/possible_movement.tscn" id="5_7hfyt"]
-[ext_resource type="PackedScene" uid="uid://3hq2khbvxpgv" path="res://Entities/AttackRange/AttackRange.tscn" id="6_ehtx6"]
-[ext_resource type="PackedScene" uid="uid://na0rwtfxdj4y" path="res://Entities/PossibleAttack/PossibleAttack.tscn" id="7_ehtx6"]
 [ext_resource type="PackedScene" uid="uid://df84bkpjfqdm5" path="res://Entities/Battle/Battle.tscn" id="7_tftr3"]
+[ext_resource type="PackedScene" uid="uid://lfbidqmbpqnv" path="res://Entities/MovementOverlay/MovementOverlay.tscn" id="8_ehtx6"]
 [ext_resource type="PackedScene" uid="uid://bod3yhsl4ly2p" path="res://Entities/Enemy/Enemy.tscn" id="9_yjhx0"]
 [ext_resource type="Texture2D" uid="uid://ihau52mdyjr7" path="res://icon.svg" id="13_06dpk"]
 [ext_resource type="Script" uid="uid://c0ljvuvqwmwtx" path="res://Levels/Main/color_rect.gd" id="14_gjnf0"]
@@ -71,16 +69,9 @@ script = ExtResource("14_gjnf0")
 [node name="Map" parent="." instance=ExtResource("2_avnir")]
 visible = false
 
-[node name="PossibleMovement" parent="." instance=ExtResource("5_7hfyt")]
+[node name="MovementOverlay" parent="." instance=ExtResource("8_ehtx6")]
 
-[node name="AttackRange" parent="." node_paths=PackedStringArray("possible_movement") instance=ExtResource("6_ehtx6")]
-possible_movement = NodePath("../PossibleMovement")
-
-[node name="PossibleAttack" parent="." instance=ExtResource("7_ehtx6")]
-
-[node name="MovementPreview" parent="." node_paths=PackedStringArray("map", "possible_movement") instance=ExtResource("4_7l01x")]
-map = NodePath("../Map")
-possible_movement = NodePath("../PossibleMovement")
+[node name="MovementPreview" parent="." instance=ExtResource("4_7l01x")]
 
 [node name="Hero" parent="." instance=ExtResource("5_2rmff")]
 position = Vector2(201, 304)

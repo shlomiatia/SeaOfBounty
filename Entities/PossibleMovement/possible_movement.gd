@@ -1,6 +1,6 @@
 class_name PossibleMovement extends TileMapLayer
 
-@onready var map: Map = $"../Map"
+@onready var map: Map = $"../../Map"
 
 func highlight_possible_movement(grid_pos: Vector2i, max_movement: int) -> void:
     clear()
