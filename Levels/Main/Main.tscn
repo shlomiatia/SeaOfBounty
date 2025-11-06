@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bblitdo328h8a"]
+[gd_scene load_steps=18 format=3 uid="uid://bblitdo328h8a"]
 
 [ext_resource type="Script" uid="uid://currcp3fjqvdh" path="res://Levels/Main/main.gd" id="1_8ofus"]
 [ext_resource type="PackedScene" uid="uid://b6mjpkkw6ptwr" path="res://Entities/Map/map.tscn" id="2_avnir"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://lfbidqmbpqnv" path="res://Entities/MovementOverlay/MovementOverlay.tscn" id="8_ehtx6"]
 [ext_resource type="PackedScene" uid="uid://bod3yhsl4ly2p" path="res://Entities/Enemy/Enemy.tscn" id="9_yjhx0"]
 [ext_resource type="Texture2D" uid="uid://ihau52mdyjr7" path="res://icon.svg" id="13_06dpk"]
+[ext_resource type="Texture2D" uid="uid://cibgr2kd341oe" path="res://Textures/tilemap.png" id="13_gjnf0"]
 [ext_resource type="Script" uid="uid://c0ljvuvqwmwtx" path="res://Levels/Main/color_rect.gd" id="14_gjnf0"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_06dpk"]
@@ -31,7 +32,11 @@ shader_parameter/x_amount = 0.1
 shader_parameter/y_amount = 1.0
 shader_parameter/tint = Color(0.00784314, 0.290196, 0.792157, 1)
 shader_parameter/scale = Vector2(5, 2.8125)
-shader_parameter/zoom = Vector2(0, 1.815)
+shader_parameter/zoom = Vector2(0, 1.02452)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04jnc"]
+atlas = ExtResource("13_gjnf0")
+region = Rect2(120, 0, 40, 40)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_8ofus")
@@ -87,6 +92,9 @@ max_movement = 3
 [node name="Enemy2" parent="." instance=ExtResource("9_yjhx0")]
 position = Vector2(79, 92)
 max_movement = 3
+
+[node name="Cursor" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_04jnc")
 
 [node name="Battle" parent="." instance=ExtResource("7_tftr3")]
 visible = false

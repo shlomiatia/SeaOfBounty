@@ -8,7 +8,7 @@ var tween: Tween
 var current_mode: String = "attack"
 
 func _input(event: InputEvent) -> void:
-    if event is InputEventMouseButton and event.pressed:
+    if event.is_action_pressed("confirm"):
         if !tween:
             return
         stop()

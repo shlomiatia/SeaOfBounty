@@ -5,40 +5,67 @@ class_name Main extends Node2D
 @onready var movement_preview: MovementPreview = $MovementPreview
 @onready var battle: Battle = $Battle
 @onready var turn_label: Label = $CanvasLayer/TurnLabel
+@onready var cursor: Sprite2D = $Cursor
 
 var current_hero: Unit = null
 var is_input_disabled: bool = false
 var moved_heroes: Array[Unit] = []
 
 func _ready() -> void:
+    var heroes = get_tree().get_nodes_in_group("heroes")
+    if heroes.size() > 0:
+        var random_hero = heroes[randi() % heroes.size()]
+        set_cursor_position(random_hero.position)
+
     start_player_turn()
 
 func _process(_delta: float) -> void:
     if is_input_disabled:
         return
     
-    handle_mouse_hover()
+    handle_cursor_hover()
 
 func _input(event: InputEvent) -> void:
     if is_input_disabled:
         return
 
-    if event is InputEventMouseButton:
-        if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-            handle_left_click(event.position)
-        if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
-            clear()
+    if event is InputEventMouseMotion:
+        var mouse_pos = get_global_mouse_position()
+        set_cursor_position(mouse_pos)
 
-func handle_mouse_hover() -> void:
+    if event.is_action_pressed("up"):
+        _move_highlighted_tile(Vector2i(0, -1))
+    elif event.is_action_pressed("down"):
+        _move_highlighted_tile(Vector2i(0, 1))
+    elif event.is_action_pressed("left"):
+        _move_highlighted_tile(Vector2i(-1, 0))
+    elif event.is_action_pressed("right"):
+        _move_highlighted_tile(Vector2i(1, 0))
+
+    if event.is_action_pressed("confirm"):
+        handle_confirm(cursor.position)
+    elif event.is_action_pressed("cancel"):
+        clear()
+
+
+func _move_highlighted_tile(direction: Vector2i) -> void:
+    var cursor_tile = map.local_to_map(cursor.position)
+    var new_tile = cursor_tile + direction
+    var map_rect = map.get_used_rect()
+    if map_rect.has_point(new_tile):
+        set_cursor_position(map.map_to_local(new_tile))
+
+func handle_cursor_hover() -> void:
     if !current_hero || current_hero in moved_heroes:
         return
 
-    var mouse_pos = get_global_mouse_position()
+    movement_preview.preview_movement_path(current_hero.position, cursor.position)
 
-    movement_preview.preview_movement_path(current_hero.position, mouse_pos)
+func set_cursor_position(pos: Vector2) -> void:
+    cursor.position = map.map_to_local(map.local_to_map(pos))
 
-func handle_left_click(mouse_pos: Vector2) -> void:
-    var clicked_grid_pos := map.local_to_map(mouse_pos)
+func handle_confirm(cursor_pos: Vector2) -> void:
+    var clicked_grid_pos := map.local_to_map(cursor_pos)
 
     var entity = movement_overlay.highlight_movement_and_attack(clicked_grid_pos, "heroes")
     if entity != null:
