@@ -1,6 +1,8 @@
-class_name Hero extends Unit
+class_name Unit extends Node2D
 
 const movement_speed: float = 300.0
+
+@export var max_movement: int = 4
 
 @onready var map: Map = $"../Map"
 @onready var animated_sprite_2d = $AnimatedSprite2D
@@ -10,8 +12,8 @@ func _ready() -> void:
     position = map.map_to_local(map.local_to_map(position))
 
 func move_to(target_grid_pos: Vector2i) -> void:
-    var player_grid_pos := map.local_to_map(position)
-    var start_world_pos := map.map_to_local(player_grid_pos)
+    var unit_grid_pos := map.local_to_map(position)
+    var start_world_pos := map.map_to_local(unit_grid_pos)
     var target_world_pos := map.map_to_local(target_grid_pos)
     var tile_path := map.find_tile_path(start_world_pos, target_world_pos)
     

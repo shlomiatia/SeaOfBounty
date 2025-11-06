@@ -8,9 +8,9 @@ class_name Main extends Node2D
 @onready var battle: Battle = $Battle
 @onready var turn_label: Label = $CanvasLayer/TurnLabel
 
-var current_hero: Hero = null
+var current_hero: Unit = null
 var is_input_disabled: bool = false
-var moved_heroes: Array[Hero] = []
+var moved_heroes: Array[Unit] = []
 
 func _ready() -> void:
     start_player_turn()

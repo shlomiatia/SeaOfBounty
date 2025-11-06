@@ -1,10 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://deyjjg04j726o"]
+[gd_scene load_steps=2 format=3 uid="uid://bod3yhsl4ly2p"]
 
-[ext_resource type="Script" uid="uid://ddg7va0wola83" path="res://Entities/Enemy/enemy.gd" id="1_t7hpb"]
-[ext_resource type="Texture2D" uid="uid://nn6ukgxtb8wh" path="res://Textures/2.png" id="2_t7hpb"]
+[ext_resource type="PackedScene" uid="uid://05oo7vpmyn03" path="res://Entities/Unit/Unit.tscn" id="1_m2t2i"]
 
-[node name="Enemy" type="Node2D" groups=["enemies"]]
-script = ExtResource("1_t7hpb")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_t7hpb")
+[node name="Unit" groups=["enemies"] instance=ExtResource("1_m2t2i")]
+modulate = Color(1, 0, 0, 1)
