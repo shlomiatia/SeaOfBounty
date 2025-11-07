@@ -62,11 +62,14 @@ func move_and_attack(clicked_grid_pos: Vector2i) -> bool:
             clear()
             if can_move:
                 await current_hero.move_to(target_pos)
+            
+            current_hero.modulate = Color(0.5, 0.5, 0.5)
+            moved_heroes.append(current_hero)
+            
             if is_adjcent_to_hero(clicked_grid_pos):
                 await battle.start(current_hero, enemy)
 
-            current_hero.modulate = Color(0.5, 0.5, 0.5)
-            moved_heroes.append(current_hero)
+
             current_hero = null
 
             is_input_disabled = false
