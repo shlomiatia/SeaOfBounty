@@ -1,42 +1,16 @@
-[gd_scene load_steps=18 format=3 uid="uid://bblitdo328h8a"]
+[gd_scene load_steps=12 format=3 uid="uid://bblitdo328h8a"]
 
 [ext_resource type="Script" uid="uid://currcp3fjqvdh" path="res://Levels/Main/main.gd" id="1_8ofus"]
 [ext_resource type="PackedScene" uid="uid://b6mjpkkw6ptwr" path="res://Entities/Map/map.tscn" id="2_avnir"]
 [ext_resource type="Theme" uid="uid://b6vxvs080c1o3" path="res://Themes/Label.tres" id="2_dchpf"]
 [ext_resource type="AudioStream" uid="uid://dgjv5hbpkte7m" path="res://Music/pirate banjo menu.mp3" id="3_gjnf0"]
 [ext_resource type="PackedScene" uid="uid://dwli7df7clyar" path="res://Entities/MovementPreview/movement_preview.tscn" id="4_7l01x"]
-[ext_resource type="Shader" uid="uid://ca4g76sf7n4rv" path="res://Levels/Main/Main.gdshader" id="4_dl1uj"]
+[ext_resource type="PackedScene" uid="uid://uf8ytr35v8a3" path="res://Entities/Water/Water.tscn" id="4_ehtx6"]
 [ext_resource type="PackedScene" uid="uid://cry71kc5pmanp" path="res://Entities/Hero/Hero.tscn" id="5_2rmff"]
 [ext_resource type="PackedScene" uid="uid://df84bkpjfqdm5" path="res://Entities/Battle/Battle.tscn" id="7_tftr3"]
 [ext_resource type="PackedScene" uid="uid://lfbidqmbpqnv" path="res://Entities/MovementOverlay/MovementOverlay.tscn" id="8_ehtx6"]
 [ext_resource type="PackedScene" uid="uid://bod3yhsl4ly2p" path="res://Entities/Enemy/Enemy.tscn" id="9_yjhx0"]
-[ext_resource type="Texture2D" uid="uid://ihau52mdyjr7" path="res://icon.svg" id="13_06dpk"]
-[ext_resource type="Texture2D" uid="uid://cibgr2kd341oe" path="res://Textures/tilemap.png" id="13_gjnf0"]
-[ext_resource type="Script" uid="uid://c0ljvuvqwmwtx" path="res://Levels/Main/color_rect.gd" id="14_gjnf0"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_06dpk"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gjnf0"]
-seamless = true
-noise = SubResource("FastNoiseLite_06dpk")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ehtx6"]
-shader = ExtResource("4_dl1uj")
-shader_parameter/x_offset = 5.0
-shader_parameter/deg = 0.0
-shader_parameter/speed = 28.5
-shader_parameter/amount = 0.02
-shader_parameter/freq = 935.5
-shader_parameter/noise = SubResource("NoiseTexture2D_gjnf0")
-shader_parameter/x_amount = 0.1
-shader_parameter/y_amount = 1.0
-shader_parameter/tint = Color(0.00784314, 0.290196, 0.792157, 1)
-shader_parameter/scale = Vector2(5, 2.8125)
-shader_parameter/zoom = Vector2(0, 1.02452)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_04jnc"]
-atlas = ExtResource("13_gjnf0")
-region = Rect2(120, 0, 40, 40)
+[ext_resource type="PackedScene" uid="uid://bwrk5kjmoamkl" path="res://Entities/Cursor/Cursor.tscn" id="10_ehtx6"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_8ofus")
@@ -64,12 +38,8 @@ horizontal_alignment = 1
 stream = ExtResource("3_gjnf0")
 autoplay = true
 
-[node name="ColorRect" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_ehtx6")
+[node name="Water" parent="." instance=ExtResource("4_ehtx6")]
 position = Vector2(320, 180)
-scale = Vector2(5, 2.8125)
-texture = ExtResource("13_06dpk")
-script = ExtResource("14_gjnf0")
 
 [node name="Map" parent="." instance=ExtResource("2_avnir")]
 visible = false
@@ -84,17 +54,18 @@ max_movement = 5
 
 [node name="Hero2" parent="." instance=ExtResource("5_2rmff")]
 position = Vector2(348, 145)
+damage = 60
 
 [node name="Enemy" parent="." instance=ExtResource("9_yjhx0")]
 position = Vector2(532, 245)
+hp = 150
+damage = 40
 max_movement = 3
 
 [node name="Enemy2" parent="." instance=ExtResource("9_yjhx0")]
 position = Vector2(79, 92)
-max_movement = 3
 
-[node name="Cursor" type="Sprite2D" parent="."]
-texture = SubResource("AtlasTexture_04jnc")
+[node name="Cursor" parent="." instance=ExtResource("10_ehtx6")]
 
 [node name="Battle" parent="." instance=ExtResource("7_tftr3")]
 visible = false

@@ -2,6 +2,8 @@ class_name Unit extends Node2D
 
 const movement_speed: float = 300.0
 
+@export var hp: int = 100
+@export var damage: int = 50
 @export var max_movement: int = 4
 
 @onready var map: Map = $"../Map"

@@ -3,7 +3,6 @@ class_name Battle extends Node2D
 @onready var label = $Label
 @onready var battle_meter = $BattleMeter
 
-
 func start() -> void:
     visible = true
     label.text = "Attack"

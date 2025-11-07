@@ -5,82 +5,32 @@ class_name Main extends Node2D
 @onready var movement_preview: MovementPreview = $MovementPreview
 @onready var battle: Battle = $Battle
 @onready var turn_label: Label = $CanvasLayer/TurnLabel
-@onready var cursor: Sprite2D = $Cursor
+@onready var cursor: Cursor = $Cursor
 
 var current_hero: Unit = null
 var is_input_disabled: bool = false
 var moved_heroes: Array[Unit] = []
 
-var cursor_move_timer: float = 0.0
-var cursor_move_delay: float = 0.15
-
 func _ready() -> void:
-    var heroes = get_tree().get_nodes_in_group("heroes")
-    if heroes.size() > 0:
-        var random_hero = heroes[randi() % heroes.size()]
-        set_cursor_position(random_hero.position)
-
     start_player_turn()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
     if is_input_disabled:
         return
 
-    handle_continuous_movement(delta)
-    handle_cursor_hover()
-
-func _input(event: InputEvent) -> void:
-    if is_input_disabled:
-        return
-
-    if event is InputEventMouseMotion:
-        var mouse_pos = get_global_mouse_position()
-        set_cursor_position(mouse_pos)
-
-    if event.is_action_pressed("confirm"):
-        handle_confirm(cursor.position)
-    elif event.is_action_pressed("cancel"):
-        clear()
-
-
-func handle_continuous_movement(delta: float) -> void:
-    cursor_move_timer += delta
-
-    var direction := Vector2(
-        Input.get_axis("left", "right"),
-        Input.get_axis("up", "down")
-    )
-    var direction_i := Vector2i()
-    if direction.x > 0:
-        direction_i.x = 1
-    elif direction.x < 0:
-        direction_i.x = -1
-    
-    if direction.y > 0:
-        direction_i.y = 1
-    elif direction.y < 0:
-        direction_i.y = -1
-
-    if direction_i != Vector2i.ZERO && cursor_move_timer >= cursor_move_delay:
-        _move_cursor_tile(direction_i)
-        cursor_move_timer = 0.0
-
-
-func _move_cursor_tile(direction: Vector2i) -> void:
-    var cursor_tile = map.local_to_map(cursor.position)
-    var new_tile = cursor_tile + direction
-    var map_rect = map.get_used_rect()
-    if map_rect.has_point(new_tile):
-        set_cursor_position(map.map_to_local(new_tile))
-
-func handle_cursor_hover() -> void:
     if !current_hero || current_hero in moved_heroes:
         return
 
     movement_preview.preview_movement_path(current_hero.position, cursor.position)
 
-func set_cursor_position(pos: Vector2) -> void:
-    cursor.position = map.map_to_local(map.local_to_map(pos))
+func _input(event: InputEvent) -> void:
+    if is_input_disabled:
+        return
+
+    if event.is_action_pressed("confirm"):
+        handle_confirm(cursor.position)
+    elif event.is_action_pressed("cancel"):
+        clear()
 
 func handle_confirm(cursor_pos: Vector2) -> void:
     var clicked_grid_pos := map.local_to_map(cursor_pos)
@@ -100,7 +50,6 @@ func handle_confirm(cursor_pos: Vector2) -> void:
 
     current_hero = null
     clear()
-
 
 func move_and_attack(clicked_grid_pos: Vector2i) -> bool:
     if current_hero && !current_hero in moved_heroes:
@@ -151,24 +100,25 @@ func clear() -> void:
     movement_overlay.clear()
     movement_preview.clear()
 
-func start_player_turn() -> void:
-    moved_heroes.clear()
-    is_input_disabled = false
+func start_enemy_turn() -> void:
+    is_input_disabled = true
 
+    await start_turn("Enemy Turn")
+
+    await execute_enemy_ai()
+
+    await start_player_turn()
+
+func start_player_turn() -> void:
+    is_input_disabled = false
+    moved_heroes.clear()
+    
     var heroes = get_tree().get_nodes_in_group("heroes")
     for hero in heroes:
         hero.modulate = Color(1, 1, 1)
 
-    start_turn("Player Turn")
-
-func start_enemy_turn() -> void:
-    is_input_disabled = true
-
-    start_turn("Enemy Turn")
-
-    await execute_enemy_ai()
-
-    start_player_turn()
+    await start_turn("Player Turn")
+    
 
 func start_turn(text: String) -> void:
     turn_label.text = text
