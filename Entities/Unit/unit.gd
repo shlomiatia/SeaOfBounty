@@ -9,9 +9,13 @@ const movement_speed: float = 300.0
 @onready var map: Map = $"../Map"
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var reflection = $AnimatedSprite2D/Reflection
+@onready var hp_label: Label = $HP
 
 func _ready() -> void:
     position = map.map_to_local(map.local_to_map(position))
+
+func _process(_delta: float) -> void:
+    hp_label.text = str(hp)
 
 func move_to(target_grid_pos: Vector2i) -> void:
     var unit_grid_pos := map.local_to_map(position)

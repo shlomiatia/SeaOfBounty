@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://05oo7vpmyn03"]
+[gd_scene load_steps=9 format=3 uid="uid://05oo7vpmyn03"]
 
 [ext_resource type="Script" uid="uid://bjhgotgec2kkg" path="res://Entities/Unit/unit.gd" id="1_b8oma"]
 [ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="1_vfxj8"]
+[ext_resource type="Theme" uid="uid://b6vxvs080c1o3" path="res://Themes/Label.tres" id="3_ou22k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b8oma"]
 atlas = ExtResource("1_vfxj8")
@@ -68,3 +69,11 @@ position = Vector2(0, 9)
 sprite_frames = SubResource("SpriteFrames_rlkj8")
 animation = &"down"
 autoplay = "right"
+
+[node name="HP" type="Label" parent="."]
+offset_left = -31.0
+offset_top = -45.0
+offset_right = 31.0
+offset_bottom = -20.0
+theme = ExtResource("3_ou22k")
+text = "100"
