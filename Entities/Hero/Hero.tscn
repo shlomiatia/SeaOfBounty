@@ -3,3 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://05oo7vpmyn03" path="res://Entities/Unit/Unit.tscn" id="1_2se1q"]
 
 [node name="Unit" groups=["heroes"] instance=ExtResource("1_2se1q")]
+
+[node name="HP" parent="." index="1"]
+z_index = 1

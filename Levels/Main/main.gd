@@ -55,14 +55,15 @@ func move_and_attack(clicked_grid_pos: Vector2i) -> bool:
     if current_hero && !current_hero in moved_heroes:
         var target_pos = movement_preview.last_hovered_tile
         var can_move = target_pos != Vector2i.MIN
+        var enemy = Utils.get_entity_at_tile(map, clicked_grid_pos, "enemies")
 
-        if can_move || can_attack(clicked_grid_pos):
+        if can_move || (enemy != null && is_adjcent_to_hero(clicked_grid_pos)):
             is_input_disabled = true
             clear()
             if can_move:
                 await current_hero.move_to(target_pos)
             if is_adjcent_to_hero(clicked_grid_pos):
-                await battle.start()
+                await battle.start(current_hero, enemy)
 
             current_hero.modulate = Color(0.5, 0.5, 0.5)
             moved_heroes.append(current_hero)
@@ -75,18 +76,7 @@ func move_and_attack(clicked_grid_pos: Vector2i) -> bool:
     return false
 
 
-func can_attack(target_pos: Vector2i) -> bool:
-    var attack_tile_data = movement_overlay.possible_attack.get_cell_source_id(target_pos)
-    if attack_tile_data == -1:
-        return false
-
-    return is_adjcent_to_hero(target_pos)
-
-    
 func is_adjcent_to_hero(target_pos: Vector2i) -> bool:
-    if !current_hero:
-        return false
-
     var current_hero_tile = map.local_to_map(current_hero.position)
     var is_adjacent = (
         target_pos == current_hero_tile + Vector2i(1, 0) or
@@ -158,13 +148,13 @@ func execute_enemy_ai() -> void:
             continue
 
         if shortest_path.size() == 2:
-            await battle.start()
+            await battle.start(enemy, nearest_hero)
 
         elif shortest_path.size() <= enemy.max_movement + 2:
             var target_tile = shortest_path[shortest_path.size() - 2]
             await enemy.move_to(target_tile)
 
-            await battle.start()
+            await battle.start(enemy, nearest_hero)
 
         else:
             var tiles_to_move = min(enemy.max_movement, shortest_path.size() - 1)

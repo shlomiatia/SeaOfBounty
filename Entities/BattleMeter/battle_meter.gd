@@ -64,12 +64,12 @@ func stop() -> void:
             value = 0.0
     else:
         if distance_from_center <= 4:
-            value = 1.0
+            value = 0.25
         elif distance_from_center <= 15:
             value = 0.5
         elif distance_from_center <= 20:
-            value = 0.25
+            value = 0.75
         else:
-            value = 0.0
+            value = 1.0
 
     indicator_stopped.emit(value)
