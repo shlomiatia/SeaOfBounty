@@ -4,3 +4,6 @@
 
 [node name="Unit" groups=["enemies"] instance=ExtResource("1_m2t2i")]
 modulate = Color(1, 0, 0, 1)
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+modulate = Color(1, 0, 0, 1)

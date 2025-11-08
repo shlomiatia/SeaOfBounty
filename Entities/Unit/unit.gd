@@ -11,11 +11,18 @@ const movement_speed: float = 300.0
 @onready var reflection = $AnimatedSprite2D/Reflection
 @onready var hp_label: Label = $HP
 
+var moved: bool
+var activated: bool
+
 func _ready() -> void:
     position = map.map_to_local(map.local_to_map(position))
 
 func _process(_delta: float) -> void:
     hp_label.text = str(hp)
+    if !moved || !activated:
+        modulate = Color(1, 1, 1)
+    else:
+        modulate = Color(0.5, 0.5, 0.5)
 
 func move_to(target_grid_pos: Vector2i) -> void:
     var unit_grid_pos := map.local_to_map(position)
