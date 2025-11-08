@@ -2,14 +2,13 @@ class_name Battle extends Node2D
 
 @onready var label = $Label
 @onready var battle_meter = $BattleMeter
-@onready var map: Map = $"../../Map"
+@onready var map: Map = $"../Map"
 
 func start(attacker: Unit, defender: Unit) -> void:
     visible = true
 
     var defender_is_hero = defender.is_in_group("heroes")
 
-    # Check if defender can counter-attack based on range
     var can_counter_attack = _can_counter_attack(attacker, defender)
 
     if defender_is_hero:
