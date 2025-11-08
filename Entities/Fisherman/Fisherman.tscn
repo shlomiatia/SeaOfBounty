@@ -1,0 +1,120 @@
+[gd_scene load_steps=10 format=3 uid="uid://b2ybmxh3iri7l"]
+
+[ext_resource type="Texture2D" uid="uid://dgtdil6blavq2" path="res://Textures/Finished characters/Monster Hunter/IMG_3354.PNG" id="1_d2wum"]
+[ext_resource type="Script" uid="uid://blitmqem0wv3w" path="res://Scripts/battle_unit.gd" id="1_sfwkr"]
+[ext_resource type="Texture2D" uid="uid://cuehndisbff5b" path="res://Textures/Finished characters/Monster Hunter/IMG_3355.PNG" id="2_gqsh2"]
+[ext_resource type="Texture2D" uid="uid://cwdoaq0l3uktb" path="res://Textures/Finished characters/Monster Hunter/Hand.png" id="3_gqsh2"]
+
+[sub_resource type="Animation" id="Animation_gqsh2"]
+resource_name = "MoveToBeforeAttack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Img3354/Img3355:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 2),
+"update": 0,
+"values": [Vector2(0, -6), Vector2(92, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_sfwkr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Img3354/Img3355:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Img3354/Img3355:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_e36sd"]
+resource_name = "BeforeAttack"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Img3354/Img3355:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(92, 2), Vector2(92, -2)]
+}
+
+[sub_resource type="Animation" id="Animation_vrtom"]
+resource_name = "Attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Img3354/Img3355:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 1),
+"transitions": PackedFloat32Array(0.5, 2, 2),
+"update": 0,
+"values": [Vector2(92, 0), Vector2(184, 0), Vector2(0, -6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Img3354/Img3355:rotation")
+tracks/1/interp = 3
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.201052, 1),
+"transitions": PackedFloat32Array(0.5, 2, 2),
+"update": 0,
+"values": [0.0, 0.471239, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jygsl"]
+_data = {
+&"Attack": SubResource("Animation_vrtom"),
+&"BeforeAttack": SubResource("Animation_e36sd"),
+&"MoveToBeforeAttack": SubResource("Animation_gqsh2"),
+&"RESET": SubResource("Animation_sfwkr")
+}
+
+[node name="Fisherman" type="Node2D"]
+position = Vector2(-20, 0)
+script = ExtResource("1_sfwkr")
+
+[node name="Img3354" type="Sprite2D" parent="."]
+texture = ExtResource("1_d2wum")
+
+[node name="Img3355" type="Sprite2D" parent="Img3354"]
+position = Vector2(0, -6)
+texture = ExtResource("2_gqsh2")
+
+[node name="Hand" type="Sprite2D" parent="Img3354"]
+position = Vector2(-32, 7.5)
+texture = ExtResource("3_gqsh2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jygsl")
+}

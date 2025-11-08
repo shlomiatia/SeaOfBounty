@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://currcp3fjqvdh" path="res://Levels/Main/main.gd" id="1_8ofus"]
 [ext_resource type="PackedScene" uid="uid://b6mjpkkw6ptwr" path="res://Entities/Map/map.tscn" id="2_avnir"]
 [ext_resource type="Theme" uid="uid://b6vxvs080c1o3" path="res://Themes/Label.tres" id="2_dchpf"]
-[ext_resource type="AudioStream" uid="uid://dgjv5hbpkte7m" path="res://Music/pirate banjo menu.mp3" id="3_gjnf0"]
+[ext_resource type="AudioStream" uid="uid://df4vq541uot5c" path="res://Music/pirate 8 bit menu.mp3" id="3_ehtx6"]
 [ext_resource type="PackedScene" uid="uid://dwli7df7clyar" path="res://Entities/MovementPreview/movement_preview.tscn" id="4_7l01x"]
 [ext_resource type="PackedScene" uid="uid://uf8ytr35v8a3" path="res://Entities/Water/Water.tscn" id="4_ehtx6"]
 [ext_resource type="PackedScene" uid="uid://cry71kc5pmanp" path="res://Entities/Hero/Hero.tscn" id="5_2rmff"]
@@ -35,7 +35,7 @@ text = "Your Turn"
 horizontal_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_gjnf0")
+stream = ExtResource("3_ehtx6")
 autoplay = true
 
 [node name="Water" parent="." instance=ExtResource("4_ehtx6")]
@@ -48,15 +48,16 @@ visible = false
 
 [node name="MovementPreview" parent="." instance=ExtResource("4_7l01x")]
 
-[node name="Hero" parent="." instance=ExtResource("5_2rmff")]
+[node name="Fisherman" parent="." instance=ExtResource("5_2rmff")]
 position = Vector2(201, 304)
+hp = 120
 max_movement = 5
+attack_range = 2
 
-[node name="Hero2" parent="." instance=ExtResource("5_2rmff")]
-position = Vector2(438, 148)
-damage = 60
-max_movement = 3
-attack_range = 3
+[node name="Orphan" parent="." instance=ExtResource("5_2rmff")]
+position = Vector2(366, 151)
+damage = 70
+max_movement = 5
 
 [node name="Enemy" parent="." instance=ExtResource("9_yjhx0")]
 position = Vector2(532, 245)
@@ -66,10 +67,10 @@ max_movement = 3
 
 [node name="Enemy2" parent="." instance=ExtResource("9_yjhx0")]
 position = Vector2(79, 92)
-attack_range = 3
 
 [node name="Cursor" parent="." instance=ExtResource("10_ehtx6")]
 
 [node name="Battle" parent="." instance=ExtResource("7_tftr3")]
 visible = false
+z_index = 2
 position = Vector2(320, 180)
