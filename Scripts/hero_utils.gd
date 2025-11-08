@@ -31,10 +31,5 @@ static func move_and_attack(main: Main, clicked_grid_pos: Vector2i) -> bool:
 
 static func is_adjcent_to_hero(current_hero: Unit, map: Map, target_pos: Vector2i) -> bool:
     var current_hero_tile = map.local_to_map(current_hero.position)
-    var is_adjacent = (
-        target_pos == current_hero_tile + Vector2i(1, 0) or
-        target_pos == current_hero_tile + Vector2i(-1, 0) or
-        target_pos == current_hero_tile + Vector2i(0, 1) or
-        target_pos == current_hero_tile + Vector2i(0, -1)
-    )
-    return is_adjacent
+    var distance = abs(target_pos.x - current_hero_tile.x) + abs(target_pos.y - current_hero_tile.y)
+    return distance <= current_hero.attack_range and distance > 0

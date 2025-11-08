@@ -5,6 +5,7 @@ const movement_speed: float = 300.0
 @export var hp: int = 100
 @export var damage: int = 50
 @export var max_movement: int = 4
+@export var attack_range: int = 1
 
 @onready var map: Map = $"../Map"
 @onready var animated_sprite_2d = $AnimatedSprite2D

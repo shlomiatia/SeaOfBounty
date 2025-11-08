@@ -20,7 +20,7 @@ func _process(_delta: float) -> void:
     if !current_hero || current_hero.moved:
         return
 
-    movement_preview.preview_movement_path(current_hero.position, cursor.position)
+    movement_preview.preview_movement_path(current_hero, cursor.position)
 
 func _input(event: InputEvent) -> void:
     if is_input_disabled:
