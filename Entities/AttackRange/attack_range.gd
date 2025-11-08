@@ -17,23 +17,22 @@ func highlight_attack_range(unit: Unit) -> void:
     var attack_cells: Array[Vector2i] = []
 
     for cell in filled_cells:
-        var adjacent_offsets = [
-            Vector2i(1, 0),
-            Vector2i(-1, 0),
-            Vector2i(0, 1),
-            Vector2i(0, -1)
-        ]
+        # Generate all cells within attack range using Manhattan distance
+        for x in range(-unit.attack_range, unit.attack_range + 1):
+            for y in range(-unit.attack_range, unit.attack_range + 1):
+                # Check if the cell is within attack range (Manhattan distance)
+                if abs(x) + abs(y) > unit.attack_range or (x == 0 and y == 0):
+                    continue
 
-        for offset in adjacent_offsets:
-            var adjacent_cell = cell + offset
+                var attack_cell = cell + Vector2i(x, y)
 
-            if excluded_tiles.has(adjacent_cell):
-                continue
+                if excluded_tiles.has(attack_cell):
+                    continue
 
-            var adjacent_tile_data = possible_movement.get_cell_source_id(adjacent_cell)
+                var attack_tile_data = possible_movement.get_cell_source_id(attack_cell)
 
-            if adjacent_tile_data == -1 and not attack_cells.has(adjacent_cell):
-                attack_cells.append(adjacent_cell)
+                if attack_tile_data == -1 and not attack_cells.has(attack_cell):
+                    attack_cells.append(attack_cell)
 
     for attack_cell in attack_cells:
         set_cell(attack_cell, 0, Vector2i(0, 0))

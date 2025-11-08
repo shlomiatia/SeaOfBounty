@@ -53,8 +53,10 @@ position = Vector2(201, 304)
 max_movement = 5
 
 [node name="Hero2" parent="." instance=ExtResource("5_2rmff")]
-position = Vector2(348, 145)
+position = Vector2(438, 148)
 damage = 60
+max_movement = 3
+attack_range = 3
 
 [node name="Enemy" parent="." instance=ExtResource("9_yjhx0")]
 position = Vector2(532, 245)
@@ -64,6 +66,7 @@ max_movement = 3
 
 [node name="Enemy2" parent="." instance=ExtResource("9_yjhx0")]
 position = Vector2(79, 92)
+attack_range = 3
 
 [node name="Cursor" parent="." instance=ExtResource("10_ehtx6")]
 

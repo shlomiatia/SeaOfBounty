@@ -2,23 +2,33 @@ class_name Battle extends Node2D
 
 @onready var label = $Label
 @onready var battle_meter = $BattleMeter
+@onready var map: Map = $"../../Map"
 
 func start(attacker: Unit, defender: Unit) -> void:
     visible = true
 
     var defender_is_hero = defender.is_in_group("heroes")
 
+    # Check if defender can counter-attack based on range
+    var can_counter_attack = _can_counter_attack(attacker, defender)
+
     if defender_is_hero:
         await _perform_defend(defender, attacker)
-        if attacker.hp > 0 and defender.hp > 0:
+        if attacker.hp > 0 and defender.hp > 0 and can_counter_attack:
             await _perform_attack(defender, attacker)
     else:
         await _perform_attack(attacker, defender)
-        if attacker.hp > 0 and defender.hp > 0:
+        if attacker.hp > 0 and defender.hp > 0 and can_counter_attack:
             await _perform_defend(attacker, defender)
 
     await get_tree().create_timer(0.5).timeout
     visible = false
+
+func _can_counter_attack(attacker: Unit, defender: Unit) -> bool:
+    var attacker_grid_pos = map.local_to_map(attacker.position)
+    var defender_grid_pos = map.local_to_map(defender.position)
+    var distance = abs(attacker_grid_pos.x - defender_grid_pos.x) + abs(attacker_grid_pos.y - defender_grid_pos.y)
+    return distance <= defender.attack_range and distance > 0
 
 
 func _perform_attack(attacker: Unit, defender: Unit) -> void:
