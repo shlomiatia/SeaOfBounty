@@ -17,10 +17,8 @@ func highlight_attack_range(unit: Unit) -> void:
     var attack_cells: Array[Vector2i] = []
 
     for cell in filled_cells:
-        # Generate all cells within attack range using Manhattan distance
         for x in range(-unit.attack_range, unit.attack_range + 1):
             for y in range(-unit.attack_range, unit.attack_range + 1):
-                # Check if the cell is within attack range (Manhattan distance)
                 if abs(x) + abs(y) > unit.attack_range or (x == 0 and y == 0):
                     continue
 

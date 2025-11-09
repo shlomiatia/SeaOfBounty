@@ -13,17 +13,17 @@ enum TileTransform {
 var last_hovered_tile: Vector2i = Vector2i.MIN
 
 func preview_movement_path(unit: Unit, target_pos: Vector2) -> void:
-    var player_grid_pos := map.local_to_map(unit.position)
-    var hovered_grid_pos = map.local_to_map(target_pos)
+    var unit_grid_pos := map.local_to_map(unit.position)
+    var target_grid_pos = map.local_to_map(target_pos)
 
     var enemy_tiles = map.get_enemy_tiles()
-    for enemy_grid_pos in enemy_tiles:
-        if hovered_grid_pos == enemy_grid_pos:
-            if last_hovered_tile != Vector2i.MIN:
+    if last_hovered_tile == Vector2i.MIN:
+        for enemy_grid_pos in enemy_tiles:
+            if target_grid_pos != enemy_grid_pos:
                 return
-
-            var current_distance = abs(player_grid_pos.x - enemy_grid_pos.x) + abs(player_grid_pos.y - enemy_grid_pos.y)
-            if current_distance <= unit.attack_range and current_distance > 0:
+            
+            var current_distance = abs(unit_grid_pos.x - enemy_grid_pos.x) + abs(unit_grid_pos.y - enemy_grid_pos.y)
+            if current_distance <= unit.attack_range && current_distance > 0:
                 return
 
             var tiles_in_range: Array[Vector2i] = []
@@ -56,7 +56,7 @@ func preview_movement_path(unit: Unit, target_pos: Vector2) -> void:
             var best_tile: Vector2i = Vector2i.MIN
             var min_distance_from_hero: float = INF
             for tile in furthest_from_enemy:
-                var start_world_pos := map.map_to_local(player_grid_pos)
+                var start_world_pos := map.map_to_local(unit_grid_pos)
                 var tile_world_pos := map.map_to_local(tile)
                 var tile_path := map.find_tile_path(start_world_pos, tile_world_pos)
                 var path_distance = tile_path.size()
@@ -67,18 +67,18 @@ func preview_movement_path(unit: Unit, target_pos: Vector2) -> void:
             if best_tile == Vector2i.MIN:
                 return
 
-            hovered_grid_pos = best_tile
+            target_grid_pos = best_tile
             break
 
-    if hovered_grid_pos != last_hovered_tile:
+    if target_grid_pos != last_hovered_tile:
         last_hovered_tile = Vector2i.MIN
-        var tile_data = possible_movement.get_cell_source_id(hovered_grid_pos)
+        var tile_data = possible_movement.get_cell_source_id(target_grid_pos)
         clear()
         
         if tile_data != -1:
-            last_hovered_tile = hovered_grid_pos
-            var start_world_pos := map.map_to_local(player_grid_pos)
-            var target_world_pos := map.map_to_local(hovered_grid_pos)
+            last_hovered_tile = target_grid_pos
+            var start_world_pos := map.map_to_local(unit_grid_pos)
+            var target_world_pos := map.map_to_local(target_grid_pos)
             var tile_path := map.find_tile_path(start_world_pos, target_world_pos)
 
             for i in range(tile_path.size()):
