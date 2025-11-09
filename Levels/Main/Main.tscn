@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bblitdo328h8a"]
+[gd_scene load_steps=13 format=3 uid="uid://bblitdo328h8a"]
 
 [ext_resource type="Script" uid="uid://currcp3fjqvdh" path="res://Levels/Main/main.gd" id="1_8ofus"]
 [ext_resource type="PackedScene" uid="uid://b6mjpkkw6ptwr" path="res://Entities/Map/map.tscn" id="2_avnir"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://lfbidqmbpqnv" path="res://Entities/MovementOverlay/MovementOverlay.tscn" id="8_ehtx6"]
 [ext_resource type="PackedScene" uid="uid://bod3yhsl4ly2p" path="res://Entities/Enemy/Enemy.tscn" id="9_yjhx0"]
 [ext_resource type="PackedScene" uid="uid://bwrk5kjmoamkl" path="res://Entities/Cursor/Cursor.tscn" id="10_ehtx6"]
+[ext_resource type="PackedScene" uid="uid://bbrs3ouymdwi8" path="res://Entities/ShakingCamera/ShakingCamera.tscn" id="12_dchpf"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_8ofus")
@@ -74,3 +75,6 @@ position = Vector2(79, 92)
 visible = false
 z_index = 2
 position = Vector2(320, 180)
+
+[node name="ShakingCamera" parent="." instance=ExtResource("12_dchpf")]
+anchor_mode = 0
