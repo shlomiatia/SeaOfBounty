@@ -17,6 +17,62 @@ var activated: bool
 
 func _ready() -> void:
     position = map.map_to_local(map.local_to_map(position))
+    setup_unit_frames()
+
+func setup_unit_frames() -> void:
+    var frame_coords = get_frame_coordinates(name)
+
+    prints(name, frame_coords)
+    if frame_coords.is_empty():
+        return
+
+    
+    var base_texture = preload("res://Textures/Smaller boat characters.png")
+    var sprite_frames = animated_sprite_2d.sprite_frames
+
+    var directions = ["up", "down", "right", "left"]
+    for i in range(4):
+        var atlas = AtlasTexture.new()
+        atlas.atlas = base_texture
+        atlas.region = Rect2(frame_coords[i].x, frame_coords[i].y, 40, 40)
+
+        sprite_frames.set_frame(directions[i], 0, atlas)
+
+    reflection.sprite_frames = sprite_frames
+
+func get_frame_coordinates(character_name: String) -> Array:
+    var coords = []
+    var start_x = 0
+    var start_y = 0
+
+    match character_name:
+        "Musketeer":
+            start_x = 1
+            start_y = 1
+        "OneEye":
+            start_x = 165
+            start_y = 1
+        "Healer":
+            start_x = 1
+            start_y = 54
+        "Fire":
+            start_x = 165
+            start_y = 54
+        "Fisherman":
+            start_x = 1
+            start_y = 107
+        "Orphan":
+            start_x = 165
+            start_y = 107
+        _:
+            return []
+
+    coords.append(Vector2(start_x, start_y))
+    coords.append(Vector2(start_x + 41, start_y))
+    coords.append(Vector2(start_x + 82, start_y))
+    coords.append(Vector2(start_x + 123, start_y))
+
+    return coords
 
 func _process(_delta: float) -> void:
     hp_label.text = str(hp)

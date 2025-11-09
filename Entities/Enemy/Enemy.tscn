@@ -1,9 +1,64 @@
-[gd_scene load_steps=2 format=3 uid="uid://bod3yhsl4ly2p"]
+[gd_scene load_steps=8 format=3 uid="uid://bod3yhsl4ly2p"]
 
 [ext_resource type="PackedScene" uid="uid://05oo7vpmyn03" path="res://Entities/Unit/Unit.tscn" id="1_m2t2i"]
+[ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="2_t7hpb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ou22k"]
+atlas = ExtResource("2_t7hpb")
+region = Rect2(42, 1, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32ibj"]
+atlas = ExtResource("2_t7hpb")
+region = Rect2(124, 1, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbw00"]
+atlas = ExtResource("2_t7hpb")
+region = Rect2(83, 1, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlkj8"]
+atlas = ExtResource("2_t7hpb")
+region = Rect2(1, 1, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_salu8"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ou22k")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32ibj")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbw00")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlkj8")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
 
 [node name="Unit" groups=["enemies"] instance=ExtResource("1_m2t2i")]
-modulate = Color(1, 0, 0, 1)
 
 [node name="AnimatedSprite2D" parent="." index="0"]
-modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_salu8")
+
+[node name="Reflection" parent="AnimatedSprite2D" index="0"]
+sprite_frames = SubResource("SpriteFrames_salu8")

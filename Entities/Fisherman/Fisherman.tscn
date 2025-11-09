@@ -100,10 +100,10 @@ _data = {
 }
 
 [node name="Fisherman" type="Node2D"]
-position = Vector2(-20, 0)
 script = ExtResource("1_sfwkr")
 
 [node name="Img3354" type="Sprite2D" parent="."]
+position = Vector2(-20, 0)
 texture = ExtResource("1_d2wum")
 
 [node name="Img3355" type="Sprite2D" parent="Img3354"]
