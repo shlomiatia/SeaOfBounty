@@ -13,7 +13,8 @@ offset_left = -267.0
 offset_top = -129.0
 offset_right = 256.0
 offset_bottom = 128.0
-color = Color(0, 0, 0, 0.501961)
+mouse_filter = 2
+color = Color(0.0823529, 0.0823529, 0.0823529, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_h3cav")

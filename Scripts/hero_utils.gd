@@ -10,14 +10,14 @@ static func move_and_attack(main: Main, clicked_grid_pos: Vector2i) -> bool:
         var can_move = target_pos != Vector2i.MIN
         var enemy = Utils.get_entity_at_tile(map, clicked_grid_pos, "enemies")
 
-        if can_move || (enemy != null && is_adjcent_to_hero(current_hero, map, clicked_grid_pos)):
+        if can_move || (enemy != null && Utils.is_in_range(current_hero, clicked_grid_pos, map)):
             main.is_input_disabled = true
             main.clear()
             if can_move:
                 await current_hero.move_to(target_pos)
             
             
-            if is_adjcent_to_hero(current_hero, map, clicked_grid_pos):
+            if Utils.is_in_range(current_hero, clicked_grid_pos, map):
                 await battle.start(current_hero, enemy)
 
             current_hero.moved = true
@@ -28,8 +28,3 @@ static func move_and_attack(main: Main, clicked_grid_pos: Vector2i) -> bool:
 
             return true
     return false
-
-static func is_adjcent_to_hero(current_hero: Unit, map: Map, target_pos: Vector2i) -> bool:
-    var current_hero_tile = map.local_to_map(current_hero.position)
-    var distance = abs(target_pos.x - current_hero_tile.x) + abs(target_pos.y - current_hero_tile.y)
-    return distance <= current_hero.attack_range and distance > 0

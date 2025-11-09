@@ -37,9 +37,7 @@ func start(attacker: Unit, defender: Unit) -> void:
 
 func _can_counter_attack(attacker: Unit, defender: Unit) -> bool:
     var attacker_grid_pos = map.local_to_map(attacker.position)
-    var defender_grid_pos = map.local_to_map(defender.position)
-    var distance = abs(attacker_grid_pos.x - defender_grid_pos.x) + abs(attacker_grid_pos.y - defender_grid_pos.y)
-    return distance <= defender.attack_range and distance > 0
+    return Utils.is_in_range(defender, attacker_grid_pos, map)
 
 func _perform_attack(hero: Unit, enemy: Unit, battle_hero: BattleUnit) -> void:
     battle_hero.start()

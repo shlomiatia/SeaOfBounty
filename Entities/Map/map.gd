@@ -13,7 +13,7 @@ func find_tile_path(from: Vector2, to: Vector2, to_opponent: bool = false) -> Ar
     var open_set: Array[Vector2i] = [from_tile]
     var came_from: Dictionary = {}
     var g_score: Dictionary = {from_tile: 0}
-    var f_score: Dictionary = {from_tile: _heuristic(from_tile, to_tile)}
+    var f_score: Dictionary = {from_tile: Utils.get_tile_distance(from_tile, to_tile)}
 
     while open_set.size() > 0:
         var current = open_set[0]
@@ -48,15 +48,12 @@ func find_tile_path(from: Vector2, to: Vector2, to_opponent: bool = false) -> Ar
             if tentative_g_score < g_score.get(neighbor, INF):
                 came_from[neighbor] = current
                 g_score[neighbor] = tentative_g_score
-                f_score[neighbor] = tentative_g_score + _heuristic(neighbor, to_tile)
+                f_score[neighbor] = tentative_g_score + Utils.get_tile_distance(neighbor, to_tile)
 
                 if neighbor not in open_set:
                     open_set.append(neighbor)
 
     return []
-
-func _heuristic(a: Vector2i, b: Vector2i) -> float:
-    return abs(a.x - b.x) + abs(a.y - b.y)
 
 func _reconstruct_path(came_from: Dictionary, current: Vector2i) -> Array[Vector2i]:
     var path: Array[Vector2i] = [current]
