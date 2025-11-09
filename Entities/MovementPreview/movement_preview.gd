@@ -17,58 +17,25 @@ func preview_movement_path(unit: Unit, target_pos: Vector2) -> void:
     var target_grid_pos = map.local_to_map(target_pos)
 
     var enemy_tiles = map.get_enemy_tiles()
-    if last_hovered_tile == Vector2i.MIN:
-        for enemy_grid_pos in enemy_tiles:
-            if target_grid_pos != enemy_grid_pos:
-                return
-            
-            var current_distance = abs(unit_grid_pos.x - enemy_grid_pos.x) + abs(unit_grid_pos.y - enemy_grid_pos.y)
-            if current_distance <= unit.attack_range && current_distance > 0:
-                return
-
-            var tiles_in_range: Array[Vector2i] = []
-            for x in range(-unit.attack_range, unit.attack_range + 1):
-                for y in range(-unit.attack_range, unit.attack_range + 1):
-                    var distance = abs(x) + abs(y)
-                    if distance > unit.attack_range or distance == 0:
-                        continue
-
-                    var potential_tile = enemy_grid_pos + Vector2i(x, y)
-                    var tile_data = possible_movement.get_cell_source_id(potential_tile)
-                    if tile_data != -1:
-                        tiles_in_range.append(potential_tile)
-
-            if tiles_in_range.is_empty():
-                return
-
-            var max_distance_from_enemy: int = -1
-            for tile in tiles_in_range:
-                var distance_from_enemy = abs(tile.x - enemy_grid_pos.x) + abs(tile.y - enemy_grid_pos.y)
-                if distance_from_enemy > max_distance_from_enemy:
-                    max_distance_from_enemy = distance_from_enemy
-
-            var furthest_from_enemy: Array[Vector2i] = []
-            for tile in tiles_in_range:
-                var distance_from_enemy = abs(tile.x - enemy_grid_pos.x) + abs(tile.y - enemy_grid_pos.y)
-                if distance_from_enemy == max_distance_from_enemy:
-                    furthest_from_enemy.append(tile)
-
-            var best_tile: Vector2i = Vector2i.MIN
-            var min_distance_from_hero: float = INF
-            for tile in furthest_from_enemy:
-                var start_world_pos := map.map_to_local(unit_grid_pos)
-                var tile_world_pos := map.map_to_local(tile)
-                var tile_path := map.find_tile_path(start_world_pos, tile_world_pos)
-                var path_distance = tile_path.size()
-                if path_distance < min_distance_from_hero:
-                    min_distance_from_hero = path_distance
-                    best_tile = tile
-
-            if best_tile == Vector2i.MIN:
-                return
-
-            target_grid_pos = best_tile
+    for enemy_grid_pos in enemy_tiles:
+        if target_grid_pos != enemy_grid_pos:
+            continue
+        
+        var path = Utils.find_path_to_tile_in_range(unit, target_pos, map)
+        
+        if path.size() == 0:
             break
+
+        var last_tile_in_path = path[path.size() - 1]
+
+        if last_hovered_tile != Vector2i.MIN:
+            var last_hovered_tile_distance = Utils.get_tile_distance(last_hovered_tile, enemy_grid_pos)
+            if last_hovered_tile_distance <= unit.attack_range && last_hovered_tile_distance >= Utils.get_tile_distance(last_tile_in_path, enemy_grid_pos):
+                target_grid_pos = last_hovered_tile
+                break
+
+        target_grid_pos = last_tile_in_path
+        break
 
     if target_grid_pos != last_hovered_tile:
         last_hovered_tile = Vector2i.MIN

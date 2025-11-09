@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://currcp3fjqvdh" path="res://Levels/Main/main.gd" id="1_8ofus"]
 [ext_resource type="PackedScene" uid="uid://b6mjpkkw6ptwr" path="res://Entities/Map/map.tscn" id="2_avnir"]
 [ext_resource type="Theme" uid="uid://b6vxvs080c1o3" path="res://Themes/Label.tres" id="2_dchpf"]
-[ext_resource type="AudioStream" uid="uid://df4vq541uot5c" path="res://Music/pirate 8 bit menu.mp3" id="3_ehtx6"]
+[ext_resource type="AudioStream" uid="uid://b6o4hojkk5pt3" path="res://Music/Pirate stuff slow.mp3" id="3_ehtx6"]
 [ext_resource type="PackedScene" uid="uid://dwli7df7clyar" path="res://Entities/MovementPreview/movement_preview.tscn" id="4_7l01x"]
 [ext_resource type="PackedScene" uid="uid://uf8ytr35v8a3" path="res://Entities/Water/Water.tscn" id="4_ehtx6"]
 [ext_resource type="PackedScene" uid="uid://cry71kc5pmanp" path="res://Entities/Hero/Hero.tscn" id="5_2rmff"]
