@@ -64,6 +64,13 @@ func _process(delta: float) -> void:
         _play_random_sound()
         _sound_timer = 0.0
 
+func is_typeing() -> bool:
+    return _is_typing
+
+func finish_typing() -> void:
+    _is_typing = false
+    visible_characters = _target_visible_chars
+
 func _start_typing() -> void:
     _target_visible_chars = text.length()
     _current_visible_chars = 0.0
