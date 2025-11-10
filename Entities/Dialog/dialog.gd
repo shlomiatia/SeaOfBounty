@@ -13,11 +13,10 @@ var current_index: int = 0
 var current_battle_unit: BattleUnit = null
 var is_input_disabled: bool = true
 
-# Hero name mappings: internal_name -> [display_name, color]
 const HERO_DATA = {
 	"Fisherman": ["Finn", "#a22633"],
 	"Orphan": ["Kate", "#fee761"],
-	"OneEye": ["One Eye", "#181425"]
+	"OneEye": ["One Eye", "#f0deb4"]
 }
 
 func start(pairs: Array[Array]) -> void:
@@ -26,18 +25,19 @@ func start(pairs: Array[Array]) -> void:
     dialog_pairs = pairs
     description_label.visible = false
     dialog_label.visible = false
+    current_index = 0
 
     if dialog_pairs.size() > 0:
         _show_current_dialog()
 
 func _process(_delta: float) -> void:
+    if is_input_disabled:
+        return
+
     if Input.is_action_just_pressed("confirm"):
         _handle_confirm()
 
 func _handle_confirm() -> void:
-    if is_input_disabled:
-        return
-
     var current_label = _get_current_label()
 
     if current_label and current_label.is_typeing():
@@ -109,6 +109,7 @@ func _finish_dialog() -> void:
         current_battle_unit = null
 
     visible = false
+    is_input_disabled = true
     dialog_finished.emit()
 
 func _get_current_label() -> TypingLabel:

@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://yd4bwdkt67u0"]
+
+[ext_resource type="PackedScene" uid="uid://bblitdo328h8a" path="res://Levels/Main/Main.tscn" id="1_a67fh"]
+[ext_resource type="Script" uid="uid://bgisy8dr1j11b" path="res://Levels/Level2/level_2.gd" id="1_p5es7"]
+[ext_resource type="PackedScene" uid="uid://b11pnk6iom8yp" path="res://Entities/Unit/Units/Orphan.tscn" id="2_vr7nt"]
+[ext_resource type="PackedScene" uid="uid://3shc41rae0sc" path="res://Entities/Unit/Units/Enemy.tscn" id="3_p5es7"]
+
+[node name="Level2" type="Node2D"]
+script = ExtResource("1_p5es7")
+
+[node name="Main" parent="." instance=ExtResource("1_a67fh")]
+
+[node name="Orphan" parent="Main/Units" index="0" instance=ExtResource("2_vr7nt")]
+position = Vector2(21, 190)
+
+[node name="Enemy" parent="Main/Units" index="1" instance=ExtResource("3_p5es7")]
+position = Vector2(275, 187)
+
+[node name="Enemy2" parent="Main/Units" index="2" instance=ExtResource("3_p5es7")]
+position = Vector2(619, 21)
+
+[editable path="Main"]

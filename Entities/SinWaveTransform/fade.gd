@@ -8,3 +8,7 @@ func _ready() -> void:
 func fade_out() -> void:
     animation_player.play_backwards("Default")
     await animation_player.animation_finished
+
+func fade_in() -> void:
+    animation_player.play("Default")
+    await animation_player.animation_finished

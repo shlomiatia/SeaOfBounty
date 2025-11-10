@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dh8jigtbw6tet"]
+[gd_scene load_steps=9 format=3 uid="uid://dh8jigtbw6tet"]
 
 [ext_resource type="Texture2D" uid="uid://b3qwng2lshr82" path="res://Textures/Finished characters/One eye/IMG_3349.PNG" id="1_d07oe"]
+[ext_resource type="Script" uid="uid://blitmqem0wv3w" path="res://Scripts/battle_unit.gd" id="1_yokgm"]
 [ext_resource type="Texture2D" uid="uid://c11pv0ms2vp16" path="res://Textures/Finished characters/One eye/IMG_3350.PNG" id="2_yokgm"]
 
 [sub_resource type="Animation" id="Animation_d07oe"]
@@ -111,6 +112,7 @@ _data = {
 }
 
 [node name="OneEye" type="Node2D"]
+script = ExtResource("1_yokgm")
 
 [node name="Img3349" type="Sprite2D" parent="."]
 position = Vector2(0, -66.5)
