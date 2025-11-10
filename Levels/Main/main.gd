@@ -10,18 +10,6 @@ class_name Main extends Node2D
 var current_hero: Unit = null
 var is_input_disabled: bool = true
 
-func _ready() -> void:
-    var array: Array[Array] = [
-        ["", "Somwhere in the ocean..."],
-        ["Orphan", "Caught anything yet?"],
-        ["Fisherman", "The sea is silent.\nSomething is scaring the fish..."],
-        ["Orphan", "Whoo, Monsters?!"],
-        ["Fisherman", "Yes. The island folk sent word."],
-        ["Orphan", "Can we go, please??"],
-        ["Fisherman", "<sigh> We're going..."],
-    ]
-    $Dialog.start(array)
-
 func _process(_delta: float) -> void:
     if is_input_disabled:
         return

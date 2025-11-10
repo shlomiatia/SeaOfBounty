@@ -22,10 +22,8 @@ func _ready() -> void:
 func setup_unit_frames() -> void:
     var frame_coords = get_frame_coordinates(name)
 
-    prints(name, frame_coords)
     if frame_coords.is_empty():
         return
-
     
     var base_texture = preload("res://Textures/Smaller boat characters.png")
     var sprite_frames = animated_sprite_2d.sprite_frames

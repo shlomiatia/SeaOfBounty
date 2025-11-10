@@ -139,6 +139,7 @@ _data = {
 script = ExtResource("1_77el4")
 
 [node name="Img3351" type="Sprite2D" parent="."]
+position = Vector2(20, -59)
 texture = ExtResource("1_7mqyg")
 
 [node name="Img3353" type="Sprite2D" parent="Img3351"]

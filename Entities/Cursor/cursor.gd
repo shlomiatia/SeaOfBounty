@@ -14,6 +14,7 @@ func _ready() -> void:
         set_cursor_position(random_hero.position)
 
 func _process(delta: float) -> void:
+    visible = !is_input_disabled
     if is_input_disabled:
         return
 

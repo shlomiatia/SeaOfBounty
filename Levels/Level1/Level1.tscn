@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqidmdl4wc8qg"]
+
+[ext_resource type="PackedScene" uid="uid://bblitdo328h8a" path="res://Levels/Main/Main.tscn" id="1_2uqg4"]
+[ext_resource type="Script" uid="uid://b8xd854j127h1" path="res://Levels/Level1/level_1.gd" id="1_n7uxk"]
+
+[node name="Test" type="Node2D"]
+script = ExtResource("1_n7uxk")
+
+[node name="Main" parent="." instance=ExtResource("1_2uqg4")]
+
+[editable path="Main"]
