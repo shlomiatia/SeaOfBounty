@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bblitdo328h8a"]
+[gd_scene load_steps=11 format=3 uid="uid://bblitdo328h8a"]
 
 [ext_resource type="Script" uid="uid://currcp3fjqvdh" path="res://Levels/Main/main.gd" id="1_8ofus"]
 [ext_resource type="PackedScene" uid="uid://b6mjpkkw6ptwr" path="res://Entities/Map/map.tscn" id="2_avnir"]
@@ -6,10 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://b6o4hojkk5pt3" path="res://Music/Pirate stuff slow.mp3" id="3_ehtx6"]
 [ext_resource type="PackedScene" uid="uid://dwli7df7clyar" path="res://Entities/MovementPreview/movement_preview.tscn" id="4_7l01x"]
 [ext_resource type="PackedScene" uid="uid://uf8ytr35v8a3" path="res://Entities/Water/Water.tscn" id="4_ehtx6"]
-[ext_resource type="PackedScene" uid="uid://cry71kc5pmanp" path="res://Entities/Hero/Hero.tscn" id="5_2rmff"]
 [ext_resource type="PackedScene" uid="uid://df84bkpjfqdm5" path="res://Entities/Battle/Battle.tscn" id="7_tftr3"]
 [ext_resource type="PackedScene" uid="uid://lfbidqmbpqnv" path="res://Entities/MovementOverlay/MovementOverlay.tscn" id="8_ehtx6"]
-[ext_resource type="PackedScene" uid="uid://bod3yhsl4ly2p" path="res://Entities/Enemy/Enemy.tscn" id="9_yjhx0"]
 [ext_resource type="PackedScene" uid="uid://bwrk5kjmoamkl" path="res://Entities/Cursor/Cursor.tscn" id="10_ehtx6"]
 [ext_resource type="PackedScene" uid="uid://bbrs3ouymdwi8" path="res://Entities/ShakingCamera/ShakingCamera.tscn" id="12_dchpf"]
 
@@ -49,25 +47,7 @@ visible = false
 
 [node name="MovementPreview" parent="." instance=ExtResource("4_7l01x")]
 
-[node name="Fisherman" parent="." instance=ExtResource("5_2rmff")]
-position = Vector2(201, 304)
-hp = 120
-max_movement = 5
-attack_range = 2
-
-[node name="Orphan" parent="." instance=ExtResource("5_2rmff")]
-position = Vector2(366, 151)
-damage = 70
-max_movement = 5
-
-[node name="Enemy" parent="." instance=ExtResource("9_yjhx0")]
-position = Vector2(532, 245)
-hp = 150
-damage = 40
-max_movement = 3
-
-[node name="Enemy2" parent="." instance=ExtResource("9_yjhx0")]
-position = Vector2(79, 92)
+[node name="Units" type="Node2D" parent="."]
 
 [node name="Cursor" parent="." instance=ExtResource("10_ehtx6")]
 

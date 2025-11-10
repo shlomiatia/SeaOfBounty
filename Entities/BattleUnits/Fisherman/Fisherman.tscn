@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://b2ybmxh3iri7l"]
 
-[ext_resource type="Texture2D" uid="uid://dgtdil6blavq2" path="res://Textures/Finished characters/Monster Hunter/IMG_3354.PNG" id="1_d2wum"]
-[ext_resource type="Script" uid="uid://blitmqem0wv3w" path="res://Scripts/battle_unit.gd" id="1_sfwkr"]
-[ext_resource type="Texture2D" uid="uid://cuehndisbff5b" path="res://Textures/Finished characters/Monster Hunter/IMG_3355.PNG" id="2_gqsh2"]
-[ext_resource type="Texture2D" uid="uid://cwdoaq0l3uktb" path="res://Textures/Finished characters/Monster Hunter/Hand.png" id="3_gqsh2"]
+[ext_resource type="Script" uid="uid://blitmqem0wv3w" path="res://Scripts/battle_unit.gd" id="1_v2s60"]
+[ext_resource type="Texture2D" uid="uid://dgtdil6blavq2" path="res://Textures/Finished characters/Monster Hunter/IMG_3354.PNG" id="2_5ynn3"]
+[ext_resource type="Texture2D" uid="uid://cuehndisbff5b" path="res://Textures/Finished characters/Monster Hunter/IMG_3355.PNG" id="3_5du7i"]
+[ext_resource type="Texture2D" uid="uid://cwdoaq0l3uktb" path="res://Textures/Finished characters/Monster Hunter/Hand.png" id="4_mnvfw"]
 
 [sub_resource type="Animation" id="Animation_vrtom"]
 resource_name = "Attack"
@@ -100,19 +100,19 @@ _data = {
 }
 
 [node name="Fisherman" type="Node2D"]
-script = ExtResource("1_sfwkr")
+script = ExtResource("1_v2s60")
 
 [node name="Img3354" type="Sprite2D" parent="."]
 position = Vector2(-20, 0)
-texture = ExtResource("1_d2wum")
+texture = ExtResource("2_5ynn3")
 
 [node name="Img3355" type="Sprite2D" parent="Img3354"]
 position = Vector2(0, -6)
-texture = ExtResource("2_gqsh2")
+texture = ExtResource("3_5du7i")
 
 [node name="Hand" type="Sprite2D" parent="Img3354"]
 position = Vector2(-32, 7.5)
-texture = ExtResource("3_gqsh2")
+texture = ExtResource("4_mnvfw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

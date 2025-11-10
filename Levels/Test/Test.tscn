@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqidmdl4wc8qg"]
+
+[ext_resource type="PackedScene" uid="uid://bblitdo328h8a" path="res://Levels/Main/Main.tscn" id="1_pc5pm"]
+
+[node name="Test" type="Node2D"]
+
+[node name="Main" parent="." instance=ExtResource("1_pc5pm")]
+
+[editable path="Main"]
