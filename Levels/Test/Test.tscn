@@ -1,24 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqidmdl4wc8qg"]
+[gd_scene load_steps=4 format=3 uid="uid://bqidmdl4wc8qg"]
 
 [ext_resource type="PackedScene" uid="uid://bblitdo328h8a" path="res://Levels/Main/Main.tscn" id="1_pc5pm"]
 [ext_resource type="PackedScene" uid="uid://b11pnk6iom8yp" path="res://Entities/Unit/Units/Orphan.tscn" id="2_w0orh"]
 [ext_resource type="PackedScene" uid="uid://3shc41rae0sc" path="res://Entities/Unit/Units/Enemy.tscn" id="3_w26uw"]
-[ext_resource type="PackedScene" uid="uid://pqhpiebi5gjk" path="res://Entities/Unit/Units/Fisherman.tscn" id="4_o3h4x"]
 
 [node name="Test" type="Node2D"]
 
 [node name="Main" parent="." instance=ExtResource("1_pc5pm")]
 
 [node name="Orphan" parent="Main/Units" index="0" instance=ExtResource("2_w0orh")]
-position = Vector2(280, 182)
+position = Vector2(20, 178)
 
 [node name="Enemy" parent="Main/Units" index="1" instance=ExtResource("3_w26uw")]
-position = Vector2(135, 93)
+position = Vector2(257, 173)
 
 [node name="Enemy2" parent="Main/Units" index="2" instance=ExtResource("3_w26uw")]
-position = Vector2(575, 278)
-
-[node name="Fisherman" parent="Main/Units" index="3" instance=ExtResource("4_o3h4x")]
-position = Vector2(347, 142)
+position = Vector2(619, 29)
 
 [editable path="Main"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxwemukvgjghr"]
+
+[ext_resource type="Script" uid="uid://d0eeoa6leh1di" path="res://Entities/TypingLabel/typing_label.gd" id="1_j3o7d"]
+[ext_resource type="Theme" uid="uid://b6vxvs080c1o3" path="res://Themes/Label.tres" id="1_yisej"]
+
+[node name="TypingLabel" type="Label"]
+theme = ExtResource("1_yisej")
+horizontal_alignment = 1
+autowrap_mode = 3
+visible_characters_behavior = 1
+script = ExtResource("1_j3o7d")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -6.0
