@@ -29,7 +29,7 @@ func start(attacker: Unit, defender: Unit) -> void:
     hero_hp_label.text = str(hero.hp)
     enemy_hp_label.text = str(enemy.hp)
     
-    var unit = "res://Entities/%s/%s.tscn" % [hero_name, hero_name]
+    var unit = "res://Entities/BattleUnits/%s/%s.tscn" % [hero_name, hero_name]
     var battle_hero: BattleUnit = load(unit).instantiate() as BattleUnit
     hero_placeholder.add_child(battle_hero)
     

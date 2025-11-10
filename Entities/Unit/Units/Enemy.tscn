@@ -1,25 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://cry71kc5pmanp"]
+[gd_scene load_steps=8 format=3 uid="uid://3shc41rae0sc"]
 
-[ext_resource type="PackedScene" uid="uid://05oo7vpmyn03" path="res://Entities/Unit/Unit.tscn" id="1_2se1q"]
-[ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="2_57f1h"]
+[ext_resource type="PackedScene" uid="uid://05oo7vpmyn03" path="res://Entities/Unit/Unit.tscn" id="1_58qg8"]
+[ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="2_ack4w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ou22k"]
-atlas = ExtResource("2_57f1h")
+atlas = ExtResource("2_ack4w")
 region = Rect2(42, 1, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_32ibj"]
-atlas = ExtResource("2_57f1h")
+atlas = ExtResource("2_ack4w")
 region = Rect2(124, 1, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qbw00"]
-atlas = ExtResource("2_57f1h")
+atlas = ExtResource("2_ack4w")
 region = Rect2(83, 1, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rlkj8"]
-atlas = ExtResource("2_57f1h")
+atlas = ExtResource("2_ack4w")
 region = Rect2(1, 1, 40, 40)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_jauvv"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_1vx1y"]
 resource_local_to_scene = true
 animations = [{
 "frames": [{
@@ -55,13 +55,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Unit" groups=["heroes"] instance=ExtResource("1_2se1q")]
+[node name="Enemy" groups=["enemies"] instance=ExtResource("1_58qg8")]
+damage = 40
 
 [node name="AnimatedSprite2D" parent="." index="0"]
-sprite_frames = SubResource("SpriteFrames_jauvv")
+sprite_frames = SubResource("SpriteFrames_1vx1y")
 
 [node name="Reflection" parent="AnimatedSprite2D" index="0"]
-sprite_frames = SubResource("SpriteFrames_jauvv")
-
-[node name="HP" parent="." index="1"]
-z_index = 1
+sprite_frames = SubResource("SpriteFrames_1vx1y")

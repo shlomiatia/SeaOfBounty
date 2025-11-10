@@ -124,7 +124,7 @@ _data = {
 &"RESET": SubResource("Animation_qbw00")
 }
 
-[node name="Unit2" type="Node2D"]
+[node name="Unit" type="Node2D"]
 script = ExtResource("1_b8oma")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -141,6 +141,7 @@ animation = &"right"
 autoplay = "right"
 
 [node name="HP" type="Label" parent="."]
+z_index = 1
 offset_left = -114.0
 offset_top = -73.0
 offset_right = 113.0
