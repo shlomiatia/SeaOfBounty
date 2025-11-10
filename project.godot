@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="SeaOfBounty"
-run/main_scene="uid://h3dyl075pasl"
+run/main_scene="uid://bqidmdl4wc8qg"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+MusicPlayer="*res://Entities/MusicPlayer/MusicPlayer.tscn"
 
 [display]
 

@@ -1,14 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://bblitdo328h8a"]
+[gd_scene load_steps=12 format=3 uid="uid://bblitdo328h8a"]
 
 [ext_resource type="Script" uid="uid://currcp3fjqvdh" path="res://Levels/Main/main.gd" id="1_8ofus"]
 [ext_resource type="PackedScene" uid="uid://b6mjpkkw6ptwr" path="res://Entities/Map/map.tscn" id="2_avnir"]
 [ext_resource type="Theme" uid="uid://b6vxvs080c1o3" path="res://Themes/Label.tres" id="2_dchpf"]
-[ext_resource type="AudioStream" uid="uid://b6o4hojkk5pt3" path="res://Music/Pirate stuff slow.mp3" id="3_ehtx6"]
+[ext_resource type="PackedScene" uid="uid://dnwug4pxdwecg" path="res://Entities/SinWaveTransform/Fade.tscn" id="3_ehtx6"]
 [ext_resource type="PackedScene" uid="uid://dwli7df7clyar" path="res://Entities/MovementPreview/movement_preview.tscn" id="4_7l01x"]
 [ext_resource type="PackedScene" uid="uid://uf8ytr35v8a3" path="res://Entities/Water/Water.tscn" id="4_ehtx6"]
 [ext_resource type="PackedScene" uid="uid://df84bkpjfqdm5" path="res://Entities/Battle/Battle.tscn" id="7_tftr3"]
 [ext_resource type="PackedScene" uid="uid://lfbidqmbpqnv" path="res://Entities/MovementOverlay/MovementOverlay.tscn" id="8_ehtx6"]
 [ext_resource type="PackedScene" uid="uid://bwrk5kjmoamkl" path="res://Entities/Cursor/Cursor.tscn" id="10_ehtx6"]
+[ext_resource type="PackedScene" uid="uid://h3dyl075pasl" path="res://Entities/Dialog/Dialog.tscn" id="11_dchpf"]
 [ext_resource type="PackedScene" uid="uid://bbrs3ouymdwi8" path="res://Entities/ShakingCamera/ShakingCamera.tscn" id="12_dchpf"]
 
 [node name="Main" type="Node2D"]
@@ -33,9 +34,8 @@ theme = ExtResource("2_dchpf")
 text = "Your Turn"
 horizontal_alignment = 1
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_ehtx6")
-autoplay = true
+[node name="Fade" parent="CanvasLayer" instance=ExtResource("3_ehtx6")]
+visible = true
 
 [node name="Water" parent="." instance=ExtResource("4_ehtx6")]
 position = Vector2(320, 180)
@@ -58,3 +58,6 @@ position = Vector2(320, 180)
 
 [node name="ShakingCamera" parent="." instance=ExtResource("12_dchpf")]
 anchor_mode = 0
+
+[node name="Dialog" parent="." instance=ExtResource("11_dchpf")]
+visible = false

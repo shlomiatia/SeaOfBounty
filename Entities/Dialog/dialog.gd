@@ -8,17 +8,10 @@ class_name Dialog extends Node2D
 
 var current_index: int = 0
 var current_battle_unit: BattleUnit = null
+var is_input_disabled: bool = true
 
-func _ready() -> void:
-    dialog_pairs = [
-        ["", "Somwhere in the ocean..."],
-        ["Orphan", "Caught anything yet?"],
-        ["Fisherman", "The sea is silent.\nSomething is scaring the fish..."],
-        ["Orphan", "Whoo, Monsters?!"],
-        ["Fisherman", "Yes. The island folk sent word."],
-        ["Orphan", "Can we go, please??"],
-        ["Fisherman", "<sigh> We're going..."],
-    ]
+func start(pairs: Array[Array]) -> void:
+    dialog_pairs = pairs
     description_label.visible = false
     dialog_label.visible = false
 
@@ -30,6 +23,9 @@ func _process(_delta: float) -> void:
         _handle_confirm()
 
 func _handle_confirm() -> void:
+    if is_input_disabled:
+        return
+        
     var current_label = _get_current_label()
 
     if current_label and current_label.is_typeing():

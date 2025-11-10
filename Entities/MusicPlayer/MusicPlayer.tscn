@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0p8a5r3y30tf"]
+
+[ext_resource type="AudioStream" uid="uid://dgjv5hbpkte7m" path="res://Music/pirate banjo menu.mp3" id="1_dcl5u"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_dcl5u")
+autoplay = true
