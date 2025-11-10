@@ -2,7 +2,7 @@ class_name Cursor extends Sprite2D
 
 const cursor_move_delay: float = 0.15
 
-var is_input_disabled: bool = false
+var is_input_disabled: bool = true
 var cursor_move_timer: float = 0.0
 
 @onready var map: Map = $"../Map"

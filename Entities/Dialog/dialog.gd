@@ -11,6 +11,8 @@ var current_battle_unit: BattleUnit = null
 var is_input_disabled: bool = true
 
 func start(pairs: Array[Array]) -> void:
+    visible = true
+    is_input_disabled = false
     dialog_pairs = pairs
     description_label.visible = false
     dialog_label.visible = false
@@ -25,7 +27,7 @@ func _process(_delta: float) -> void:
 func _handle_confirm() -> void:
     if is_input_disabled:
         return
-        
+
     var current_label = _get_current_label()
 
     if current_label and current_label.is_typeing():

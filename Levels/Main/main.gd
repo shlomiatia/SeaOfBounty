@@ -11,7 +11,16 @@ var current_hero: Unit = null
 var is_input_disabled: bool = true
 
 func _ready() -> void:
-    pass
+    var array: Array[Array] = [
+        ["", "Somwhere in the ocean..."],
+        ["Orphan", "Caught anything yet?"],
+        ["Fisherman", "The sea is silent.\nSomething is scaring the fish..."],
+        ["Orphan", "Whoo, Monsters?!"],
+        ["Fisherman", "Yes. The island folk sent word."],
+        ["Orphan", "Can we go, please??"],
+        ["Fisherman", "<sigh> We're going..."],
+    ]
+    $Dialog.start(array)
 
 func _process(_delta: float) -> void:
     if is_input_disabled:
@@ -56,6 +65,7 @@ func clear() -> void:
 
 func start_enemy_turn() -> void:
     is_input_disabled = true
+    cursor.is_input_disabled = true
 
     await start_turn("Enemy Turn")
 
@@ -65,6 +75,7 @@ func start_enemy_turn() -> void:
 
 func start_player_turn() -> void:
     is_input_disabled = false
+    cursor.is_input_disabled = false
     
     var heroes = get_tree().get_nodes_in_group("heroes")
     for hero in heroes:
