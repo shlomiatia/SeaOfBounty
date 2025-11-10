@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://h3dyl075pasl"]
+[gd_scene load_steps=5 format=3 uid="uid://h3dyl075pasl"]
 
 [ext_resource type="Texture2D" uid="uid://b6os3gtvpbme6" path="res://Textures/battle scene.PNG" id="1_hpj0x"]
 [ext_resource type="Script" uid="uid://bfvtemqr0vpmp" path="res://Entities/Dialog/dialog.gd" id="1_y3mms"]
 [ext_resource type="PackedScene" uid="uid://bxwemukvgjghr" path="res://Entities/TypingLabel/TypingLabel.tscn" id="2_typing"]
+[ext_resource type="PackedScene" uid="uid://dnwug4pxdwecg" path="res://Entities/SinWaveTransform/Fade.tscn" id="2_y3mms"]
 
 [node name="Dialog" type="Node2D"]
 script = ExtResource("1_y3mms")
@@ -22,6 +23,10 @@ texture = ExtResource("1_hpj0x")
 [node name="Hero" type="Node2D" parent="."]
 position = Vector2(180, 180)
 
+[node name="Label" type="Label" parent="Hero"]
+offset_right = 40.0
+offset_bottom = 23.0
+
 [node name="DescriptionLabel" parent="." instance=ExtResource("2_typing")]
 offset_left = 104.0
 offset_top = 55.0
@@ -35,3 +40,8 @@ offset_top = 140.0
 offset_right = 562.0
 offset_bottom = 300.0
 horizontal_alignment = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Fade" parent="CanvasLayer" instance=ExtResource("2_y3mms")]
+visible = true
