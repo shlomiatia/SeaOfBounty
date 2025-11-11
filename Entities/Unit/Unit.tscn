@@ -1,13 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://05oo7vpmyn03"]
+[gd_scene load_steps=16 format=3 uid="uid://05oo7vpmyn03"]
 
 [ext_resource type="Script" uid="uid://bjhgotgec2kkg" path="res://Entities/Unit/unit.gd" id="1_b8oma"]
 [ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="1_vfxj8"]
 [ext_resource type="Shader" uid="uid://bn0wv35v1nuq4" path="res://Entities/Unit/Unit.gdshader" id="2_32ibj"]
+[ext_resource type="Shader" uid="uid://b20ld62ku3mg8" path="res://Entities/Unit/Reflection.gdshader" id="2_qbw00"]
 [ext_resource type="Theme" uid="uid://b6vxvs080c1o3" path="res://Themes/Label.tres" id="3_ou22k"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qbw00"]
-shader = ExtResource("2_32ibj")
-shader_parameter/hide_pixels = 0.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rlkj8"]
+shader = ExtResource("2_qbw00")
+shader_parameter/wave_speed = 2.0
+shader_parameter/wave_amplitude = 0.01
+shader_parameter/wave_frequency = 10.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ou22k"]
 atlas = ExtResource("1_vfxj8")
@@ -60,6 +63,10 @@ animations = [{
 "name": &"up",
 "speed": 5.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qbw00"]
+shader = ExtResource("2_32ibj")
+shader_parameter/hide_pixels = 0.0
 
 [sub_resource type="Animation" id="Animation_32ibj"]
 resource_name = "Default"
@@ -127,17 +134,17 @@ _data = {
 [node name="Unit" type="Node2D"]
 script = ExtResource("1_b8oma")
 
+[node name="Reflection" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_rlkj8")
+position = Vector2(0, 9)
+sprite_frames = SubResource("SpriteFrames_rlkj8")
+animation = &"right"
+autoplay = "right"
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_qbw00")
 sprite_frames = SubResource("SpriteFrames_rlkj8")
 animation = &"up"
-autoplay = "right"
-
-[node name="Reflection" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
-z_index = -10
-position = Vector2(0, 9)
-sprite_frames = SubResource("SpriteFrames_rlkj8")
-animation = &"right"
 autoplay = "right"
 
 [node name="HP" type="Label" parent="."]

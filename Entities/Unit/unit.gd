@@ -9,7 +9,7 @@ const movement_speed: float = 300.0
 
 @onready var map: Map = $"../../Map"
 @onready var animated_sprite_2d = $AnimatedSprite2D
-@onready var reflection = $AnimatedSprite2D/Reflection
+@onready var reflection = $Reflection
 @onready var hp_label: Label = $HP
 
 var moved: bool
