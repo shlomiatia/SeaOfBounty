@@ -1,10 +1,17 @@
 class_name Level1 extends Node2D
 
-@onready var dialog: Dialog = $Main/Dialog
-@onready var fade: Fade = $Main/CanvasLayer/Fade
-var stage := 1
+@onready var dialog: Dialog = $Dialog
+@onready var fade: Fade = $CanvasLayer/Fade
+var stage := 0
 
-func _ready() -> void:
+func _input(event: InputEvent) -> void:
+    if stage == 0 && event.is_action_pressed("confirm"):
+        start()
+
+func start() -> void:
+    $CanvasLayer/Label.modulate = Color.TRANSPARENT
+    stage = 1
+    MusicPlayer.play()
     var array: Array[Array] = [
         ["", "Somwhere in the ocean..."],
         ["Orphan", "Caught anything yet?"],
@@ -29,8 +36,8 @@ func _on_dialog_finished() -> void:
             ["OneEye", "You got spirit kid...\nThat's fair."],
             ["Fisherman", "We hunt at first light.\nGet some rest."],
         ]
-        dialog.start(array)
         await fade.fade_in()
+        dialog.start(array)
         
     elif stage == 2:
         stage += 1
@@ -38,8 +45,8 @@ func _on_dialog_finished() -> void:
             ["", "The next morning...\nKate bed is empty"],
             ["Fisherman", "Not again..."],
         ]
-        dialog.start(array)
         await fade.fade_in()
+        dialog.start(array)
         
     elif stage == 3:
         get_tree().change_scene_to_file("res://Levels/Level2/Level2.tscn")

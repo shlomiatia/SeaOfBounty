@@ -20,25 +20,23 @@ const HERO_DATA = {
 }
 
 func start(pairs: Array[Array]) -> void:
-    visible = true
     is_input_disabled = false
     dialog_pairs = pairs
     description_label.visible = false
     dialog_label.visible = false
     current_index = 0
-    await get_tree().create_timer(1.0).timeout
 
     if dialog_pairs.size() > 0:
         _show_current_dialog()
 
-func _process(_delta: float) -> void:
+func _input(event: InputEvent) -> void:
     if is_input_disabled:
         return
 
-    if Input.is_action_just_pressed("confirm"):
+    if event.is_action_pressed("confirm"):
         _handle_confirm()
 
-    if Input.is_action_just_pressed("cancel"):
+    if event.is_action_pressed("cancel"):
        _finish_dialog()
 
 func _handle_confirm() -> void:
@@ -112,7 +110,6 @@ func _finish_dialog() -> void:
         current_battle_unit.queue_free()
         current_battle_unit = null
 
-    visible = false
     is_input_disabled = true
     dialog_finished.emit()
 
