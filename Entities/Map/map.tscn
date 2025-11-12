@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://b6mjpkkw6ptwr"]
+[gd_scene load_steps=8 format=4 uid="uid://b6mjpkkw6ptwr"]
 
 [ext_resource type="Shader" uid="uid://csfshgyxqjafd" path="res://Entities/Map/map.gdshader" id="1_eapu7"]
 [ext_resource type="Texture2D" uid="uid://615o04tg45cr" path="res://Textures/Tile map.png" id="1_fxgjg"]
@@ -11,6 +11,12 @@ shader_parameter/color2 = Color(0.0627451, 0.509804, 0.560784, 1)
 shader_parameter/direction = Vector2(-1, 0)
 shader_parameter/max_distance = 3.0
 shader_parameter/pixels_per_second = 3.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_eapu7"]
+vertices = PackedVector2Array(20, 20, -20, 20, -20, -20, 20, -20)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-20, -20, 20, -20, 20, 20, -20, 20)])
+agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eapu7"]
 texture = ExtResource("1_fxgjg")
@@ -44,9 +50,11 @@ texture_region_size = Vector2i(40, 40)
 13:5/0 = 0
 14:5/0 = 0
 14:6/0 = 0
+14:6/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_eapu7")
 
 [sub_resource type="TileSet" id="TileSet_0y3uj"]
 tile_size = Vector2i(40, 40)
+navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_eapu7")
 
 [node name="Map" type="TileMapLayer"]

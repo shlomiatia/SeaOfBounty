@@ -4,9 +4,7 @@ func find_tile_path(from: Vector2, to: Vector2, to_opponent: bool = false) -> Ar
     var from_tile = local_to_map(from)
     var to_tile = local_to_map(to)
 
-    var occupied_tiles: Array[Vector2i] = []
-    occupied_tiles.append_array(get_hero_tiles())
-    occupied_tiles.append_array(get_enemy_tiles())
+    var occupied_tiles: Array[Vector2i] = get_excluded_tiles()
     if to_opponent:
         occupied_tiles.erase(to_tile)
 
@@ -77,3 +75,27 @@ func get_group_tiles(group: String) -> Array[Vector2i]:
         group_tiles.append(group_tile)
 
     return group_tiles
+
+func get_excluded_tiles() -> Array[Vector2i]:
+    var excluded_tiles: Array[Vector2i] = []
+    excluded_tiles.append_array(get_hero_tiles())
+    excluded_tiles.append_array(get_enemy_tiles())
+    excluded_tiles.append_array(get_non_navigable_tiles())
+    return excluded_tiles
+
+func get_non_navigable_tiles() -> Array[Vector2i]:
+    var non_navigable_tiles: Array[Vector2i] = []
+
+    var used_rect = get_used_rect()
+    for x in range(used_rect.position.x, used_rect.position.x + used_rect.size.x):
+        for y in range(used_rect.position.y, used_rect.position.y + used_rect.size.y):
+            var tile_pos = Vector2i(x, y)
+
+            if get_cell_source_id(tile_pos) == -1:
+                continue
+
+            var tile_data = get_cell_tile_data(tile_pos)
+            if tile_data and not tile_data.get_navigation_polygon(0):
+                non_navigable_tiles.append(tile_pos)
+
+    return non_navigable_tiles

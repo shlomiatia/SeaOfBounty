@@ -37,6 +37,9 @@ func _process(_delta: float) -> void:
     if Input.is_action_just_pressed("confirm"):
         _handle_confirm()
 
+    if Input.is_action_just_pressed("cancel"):
+       _finish_dialog()
+
 func _handle_confirm() -> void:
     var current_label = _get_current_label()
 

@@ -9,6 +9,7 @@ func highlight_attack_range(unit: Unit) -> void:
         excluded_tiles = map.get_hero_tiles()
     else:
         excluded_tiles = map.get_enemy_tiles()
+    excluded_tiles.append_array(map.get_non_navigable_tiles())
 
     clear()
 

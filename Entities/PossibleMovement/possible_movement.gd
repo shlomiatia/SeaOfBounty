@@ -15,10 +15,7 @@ func get_reachable_tiles(start_pos: Vector2i, max_distance: int) -> Array[Vector
     var reachable: Array[Vector2i] = []
 
     var start_world_pos = map.map_to_local(start_pos)
-
-    var hero_tiles = map.get_hero_tiles()
-    var enemy_tiles = map.get_enemy_tiles()
-    var excluded_tiles = hero_tiles + enemy_tiles
+    var excluded_tiles = map.get_excluded_tiles()
 
     if not excluded_tiles.has(start_pos):
         reachable.append(start_pos)
