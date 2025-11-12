@@ -9,11 +9,12 @@ void fragment() {
     
     float wave = sin(uv.y * wave_frequency + TIME * wave_speed) * wave_amplitude;
     uv.x += wave;
-    uv.x = clamp(uv.x, 0.0, 1.0);
-    uv.y = clamp(uv.y, 0.0, 1.0);
-    
-    vec4 color = texture(TEXTURE, uv);
-    color.a *= 0.25;
-    
-    COLOR = color;
+    if (uv.x < 84.0/165.0 || uv.x > 123.0/165.0) {
+        discard;
+    } else {
+        vec4 color = texture(TEXTURE, uv);
+        color.a *= 0.25;
+        
+        COLOR = color;    
+    }
 }

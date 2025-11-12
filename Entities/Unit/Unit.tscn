@@ -144,7 +144,7 @@ autoplay = "right"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_qbw00")
 sprite_frames = SubResource("SpriteFrames_rlkj8")
-animation = &"up"
+animation = &"right"
 autoplay = "right"
 
 [node name="HP" type="Label" parent="."]
