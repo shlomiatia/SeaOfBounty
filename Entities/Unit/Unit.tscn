@@ -171,8 +171,8 @@ libraries = {
 autoplay = "Default"
 
 [node name="TypingLabel" parent="." instance=ExtResource("6_rlkj8")]
-offset_left = -20.0
-offset_top = 29.0
-offset_right = -19.0
-offset_bottom = 57.0
+offset_left = -17.0
+offset_top = 22.0
+offset_right = 42.0
+offset_bottom = 50.0
 autowrap_mode = 0

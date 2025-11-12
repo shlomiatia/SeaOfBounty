@@ -1,5 +1,7 @@
 class_name Unit extends Node2D
 
+signal text_list_finished
+
 const movement_speed: float = 300.0
 
 @export var hp: int = 100
@@ -15,6 +17,12 @@ const movement_speed: float = 300.0
 
 var moved: bool
 var activated: bool
+
+# Text list system
+var text_list: Array[String] = []
+var current_text_index: int = 0
+var is_text_active: bool = false
+var text_label: TypingLabel = null
 
 func _ready() -> void:
     position = map.map_to_local(map.local_to_map(position))
@@ -86,6 +94,10 @@ func _process(_delta: float) -> void:
     if reflection_material:
         reflection_material.set_shader_parameter("alpha", modulate.a)
 
+    # Handle text list input
+    if is_text_active and Input.is_action_just_pressed("confirm"):
+        _handle_text_confirm()
+
 func move_to(target_grid_pos: Vector2i) -> void:
     var unit_grid_pos := map.local_to_map(position)
     var start_world_pos := map.map_to_local(unit_grid_pos)
@@ -156,3 +168,44 @@ func set_is_moved(is_moved: bool) -> void:
         modulate = Color(1, 1, 1)
     else:
         modulate = Color(0.5, 0.5, 0.5)
+
+# Text list system functions
+func start_text_list(texts: Array[String]) -> void:
+    text_list = texts
+    current_text_index = 0
+    is_text_active = true
+
+    # Create text label if it doesn't exist
+    if text_label == null:
+        text_label = TypingLabel.new()
+        text_label.position = Vector2(0, -40)  # Position above the unit
+        text_label.z_index = 100
+        add_child(text_label)
+
+    if text_list.size() > 0:
+        _show_current_text()
+
+func _show_current_text() -> void:
+    if current_text_index >= text_list.size():
+        _finish_text_list()
+        return
+
+    text_label.text = text_list[current_text_index]
+    text_label.visible = true
+
+func _handle_text_confirm() -> void:
+    if text_label and text_label.is_typeing():
+        text_label.finish_typing()
+    else:
+        _move_to_next_text()
+
+func _move_to_next_text() -> void:
+    current_text_index += 1
+    _show_current_text()
+
+func _finish_text_list() -> void:
+    if text_label:
+        text_label.visible = false
+
+    is_text_active = false
+    text_list_finished.emit()
