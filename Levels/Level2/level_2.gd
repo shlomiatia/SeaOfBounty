@@ -1,6 +1,7 @@
 class_name Level2 extends Node2D
 
 @onready var orphan: Unit = $Main/Units/Orphan
+@onready var tutorial: Node2D = $Tutorial
 
 func _ready() -> void:
     MusicPlayer.stream = preload("res://Music/Pirate stuff slow.mp3")

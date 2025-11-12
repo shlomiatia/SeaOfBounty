@@ -42,7 +42,7 @@ func _on_dialog_finished() -> void:
     elif stage == 2:
         stage += 1
         var array: Array[Array] = [
-            ["", "The next morning...\nKate bed is empty"],
+            ["", "The next morning...\nKate bed is empty."],
             ["Fisherman", "Not again..."],
         ]
         await fade.fade_in()
