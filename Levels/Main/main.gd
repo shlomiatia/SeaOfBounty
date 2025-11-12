@@ -1,5 +1,7 @@
 class_name Main extends Node2D
 
+signal player_turn_started
+
 @onready var map: Map = $Map
 @onready var movement_overlay: MovementOverlay = $MovementOverlay
 @onready var movement_preview: MovementPreview = $MovementPreview
@@ -62,16 +64,17 @@ func start_enemy_turn() -> void:
     await start_player_turn()
 
 func start_player_turn() -> void:
+    player_turn_started.emit()
     is_input_disabled = false
     cursor.is_input_disabled = false
-    
+
     var heroes = get_tree().get_nodes_in_group("heroes")
     for hero in heroes:
         hero.set_is_moved(false)
 
     await start_turn("Player Turn")
-    
 
+    
 func start_turn(text: String) -> void:
     turn_label.text = text
     turn_label.visible = true

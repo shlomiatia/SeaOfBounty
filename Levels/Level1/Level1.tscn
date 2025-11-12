@@ -6,7 +6,7 @@
 [ext_resource type="Theme" uid="uid://b6vxvs080c1o3" path="res://Themes/Label.tres" id="3_xwq7n"]
 [ext_resource type="PackedScene" uid="uid://c6o8c7ihgcm2t" path="res://Entities/SinWaveTransform/Blink.tscn" id="4_olbyf"]
 
-[node name="Test" type="Node2D"]
+[node name="Level1" type="Node2D"]
 script = ExtResource("1_n7uxk")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

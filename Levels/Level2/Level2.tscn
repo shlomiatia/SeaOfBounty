@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://b11pnk6iom8yp" path="res://Entities/Unit/Units/Orphan.tscn" id="4_p5es7"]
 [ext_resource type="Texture2D" uid="uid://cibgr2kd341oe" path="res://Textures/tilemap.png" id="5_1jyof"]
 [ext_resource type="PackedScene" uid="uid://3shc41rae0sc" path="res://Entities/Unit/Units/Enemy.tscn" id="5_nce42"]
-[ext_resource type="Theme" uid="uid://b6vxvs080c1o3" path="res://Themes/Label.tres" id="6_0ys8i"]
-[ext_resource type="Script" uid="uid://d0eeoa6leh1di" path="res://Entities/TypingLabel/typing_label.gd" id="6_1jyof"]
+[ext_resource type="PackedScene" uid="uid://bxwemukvgjghr" path="res://Entities/TypingLabel/TypingLabel.tscn" id="6_1jyof"]
+[ext_resource type="Script" uid="uid://3gch2p37o428" path="res://Levels/Level2/tutorial_event_handler.gd" id="7_0ys8i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ys8i"]
 atlas = ExtResource("5_1jyof")
@@ -72,10 +72,10 @@ position = Vector2(613, 20)
 
 [node name="Tutorial" type="Node2D" parent="."]
 visible = false
+position = Vector2(26, 180)
 
 [node name="Tutorial" type="Sprite2D" parent="Tutorial"]
 modulate = Color(1, 1, 1, 0.501961)
-position = Vector2(23, 177)
 texture = SubResource("AtlasTexture_0ys8i")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Tutorial/Tutorial"]
@@ -84,14 +84,18 @@ libraries = {
 }
 autoplay = "Default"
 
-[node name="TypingLabel" type="Label" parent="Tutorial"]
-visible = false
-offset_left = 45.0
-offset_top = 163.0
-offset_right = 135.0
-offset_bottom = 191.0
-theme = ExtResource("6_0ys8i")
-script = ExtResource("6_1jyof")
-metadata/_custom_type_script = "uid://d0eeoa6leh1di"
+[node name="TypingLabel" parent="Tutorial" instance=ExtResource("6_1jyof")]
+offset_left = -17.0
+offset_top = 21.0
+offset_right = 58.0
+offset_bottom = 49.0
+text = "Click me!"
+
+[node name="TutorialEventHandler" type="ColorRect" parent="."]
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 1
+color = Color(1, 1, 1, 0)
+script = ExtResource("7_0ys8i")
 
 [editable path="Main"]

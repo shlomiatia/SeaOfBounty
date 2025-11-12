@@ -5,7 +5,7 @@ class_name Level1 extends Node2D
 var stage := 0
 
 func _input(event: InputEvent) -> void:
-    if stage == 0 && event.is_action_pressed("confirm"):
+    if stage == 0 && (event.is_action_pressed("confirm") || event.is_action_pressed("cancel")):
         start()
 
 func start() -> void:
