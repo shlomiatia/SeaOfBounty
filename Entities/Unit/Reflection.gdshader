@@ -5,6 +5,7 @@ uniform float wave_amplitude = 0.01;
 uniform float wave_frequency = 10.0;
 uniform float uv_left = 0.0;
 uniform float uv_right = 1.0;
+uniform float alpha = 1.0;
 
 void fragment() {
     vec2 uv = UV;
@@ -15,7 +16,7 @@ void fragment() {
         discard;
     } else {
         vec4 color = texture(TEXTURE, uv);
-        color.a *= 0.25;
+        color.a *= 0.25 * alpha;
 
         COLOR = color;
     }

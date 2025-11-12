@@ -16,12 +16,10 @@ static func move_and_attack(main: Main, clicked_grid_pos: Vector2i) -> bool:
             if can_move:
                 await current_hero.move_to(target_pos)
             
-            
             if Utils.is_in_range(current_hero, clicked_grid_pos, map):
                 await battle.start(current_hero, enemy)
 
-            current_hero.moved = true
-            current_hero.activated = true
+            current_hero.set_is_moved(true)
 
             main.is_input_disabled = false
             main.check_all_heroes_moved()

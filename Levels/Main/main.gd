@@ -67,8 +67,7 @@ func start_player_turn() -> void:
     
     var heroes = get_tree().get_nodes_in_group("heroes")
     for hero in heroes:
-        hero.moved = false
-        hero.activated = false
+        hero.set_is_moved(false)
 
     await start_turn("Player Turn")
     

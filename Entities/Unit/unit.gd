@@ -78,10 +78,13 @@ func get_frame_coordinates(character_name: String) -> Array:
 
 func _process(_delta: float) -> void:
     hp_label.text = str(hp)
-    if !moved || !activated:
-        modulate = Color(1, 1, 1)
-    else:
-        modulate = Color(0.5, 0.5, 0.5)
+
+    var unit_material = animated_sprite_2d.material as ShaderMaterial
+    unit_material.set_shader_parameter("alpha", modulate.a)
+
+    var reflection_material = reflection.material as ShaderMaterial
+    if reflection_material:
+        reflection_material.set_shader_parameter("alpha", modulate.a)
 
 func move_to(target_grid_pos: Vector2i) -> void:
     var unit_grid_pos := map.local_to_map(position)
@@ -145,3 +148,11 @@ func update_reflection_uv_bounds() -> void:
                 if shader_material:
                     shader_material.set_shader_parameter("uv_left", uv_left)
                     shader_material.set_shader_parameter("uv_right", uv_right)
+
+func set_is_moved(is_moved: bool) -> void:
+    moved = is_moved
+    activated = is_moved
+    if !moved || !activated:
+        modulate = Color(1, 1, 1)
+    else:
+        modulate = Color(0.5, 0.5, 0.5)
