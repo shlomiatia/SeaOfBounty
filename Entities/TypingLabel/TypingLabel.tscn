@@ -4,8 +4,9 @@
 [ext_resource type="Theme" uid="uid://b6vxvs080c1o3" path="res://Themes/Label.tres" id="1_yisej"]
 
 [node name="TypingLabel" type="Label"]
+offset_right = 1.0
+offset_bottom = 28.0
 theme = ExtResource("1_yisej")
-horizontal_alignment = 1
 autowrap_mode = 3
 visible_characters_behavior = 1
 script = ExtResource("1_j3o7d")

@@ -47,6 +47,12 @@ func start(attacker: Unit, defender: Unit) -> void:
     visible = false
     hero_placeholder.remove_child(battle_hero)
 
+    if enemy.hp == 0:
+        await _fade_out_and_remove(enemy)
+    if hero.hp == 0:
+        await _fade_out_and_remove(hero)
+
+
 func _can_counter_attack(attacker: Unit, defender: Unit) -> bool:
     var attacker_grid_pos = map.local_to_map(attacker.position)
     return Utils.is_in_range(defender, attacker_grid_pos, map)
@@ -60,10 +66,6 @@ func _perform_attack(hero: Unit, enemy: Unit, battle_hero: BattleUnit) -> void:
     assign_damage(hero, enemy, enemy_hp_label, attack_value)
     await battle_hero.attack()
 
-    if enemy.hp == 0:
-        await _fade_out_and_remove(enemy)
-
-
 func _perform_defend(hero: Unit, enemy: Unit) -> void:
     label.text = "Defend"
     battle_meter.start("defense")
@@ -71,8 +73,6 @@ func _perform_defend(hero: Unit, enemy: Unit) -> void:
 
     await assign_damage(enemy, hero, hero_hp_label, defend_value)
 
-    if hero.hp == 0:
-        await _fade_out_and_remove(hero)
 
 func _fade_out_and_remove(unit: Unit) -> void:
     label.text = ""

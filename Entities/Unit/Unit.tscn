@@ -154,11 +154,10 @@ autoplay = "right"
 [node name="HP" type="Label" parent="."]
 z_index = 1
 offset_left = -114.0
-offset_top = -73.0
+offset_top = -48.0
 offset_right = 113.0
 offset_bottom = -20.0
 theme = ExtResource("3_ou22k")
-text = "100"
 horizontal_alignment = 1
 vertical_alignment = 2
 
@@ -169,6 +168,8 @@ libraries = {
 autoplay = "Default"
 
 [node name="TypingLabel" parent="." instance=ExtResource("6_rlkj8")]
-offset_top = 32.0
-offset_right = 1.0
-offset_bottom = 60.0
+offset_left = -20.0
+offset_top = 29.0
+offset_right = -19.0
+offset_bottom = 57.0
+autowrap_mode = 0
