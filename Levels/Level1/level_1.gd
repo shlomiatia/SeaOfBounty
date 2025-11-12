@@ -15,7 +15,6 @@ func _ready() -> void:
         ["Fisherman", "<sigh> We're going..."],
     ]
     dialog.start(array)
-
     dialog.dialog_finished.connect(_on_dialog_finished)
 
 func _on_dialog_finished() -> void:
@@ -32,6 +31,7 @@ func _on_dialog_finished() -> void:
         ]
         dialog.start(array)
         await fade.fade_in()
+        
     elif stage == 2:
         stage += 1
         var array: Array[Array] = [
@@ -40,5 +40,6 @@ func _on_dialog_finished() -> void:
         ]
         dialog.start(array)
         await fade.fade_in()
+        
     elif stage == 3:
         get_tree().change_scene_to_file("res://Levels/Level2/Level2.tscn")

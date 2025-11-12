@@ -1,7 +1,19 @@
-[gd_scene load_steps=13 format=3 uid="uid://3shc41rae0sc"]
+[gd_scene load_steps=17 format=3 uid="uid://3shc41rae0sc"]
 
 [ext_resource type="PackedScene" uid="uid://05oo7vpmyn03" path="res://Entities/Unit/Unit.tscn" id="1_58qg8"]
 [ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="2_ack4w"]
+[ext_resource type="Shader" uid="uid://b20ld62ku3mg8" path="res://Entities/Unit/Reflection.gdshader" id="2_olqx6"]
+[ext_resource type="Shader" uid="uid://bn0wv35v1nuq4" path="res://Entities/Unit/Unit.gdshader" id="4_5dv8j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bqqob"]
+resource_local_to_scene = true
+shader = ExtResource("2_olqx6")
+shader_parameter/wave_speed = 2.0
+shader_parameter/wave_amplitude = 0.01
+shader_parameter/wave_frequency = 10.0
+shader_parameter/uv_left = 0.0
+shader_parameter/uv_right = 1.0
+shader_parameter/alpha = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ou22k"]
 atlas = ExtResource("2_ack4w")
@@ -54,6 +66,12 @@ animations = [{
 "name": &"up",
 "speed": 5.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p337n"]
+resource_local_to_scene = true
+shader = ExtResource("4_5dv8j")
+shader_parameter/hide_pixels = 0.0
+shader_parameter/alpha = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ack4w"]
 atlas = ExtResource("2_ack4w")
@@ -111,7 +129,9 @@ animations = [{
 damage = 40
 
 [node name="Reflection" parent="." index="0"]
+material = SubResource("ShaderMaterial_bqqob")
 sprite_frames = SubResource("SpriteFrames_58qg8")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_p337n")
 sprite_frames = SubResource("SpriteFrames_1vx1y")

@@ -14,15 +14,13 @@ const movement_speed: float = 300.0
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var reflection = $Reflection
 @onready var hp_label: Label = $HP
+@onready var typing_label: TypingLabel = $TypingLabel
 
 var moved: bool
 var activated: bool
 
-# Text list system
 var text_list: Array[String] = []
 var current_text_index: int = 0
-var is_text_active: bool = false
-var text_label: TypingLabel = null
 
 func _ready() -> void:
     position = map.map_to_local(map.local_to_map(position))
@@ -94,8 +92,7 @@ func _process(_delta: float) -> void:
     if reflection_material:
         reflection_material.set_shader_parameter("alpha", modulate.a)
 
-    # Handle text list input
-    if is_text_active and Input.is_action_just_pressed("confirm"):
+    if current_text_index < text_list.size() && Input.is_action_just_pressed("confirm"):
         _handle_text_confirm()
 
 func move_to(target_grid_pos: Vector2i) -> void:
@@ -143,23 +140,19 @@ func update_reflection_uv_bounds() -> void:
     var current_animation = reflection.animation
     var sprite_frames = reflection.sprite_frames
 
-    if sprite_frames and sprite_frames.has_animation(current_animation):
-        var frame_texture = sprite_frames.get_frame_texture(current_animation, 0)
+    var frame_texture = sprite_frames.get_frame_texture(current_animation, 0)
 
-        if frame_texture is AtlasTexture:
-            var atlas_texture = frame_texture as AtlasTexture
-            var atlas = atlas_texture.atlas
-            var region = atlas_texture.region
+    var atlas_texture = frame_texture as AtlasTexture
+    var atlas = atlas_texture.atlas
+    var region = atlas_texture.region
 
-            if atlas:
-                var atlas_width = atlas.get_width()
-                var uv_left = region.position.x / atlas_width
-                var uv_right = (region.position.x + region.size.x) / atlas_width
+    var atlas_width = atlas.get_width()
+    var uv_left = region.position.x / atlas_width
+    var uv_right = (region.position.x + region.size.x) / atlas_width
 
-                var shader_material = reflection.material as ShaderMaterial
-                if shader_material:
-                    shader_material.set_shader_parameter("uv_left", uv_left)
-                    shader_material.set_shader_parameter("uv_right", uv_right)
+    var shader_material = reflection.material as ShaderMaterial
+    shader_material.set_shader_parameter("uv_left", uv_left)
+    shader_material.set_shader_parameter("uv_right", uv_right)
 
 func set_is_moved(is_moved: bool) -> void:
     moved = is_moved
@@ -169,33 +162,23 @@ func set_is_moved(is_moved: bool) -> void:
     else:
         modulate = Color(0.5, 0.5, 0.5)
 
-# Text list system functions
 func start_text_list(texts: Array[String]) -> void:
     text_list = texts
     current_text_index = 0
-    is_text_active = true
 
-    # Create text label if it doesn't exist
-    if text_label == null:
-        text_label = TypingLabel.new()
-        text_label.position = Vector2(0, -40)  # Position above the unit
-        text_label.z_index = 100
-        add_child(text_label)
-
-    if text_list.size() > 0:
-        _show_current_text()
+    _show_current_text()
 
 func _show_current_text() -> void:
     if current_text_index >= text_list.size():
         _finish_text_list()
         return
 
-    text_label.text = text_list[current_text_index]
-    text_label.visible = true
+    typing_label.text = text_list[current_text_index]
+    typing_label.visible = true
 
 func _handle_text_confirm() -> void:
-    if text_label and text_label.is_typeing():
-        text_label.finish_typing()
+    if typing_label.is_typeing():
+        typing_label.finish_typing()
     else:
         _move_to_next_text()
 
@@ -204,8 +187,5 @@ func _move_to_next_text() -> void:
     _show_current_text()
 
 func _finish_text_list() -> void:
-    if text_label:
-        text_label.visible = false
-
-    is_text_active = false
+    typing_label.visible = false
     text_list_finished.emit()
