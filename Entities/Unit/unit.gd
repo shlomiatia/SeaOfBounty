@@ -6,6 +6,7 @@ const movement_speed: float = 300.0
 @export var damage: int = 50
 @export var max_movement: int = 4
 @export var attack_range: int = 1
+@export var initial_direction: String = "right"
 
 @onready var map: Map = $"../../Map"
 @onready var animated_sprite_2d = $AnimatedSprite2D
@@ -18,6 +19,9 @@ var activated: bool
 func _ready() -> void:
     position = map.map_to_local(map.local_to_map(position))
     setup_unit_frames()
+    animated_sprite_2d.play(initial_direction)
+    reflection.play(initial_direction)
+    update_reflection_uv_bounds()
 
 func setup_unit_frames() -> void:
     var frame_coords = get_frame_coordinates(name)
@@ -98,6 +102,7 @@ func animate_along_path(tile_path: Array[Vector2i]) -> void:
         var animation = get_animation(direction)
         animated_sprite_2d.play(animation)
         reflection.play(animation)
+        update_reflection_uv_bounds()
 
         var tween = create_tween()
         var distance = position.distance_to(target_world_pos)
@@ -118,3 +123,25 @@ func get_animation(direction: Vector2) -> String:
             return "up"
         else:
             return "down"
+
+func update_reflection_uv_bounds() -> void:
+    var current_animation = reflection.animation
+    var sprite_frames = reflection.sprite_frames
+
+    if sprite_frames and sprite_frames.has_animation(current_animation):
+        var frame_texture = sprite_frames.get_frame_texture(current_animation, 0)
+
+        if frame_texture is AtlasTexture:
+            var atlas_texture = frame_texture as AtlasTexture
+            var atlas = atlas_texture.atlas
+            var region = atlas_texture.region
+
+            if atlas:
+                var atlas_width = atlas.get_width()
+                var uv_left = region.position.x / atlas_width
+                var uv_right = (region.position.x + region.size.x) / atlas_width
+
+                var shader_material = reflection.material as ShaderMaterial
+                if shader_material:
+                    shader_material.set_shader_parameter("uv_left", uv_left)
+                    shader_material.set_shader_parameter("uv_right", uv_right)

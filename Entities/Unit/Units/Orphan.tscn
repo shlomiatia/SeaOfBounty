@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b11pnk6iom8yp"]
+[gd_scene load_steps=13 format=3 uid="uid://b11pnk6iom8yp"]
 
 [ext_resource type="PackedScene" uid="uid://05oo7vpmyn03" path="res://Entities/Unit/Unit.tscn" id="1_nqs6m"]
 [ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="2_yqfd1"]
@@ -19,7 +19,7 @@ region = Rect2(83, 1, 40, 40)
 atlas = ExtResource("2_yqfd1")
 region = Rect2(1, 1, 40, 40)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_1vx1y"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_nqs6m"]
 resource_local_to_scene = true
 animations = [{
 "frames": [{
@@ -55,12 +55,64 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqfd1"]
+atlas = ExtResource("2_yqfd1")
+region = Rect2(42, 1, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vx1y"]
+atlas = ExtResource("2_yqfd1")
+region = Rect2(124, 1, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1d3p5"]
+atlas = ExtResource("2_yqfd1")
+region = Rect2(83, 1, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4e42"]
+atlas = ExtResource("2_yqfd1")
+region = Rect2(1, 1, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1vx1y"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqfd1")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1vx1y")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1d3p5")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4e42")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
 [node name="Orphan" groups=["heroes"] instance=ExtResource("1_nqs6m")]
 damage = 70
 max_movement = 5
 
-[node name="AnimatedSprite2D" parent="." index="0"]
-sprite_frames = SubResource("SpriteFrames_1vx1y")
+[node name="Reflection" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_nqs6m")
 
-[node name="Reflection" parent="AnimatedSprite2D" index="0"]
+[node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_1vx1y")

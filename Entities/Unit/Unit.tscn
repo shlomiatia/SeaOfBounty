@@ -1,16 +1,20 @@
-[gd_scene load_steps=16 format=3 uid="uid://05oo7vpmyn03"]
+[gd_scene load_steps=17 format=3 uid="uid://05oo7vpmyn03"]
 
 [ext_resource type="Script" uid="uid://bjhgotgec2kkg" path="res://Entities/Unit/unit.gd" id="1_b8oma"]
 [ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="1_vfxj8"]
 [ext_resource type="Shader" uid="uid://bn0wv35v1nuq4" path="res://Entities/Unit/Unit.gdshader" id="2_32ibj"]
 [ext_resource type="Shader" uid="uid://b20ld62ku3mg8" path="res://Entities/Unit/Reflection.gdshader" id="2_qbw00"]
 [ext_resource type="Theme" uid="uid://b6vxvs080c1o3" path="res://Themes/Label.tres" id="3_ou22k"]
+[ext_resource type="PackedScene" uid="uid://bxwemukvgjghr" path="res://Entities/TypingLabel/TypingLabel.tscn" id="6_rlkj8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rlkj8"]
+resource_local_to_scene = true
 shader = ExtResource("2_qbw00")
 shader_parameter/wave_speed = 2.0
 shader_parameter/wave_amplitude = 0.01
 shader_parameter/wave_frequency = 10.0
+shader_parameter/uv_left = 0.0
+shader_parameter/uv_right = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ou22k"]
 atlas = ExtResource("1_vfxj8")
@@ -163,3 +167,8 @@ libraries = {
 &"": SubResource("AnimationLibrary_rlkj8")
 }
 autoplay = "Default"
+
+[node name="TypingLabel" parent="." instance=ExtResource("6_rlkj8")]
+offset_top = 32.0
+offset_right = 1.0
+offset_bottom = 60.0
