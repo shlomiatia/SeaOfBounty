@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://otayvfy13o75"
+path="res://.godot/imported/Drums D.mp3-6d0511ed805412a97a16a6b1c6d04238.mp3str"
+
+[deps]
+
+source_file="res://Music/Drums D.mp3"
+dest_files=["res://.godot/imported/Drums D.mp3-6d0511ed805412a97a16a6b1c6d04238.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

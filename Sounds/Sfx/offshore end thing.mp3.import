@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://lx83dxe0fieu"
+path="res://.godot/imported/offshore end thing.mp3-50e1893aa7e036c9dd9268d0b2069ce3.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Sfx/offshore end thing.mp3"
+dest_files=["res://.godot/imported/offshore end thing.mp3-50e1893aa7e036c9dd9268d0b2069ce3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

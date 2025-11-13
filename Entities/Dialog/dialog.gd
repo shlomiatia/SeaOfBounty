@@ -2,10 +2,10 @@ class_name Dialog extends Node2D
 
 signal dialog_finished
 
-@onready var description_label: TypingLabel = $DescriptionLabel
+@onready var description_label: TypingLabel = $CanvasLayer/DescriptionLabel
 @onready var dialog_label: TypingLabel = $DialogLabel
 @onready var hero_placeholder: Node2D = $Hero
-@onready var name_label: Label = $Hero/NameLabel
+@onready var name_label: Label = $NameLabel
 
 @export var dialog_pairs: Array[Array] = []
 
@@ -14,9 +14,9 @@ var current_battle_unit: BattleUnit = null
 var is_input_disabled: bool = true
 
 const HERO_DATA = {
-	"Fisherman": ["Finn", "#a22633"],
-	"Orphan": ["Kate", "#fee761"],
-	"OneEye": ["One Eye", "#f0deb4"]
+    "Fisherman": ["Finn", "#a22633"],
+    "Orphan": ["Kate", "#fee761"],
+    "OneEye": ["One Eye", "#f0deb4"]
 }
 
 func start(pairs: Array[Array]) -> void:

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bai5ctfdskvod"
+path="res://.godot/imported/Cello D.mp3-ac7e4bfabd90d736a0c61c7d0832519e.mp3str"
+
+[deps]
+
+source_file="res://Music/Cello D.mp3"
+dest_files=["res://.godot/imported/Cello D.mp3-ac7e4bfabd90d736a0c61c7d0832519e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

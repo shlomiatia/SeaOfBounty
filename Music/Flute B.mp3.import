@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dqcebww3bc66g"
+path="res://.godot/imported/Flute B.mp3-cf1103e6dc3d902356fd66974cff8275.mp3str"
+
+[deps]
+
+source_file="res://Music/Flute B.mp3"
+dest_files=["res://.godot/imported/Flute B.mp3-cf1103e6dc3d902356fd66974cff8275.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

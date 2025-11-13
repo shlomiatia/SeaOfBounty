@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cl0kw5wfccvyo"
+path="res://.godot/imported/Trumpet B.mp3-55e464c9c19bfc6da5eb3fad9a2cf79e.mp3str"
+
+[deps]
+
+source_file="res://Music/Trumpet B.mp3"
+dest_files=["res://.godot/imported/Trumpet B.mp3-55e464c9c19bfc6da5eb3fad9a2cf79e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

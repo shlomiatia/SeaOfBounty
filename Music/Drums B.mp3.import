@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dqr658mvqrphv"
+path="res://.godot/imported/Drums B.mp3-52346316a02875f51815b9f3ccb45b78.mp3str"
+
+[deps]
+
+source_file="res://Music/Drums B.mp3"
+dest_files=["res://.godot/imported/Drums B.mp3-52346316a02875f51815b9f3ccb45b78.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

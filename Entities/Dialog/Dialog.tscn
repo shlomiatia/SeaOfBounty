@@ -1,46 +1,47 @@
-[gd_scene load_steps=5 format=3 uid="uid://h3dyl075pasl"]
+[gd_scene load_steps=6 format=3 uid="uid://h3dyl075pasl"]
 
-[ext_resource type="Texture2D" uid="uid://b6os3gtvpbme6" path="res://Textures/battle scene.PNG" id="1_hpj0x"]
 [ext_resource type="Script" uid="uid://bfvtemqr0vpmp" path="res://Entities/Dialog/dialog.gd" id="1_y3mms"]
 [ext_resource type="PackedScene" uid="uid://bxwemukvgjghr" path="res://Entities/TypingLabel/TypingLabel.tscn" id="2_typing"]
+[ext_resource type="Texture2D" uid="uid://bl2juawbhddru" path="res://Textures/Ui - Layer 1.png" id="2_y3mms"]
 [ext_resource type="Theme" uid="uid://b6vxvs080c1o3" path="res://Themes/Label.tres" id="3_q3tpk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3tpk"]
+atlas = ExtResource("2_y3mms")
+region = Rect2(69, 197, 504, 150)
 
 [node name="Dialog" type="Node2D"]
 z_index = 2
 script = ExtResource("1_y3mms")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 53.0
-offset_top = 51.0
-offset_right = 576.0
-offset_bottom = 308.0
-mouse_filter = 2
-color = Color(0.0823529, 0.0823529, 0.0823529, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(320, 180)
-texture = ExtResource("1_hpj0x")
-
 [node name="Hero" type="Node2D" parent="."]
 position = Vector2(160, 240)
 
-[node name="NameLabel" type="Label" parent="Hero"]
-offset_left = -70.0
-offset_right = 70.0
-offset_bottom = 28.0
-theme = ExtResource("3_q3tpk")
-horizontal_alignment = 1
+[node name="Ui-Layer1" type="Sprite2D" parent="."]
+position = Vector2(320, 277)
+texture = SubResource("AtlasTexture_q3tpk")
 
-[node name="DescriptionLabel" parent="." instance=ExtResource("2_typing")]
-offset_left = 104.0
-offset_top = 55.0
-offset_right = 541.0
-offset_bottom = 302.0
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="NameLabel" type="Label" parent="."]
+offset_left = 90.0
+offset_top = 217.0
+offset_right = 200.0
+offset_bottom = 245.0
+theme = ExtResource("3_q3tpk")
 
 [node name="DialogLabel" parent="." instance=ExtResource("2_typing")]
-offset_left = 230.0
-offset_top = 138.0
-offset_right = 560.0
-offset_bottom = 300.0
+offset_left = 200.0
+offset_top = 217.0
+offset_right = 555.0
+offset_bottom = 334.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DescriptionLabel" parent="CanvasLayer" instance=ExtResource("2_typing")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
