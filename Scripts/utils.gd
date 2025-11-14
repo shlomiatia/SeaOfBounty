@@ -33,6 +33,7 @@ static func find_path_to_tile_with_max_movement(unit: Unit, target_pos: Vector2,
 static func is_in_range(unit: Unit, target_pos: Vector2i, map: Map) -> bool:
     var unit_grid_pos = map.local_to_map(unit.position)
     var distance = get_tile_distance(unit_grid_pos, target_pos)
+
     return distance > 0 && distance <= unit.attack_range
 
 static func get_tile_distance(a: Vector2i, b: Vector2i) -> int:

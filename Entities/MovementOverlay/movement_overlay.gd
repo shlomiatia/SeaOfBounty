@@ -14,7 +14,11 @@ func highlight_movement_and_attack(clicked_grid_pos: Vector2i, group: String) ->
         if clicked_grid_pos == entity_grid_pos:
             clear()
 
-            possible_movement.highlight_possible_movement(clicked_grid_pos, entity.max_movement)
+            var movement = entity.max_movement
+            if entity.moved:
+                movement = 0
+
+            possible_movement.highlight_possible_movement(clicked_grid_pos, movement)
             attack_range.highlight_attack_range(entity)
             possible_attack.highlight_possible_attack(entity)
             entity.status_box.show()

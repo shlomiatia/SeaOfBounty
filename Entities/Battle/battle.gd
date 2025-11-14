@@ -75,6 +75,8 @@ func _perform_defend(hero: Unit, enemy: Unit) -> void:
 
 
 func _fade_out_and_remove(unit: Unit) -> void:
+    unit.remove_from_group("heroes")
+    unit.remove_from_group("enemies")
     label.text = ""
     var tween = create_tween()
     tween.tween_property(unit, "modulate:a", 0.0, 1.0)

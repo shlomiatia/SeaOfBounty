@@ -58,6 +58,12 @@ func _process(_delta: float) -> void:
         status_label.position.y = -5
         hp_border.position.y = -10
 
+    if hp > 0:
+        if !moved || !activated:
+            modulate = Color(1, 1, 1)
+        else:
+            modulate = Color(0.5, 0.5, 0.5)
+
     var unit_material = animated_sprite_2d.material as ShaderMaterial
     unit_material.set_shader_parameter("modulate", modulate)
 
@@ -137,14 +143,6 @@ func update_reflection_uv_bounds() -> void:
     var shader_material = reflection.material as ShaderMaterial
     shader_material.set_shader_parameter("uv_left", uv_left)
     shader_material.set_shader_parameter("uv_right", uv_right)
-
-func set_is_moved(is_moved: bool) -> void:
-    moved = is_moved
-    activated = is_moved
-    if !moved || !activated:
-        modulate = Color(1, 1, 1)
-    else:
-        modulate = Color(0.5, 0.5, 0.5)
 
 func start_text_list(texts: Array[String]) -> void:
     text_list = texts

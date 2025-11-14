@@ -14,6 +14,7 @@ func highlight_attack_range(unit: Unit) -> void:
     clear()
 
     var filled_cells = possible_movement.get_used_cells()
+    filled_cells.append(map.local_to_map(unit.position))
 
     var attack_cells: Array[Vector2i] = []
 
