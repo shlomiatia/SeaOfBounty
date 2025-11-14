@@ -14,6 +14,9 @@ signal won;
 var current_hero: Unit = null
 var is_input_disabled: bool = true
 
+func _ready() -> void:
+    start_player_turn()
+
 func _process(_delta: float) -> void:
     if is_input_disabled:
         return
