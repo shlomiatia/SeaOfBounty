@@ -8,6 +8,8 @@ func _input(event: InputEvent) -> void:
     if stage == 0 && (event.is_action_pressed("confirm") || event.is_action_pressed("cancel")):
         dialog.show()
         start()
+    elif stage > 0 && event.is_action_pressed("cancel"):
+        get_tree().change_scene_to_file("res://Levels/Level2/Level2.tscn")
 
 func start() -> void:
     $CanvasLayer/Label.modulate = Color.TRANSPARENT

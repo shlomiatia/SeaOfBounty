@@ -11,6 +11,7 @@ const movement_speed: float = 300.0
 @export var attack_range: int = 1
 @export var initial_direction: String = "right"
 @export var sprite_frames: SpriteFrames
+@export var display_name: String = "Monster"
 
 @onready var map: Map = $"../../Map"
 @onready var animated_sprite_2d = $AnimatedSprite2D
@@ -40,7 +41,7 @@ func _ready() -> void:
     update_reflection_uv_bounds()
 
 func _process(_delta: float) -> void:
-    status_label.text = "%s\n%s/%s" % [name, hp, max_hp]
+    status_label.text = "%s\n%s/%s" % [display_name, hp, max_hp]
     var hp_percentage = float(hp) / float(max_hp)
     hp_bar.scale.x = hp_percentage * 1.44
     hp_bar.position.x = -18 * (1 - hp_percentage)
@@ -63,8 +64,12 @@ func _process(_delta: float) -> void:
     if reflection_material:
         reflection_material.set_shader_parameter("alpha", modulate.a)
 
-    if current_text_index < text_list.size() && Input.is_action_just_pressed("confirm"):
-        _handle_text_confirm()
+    if current_text_index < text_list.size():
+        if Input.is_action_just_pressed("confirm"):
+            _handle_text_confirm()
+        elif Input.is_action_just_pressed("cancel"):
+            current_text_index = text_list.size() - 1
+            _move_to_next_text()
 
 func move_to(target_grid_pos: Vector2i) -> void:
     var unit_grid_pos := map.local_to_map(position)
@@ -73,7 +78,6 @@ func move_to(target_grid_pos: Vector2i) -> void:
     var tile_path := map.find_tile_path(start_world_pos, target_world_pos)
     
     await animate_along_path(tile_path)
-
 
 func animate_along_path(tile_path: Array[Vector2i]) -> void:
     for i in range(1, tile_path.size()):
@@ -148,7 +152,7 @@ func _show_current_text() -> void:
     typing_label.visible = true
 
 func _handle_text_confirm() -> void:
-    if typing_label.is_typeing():
+    if typing_label.is_typing():
         typing_label.finish_typing()
     else:
         _move_to_next_text()

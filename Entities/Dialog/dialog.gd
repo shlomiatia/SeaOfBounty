@@ -35,13 +35,10 @@ func _input(event: InputEvent) -> void:
     if event.is_action_pressed("confirm"):
         _handle_confirm()
 
-    if event.is_action_pressed("cancel"):
-       _finish_dialog()
-
 func _handle_confirm() -> void:
     var current_label = _get_current_label()
 
-    if current_label and current_label.is_typeing():
+    if current_label and current_label.is_typing():
         current_label.finish_typing()
     else:
         _move_to_next()

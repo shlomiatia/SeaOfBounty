@@ -64,7 +64,7 @@ func _process(delta: float) -> void:
         _play_random_sound()
         _sound_timer = 0.0
 
-func is_typeing() -> bool:
+func is_typing() -> bool:
     return _is_typing
 
 func finish_typing() -> void:

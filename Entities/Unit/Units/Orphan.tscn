@@ -181,6 +181,7 @@ animations = [{
 damage = 60
 max_movement = 5
 sprite_frames = SubResource("SpriteFrames_1d3p5")
+display_name = "Kate"
 
 [node name="Reflection" parent="." index="0"]
 material = SubResource("ShaderMaterial_r4e42")
