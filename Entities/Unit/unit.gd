@@ -100,7 +100,7 @@ func animate_along_path(tile_path: Array[Vector2i]) -> void:
 
         tween.tween_property(self, "position", target_world_pos, duration)
         await tween.finished
-    audio_stream_player.stop()
+    fade_out_sound()
 
 
 func get_animation(direction: Vector2) -> String:
@@ -168,3 +168,10 @@ func _move_to_next_text() -> void:
 func _finish_text_list() -> void:
     typing_label.visible = false
     text_list_finished.emit()
+
+func fade_out_sound(duration: float = 5.0):
+    var tween = create_tween()
+    tween.tween_property(audio_stream_player, "volume_db", -80, duration)
+    tween.tween_callback(audio_stream_player.stop)
+    await tween.finished
+    audio_stream_player.volume_db = 0

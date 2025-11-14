@@ -16,7 +16,7 @@ script = ExtResource("1_8ofus")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TurnLabel" type="Label" parent="CanvasLayer"]
-visible = false
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

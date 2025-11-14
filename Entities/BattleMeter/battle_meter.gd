@@ -26,6 +26,9 @@ func _input(event: InputEvent) -> void:
     if event.is_action_pressed("confirm"):
         if !tween:
             return
+
+        if is_tutorial() && get_indicator_distance_from_center() > 4:
+            return
         stop()
 
 func start(mode: String = "attack") -> void:

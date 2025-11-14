@@ -14,6 +14,7 @@ var current_hero: Unit = null
 var is_input_disabled: bool = true
 
 func _process(_delta: float) -> void:
+    check_game_over()
     if is_input_disabled:
         return
 
@@ -27,6 +28,11 @@ func _input(event: InputEvent) -> void:
         return
 
     if event.is_action_pressed("confirm"):
+        var heroes = get_tree().get_nodes_in_group("heroes")
+        if heroes.size() == 0:
+            get_tree().reload_current_scene()
+            return
+
         handle_confirm(cursor.position)
     elif event.is_action_pressed("cancel"):
         clear()
@@ -76,18 +82,17 @@ func start_player_turn() -> void:
         hero.set_is_moved(false)
 
     await start_turn("Player Turn")
-
     
 func start_turn(text: String) -> void:
     turn_label.text = text
-    turn_label.visible = true
     turn_label.modulate.a = 1.0
 
     await get_tree().create_timer(1.0).timeout
+    if is_game_over():
+        return
     var tween = create_tween()
     tween.tween_property(turn_label, "modulate:a", 0.0, 0.5)
     await tween.finished
-    turn_label.visible = false
 
 func check_all_heroes_moved() -> void:
     var heroes = get_tree().get_nodes_in_group("heroes")
@@ -100,3 +105,12 @@ func check_all_heroes_moved() -> void:
 func play_confirm() -> void:
     audio_stream_player.stream = preload("res://Sounds/button press.mp3")
     audio_stream_player.play()
+
+func check_game_over() -> void:
+    if is_game_over():
+        turn_label.text = "Game over :( Press to restart"
+        turn_label.modulate.a = 1.0
+        is_input_disabled = false
+
+func is_game_over() -> bool:
+    return get_tree().get_nodes_in_group("heroes").size() == 0
