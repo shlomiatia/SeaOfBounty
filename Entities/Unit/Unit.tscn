@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://05oo7vpmyn03"]
+[gd_scene load_steps=22 format=3 uid="uid://05oo7vpmyn03"]
 
 [ext_resource type="Script" uid="uid://bjhgotgec2kkg" path="res://Entities/Unit/unit.gd" id="1_b8oma"]
 [ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="1_vfxj8"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bxwemukvgjghr" path="res://Entities/TypingLabel/TypingLabel.tscn" id="6_rlkj8"]
 [ext_resource type="Texture2D" uid="uid://sypeuli5oxi2" path="res://Textures/Ui - Layer 2.png" id="7_gyi6a"]
 [ext_resource type="FontFile" uid="uid://eaj6785edr8f" path="res://Fonts/Minecraftia-Regular.ttf" id="7_w0yq0"]
+[ext_resource type="AudioStream" uid="uid://dcbkrrpo5ssa5" path="res://Sounds/boat noise.mp3" id="8_w0yq0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rlkj8"]
 resource_local_to_scene = true
@@ -209,3 +210,6 @@ texture = SubResource("AtlasTexture_s60q0")
 [node name="HPBar" type="Sprite2D" parent="Status/Border"]
 scale = Vector2(1.44, 1)
 texture = SubResource("AtlasTexture_gyi6a")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_w0yq0")

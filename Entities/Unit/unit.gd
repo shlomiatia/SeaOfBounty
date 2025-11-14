@@ -23,6 +23,7 @@ const movement_speed: float = 300.0
 @onready var hp_bar: Sprite2D = $Status/Border/HPBar
 @onready var status_box: Node2D = $Status/Box
 @onready var typing_label: TypingLabel = $TypingLabel
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 var moved: bool
 var activated: bool
@@ -68,6 +69,7 @@ func _process(_delta: float) -> void:
         if Input.is_action_just_pressed("confirm"):
             _handle_text_confirm()
         elif Input.is_action_just_pressed("cancel"):
+            typing_label.finish_typing()
             current_text_index = text_list.size() - 1
             _move_to_next_text()
 
@@ -80,6 +82,7 @@ func move_to(target_grid_pos: Vector2i) -> void:
     await animate_along_path(tile_path)
 
 func animate_along_path(tile_path: Array[Vector2i]) -> void:
+    audio_stream_player.play()
     for i in range(1, tile_path.size()):
         var target_tile = tile_path[i]
         var target_world_pos = map.map_to_local(target_tile)
@@ -97,6 +100,7 @@ func animate_along_path(tile_path: Array[Vector2i]) -> void:
 
         tween.tween_property(self, "position", target_world_pos, duration)
         await tween.finished
+    audio_stream_player.stop()
 
 
 func get_animation(direction: Vector2) -> String:

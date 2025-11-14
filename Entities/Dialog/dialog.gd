@@ -2,7 +2,7 @@ class_name Dialog extends Node2D
 
 signal dialog_finished
 
-@onready var description_label: TypingLabel = $CanvasLayer/DescriptionLabel
+@onready var description_label: TypingLabel = $DescriptionLabel
 @onready var dialog_label: TypingLabel = $DialogLabel
 @onready var hero_placeholder: Sprite2D = $Hero
 @onready var name_label: Label = $NameLabel

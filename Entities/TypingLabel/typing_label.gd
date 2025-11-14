@@ -17,6 +17,7 @@ var _sound_streams: Array[AudioStream] = []
 
 func _ready() -> void:
     _sound_streams = [
+        preload("res://Sounds/Sfx/jump.mp3")
     ]
 
     for i in range(3):

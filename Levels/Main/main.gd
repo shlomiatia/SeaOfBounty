@@ -8,6 +8,7 @@ signal player_turn_started
 @onready var battle: Battle = $Battle
 @onready var turn_label: Label = $CanvasLayer/TurnLabel
 @onready var cursor: Cursor = $Cursor
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 var current_hero: Unit = null
 var is_input_disabled: bool = true
@@ -35,6 +36,7 @@ func handle_confirm(cursor_pos: Vector2) -> void:
 
     var entity = movement_overlay.highlight_movement_and_attack(clicked_grid_pos, "heroes")
     if entity != null:
+        play_confirm()
         current_hero = entity
         return
         
@@ -43,6 +45,7 @@ func handle_confirm(cursor_pos: Vector2) -> void:
 
     entity = movement_overlay.highlight_movement_and_attack(clicked_grid_pos, "enemies")
     if entity != null:
+        play_confirm()
         current_hero = null
         return
 
@@ -93,3 +96,7 @@ func check_all_heroes_moved() -> void:
             return
     
     start_enemy_turn()
+
+func play_confirm() -> void:
+    audio_stream_player.stream = preload("res://Sounds/button press.mp3")
+    audio_stream_player.play()

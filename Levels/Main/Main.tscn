@@ -52,3 +52,5 @@ position = Vector2(320, 180)
 
 [node name="ShakingCamera" parent="." instance=ExtResource("12_dchpf")]
 anchor_mode = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
