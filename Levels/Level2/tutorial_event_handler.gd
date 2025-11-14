@@ -14,7 +14,10 @@ var tutorial_cells: Array[Vector2i] = [
     Vector2i(5, 4),
     Vector2i(7, 2),
     Vector2i(7, 2),
-    Vector2i(7, 0)
+    Vector2i(7, 0),
+    Vector2i(0, 4),  # New step 7
+    Vector2i(2, 2),  # New step 8
+    Vector2i(2, 0)   # New step 9
 ]
 
 
@@ -48,6 +51,12 @@ func _input(event: InputEvent) -> void:
             elif tutorial_step == 5:
                 show_tutorial_at_step(6)
             elif tutorial_step == 6:
+                tutorial.visible = false
+            elif tutorial_step == 7:
+                show_tutorial_at_step(8)
+            elif tutorial_step == 8:
+                show_tutorial_at_step(9)
+            elif tutorial_step == 9:
                 tutorial.visible = false
         else:
             get_viewport().set_input_as_handled()

@@ -3,8 +3,14 @@ class_name Level2 extends Node2D
 @onready var main: Main = $Main
 @onready var tutorial_event_handler: TutorialEventHandler = $TutorialEventHandler
 @onready var orphan: Unit = $Main/Units/Orphan
+@onready var units_node: Node2D = $Main/Units
+@onready var map: Map = $Main/Map
+
+var won_triggered: bool = false
+var fisherman: Unit
 
 func _ready() -> void:
+    main.won.connect(on_won)
     MusicPlayer.stream = preload("res://Music/violin B.mp3")
     MusicPlayer.play()
     await get_tree().create_timer(1.0).timeout
@@ -14,8 +20,51 @@ func _ready() -> void:
     ]
 
     orphan.start_text_list(array)
-    orphan.text_list_finished.connect(on_text_list_finished)
-
-func on_text_list_finished() -> void:
+    await orphan.text_list_finished
     main.start_player_turn()
     tutorial_event_handler.show_tutorial_at_step(0)
+    
+
+func on_won() -> void:
+    if won_triggered:
+        return
+    won_triggered = true
+
+    orphan.start_text_list(["Huh! That's what you get!"])
+    await orphan.text_list_finished
+
+    var monster1 = preload("res://Entities/Unit/Units/Enemy.tscn").instantiate()
+    var monster2 = preload("res://Entities/Unit/Units/Enemy.tscn").instantiate()
+    var monster3 = preload("res://Entities/Unit/Units/Enemy.tscn").instantiate()
+
+    units_node.add_child(monster1)
+    units_node.add_child(monster2)
+    units_node.add_child(monster3)
+
+    monster1.position = map.map_to_local(Vector2i(2, -1))
+    monster2.position = map.map_to_local(Vector2i(2, 9))
+    monster3.position = map.map_to_local(Vector2i(15, 9))
+
+    var path1: Array[Vector2i] = [Vector2i(2, -1), Vector2i(2, 0)]
+    var path2: Array[Vector2i] = [Vector2i(2, 9), Vector2i(2, 8)]
+    var path3: Array[Vector2i] = [Vector2i(15, 9), Vector2i(15, 8)]
+
+    monster1.animate_along_path(path1)
+    monster2.animate_along_path(path2)
+    await monster3.animate_along_path(path3)
+
+    orphan.start_text_list(["Oh no, it's too many!"])
+    await orphan.text_list_finished
+
+    fisherman = preload("res://Entities/Unit/Units/Fisherman.tscn").instantiate()
+    units_node.add_child(fisherman)
+    fisherman.position = map.map_to_local(Vector2i(-1, 4))
+
+    var fisherman_path: Array[Vector2i] = [Vector2i(-1, 4), Vector2i(0, 4)]
+    await fisherman.animate_along_path(fisherman_path)
+
+    fisherman.start_text_list(["Kate I'm here!", "Leave her alone you creeps!"])
+    await fisherman.text_list_finished
+
+    main.start_player_turn()
+    tutorial_event_handler.show_tutorial_at_step(7)
