@@ -104,15 +104,18 @@ func get_transform_for_arrow(direction: Vector2i, isLeft: bool) -> int:
 func get_transform_for_straight(direction: Vector2i, isLeft: bool) -> int:
     if direction.y > 0:
         if isLeft:
-            return TileTransform.ROTATE_270
+            return TileSetAtlasSource.TRANSFORM_TRANSPOSE # TileTransform.ROTATE_270
         else:
             return TileTransform.ROTATE_90
     elif direction.y < 0:
         if isLeft:
-            return TileTransform.ROTATE_90
+            return TileTransform.ROTATE_90 | TileSetAtlasSource.TRANSFORM_FLIP_V
         else:
             return TileTransform.ROTATE_270
-    return TileTransform.ROTATE_0
+    if isLeft:
+        return TileSetAtlasSource.TRANSFORM_FLIP_H
+    else:
+        return TileTransform.ROTATE_0
 
 func get_tile_for_turn(prev_dir: Vector2i, next_dir: Vector2i) -> Vector2i:
     if prev_dir.x > 0 and next_dir.y > 0:
@@ -122,7 +125,7 @@ func get_tile_for_turn(prev_dir: Vector2i, next_dir: Vector2i) -> Vector2i:
     elif prev_dir.x < 0 and next_dir.y < 0:
         return Vector2i(1, 1)
     elif prev_dir.y > 0 and next_dir.x < 0:
-        return Vector2i(0, 1)
+        return Vector2i(2, 1)
     elif prev_dir.x > 0 and next_dir.y < 0:
         return Vector2i(1, 1)
     elif prev_dir.y > 0 and next_dir.x > 0:
@@ -141,7 +144,7 @@ func get_transform_for_turn(prev_dir: Vector2i, next_dir: Vector2i) -> int:
     elif prev_dir.y < 0 and next_dir.x > 0:
         return TileTransform.ROTATE_0
     elif prev_dir.x < 0 and next_dir.y < 0:
-        return TileTransform.ROTATE_90
+        return TileSetAtlasSource.TRANSFORM_FLIP_H # TileTransform.ROTATE_90
     elif prev_dir.y > 0 and next_dir.x < 0:
         return TileTransform.ROTATE_90
     elif prev_dir.x > 0 and next_dir.y < 0:
@@ -151,6 +154,6 @@ func get_transform_for_turn(prev_dir: Vector2i, next_dir: Vector2i) -> int:
     elif prev_dir.x < 0 and next_dir.y > 0:
         return -1
     elif prev_dir.y < 0 and next_dir.x < 0:
-        return TileTransform.ROTATE_0
+        return TileSetAtlasSource.TRANSFORM_FLIP_H
 
     return TileTransform.ROTATE_0

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SeaOfBounty"
-run/main_scene="uid://bblitdo328h8a"
+run/main_scene="uid://bqidmdl4wc8qg"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
