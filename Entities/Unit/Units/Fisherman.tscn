@@ -1,9 +1,61 @@
-[gd_scene load_steps=17 format=3 uid="uid://pqhpiebi5gjk"]
+[gd_scene load_steps=23 format=3 uid="uid://pqhpiebi5gjk"]
 
 [ext_resource type="PackedScene" uid="uid://05oo7vpmyn03" path="res://Entities/Unit/Unit.tscn" id="1_r5vml"]
+[ext_resource type="Texture2D" uid="uid://bg1eseam7hn7f" path="res://Textures/Smaller boat characters.png" id="2_4homq"]
 [ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="2_jyyyp"]
 [ext_resource type="Shader" uid="uid://b20ld62ku3mg8" path="res://Entities/Unit/Reflection.gdshader" id="2_wdp2b"]
 [ext_resource type="Shader" uid="uid://bn0wv35v1nuq4" path="res://Entities/Unit/Unit.gdshader" id="4_4homq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1yx04"]
+atlas = ExtResource("2_4homq")
+region = Rect2(42, 107, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctuon"]
+atlas = ExtResource("2_4homq")
+region = Rect2(124, 107, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yx1b"]
+atlas = ExtResource("2_4homq")
+region = Rect2(83, 107, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpf8p"]
+atlas = ExtResource("2_4homq")
+region = Rect2(1, 107, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wdp2b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1yx04")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctuon")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yx1b")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpf8p")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_47iih"]
 resource_local_to_scene = true
@@ -129,6 +181,7 @@ animations = [{
 max_hp = 120
 hp = 120
 attack_range = 2
+sprite_frames = SubResource("SpriteFrames_wdp2b")
 
 [node name="Reflection" parent="." index="0"]
 material = SubResource("ShaderMaterial_47iih")

@@ -1,9 +1,61 @@
-[gd_scene load_steps=17 format=3 uid="uid://b11pnk6iom8yp"]
+[gd_scene load_steps=23 format=3 uid="uid://b11pnk6iom8yp"]
 
 [ext_resource type="PackedScene" uid="uid://05oo7vpmyn03" path="res://Entities/Unit/Unit.tscn" id="1_nqs6m"]
+[ext_resource type="Texture2D" uid="uid://bg1eseam7hn7f" path="res://Textures/Smaller boat characters.png" id="2_1d3p5"]
 [ext_resource type="Shader" uid="uid://b20ld62ku3mg8" path="res://Entities/Unit/Reflection.gdshader" id="2_1vx1y"]
 [ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="2_yqfd1"]
 [ext_resource type="Shader" uid="uid://bn0wv35v1nuq4" path="res://Entities/Unit/Unit.gdshader" id="4_1d3p5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sabd"]
+atlas = ExtResource("2_1d3p5")
+region = Rect2(206, 107, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t17gy"]
+atlas = ExtResource("2_1d3p5")
+region = Rect2(288, 107, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ub0p"]
+atlas = ExtResource("2_1d3p5")
+region = Rect2(247, 107, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jmya"]
+atlas = ExtResource("2_1d3p5")
+region = Rect2(165, 107, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1d3p5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7sabd")
+}],
+"loop": true,
+"name": &"bottom",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t17gy")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ub0p")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jmya")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r4e42"]
 resource_local_to_scene = true
@@ -128,6 +180,7 @@ animations = [{
 [node name="Orphan" groups=["heroes"] instance=ExtResource("1_nqs6m")]
 damage = 60
 max_movement = 5
+sprite_frames = SubResource("SpriteFrames_1d3p5")
 
 [node name="Reflection" parent="." index="0"]
 material = SubResource("ShaderMaterial_r4e42")
