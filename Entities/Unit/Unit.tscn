@@ -75,7 +75,7 @@ animations = [{
 resource_local_to_scene = true
 shader = ExtResource("2_32ibj")
 shader_parameter/hide_pixels = 0.0
-shader_parameter/alpha = 1.0
+shader_parameter/modulate = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_32ibj"]
 resource_name = "Default"

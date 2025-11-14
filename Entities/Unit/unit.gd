@@ -59,7 +59,7 @@ func _process(_delta: float) -> void:
         hp_border.position.y = -10
 
     var unit_material = animated_sprite_2d.material as ShaderMaterial
-    unit_material.set_shader_parameter("alpha", modulate.a)
+    unit_material.set_shader_parameter("modulate", modulate)
 
     var reflection_material = reflection.material as ShaderMaterial
     if reflection_material:

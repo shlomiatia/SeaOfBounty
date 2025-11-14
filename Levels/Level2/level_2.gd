@@ -3,7 +3,7 @@ class_name Level2 extends Node2D
 @onready var orphan: Unit = $Main/Units/Orphan
 
 func _ready() -> void:
-    MusicPlayer.stream = preload("res://Music/Pirate stuff slow.mp3")
+    MusicPlayer.stream = preload("res://Music/violin B.mp3")
     MusicPlayer.play()
     await get_tree().create_timer(1.0).timeout
     var array: Array[String] = [

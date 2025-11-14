@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
 uniform float hide_pixels = 0.0;
-uniform float alpha = 1.0;
+uniform vec4 modulate: source_color = vec4(1.0);
 
 void fragment() {
     vec2 texture_size = vec2(textureSize(TEXTURE, 0));
@@ -11,6 +11,6 @@ void fragment() {
         discard;
     }
     vec4 color = texture(TEXTURE, UV);
-    color.a *= alpha;
+    color *= modulate;
     COLOR = color;
 }

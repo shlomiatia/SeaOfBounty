@@ -123,7 +123,7 @@ animations = [{
 resource_local_to_scene = true
 shader = ExtResource("4_1d3p5")
 shader_parameter/hide_pixels = 0.0
-shader_parameter/alpha = 1.0
+shader_parameter/modulate = Color(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yqfd1"]
 atlas = ExtResource("2_yqfd1")
