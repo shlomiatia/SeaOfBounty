@@ -3,5 +3,5 @@
 [ext_resource type="FontFile" uid="uid://c5nsl86joi0vw" path="res://Fonts/Jersey10-Regular.ttf" id="1_1j0f5"]
 
 [resource]
-Label/font_sizes/font_size = 25
+Label/font_sizes/font_size = 24
 Label/fonts/font = ExtResource("1_1j0f5")

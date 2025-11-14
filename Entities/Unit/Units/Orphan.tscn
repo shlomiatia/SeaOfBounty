@@ -126,7 +126,7 @@ animations = [{
 }]
 
 [node name="Orphan" groups=["heroes"] instance=ExtResource("1_nqs6m")]
-damage = 70
+damage = 60
 max_movement = 5
 
 [node name="Reflection" parent="." index="0"]

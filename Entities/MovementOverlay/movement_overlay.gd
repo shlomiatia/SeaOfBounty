@@ -17,12 +17,16 @@ func highlight_movement_and_attack(clicked_grid_pos: Vector2i, group: String) ->
             possible_movement.highlight_possible_movement(clicked_grid_pos, entity.max_movement)
             attack_range.highlight_attack_range(entity)
             possible_attack.highlight_possible_attack(entity)
+            entity.status_box.show()
 
             return entity
 
     return null
 
 func clear() -> void:
+    var entities = get_tree().get_nodes_in_group("units")
+    for entity in entities:
+        entity.status_box.hide()
     possible_movement.clear()
     attack_range.clear()
     possible_attack.clear()

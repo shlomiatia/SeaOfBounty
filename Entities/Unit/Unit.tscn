@@ -1,11 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://05oo7vpmyn03"]
+[gd_scene load_steps=21 format=3 uid="uid://05oo7vpmyn03"]
 
 [ext_resource type="Script" uid="uid://bjhgotgec2kkg" path="res://Entities/Unit/unit.gd" id="1_b8oma"]
 [ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="1_vfxj8"]
 [ext_resource type="Shader" uid="uid://bn0wv35v1nuq4" path="res://Entities/Unit/Unit.gdshader" id="2_32ibj"]
 [ext_resource type="Shader" uid="uid://b20ld62ku3mg8" path="res://Entities/Unit/Reflection.gdshader" id="2_qbw00"]
-[ext_resource type="Theme" uid="uid://b6vxvs080c1o3" path="res://Themes/Label.tres" id="3_ou22k"]
 [ext_resource type="PackedScene" uid="uid://bxwemukvgjghr" path="res://Entities/TypingLabel/TypingLabel.tscn" id="6_rlkj8"]
+[ext_resource type="Texture2D" uid="uid://sypeuli5oxi2" path="res://Textures/Ui - Layer 2.png" id="7_gyi6a"]
+[ext_resource type="FontFile" uid="uid://eaj6785edr8f" path="res://Fonts/Minecraftia-Regular.ttf" id="7_w0yq0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rlkj8"]
 resource_local_to_scene = true
@@ -138,7 +139,19 @@ _data = {
 &"RESET": SubResource("Animation_qbw00")
 }
 
-[node name="Unit" type="Node2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0yq0"]
+atlas = ExtResource("7_gyi6a")
+region = Rect2(7, 0, 44, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s60q0"]
+atlas = ExtResource("7_gyi6a")
+region = Rect2(8, 38, 38, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyi6a"]
+atlas = ExtResource("7_gyi6a")
+region = Rect2(0, 50, 25, 3)
+
+[node name="Unit" type="Node2D" groups=["units"]]
 script = ExtResource("1_b8oma")
 
 [node name="Reflection" type="AnimatedSprite2D" parent="."]
@@ -154,16 +167,6 @@ sprite_frames = SubResource("SpriteFrames_rlkj8")
 animation = &"right"
 autoplay = "right"
 
-[node name="HP" type="Label" parent="."]
-z_index = 1
-offset_left = -114.0
-offset_top = -48.0
-offset_right = 113.0
-offset_bottom = -20.0
-theme = ExtResource("3_ou22k")
-horizontal_alignment = 1
-vertical_alignment = 2
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_rlkj8")
@@ -176,3 +179,33 @@ offset_top = 22.0
 offset_right = 42.0
 offset_bottom = 50.0
 autowrap_mode = 0
+
+[node name="Status" type="Node2D" parent="."]
+z_index = 1
+position = Vector2(0, -36)
+
+[node name="Box" type="Node2D" parent="Status"]
+visible = false
+
+[node name="Background" type="Sprite2D" parent="Status/Box"]
+texture = SubResource("AtlasTexture_w0yq0")
+
+[node name="Label" type="Label" parent="Status/Box"]
+offset_left = -16.0
+offset_top = -12.0
+offset_right = 26.0
+offset_bottom = 8.0
+theme_override_colors/font_color = Color(0.917647, 0.831373, 0.666667, 1)
+theme_override_constants/line_spacing = -2
+theme_override_fonts/font = ExtResource("7_w0yq0")
+theme_override_font_sizes/font_size = 6
+text = "Name
+100/100"
+
+[node name="Border" type="Sprite2D" parent="Status"]
+position = Vector2(0, 10)
+texture = SubResource("AtlasTexture_s60q0")
+
+[node name="HPBar" type="Sprite2D" parent="Status/Border"]
+scale = Vector2(1.44, 1)
+texture = SubResource("AtlasTexture_gyi6a")

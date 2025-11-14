@@ -126,7 +126,6 @@ animations = [{
 }]
 
 [node name="Enemy" groups=["enemies"] instance=ExtResource("1_58qg8")]
-damage = 40
 
 [node name="Reflection" parent="." index="0"]
 material = SubResource("ShaderMaterial_bqqob")

@@ -4,8 +4,9 @@ signal text_list_finished
 
 const movement_speed: float = 300.0
 
+@export var max_hp: int = 100
 @export var hp: int = 100
-@export var damage: int = 50
+@export var damage: int = 40
 @export var max_movement: int = 4
 @export var attack_range: int = 1
 @export var initial_direction: String = "right"
@@ -13,7 +14,12 @@ const movement_speed: float = 300.0
 @onready var map: Map = $"../../Map"
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var reflection = $Reflection
-@onready var hp_label: Label = $HP
+@onready var status: Node2D = $Status
+@onready var status_background: Sprite2D = $Status/Box/Background
+@onready var hp_border: Sprite2D = $Status/Border
+@onready var status_label: Label = $Status/Box/Label
+@onready var hp_bar: Sprite2D = $Status/Border/HPBar
+@onready var status_box: Node2D = $Status/Box
 @onready var typing_label: TypingLabel = $TypingLabel
 
 var moved: bool
@@ -83,7 +89,21 @@ func get_frame_coordinates(character_name: String) -> Array:
     return coords
 
 func _process(_delta: float) -> void:
-    hp_label.text = str(hp)
+    status_label.text = "%s\n%s/%s" % [name, hp, max_hp]
+    var hp_percentage = float(hp) / float(max_hp)
+    hp_bar.scale.x = hp_percentage * 1.44
+    hp_bar.position.x = -18 * (1 - hp_percentage)
+        
+    if position.y > 20:
+        status.position.y = -36
+        status_background.scale.y = 1
+        status_label.position.y = -12
+        hp_border.position.y = 10
+    else:
+        status.position.y = 40
+        status_background.scale.y = -1
+        status_label.position.y = -5
+        hp_border.position.y = -10
 
     var unit_material = animated_sprite_2d.material as ShaderMaterial
     unit_material.set_shader_parameter("alpha", modulate.a)
