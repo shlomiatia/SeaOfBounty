@@ -22,7 +22,6 @@ static func move_and_attack(main: Main, clicked_grid_pos: Vector2i) -> bool:
             current_hero.set_is_moved(true)
 
             main.is_input_disabled = false
-            main.check_all_heroes_moved()
 
             return true
     return false

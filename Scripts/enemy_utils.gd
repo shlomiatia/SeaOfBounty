@@ -10,6 +10,8 @@ static func execute_enemy_ai(main: Main) -> void:
         var nearest_hero: Unit = null
 
         for hero in heroes:
+            if hero.hp == 0:
+                continue
             var hero_pos = hero.position
             var path = Utils.find_path_to_tile_in_range(enemy, hero_pos, main.map)
 

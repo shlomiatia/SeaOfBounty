@@ -1,6 +1,7 @@
 class_name Main extends Node2D
 
 signal player_turn_started
+signal won;
 
 @onready var map: Map = $Map
 @onready var movement_overlay: MovementOverlay = $MovementOverlay
@@ -14,7 +15,6 @@ var current_hero: Unit = null
 var is_input_disabled: bool = true
 
 func _process(_delta: float) -> void:
-    check_game_over()
     if is_input_disabled:
         return
 
@@ -47,6 +47,7 @@ func handle_confirm(cursor_pos: Vector2) -> void:
         return
         
     if await HeroUtils.move_and_attack(self, clicked_grid_pos):
+        start_enemy_turn_if_needed()
         return
 
     entity = movement_overlay.highlight_movement_and_attack(clicked_grid_pos, "enemies")
@@ -84,33 +85,35 @@ func start_player_turn() -> void:
     await start_turn("Player Turn")
     
 func start_turn(text: String) -> void:
+    if is_game_over():
+        turn_label.text = "Game over :( Press to restart"
+        turn_label.modulate.a = 1.0
+        is_input_disabled = false
+        return
+
+    if is_won():
+        won.emit()
+        return
+        
     turn_label.text = text
     turn_label.modulate.a = 1.0
 
     await get_tree().create_timer(1.0).timeout
-    if is_game_over():
-        return
+
     var tween = create_tween()
     tween.tween_property(turn_label, "modulate:a", 0.0, 0.5)
     await tween.finished
 
-func check_all_heroes_moved() -> void:
-    var heroes = get_tree().get_nodes_in_group("heroes")
-    for hero in heroes:
-        if !hero.moved || !hero.activated:
-            return
-    
-    start_enemy_turn()
+func start_enemy_turn_if_needed() -> void:
+    if is_won() || get_tree().get_nodes_in_group("heroes").filter(func(hero: Unit): return !hero.moved || !hero.activated).size() == 0:
+        start_enemy_turn()
 
 func play_confirm() -> void:
     audio_stream_player.stream = preload("res://Sounds/button press.mp3")
     audio_stream_player.play()
 
-func check_game_over() -> void:
-    if is_game_over():
-        turn_label.text = "Game over :( Press to restart"
-        turn_label.modulate.a = 1.0
-        is_input_disabled = false
-
 func is_game_over() -> bool:
-    return get_tree().get_nodes_in_group("heroes").size() == 0
+    return get_tree().get_nodes_in_group("heroes").filter(func(hero: Unit): return hero.hp > 0).size() == 0
+
+func is_won() -> bool:
+    return get_tree().get_nodes_in_group("enemies").filter(func(hero: Unit): return hero.hp > 0).size() == 0

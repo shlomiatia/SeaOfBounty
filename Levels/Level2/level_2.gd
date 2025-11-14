@@ -1,5 +1,7 @@
 class_name Level2 extends Node2D
 
+@onready var main: Main = $Main
+@onready var tutorial_event_handler: TutorialEventHandler = $TutorialEventHandler
 @onready var orphan: Unit = $Main/Units/Orphan
 
 func _ready() -> void:
@@ -15,5 +17,5 @@ func _ready() -> void:
     orphan.text_list_finished.connect(on_text_list_finished)
 
 func on_text_list_finished() -> void:
-    $Main.start_player_turn()
-    $TutorialEventHandler.show_tutorial_at_step(0)
+    main.start_player_turn()
+    tutorial_event_handler.show_tutorial_at_step(0)
