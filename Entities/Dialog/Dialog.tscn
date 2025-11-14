@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://h3dyl075pasl"]
+[gd_scene load_steps=7 format=3 uid="uid://h3dyl075pasl"]
 
 [ext_resource type="Script" uid="uid://bfvtemqr0vpmp" path="res://Entities/Dialog/dialog.gd" id="1_y3mms"]
+[ext_resource type="Texture2D" uid="uid://dgtdil6blavq2" path="res://Textures/BattleUnits/Fisherman/Normal.PNG" id="2_q3tpk"]
 [ext_resource type="PackedScene" uid="uid://bxwemukvgjghr" path="res://Entities/TypingLabel/TypingLabel.tscn" id="2_typing"]
 [ext_resource type="Texture2D" uid="uid://bl2juawbhddru" path="res://Textures/Ui - Layer 1.png" id="2_y3mms"]
 [ext_resource type="Theme" uid="uid://b6vxvs080c1o3" path="res://Themes/Label.tres" id="3_q3tpk"]
@@ -13,8 +14,9 @@ region = Rect2(69, 197, 504, 150)
 z_index = 2
 script = ExtResource("1_y3mms")
 
-[node name="Hero" type="Node2D" parent="."]
-position = Vector2(160, 240)
+[node name="Hero" type="Sprite2D" parent="."]
+position = Vector2(160, 193)
+texture = ExtResource("2_q3tpk")
 
 [node name="Ui-Layer1" type="Sprite2D" parent="."]
 position = Vector2(320, 277)
@@ -23,14 +25,14 @@ texture = SubResource("AtlasTexture_q3tpk")
 [node name="NameLabel" type="Label" parent="."]
 offset_left = 90.0
 offset_top = 217.0
-offset_right = 200.0
+offset_right = 552.0
 offset_bottom = 245.0
 theme = ExtResource("3_q3tpk")
 
 [node name="DialogLabel" parent="." instance=ExtResource("2_typing")]
-offset_left = 200.0
-offset_top = 217.0
-offset_right = 555.0
+offset_left = 89.0
+offset_top = 246.0
+offset_right = 552.0
 offset_bottom = 334.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

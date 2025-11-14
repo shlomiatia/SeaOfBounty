@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgtdil6blavq2"
-path="res://.godot/imported/IMG_3354.PNG-b833ade72c956ac7141ddfb34b876e8d.ctex"
+uid="uid://c11pv0ms2vp16"
+path="res://.godot/imported/Weapon.PNG-d50eaef6d5248bf4db1d5b033ecd35c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Finished characters/Monster Hunter/IMG_3354.PNG"
-dest_files=["res://.godot/imported/IMG_3354.PNG-b833ade72c956ac7141ddfb34b876e8d.ctex"]
+source_file="res://Textures/BattleUnits/OneEye/Weapon.PNG"
+dest_files=["res://.godot/imported/Weapon.PNG-d50eaef6d5248bf4db1d5b033ecd35c9.ctex"]
 
 [params]
 

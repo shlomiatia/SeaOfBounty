@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwdoaq0l3uktb"
-path="res://.godot/imported/Hand.png-59eb671d28945adb564fa21d1d6481e1.ctex"
+uid="uid://cuehndisbff5b"
+path="res://.godot/imported/Weapon.PNG-fa250fdbc4302860b8acac38757c71cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Finished characters/Monster Hunter/Hand.png"
-dest_files=["res://.godot/imported/Hand.png-59eb671d28945adb564fa21d1d6481e1.ctex"]
+source_file="res://Textures/BattleUnits/Fisherman/Weapon.PNG"
+dest_files=["res://.godot/imported/Weapon.PNG-fa250fdbc4302860b8acac38757c71cf.ctex"]
 
 [params]
 

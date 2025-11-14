@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://638n4mto4dki"
-path="res://.godot/imported/IMG_3346.PNG-106f19a3f02a216d755cc276aa070ef7.ctex"
+uid="uid://c3m7lfo341t3g"
+path="res://.godot/imported/Weapon3.PNG-6ed10c3d908a7e2f6ecab56e29f6e180.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Finished characters/Musketeer/IMG_3346.PNG"
-dest_files=["res://.godot/imported/IMG_3346.PNG-106f19a3f02a216d755cc276aa070ef7.ctex"]
+source_file="res://Textures/BattleUnits/FireMage/Weapon3.PNG"
+dest_files=["res://.godot/imported/Weapon3.PNG-6ed10c3d908a7e2f6ecab56e29f6e180.ctex"]
 
 [params]
 

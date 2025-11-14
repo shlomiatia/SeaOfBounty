@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3m7lfo341t3g"
-path="res://.godot/imported/IMG_3341.PNG-86d826d9bf42c6f06337b59959187e21.ctex"
+uid="uid://m4c4jhdoth13"
+path="res://.godot/imported/Normal.PNG-b62d0f6d52d86e7359edac0810132f24.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Finished characters/Fire wizard/IMG_3341.PNG"
-dest_files=["res://.godot/imported/IMG_3341.PNG-86d826d9bf42c6f06337b59959187e21.ctex"]
+source_file="res://Textures/BattleUnits/Musketeer/Normal.PNG"
+dest_files=["res://.godot/imported/Normal.PNG-b62d0f6d52d86e7359edac0810132f24.ctex"]
 
 [params]
 

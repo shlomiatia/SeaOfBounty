@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwyd14vwo7ger"
-path="res://.godot/imported/IMG_3347.PNG-b66d0d0a5d86235f806c8c63f5c070b8.ctex"
+uid="uid://638n4mto4dki"
+path="res://.godot/imported/Weapon.PNG-1764f111859e5e01c1e12901e0dc384f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Finished characters/healer mage/IMG_3347.PNG"
-dest_files=["res://.godot/imported/IMG_3347.PNG-b66d0d0a5d86235f806c8c63f5c070b8.ctex"]
+source_file="res://Textures/BattleUnits/Musketeer/Weapon.PNG"
+dest_files=["res://.godot/imported/Weapon.PNG-1764f111859e5e01c1e12901e0dc384f.ctex"]
 
 [params]
 

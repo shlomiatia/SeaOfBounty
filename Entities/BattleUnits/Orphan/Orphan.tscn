@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://jcucm5nqpvg7"]
 
-[ext_resource type="Texture2D" uid="uid://5ccalp0qy0w0" path="res://Textures/Finished characters/Orphan/IMG_3351.PNG" id="1_7mqyg"]
+[ext_resource type="Texture2D" uid="uid://5ccalp0qy0w0" path="res://Textures/BattleUnits/Orphan/Normal.PNG" id="1_7mqyg"]
 [ext_resource type="Script" uid="uid://blitmqem0wv3w" path="res://Scripts/battle_unit.gd" id="1_77el4"]
-[ext_resource type="Texture2D" uid="uid://da3nsy7ke7p0k" path="res://Textures/Finished characters/Orphan/IMG_3353.PNG" id="2_77el4"]
+[ext_resource type="Texture2D" uid="uid://da3nsy7ke7p0k" path="res://Textures/BattleUnits/Orphan/Weapon.PNG" id="2_77el4"]
 
 [sub_resource type="Animation" id="Animation_d6qew"]
 resource_name = "Attack"

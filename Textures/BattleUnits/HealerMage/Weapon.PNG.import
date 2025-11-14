@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://m4mtkwgy3pwv"
-path="res://.godot/imported/IMG_3339.PNG-041b2b90de3e54ed285d252b27278a41.ctex"
+uid="uid://dt8u6j5rd72pg"
+path="res://.godot/imported/Weapon.PNG-eee39ebbc22654bd571a57214da3e0ca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Finished characters/Fire wizard/IMG_3339.PNG"
-dest_files=["res://.godot/imported/IMG_3339.PNG-041b2b90de3e54ed285d252b27278a41.ctex"]
+source_file="res://Textures/BattleUnits/HealerMage/Weapon.PNG"
+dest_files=["res://.godot/imported/Weapon.PNG-eee39ebbc22654bd571a57214da3e0ca.ctex"]
 
 [params]
 

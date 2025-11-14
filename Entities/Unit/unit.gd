@@ -60,10 +60,10 @@ func get_frame_coordinates(character_name: String) -> Array:
         "OneEye":
             start_x = 165
             start_y = 1
-        "Healer":
+        "HealerMage":
             start_x = 1
             start_y = 54
-        "Fire":
+        "FireMage":
             start_x = 165
             start_y = 54
         "Fisherman":

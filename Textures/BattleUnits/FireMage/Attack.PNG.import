@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3qwng2lshr82"
-path="res://.godot/imported/IMG_3349.PNG-79a6fe14985c1f8de6e78481f9744742.ctex"
+uid="uid://b880d5vfhim5d"
+path="res://.godot/imported/Attack.PNG-caa15ddd5141a08a80eaf0922deeb30b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Finished characters/One eye/IMG_3349.PNG"
-dest_files=["res://.godot/imported/IMG_3349.PNG-79a6fe14985c1f8de6e78481f9744742.ctex"]
+source_file="res://Textures/BattleUnits/FireMage/Attack.PNG"
+dest_files=["res://.godot/imported/Attack.PNG-caa15ddd5141a08a80eaf0922deeb30b.ctex"]
 
 [params]
 

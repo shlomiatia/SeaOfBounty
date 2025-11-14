@@ -4,13 +4,12 @@ signal dialog_finished
 
 @onready var description_label: TypingLabel = $CanvasLayer/DescriptionLabel
 @onready var dialog_label: TypingLabel = $DialogLabel
-@onready var hero_placeholder: Node2D = $Hero
+@onready var hero_placeholder: Sprite2D = $Hero
 @onready var name_label: Label = $NameLabel
 
 @export var dialog_pairs: Array[Array] = []
 
 var current_index: int = 0
-var current_battle_unit: BattleUnit = null
 var is_input_disabled: bool = true
 
 const HERO_DATA = {
@@ -61,30 +60,16 @@ func _show_current_dialog() -> void:
         dialog_label.visible = false
         description_label.text = text_str
         name_label.visible = false
+        hero_placeholder.hide()
 
-        if current_battle_unit:
-            hero_placeholder.remove_child(current_battle_unit)
-            current_battle_unit.queue_free()
-            current_battle_unit = null
     else:
         description_label.visible = false
         dialog_label.visible = true
         dialog_label.text = text_str
 
-        _load_battle_unit(name_str)
+        hero_placeholder.texture = load("res://Textures/BattleUnits/%s/Normal.PNG" % [name_str])
+        hero_placeholder.show()
         _set_hero_name_and_color(name_str)
-
-func _load_battle_unit(hero_name: String) -> void:
-    if current_battle_unit:
-        hero_placeholder.remove_child(current_battle_unit)
-        current_battle_unit.queue_free()
-        current_battle_unit = null
-
-    var unit_path = "res://Entities/BattleUnits/%s/%s.tscn" % [hero_name, hero_name]
-    var unit_scene = load(unit_path)
-    if unit_scene:
-        current_battle_unit = unit_scene.instantiate() as BattleUnit
-        hero_placeholder.add_child(current_battle_unit)
 
 func _set_hero_name_and_color(hero_name: String) -> void:
     if HERO_DATA.has(hero_name):
@@ -104,11 +89,7 @@ func _finish_dialog() -> void:
     description_label.visible = false
     dialog_label.visible = false
     name_label.visible = false
-
-    if current_battle_unit:
-        hero_placeholder.remove_child(current_battle_unit)
-        current_battle_unit.queue_free()
-        current_battle_unit = null
+    hero_placeholder.hide()
 
     is_input_disabled = true
     dialog_finished.emit()
