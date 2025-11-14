@@ -27,9 +27,9 @@ const movement_speed: float = 300.0
 
 var moved: bool
 var activated: bool
-
 var text_list: Array[String] = []
 var current_text_index: int = 0
+var audio_stream_player_tween: Tween
 
 func _ready() -> void:
     if sprite_frames:
@@ -82,6 +82,11 @@ func move_to(target_grid_pos: Vector2i) -> void:
     await animate_along_path(tile_path)
 
 func animate_along_path(tile_path: Array[Vector2i]) -> void:
+    if audio_stream_player_tween:
+        audio_stream_player.volume_db = 0
+        audio_stream_player_tween.kill()
+        audio_stream_player_tween = null
+
     audio_stream_player.play()
     for i in range(1, tile_path.size()):
         var target_tile = tile_path[i]
@@ -169,9 +174,10 @@ func _finish_text_list() -> void:
     typing_label.visible = false
     text_list_finished.emit()
 
-func fade_out_sound(duration: float = 5.0):
-    var tween = create_tween()
-    tween.tween_property(audio_stream_player, "volume_db", -80, duration)
-    tween.tween_callback(audio_stream_player.stop)
-    await tween.finished
+func fade_out_sound(duration: float = 2.0):
+    audio_stream_player_tween = create_tween()
+    audio_stream_player_tween.tween_property(audio_stream_player, "volume_db", -80, duration)
+    audio_stream_player_tween.tween_callback(audio_stream_player.stop)
+    await audio_stream_player_tween.finished
     audio_stream_player.volume_db = 0
+    audio_stream_player_tween = null
