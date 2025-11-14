@@ -29,7 +29,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_7sabd")
 }],
 "loop": true,
-"name": &"bottom",
+"name": &"down",
 "speed": 5.0
 }, {
 "frames": [{

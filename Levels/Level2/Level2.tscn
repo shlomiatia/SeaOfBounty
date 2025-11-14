@@ -60,15 +60,15 @@ tile_map_data = PackedByteArray("AAAAAAAAAAANAAUAAAAAAAEAAAANAAcAAAAAAAIAAAAOAAE
 
 [node name="Orphan" parent="Main/Units" index="0" instance=ExtResource("4_p5es7")]
 position = Vector2(22, 174)
-damage = 60
 
 [node name="Enemy" parent="Main/Units" index="1" instance=ExtResource("5_nce42")]
 position = Vector2(256, 170)
-hp = 10
-damage = 10
+hp = 90
+initial_direction = "left"
 
 [node name="Enemy2" parent="Main/Units" index="2" instance=ExtResource("5_nce42")]
 position = Vector2(613, 20)
+initial_direction = "left"
 
 [node name="Tutorial" type="Node2D" parent="."]
 visible = false

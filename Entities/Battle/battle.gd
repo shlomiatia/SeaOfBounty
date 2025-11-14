@@ -68,7 +68,7 @@ func _perform_attack(hero: Unit, enemy: Unit, battle_hero: BattleUnit) -> void:
 
 func _perform_defend(hero: Unit, enemy: Unit) -> void:
     label.text = "Defend"
-    battle_meter.start("defense")
+    battle_meter.start("defend")
     var defend_value = await battle_meter.indicator_stopped
 
     await assign_damage(enemy, hero, hero_hp_label, defend_value)
