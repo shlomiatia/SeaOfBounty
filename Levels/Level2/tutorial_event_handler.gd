@@ -4,6 +4,8 @@ class_name TutorialEventHandler extends ColorRect
 @onready var typing_label: TypingLabel = $"../Tutorial/TypingLabel"
 @onready var map: Map = $"../Main/Map"
 @onready var main: Main = $"../Main"
+@onready var tutorial_highlight: TileMapLayer = $"../TutorialHighlight"
+@onready var tutorial_label: TypingLabel = $"../TutorialLabel"
 
 var tutorial_active: bool = false
 var tutorial_step: int = 0
@@ -15,9 +17,9 @@ var tutorial_cells: Array[Vector2i] = [
     Vector2i(7, 2),
     Vector2i(7, 2),
     Vector2i(7, 0),
-    Vector2i(0, 4),  # New step 7
-    Vector2i(2, 2),  # New step 8
-    Vector2i(2, 0)   # New step 9
+    Vector2i(0, 4),
+    Vector2i(2, 2),
+    Vector2i(2, 0)
 ]
 
 
