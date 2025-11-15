@@ -39,27 +39,32 @@ func _input(event: InputEvent) -> void:
 
         if clicked_cell == tutorial_cells[tutorial_step]:
             tutorial_active = false
+            tutorial_highlight.clear()
 
             if tutorial_step == 0:
                 show_tutorial_at_step(1)
             elif tutorial_step == 1:
                 tutorial.visible = false
+                tutorial_label.text = ""
             elif tutorial_step == 2:
                 show_tutorial_at_step(3)
             elif tutorial_step == 3:
                 show_tutorial_at_step(4)
             elif tutorial_step == 4:
                 tutorial.visible = false
+                tutorial_label.text = ""
             elif tutorial_step == 5:
                 show_tutorial_at_step(6)
             elif tutorial_step == 6:
                 tutorial.visible = false
+                tutorial_label.text = ""
             elif tutorial_step == 7:
                 show_tutorial_at_step(8)
             elif tutorial_step == 8:
                 show_tutorial_at_step(9)
             elif tutorial_step == 9:
                 tutorial.visible = false
+                tutorial_label.text = ""
         else:
             get_viewport().set_input_as_handled()
             typing_label.text = "Click me!"
@@ -71,6 +76,25 @@ func on_player_turn_started() -> void:
     elif tutorial_step == 4:
         show_tutorial_at_step(5)
 
+func get_tutorial_text(step: int) -> String:
+    match step:
+        0:
+            return "Move cursor with mouse / D-pad / WASD.\nSelect kate with left mouse button / gamepad A / enter."
+        1:
+            return "Select the enemy to attack it."
+        2:
+            return "Select the enemy to see it's range."
+        3:
+            return "Move kate outside the enemy range."
+        7:
+            return "Finn has a ranged attack.\nSelect him to see it's range."
+        8:
+            return "Move Finn into range."
+        9:
+            return "Attack the enemy.\nIt's out of range and won't retaliate."
+        _:
+            return ""
+
 func show_tutorial_at_step(step: int) -> void:
     tutorial_step = step
     var target_position = map.map_to_local(tutorial_cells[step])
@@ -78,3 +102,13 @@ func show_tutorial_at_step(step: int) -> void:
     tutorial.visible = true
     tutorial_active = true
     typing_label.text = ""
+
+    tutorial_highlight.clear()
+    var map_rect = map.get_used_rect()
+    for x in range(map_rect.position.x, map_rect.position.x + map_rect.size.x):
+        for y in range(map_rect.position.y, map_rect.position.y + map_rect.size.y):
+            var cell = Vector2i(x, y)
+            if cell != tutorial_cells[step]:
+                tutorial_highlight.set_cell(cell, 0, Vector2i(2, 0))
+
+    tutorial_label.text = get_tutorial_text(step)

@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://3shc41rae0sc"]
+[gd_scene load_steps=21 format=3 uid="uid://3shc41rae0sc"]
 
 [ext_resource type="PackedScene" uid="uid://05oo7vpmyn03" path="res://Entities/Unit/Unit.tscn" id="1_6tfl6"]
 [ext_resource type="Texture2D" uid="uid://smaao715r2hq" path="res://Textures/Monsters enemies/Swamp monster/Swamp monster קטן.png" id="2_rp5vi"]
 [ext_resource type="Shader" uid="uid://b20ld62ku3mg8" path="res://Entities/Unit/Reflection.gdshader" id="3_gpogl"]
 [ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="4_3muu2"]
 [ext_resource type="Shader" uid="uid://bn0wv35v1nuq4" path="res://Entities/Unit/Unit.gdshader" id="5_vxbu3"]
+[ext_resource type="AudioStream" uid="uid://bwip184ynacos" path="res://Sounds/Sfx/monster screech_.wav" id="6_rp5vi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p337n"]
 atlas = ExtResource("2_rp5vi")
@@ -178,3 +179,6 @@ frame_progress = 0.0
 [node name="AnimatedSprite2D" parent="." index="1"]
 material = SubResource("ShaderMaterial_p337n")
 sprite_frames = SubResource("SpriteFrames_1vx1y")
+
+[node name="AudioStreamPlayer" parent="." index="5"]
+stream = ExtResource("6_rp5vi")

@@ -8,5 +8,6 @@ atlas = ExtResource("1_rjiuo")
 region = Rect2(120, 0, 40, 40)
 
 [node name="Cursor" type="Sprite2D"]
+z_index = 1
 texture = SubResource("AtlasTexture_04jnc")
 script = ExtResource("2_in1vo")

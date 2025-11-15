@@ -88,6 +88,8 @@ func move_to(target_grid_pos: Vector2i) -> void:
     await animate_along_path(tile_path)
 
 func animate_along_path(tile_path: Array[Vector2i]) -> void:
+    if tile_path.size() < 2:
+        return
     if audio_stream_player_tween:
         audio_stream_player.volume_db = 0
         audio_stream_player_tween.kill()
