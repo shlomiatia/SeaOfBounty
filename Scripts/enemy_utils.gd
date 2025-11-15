@@ -25,7 +25,7 @@ static func execute_enemy_ai(main: Main) -> void:
             if shortest_path_in_range.size() == 0:
                 path = Utils.find_path_to_tile_with_max_movement(enemy, hero_pos, main.map)
 
-                if shortest_path.size() == 0 || path.size() < shortest_path.size():
+                if path.size() > 0 && (shortest_path.size() == 0 || path.size() < shortest_path.size()):
                     shortest_path = path
                     nearest_hero = hero
         

@@ -7,6 +7,10 @@ var stage := 0
 func _ready() -> void:
     await get_tree().create_timer(1.0).timeout
     start()
+
+func _input(event: InputEvent) -> void:
+    if event.is_action_pressed("cancel"):
+        get_tree().change_scene_to_file("res://Levels/Level4/Level4.tscn")
     
 func start() -> void:
     stage = 1

@@ -127,7 +127,7 @@ shader = ExtResource("4_1i3bn")
 shader_parameter/hide_pixels = 0.0
 shader_parameter/modulate = Color(0, 0, 0, 1)
 
-[node name="OneEye" instance=ExtResource("1_34gy5")]
+[node name="OneEye" groups=["heroes"] instance=ExtResource("1_34gy5")]
 max_movement = 3
 attack_range = 3
 sprite_frames = SubResource("SpriteFrames_jsgm1")

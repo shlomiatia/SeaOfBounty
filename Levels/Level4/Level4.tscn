@@ -41,23 +41,58 @@ position = Vector2(97, 337)
 
 [node name="Enemy6" parent="Main/Units" index="8" instance=ExtResource("5_ldvuh")]
 position = Vector2(376, 337)
+max_hp = 120
+hp = 120
+damage = 60
+max_movement = 3
+attack_range = 2
 
 [node name="Enemy7" parent="Main/Units" index="9" instance=ExtResource("5_ldvuh")]
 position = Vector2(577, 55)
+max_hp = 120
+hp = 120
+damage = 60
+max_movement = 3
+attack_range = 2
 
 [node name="Enemy8" parent="Main/Units" index="10" instance=ExtResource("5_ldvuh")]
 position = Vector2(501, 217)
+max_hp = 120
+hp = 120
+damage = 60
+max_movement = 3
+attack_range = 2
 
 [node name="Enemy9" parent="Main/Units" index="11" instance=ExtResource("5_ldvuh")]
 position = Vector2(618, 217)
+max_hp = 120
+hp = 120
+damage = 60
+max_movement = 3
+attack_range = 2
 
 [node name="Enemy10" parent="Main/Units" index="12" instance=ExtResource("5_ldvuh")]
 position = Vector2(619, 170)
+max_hp = 120
+hp = 120
+damage = 60
+max_movement = 3
+attack_range = 2
 
 [node name="Enemy11" parent="Main/Units" index="13" instance=ExtResource("5_ldvuh")]
 position = Vector2(619, 130)
+max_hp = 120
+hp = 120
+damage = 60
+max_movement = 3
+attack_range = 2
 
 [node name="Enemy12" parent="Main/Units" index="14" instance=ExtResource("5_ldvuh")]
 position = Vector2(620, 94)
+max_hp = 120
+hp = 120
+damage = 60
+max_movement = 3
+attack_range = 2
 
 [editable path="Main"]
