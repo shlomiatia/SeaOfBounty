@@ -164,7 +164,7 @@ scale = Vector2(1, -1)
 sprite_frames = SubResource("SpriteFrames_rlkj8")
 animation = &"left"
 autoplay = "right"
-frame_progress = 0.164638
+frame_progress = 0.393646
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_qbw00")
@@ -179,6 +179,7 @@ libraries = {
 autoplay = "Default"
 
 [node name="TypingLabel" parent="." instance=ExtResource("6_rlkj8")]
+z_index = 2
 offset_left = -17.0
 offset_top = 22.0
 offset_right = 42.0

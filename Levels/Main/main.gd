@@ -90,9 +90,12 @@ func start_turn(text: String) -> void:
         turn_label.text = "Game over :( Press to restart"
         turn_label.modulate.a = 1.0
         is_input_disabled = false
+        cursor.is_input_disabled = false
         return
 
     if is_won():
+        is_input_disabled = true
+        cursor.is_input_disabled = true
         won.emit()
         return
         
