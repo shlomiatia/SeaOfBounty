@@ -33,9 +33,9 @@ func on_won() -> void:
     orphan.start_text_list(["Huh! That's what you get!"])
     await orphan.text_list_finished
 
-    var monster1 = preload("res://Entities/Unit/Units/Enemy.tscn").instantiate()
-    var monster2 = preload("res://Entities/Unit/Units/Enemy.tscn").instantiate()
-    var monster3 = preload("res://Entities/Unit/Units/Enemy.tscn").instantiate()
+    var monster1 = preload("res://Entities/Unit/Units/Monster.tscn").instantiate()
+    var monster2 = preload("res://Entities/Unit/Units/Monster.tscn").instantiate()
+    var monster3 = preload("res://Entities/Unit/Units/Monster.tscn").instantiate()
 
     units_node.add_child(monster1)
     units_node.add_child(monster2)

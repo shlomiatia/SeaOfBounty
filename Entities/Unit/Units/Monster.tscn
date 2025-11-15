@@ -1,13 +1,13 @@
 [gd_scene load_steps=20 format=3 uid="uid://3shc41rae0sc"]
 
-[ext_resource type="PackedScene" uid="uid://05oo7vpmyn03" path="res://Entities/Unit/Unit.tscn" id="1_58qg8"]
-[ext_resource type="Texture2D" uid="uid://smaao715r2hq" path="res://Textures/Monsters enemies/Swamp monster/Swamp monster קטן.png" id="2_5dv8j"]
-[ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="2_ack4w"]
-[ext_resource type="Shader" uid="uid://b20ld62ku3mg8" path="res://Entities/Unit/Reflection.gdshader" id="2_olqx6"]
-[ext_resource type="Shader" uid="uid://bn0wv35v1nuq4" path="res://Entities/Unit/Unit.gdshader" id="4_5dv8j"]
+[ext_resource type="PackedScene" uid="uid://05oo7vpmyn03" path="res://Entities/Unit/Unit.tscn" id="1_6tfl6"]
+[ext_resource type="Texture2D" uid="uid://smaao715r2hq" path="res://Textures/Monsters enemies/Swamp monster/Swamp monster קטן.png" id="2_rp5vi"]
+[ext_resource type="Shader" uid="uid://b20ld62ku3mg8" path="res://Entities/Unit/Reflection.gdshader" id="3_gpogl"]
+[ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="4_3muu2"]
+[ext_resource type="Shader" uid="uid://bn0wv35v1nuq4" path="res://Entities/Unit/Unit.gdshader" id="5_vxbu3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p337n"]
-atlas = ExtResource("2_5dv8j")
+atlas = ExtResource("2_rp5vi")
 region = Rect2(9, 24, 40, 31)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_olqx6"]
@@ -47,7 +47,7 @@ animations = [{
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bqqob"]
 resource_local_to_scene = true
-shader = ExtResource("2_olqx6")
+shader = ExtResource("3_gpogl")
 shader_parameter/wave_speed = 2.0
 shader_parameter/wave_amplitude = 0.001
 shader_parameter/wave_frequency = 10.0
@@ -58,19 +58,19 @@ shader_parameter/uv_bottom = 1.0
 shader_parameter/alpha = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ou22k"]
-atlas = ExtResource("2_ack4w")
+atlas = ExtResource("4_3muu2")
 region = Rect2(42, 1, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_32ibj"]
-atlas = ExtResource("2_ack4w")
+atlas = ExtResource("4_3muu2")
 region = Rect2(124, 1, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qbw00"]
-atlas = ExtResource("2_ack4w")
+atlas = ExtResource("4_3muu2")
 region = Rect2(83, 1, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rlkj8"]
-atlas = ExtResource("2_ack4w")
+atlas = ExtResource("4_3muu2")
 region = Rect2(1, 1, 40, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_58qg8"]
@@ -111,24 +111,24 @@ animations = [{
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p337n"]
 resource_local_to_scene = true
-shader = ExtResource("4_5dv8j")
+shader = ExtResource("5_vxbu3")
 shader_parameter/hide_pixels = 0.0
 shader_parameter/modulate = Color(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ack4w"]
-atlas = ExtResource("2_ack4w")
+atlas = ExtResource("4_3muu2")
 region = Rect2(42, 1, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_olqx6"]
-atlas = ExtResource("2_ack4w")
+atlas = ExtResource("4_3muu2")
 region = Rect2(124, 1, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5dv8j"]
-atlas = ExtResource("2_ack4w")
+atlas = ExtResource("4_3muu2")
 region = Rect2(83, 1, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bqqob"]
-atlas = ExtResource("2_ack4w")
+atlas = ExtResource("4_3muu2")
 region = Rect2(1, 1, 40, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1vx1y"]
@@ -167,7 +167,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Enemy" groups=["enemies"] instance=ExtResource("1_58qg8")]
+[node name="Enemy" groups=["enemies"] instance=ExtResource("1_6tfl6")]
 sprite_frames = SubResource("SpriteFrames_olqx6")
 
 [node name="Reflection" parent="." index="0"]

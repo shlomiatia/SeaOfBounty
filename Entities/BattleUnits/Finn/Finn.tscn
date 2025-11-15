@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://b2ybmxh3iri7l"]
+[gd_scene load_steps=11 format=3 uid="uid://b2ybmxh3iri7l"]
 
 [ext_resource type="Script" uid="uid://blitmqem0wv3w" path="res://Entities/BattleUnits/battle_unit.gd" id="1_v2s60"]
 [ext_resource type="Texture2D" uid="uid://dgtdil6blavq2" path="res://Textures/BattleUnits/Fisherman/Normal.PNG" id="2_5ynn3"]
 [ext_resource type="Texture2D" uid="uid://cuehndisbff5b" path="res://Textures/BattleUnits/Fisherman/Weapon.PNG" id="3_5du7i"]
 [ext_resource type="Texture2D" uid="uid://cwdoaq0l3uktb" path="res://Textures/BattleUnits/Fisherman/Hand.png" id="4_mnvfw"]
+[ext_resource type="AudioStream" uid="uid://uqmr581ybebr" path="res://Sounds/Sfx/harder attack.wav" id="5_y3pp7"]
 
 [sub_resource type="Animation" id="Animation_vrtom"]
 resource_name = "Attack"
@@ -31,6 +32,25 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0, 0.471239, 0.0]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_y3pp7")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": null
+}],
+"times": PackedFloat32Array(0.1, 1)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_e36sd"]
 resource_name = "BeforeAttack"
@@ -99,7 +119,7 @@ _data = {
 &"RESET": SubResource("Animation_sfwkr")
 }
 
-[node name="Fisherman" type="Node2D"]
+[node name="Finn" type="Node2D"]
 script = ExtResource("1_v2s60")
 
 [node name="Img3354" type="Sprite2D" parent="."]
@@ -118,3 +138,5 @@ texture = ExtResource("4_mnvfw")
 libraries = {
 &"": SubResource("AnimationLibrary_jygsl")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

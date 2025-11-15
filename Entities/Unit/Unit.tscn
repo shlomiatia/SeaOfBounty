@@ -13,10 +13,10 @@
 resource_local_to_scene = true
 shader = ExtResource("2_qbw00")
 shader_parameter/wave_speed = 2.0
-shader_parameter/wave_amplitude = 0.01
+shader_parameter/wave_amplitude = 0.001
 shader_parameter/wave_frequency = 10.0
-shader_parameter/uv_left = 0.752
-shader_parameter/uv_right = 0.988
+shader_parameter/uv_left = 0.0
+shader_parameter/uv_right = 1.0
 shader_parameter/uv_top = 0.0
 shader_parameter/uv_bottom = 1.0
 shader_parameter/alpha = 1.0

@@ -1,0 +1,269 @@
+[gd_scene load_steps=14 format=3 uid="uid://c4flhodwx6be"]
+
+[ext_resource type="Script" uid="uid://blitmqem0wv3w" path="res://Entities/BattleUnits/battle_unit.gd" id="1_d0iuv"]
+[ext_resource type="Texture2D" uid="uid://stkmmipe5fkv" path="res://Textures/Monsters enemies/מפלצות וחלק מהתקפות.png" id="2_u4qb7"]
+[ext_resource type="AudioStream" uid="uid://by31p02cajgox" path="res://Sounds/Sfx/grapple pull.wav" id="4_iwy1p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ay8e"]
+atlas = ExtResource("2_u4qb7")
+region = Rect2(321, 41, 39, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvhab"]
+atlas = SubResource("AtlasTexture_0ay8e")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjwo0"]
+atlas = ExtResource("2_u4qb7")
+region = Rect2(281, 48, 38, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqaj0"]
+atlas = ExtResource("2_u4qb7")
+region = Rect2(482, 52, 37, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7f1a0"]
+atlas = ExtResource("2_u4qb7")
+region = Rect2(364, 53, 95, 23)
+
+[sub_resource type="Animation" id="Animation_d0iuv"]
+resource_name = "Attack"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Normal:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Attack:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ProjectileTrail:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.5, 2),
+"update": 0,
+"values": [Vector2(6, -30), Vector2(-89, -30)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ProjectileTrail:region_rect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(0.5, -2, 2),
+"update": 0,
+"values": [Rect2(0, 0, 0, 23), Rect2(0, 0, 95, 23), Rect2(0, 0, 0, 23)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Projectile:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.5, 2),
+"update": 0,
+"values": [Vector2(-10, -17), Vector2(-105, -17)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Projectile:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AudioStreamPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_iwy1p")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": null
+}],
+"times": PackedFloat32Array(0, 1)
+}
+tracks/6/use_blend = true
+
+[sub_resource type="Animation" id="Animation_iwy1p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Normal:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Attack:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ProjectileTrail:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5.5, -21)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ProjectileTrail:region_rect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 0, 23)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Projectile:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-10, -17)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Projectile:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0ay8e"]
+resource_name = "MoveToBeforeAttack"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Attack:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Normal:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_hvhab"]
+resource_name = "BeforeAttack"
+step = 0.1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dx7mo"]
+_data = {
+&"Attack": SubResource("Animation_d0iuv"),
+&"BeforeAttack": SubResource("Animation_hvhab"),
+&"MoveToBeforeAttack": SubResource("Animation_0ay8e"),
+&"RESET": SubResource("Animation_iwy1p")
+}
+
+[node name="Monster" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_d0iuv")
+
+[node name="Attack" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0.5, -14.5)
+scale = Vector2(-1, 1)
+texture = SubResource("AtlasTexture_hvhab")
+
+[node name="Normal" type="Sprite2D" parent="."]
+position = Vector2(0, -11)
+scale = Vector2(-1, 1)
+texture = SubResource("AtlasTexture_yjwo0")
+
+[node name="Projectile" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-10, -17)
+scale = Vector2(-1, 1)
+texture = SubResource("AtlasTexture_lqaj0")
+
+[node name="ProjectileTrail" type="Sprite2D" parent="."]
+position = Vector2(5.5, -21)
+texture = SubResource("AtlasTexture_7f1a0")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 0, 23)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_dx7mo")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

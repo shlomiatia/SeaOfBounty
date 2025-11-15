@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dh8jigtbw6tet"]
+[gd_scene load_steps=10 format=3 uid="uid://dh8jigtbw6tet"]
 
 [ext_resource type="Texture2D" uid="uid://b3qwng2lshr82" path="res://Textures/BattleUnits/OneEye/Normal.PNG" id="1_d07oe"]
 [ext_resource type="Script" uid="uid://blitmqem0wv3w" path="res://Entities/BattleUnits/battle_unit.gd" id="1_yokgm"]
 [ext_resource type="Texture2D" uid="uid://c11pv0ms2vp16" path="res://Textures/BattleUnits/OneEye/Weapon.PNG" id="2_yokgm"]
+[ext_resource type="AudioStream" uid="uid://b88kuk5ifc6od" path="res://Sounds/Sfx/box getting crushed by piston.wav" id="4_1xmqb"]
 
 [sub_resource type="Animation" id="Animation_ybfrq"]
 resource_name = "Attack"
@@ -31,6 +32,25 @@ tracks/1/keys = {
 "update": 0,
 "values": [-1.5708, -2.35619, -1.5708, 0.0]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_1xmqb")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": null
+}],
+"times": PackedFloat32Array(0.1, 1)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_3k1kq"]
 resource_name = "BeforeAttack"
@@ -111,7 +131,7 @@ _data = {
 &"RESET": SubResource("Animation_yokgm")
 }
 
-[node name="OneEye" type="Node2D"]
+[node name="One Eye" type="Node2D"]
 script = ExtResource("1_yokgm")
 
 [node name="Img3349" type="Sprite2D" parent="."]
@@ -126,3 +146,5 @@ texture = ExtResource("2_yokgm")
 libraries = {
 &"": SubResource("AnimationLibrary_yokgm")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

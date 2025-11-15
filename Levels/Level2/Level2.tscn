@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bgisy8dr1j11b" path="res://Levels/Level2/level_2.gd" id="1_p5es7"]
 [ext_resource type="PackedScene" uid="uid://b11pnk6iom8yp" path="res://Entities/Unit/Units/Orphan.tscn" id="4_p5es7"]
 [ext_resource type="Texture2D" uid="uid://cibgr2kd341oe" path="res://Textures/tilemap.png" id="5_1jyof"]
-[ext_resource type="PackedScene" uid="uid://3shc41rae0sc" path="res://Entities/Unit/Units/Enemy.tscn" id="5_nce42"]
+[ext_resource type="PackedScene" uid="uid://3shc41rae0sc" path="res://Entities/Unit/Units/Monster.tscn" id="5_nce42"]
 [ext_resource type="PackedScene" uid="uid://bxwemukvgjghr" path="res://Entities/TypingLabel/TypingLabel.tscn" id="6_1jyof"]
 [ext_resource type="Script" uid="uid://3gch2p37o428" path="res://Levels/Level2/tutorial_event_handler.gd" id="7_0ys8i"]
 

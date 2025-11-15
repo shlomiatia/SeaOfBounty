@@ -1,8 +1,9 @@
 class_name Battle extends Node2D
 
-@onready var label = $Label
-@onready var battle_meter = $BattleMeter
-@onready var hero_placeholder = $Hero
+@onready var label: Label = $Label
+@onready var battle_meter: BattleMeter = $BattleMeter
+@onready var hero_placeholder: Node2D = $Hero
+@onready var enemy_placeholder: Node2D = $Enemy
 @onready var hero_hp_label: Label = $Hero/HeroHP
 @onready var enemy_hp_label: Label = $Enemy/EnemyHP
 @onready var map: Map = $"../Map"
@@ -14,38 +15,47 @@ func start(attacker: Unit, defender: Unit) -> void:
     var defender_is_hero := defender.is_in_group("heroes")
     var can_counter_attack := _can_counter_attack(attacker, defender)
     var hero_name: String
+    var enemy_name: String
     var hero: Unit
     var enemy: Unit
 
     if defender_is_hero:
-        hero_name = defender.name
+        hero_name = defender.display_name
+        enemy_name = attacker.display_name
         hero = defender
         enemy = attacker
     else:
-        hero_name = attacker.name
+        hero_name = attacker.display_name
+        enemy_name = defender.display_name
         hero = attacker
         enemy = defender
 
     hero_hp_label.text = str(hero.hp)
     enemy_hp_label.text = str(enemy.hp)
     
-    var unit = "res://Entities/BattleUnits/%s/%s.tscn" % [hero_name, hero_name]
-    var battle_hero: BattleUnit = load(unit).instantiate() as BattleUnit
+    var hero_unit = "res://Entities/BattleUnits/%s/%s.tscn" % [hero_name, hero_name]
+    var battle_hero: BattleUnit = load(hero_unit).instantiate() as BattleUnit
     hero_placeholder.add_child(battle_hero)
-    
+
+    var enemy_unit = "res://Entities/BattleUnits/%s/%s.tscn" % [enemy_name, enemy_name]
+    var battle_enemy: BattleUnit = load(enemy_unit).instantiate() as BattleUnit
+    enemy_placeholder.add_child(battle_enemy)
+
+
     if defender_is_hero:
-        await _perform_defend(defender, attacker)
+        await _perform_defend(defender, attacker, battle_enemy)
         if attacker.hp > 0 and defender.hp > 0 and can_counter_attack:
             await _perform_attack(defender, attacker, battle_hero)
     else:
         await _perform_attack(attacker, defender, battle_hero)
         if attacker.hp > 0 and defender.hp > 0 and can_counter_attack:
-            await _perform_defend(attacker, defender)
+            await _perform_defend(attacker, defender, battle_enemy)
         
     await get_tree().create_timer(0.2).timeout
 
     visible = false
     hero_placeholder.remove_child(battle_hero)
+    enemy_placeholder.remove_child(battle_enemy)
 
     if enemy.hp == 0:
         await _fade_out_and_remove(enemy)
@@ -66,13 +76,14 @@ func _perform_attack(hero: Unit, enemy: Unit, battle_hero: BattleUnit) -> void:
     assign_damage(hero, enemy, enemy_hp_label, attack_value)
     await battle_hero.attack()
 
-func _perform_defend(hero: Unit, enemy: Unit) -> void:
+func _perform_defend(hero: Unit, enemy: Unit, battle_enemy: BattleUnit) -> void:
+    battle_enemy.start()
     label.text = "Defend"
     battle_meter.start("defend")
     var defend_value = await battle_meter.indicator_stopped
 
-    await assign_damage(enemy, hero, hero_hp_label, defend_value)
-
+    assign_damage(enemy, hero, hero_hp_label, defend_value)
+    await battle_enemy.attack()
 
 func _fade_out_and_remove(unit: Unit) -> void:
     unit.remove_from_group("heroes")

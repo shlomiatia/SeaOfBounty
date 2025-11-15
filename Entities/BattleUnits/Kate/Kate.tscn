@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://jcucm5nqpvg7"]
 
-[ext_resource type="Texture2D" uid="uid://5ccalp0qy0w0" path="res://Textures/BattleUnits/Orphan/Normal.PNG" id="1_7mqyg"]
-[ext_resource type="Script" uid="uid://blitmqem0wv3w" path="res://Entities/BattleUnits/battle_unit.gd" id="1_77el4"]
-[ext_resource type="Texture2D" uid="uid://da3nsy7ke7p0k" path="res://Textures/BattleUnits/Orphan/Weapon.PNG" id="2_77el4"]
-[ext_resource type="AudioStream" uid="uid://bkwnoar5axhau" path="res://Sounds/Sfx/ground slam.wav" id="4_adp12"]
+[ext_resource type="Script" uid="uid://blitmqem0wv3w" path="res://Entities/BattleUnits/battle_unit.gd" id="1_tgcg2"]
+[ext_resource type="Texture2D" uid="uid://5ccalp0qy0w0" path="res://Textures/BattleUnits/Orphan/Normal.PNG" id="2_ibc28"]
+[ext_resource type="Texture2D" uid="uid://da3nsy7ke7p0k" path="res://Textures/BattleUnits/Orphan/Weapon.PNG" id="3_75vt5"]
+[ext_resource type="AudioStream" uid="uid://bkwnoar5axhau" path="res://Sounds/Sfx/ground slam.wav" id="4_h8ghh"]
 
 [sub_resource type="Animation" id="Animation_d6qew"]
 resource_name = "Attack"
@@ -54,7 +54,7 @@ tracks/3/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("4_adp12")
+"stream": ExtResource("4_h8ghh")
 }, {
 "end_offset": 0.0,
 "start_offset": 0.0,
@@ -155,18 +155,18 @@ _data = {
 &"RESET": SubResource("Animation_77el4")
 }
 
-[node name="Orphan" type="Node2D"]
-script = ExtResource("1_77el4")
+[node name="Kate" type="Node2D"]
+script = ExtResource("1_tgcg2")
 
 [node name="Img3351" type="Sprite2D" parent="."]
 position = Vector2(20, -59)
-texture = ExtResource("1_7mqyg")
+texture = ExtResource("2_ibc28")
 
 [node name="Img3353" type="Sprite2D" parent="Img3351"]
 show_behind_parent = true
 position = Vector2(-58, 38)
 scale = Vector2(1.1, 1.1)
-texture = ExtResource("2_77el4")
+texture = ExtResource("3_75vt5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
