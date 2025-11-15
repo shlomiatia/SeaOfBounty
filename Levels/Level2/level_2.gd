@@ -5,6 +5,7 @@ class_name Level2 extends Node2D
 @onready var orphan: Unit = $Main/Units/Orphan
 @onready var units_node: Node2D = $Main/Units
 @onready var map: Map = $Main/Map
+@onready var fade: Fade = $Main/CanvasLayer/Fade
 
 var won_triggered: bool = false
 var fisherman: Unit
@@ -27,15 +28,18 @@ func _ready() -> void:
 
 func on_won() -> void:
     if won_triggered:
+        await fade.fade_out()
+        get_tree().change_scene_to_file("res://Levels/Level3/Level3.tscn")
         return
     won_triggered = true
 
     orphan.start_text_list(["Huh! That's what you get!"])
     await orphan.text_list_finished
 
-    var monster1 = preload("res://Entities/Unit/Units/Monster.tscn").instantiate()
-    var monster2 = preload("res://Entities/Unit/Units/Monster.tscn").instantiate()
-    var monster3 = preload("res://Entities/Unit/Units/Monster.tscn").instantiate()
+    var monster_prefab = preload("res://Entities/Unit/Units/Monster.tscn")
+    var monster1 = monster_prefab.instantiate()
+    var monster2 = monster_prefab.instantiate()
+    var monster3 = monster_prefab.instantiate()
 
     units_node.add_child(monster1)
     units_node.add_child(monster2)

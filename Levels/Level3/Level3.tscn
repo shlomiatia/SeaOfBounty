@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://doskubp37w7jt"]
+
+[ext_resource type="Script" uid="uid://ci22m2qohugap" path="res://Levels/Level3/level_3.gd" id="1_o2r2v"]
+[ext_resource type="PackedScene" uid="uid://dnwug4pxdwecg" path="res://Entities/SinWaveTransform/Fade.tscn" id="1_osmeb"]
+[ext_resource type="PackedScene" uid="uid://h3dyl075pasl" path="res://Entities/Dialog/Dialog.tscn" id="2_o2r2v"]
+
+[node name="Level3" type="Node2D"]
+script = ExtResource("1_o2r2v")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Fade" parent="CanvasLayer" instance=ExtResource("1_osmeb")]
+
+[node name="Dialog" parent="." instance=ExtResource("2_o2r2v")]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
+color = Color(0.0627451, 0.509804, 0.560784, 1)

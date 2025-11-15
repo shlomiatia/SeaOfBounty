@@ -13,8 +13,8 @@ var current_index: int = 0
 var is_input_disabled: bool = true
 
 const HERO_DATA = {
-    "Fisherman": ["Finn", "#a22633"],
-    "Orphan": ["Kate", "#fee761"],
+    "Finn": ["Finn", "#a22633"],
+    "Kate": ["Kate", "#fee761"],
     "OneEye": ["One Eye", "#f0deb4"]
 }
 

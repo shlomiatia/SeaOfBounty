@@ -17,12 +17,12 @@ func start() -> void:
     MusicPlayer.play()
     var array: Array[Array] = [
         ["", "Somwhere in the ocean..."],
-        ["Orphan", "Caught anything yet?"],
-        ["Fisherman", "The sea is silent.\nSomething is scaring the fish..."],
-        ["Orphan", "Whoo, Monsters?!"],
-        ["Fisherman", "Yes. The island folk sent word."],
-        ["Orphan", "Can we go, please??"],
-        ["Fisherman", "<sigh> We're going..."],
+        ["Kate", "Caught anything yet?"],
+        ["Finn", "The sea is silent.\nSomething is scaring the fish..."],
+        ["Kate", "Whoo, Monsters?!"],
+        ["Finn", "Yes. The island folk sent word."],
+        ["Kate", "Can we go, please??"],
+        ["Finn", "<sigh> We're going..."],
     ]
     dialog.start(array)
     dialog.dialog_finished.connect(_on_dialog_finished)
@@ -33,11 +33,11 @@ func _on_dialog_finished() -> void:
         stage += 1
         var array: Array[Array] = [
             ["OneEye", "Took you long enough, old man."],
-            ["Fisherman", "Didn't know this job was taken."],
+            ["Finn", "Didn't know this job was taken."],
             ["OneEye", "It isn't. Just don't expect me to share."],
-            ["Orphan", "So… whoever kills them first??"],
+            ["Kate", "So… whoever kills them first??"],
             ["OneEye", "You got spirit kid...\nThat's fair."],
-            ["Fisherman", "We hunt at first light.\nGet some rest."],
+            ["Finn", "We hunt at first light.\nGet some rest."],
         ]
         await fade.fade_in()
         dialog.start(array)
@@ -46,7 +46,7 @@ func _on_dialog_finished() -> void:
         stage += 1
         var array: Array[Array] = [
             ["", "The next morning...\nKate bed is empty."],
-            ["Fisherman", "Not again..."],
+            ["Finn", "Not again..."],
         ]
         await fade.fade_in()
         dialog.start(array)

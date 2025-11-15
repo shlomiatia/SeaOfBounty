@@ -67,7 +67,8 @@ func start_enemy_turn() -> void:
     is_input_disabled = true
     cursor.is_input_disabled = true
 
-    await start_turn("Enemy Turn")
+    if await start_turn("Enemy Turn"):
+        return
 
     await EnemyUtils.execute_enemy_ai(self)
 
@@ -85,19 +86,19 @@ func start_player_turn() -> void:
 
     await start_turn("Player Turn")
     
-func start_turn(text: String) -> void:
+func start_turn(text: String) -> bool:
     if is_game_over():
         turn_label.text = "Game over :( Press to restart"
         turn_label.modulate.a = 1.0
         is_input_disabled = false
         cursor.is_input_disabled = false
-        return
+        return true
 
     if is_won():
         is_input_disabled = true
         cursor.is_input_disabled = true
         won.emit()
-        return
+        return true
         
     turn_label.text = text
     turn_label.modulate.a = 1.0
@@ -107,6 +108,8 @@ func start_turn(text: String) -> void:
     var tween = create_tween()
     tween.tween_property(turn_label, "modulate:a", 0.0, 0.5)
     await tween.finished
+
+    return false
 
 func start_enemy_turn_if_needed() -> void:
     if is_won() || get_tree().get_nodes_in_group("heroes").filter(func(hero: Unit): return !hero.moved || !hero.activated).size() == 0:
