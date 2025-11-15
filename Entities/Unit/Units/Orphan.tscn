@@ -188,6 +188,7 @@ display_name = "Kate"
 [node name="Reflection" parent="." index="0"]
 material = SubResource("ShaderMaterial_r4e42")
 sprite_frames = SubResource("SpriteFrames_nqs6m")
+frame_progress = 0.0
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 material = SubResource("ShaderMaterial_t17gy")
