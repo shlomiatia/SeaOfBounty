@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://da3nsy7ke7p0k"
-path="res://.godot/imported/Weapon.PNG-067d55ae25af9a67613628b7a96e057c.ctex"
+uid="uid://dt8u6j5rd72pg"
+path="res://.godot/imported/Weapon.PNG-d5dec7b40aa81161b4511471bc419bf8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/BattleUnits/Orphan/Weapon.PNG"
-dest_files=["res://.godot/imported/Weapon.PNG-067d55ae25af9a67613628b7a96e057c.ctex"]
+source_file="res://Textures/BattleUnits/Lia/Weapon.PNG"
+dest_files=["res://.godot/imported/Weapon.PNG-d5dec7b40aa81161b4511471bc419bf8.ctex"]
 
 [params]
 

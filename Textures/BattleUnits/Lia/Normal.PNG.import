@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5ccalp0qy0w0"
-path="res://.godot/imported/Normal.PNG-01ccc94f5099ec42fccd58a57d0a056b.ctex"
+uid="uid://cwyd14vwo7ger"
+path="res://.godot/imported/Normal.PNG-d9891b6881a7b9f020f0ef1e3395ed25.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/BattleUnits/Orphan/Normal.PNG"
-dest_files=["res://.godot/imported/Normal.PNG-01ccc94f5099ec42fccd58a57d0a056b.ctex"]
+source_file="res://Textures/BattleUnits/Lia/Normal.PNG"
+dest_files=["res://.godot/imported/Normal.PNG-d9891b6881a7b9f020f0ef1e3395ed25.ctex"]
 
 [params]
 

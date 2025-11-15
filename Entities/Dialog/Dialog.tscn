@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://h3dyl075pasl"]
 
 [ext_resource type="Script" uid="uid://bfvtemqr0vpmp" path="res://Entities/Dialog/dialog.gd" id="1_y3mms"]
-[ext_resource type="Texture2D" uid="uid://dgtdil6blavq2" path="res://Textures/BattleUnits/Fisherman/Normal.PNG" id="2_q3tpk"]
+[ext_resource type="Texture2D" uid="uid://dgtdil6blavq2" path="res://Textures/BattleUnits/Finn/Normal.PNG" id="2_q3tpk"]
 [ext_resource type="PackedScene" uid="uid://bxwemukvgjghr" path="res://Entities/TypingLabel/TypingLabel.tscn" id="2_typing"]
 [ext_resource type="Texture2D" uid="uid://bl2juawbhddru" path="res://Textures/Ui - Layer 1.png" id="2_y3mms"]
 [ext_resource type="Theme" uid="uid://b6vxvs080c1o3" path="res://Themes/Label.tres" id="3_q3tpk"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cuehndisbff5b"
-path="res://.godot/imported/Weapon.PNG-fa250fdbc4302860b8acac38757c71cf.ctex"
+uid="uid://da3nsy7ke7p0k"
+path="res://.godot/imported/Weapon.PNG-2645b360a161961ba0bb55f82f5fb12e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/BattleUnits/Fisherman/Weapon.PNG"
-dest_files=["res://.godot/imported/Weapon.PNG-fa250fdbc4302860b8acac38757c71cf.ctex"]
+source_file="res://Textures/BattleUnits/Kate/Weapon.PNG"
+dest_files=["res://.godot/imported/Weapon.PNG-2645b360a161961ba0bb55f82f5fb12e.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwdoaq0l3uktb"
-path="res://.godot/imported/Hand.png-51937af4ce92d89f85480b9810e102d0.ctex"
+uid="uid://dgtdil6blavq2"
+path="res://.godot/imported/Normal.PNG-70a96281595f518f4cc7b92fca217b70.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/BattleUnits/Fisherman/Hand.png"
-dest_files=["res://.godot/imported/Hand.png-51937af4ce92d89f85480b9810e102d0.ctex"]
+source_file="res://Textures/BattleUnits/Finn/Normal.PNG"
+dest_files=["res://.godot/imported/Normal.PNG-70a96281595f518f4cc7b92fca217b70.ctex"]
 
 [params]
 

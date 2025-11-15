@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dt8u6j5rd72pg"
-path="res://.godot/imported/Weapon.PNG-eee39ebbc22654bd571a57214da3e0ca.ctex"
+uid="uid://cuehndisbff5b"
+path="res://.godot/imported/Weapon.PNG-7c95ca19890cdf3fe9665899736c351c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/BattleUnits/HealerMage/Weapon.PNG"
-dest_files=["res://.godot/imported/Weapon.PNG-eee39ebbc22654bd571a57214da3e0ca.ctex"]
+source_file="res://Textures/BattleUnits/Finn/Weapon.PNG"
+dest_files=["res://.godot/imported/Weapon.PNG-7c95ca19890cdf3fe9665899736c351c.ctex"]
 
 [params]
 

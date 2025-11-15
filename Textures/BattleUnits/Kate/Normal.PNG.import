@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwyd14vwo7ger"
-path="res://.godot/imported/Normal.PNG-f2811c5a94a12007768f6ad175043a77.ctex"
+uid="uid://5ccalp0qy0w0"
+path="res://.godot/imported/Normal.PNG-8a554f3fc3fb8c291e49cefe6f0b9260.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/BattleUnits/HealerMage/Normal.PNG"
-dest_files=["res://.godot/imported/Normal.PNG-f2811c5a94a12007768f6ad175043a77.ctex"]
+source_file="res://Textures/BattleUnits/Kate/Normal.PNG"
+dest_files=["res://.godot/imported/Normal.PNG-8a554f3fc3fb8c291e49cefe6f0b9260.ctex"]
 
 [params]
 
