@@ -1,0 +1,134 @@
+[gd_scene load_steps=15 format=3 uid="uid://0s4ylsmp2k26"]
+
+[ext_resource type="PackedScene" uid="uid://05oo7vpmyn03" path="res://Entities/Unit/Unit.tscn" id="1_4y516"]
+[ext_resource type="Texture2D" uid="uid://b5sx3d1oldjtc" path="res://Textures/Monsters enemies/sheet puffing fish/דג מתנפח קטן .png" id="2_1ae0a"]
+[ext_resource type="Shader" uid="uid://b20ld62ku3mg8" path="res://Entities/Unit/Reflection.gdshader" id="3_ymjga"]
+[ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="4_6n4rm"]
+[ext_resource type="Shader" uid="uid://bn0wv35v1nuq4" path="res://Entities/Unit/Unit.gdshader" id="5_pkid6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o53la"]
+atlas = ExtResource("2_1ae0a")
+region = Rect2(5, 25, 40, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uexxa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o53la")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o53la")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o53la")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o53la")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dreps"]
+resource_local_to_scene = true
+shader = ExtResource("3_ymjga")
+shader_parameter/wave_speed = 2.0
+shader_parameter/wave_amplitude = 0.001
+shader_parameter/wave_frequency = 10.0
+shader_parameter/uv_left = 0.0
+shader_parameter/uv_right = 1.0
+shader_parameter/uv_top = 0.0
+shader_parameter/uv_bottom = 1.0
+shader_parameter/alpha = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ou22k"]
+atlas = ExtResource("4_6n4rm")
+region = Rect2(42, 1, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32ibj"]
+atlas = ExtResource("4_6n4rm")
+region = Rect2(124, 1, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbw00"]
+atlas = ExtResource("4_6n4rm")
+region = Rect2(83, 1, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlkj8"]
+atlas = ExtResource("4_6n4rm")
+region = Rect2(1, 1, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bpino"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ou22k")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32ibj")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbw00")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlkj8")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r5wf8"]
+resource_local_to_scene = true
+shader = ExtResource("5_pkid6")
+shader_parameter/hide_pixels = 0.0
+shader_parameter/modulate = Color(0, 0, 0, 1)
+
+[node name="Pufferfish" groups=["enemies"] instance=ExtResource("1_4y516")]
+max_hp = 120
+hp = 120
+damage = 60
+max_movement = 3
+attack_range = 2
+sprite_frames = SubResource("SpriteFrames_uexxa")
+display_name = "Puffer"
+
+[node name="Reflection" parent="." index="0"]
+material = SubResource("ShaderMaterial_dreps")
+sprite_frames = SubResource("SpriteFrames_bpino")
+frame_progress = 0.0
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_r5wf8")
+sprite_frames = SubResource("SpriteFrames_bpino")

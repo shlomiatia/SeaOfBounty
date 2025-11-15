@@ -15,7 +15,7 @@ void vertex() {
 
 void fragment() {
     vec2 uv = (UV - vec2(0.25)) * vec2(2.0);
-    COLOR = texture(TEXTURE, uv);    
+    COLOR = texture(TEXTURE, uv);
     uv.x += 0.5 - (uv_left + uv_right) / 2.0;
     uv.y += 0.5 - (uv_top + uv_bottom) / 2.0;
     float wave = sin(uv.y * wave_frequency + TIME * wave_speed) * wave_amplitude;

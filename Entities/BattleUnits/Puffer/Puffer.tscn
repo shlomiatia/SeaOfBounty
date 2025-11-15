@@ -1,0 +1,273 @@
+[gd_scene load_steps=16 format=3 uid="uid://b4pp7wjsltkbw"]
+
+[ext_resource type="Script" uid="uid://blitmqem0wv3w" path="res://Entities/BattleUnits/battle_unit.gd" id="1_mkmhe"]
+[ext_resource type="Texture2D" uid="uid://b5sx3d1oldjtc" path="res://Textures/Monsters enemies/sheet puffing fish/דג מתנפח קטן .png" id="2_l857s"]
+[ext_resource type="Texture2D" uid="uid://stkmmipe5fkv" path="res://Textures/Monsters enemies/מפלצות וחלק מהתקפות.png" id="3_dqnn6"]
+[ext_resource type="AudioStream" uid="uid://do84i0w8l2u18" path="res://Sounds/Sfx/dash.wav" id="4_dqnn6"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vm28n"]
+load_path = "res://.godot/imported/מפלצות וחלק מהתקפות.png-23d9f53aaff177a3a2a69aba7e98f0c6.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtx07"]
+atlas = SubResource("CompressedTexture2D_vm28n")
+region = Rect2(321, 202, 40, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urnfn"]
+atlas = ExtResource("2_l857s")
+region = Rect2(243, 101, 45, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ii72c"]
+atlas = SubResource("CompressedTexture2D_vm28n")
+region = Rect2(400, 194, 46, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l857s"]
+atlas = SubResource("CompressedTexture2D_vm28n")
+region = Rect2(481, 201, 48, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evxh6"]
+atlas = ExtResource("3_dqnn6")
+region = Rect2(564, 211, 31, 16)
+
+[sub_resource type="Animation" id="Animation_vm28n"]
+resource_name = "Attack"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Puffed:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Normal:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Empty:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Projectile:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Projectile:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.5, 2),
+"update": 0,
+"values": [Vector2(31, -8), Vector2(126, -8)]
+}
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_dqnn6")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": null
+}],
+"times": PackedFloat32Array(0, 1)
+}
+tracks/5/use_blend = true
+
+[sub_resource type="Animation" id="Animation_dqnn6"]
+resource_name = "BeforeAttack"
+
+[sub_resource type="Animation" id="Animation_l857s"]
+resource_name = "MoveToBeforeAttack"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Normal:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Puffing:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Puffed:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_mtx07"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Normal:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Puffing:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Puffed:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Empty:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Projectile:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Projectile:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(31, -8)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mtx07"]
+_data = {
+&"Attack": SubResource("Animation_vm28n"),
+&"BeforeAttack": SubResource("Animation_dqnn6"),
+&"MoveToBeforeAttack": SubResource("Animation_l857s"),
+&"RESET": SubResource("Animation_mtx07")
+}
+
+[node name="Puffer" type="Node2D"]
+scale = Vector2(-2, 2)
+script = ExtResource("1_mkmhe")
+
+[node name="Normal" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = SubResource("AtlasTexture_mtx07")
+
+[node name="Puffing" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1, -18.5)
+texture = SubResource("AtlasTexture_urnfn")
+
+[node name="Puffed" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(2, -19)
+texture = SubResource("AtlasTexture_ii72c")
+
+[node name="Empty" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -10.5)
+texture = SubResource("AtlasTexture_l857s")
+
+[node name="Projectile" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(31, -8)
+texture = SubResource("AtlasTexture_evxh6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_mtx07")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

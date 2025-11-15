@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://d3p7w2yvp2t1w"]
+[gd_scene load_steps=8 format=4 uid="uid://d3p7w2yvp2t1w"]
 
 [ext_resource type="PackedScene" uid="uid://bblitdo328h8a" path="res://Levels/Main/Main.tscn" id="1_5kkv1"]
 [ext_resource type="Script" uid="uid://cqebvrf6iwaqm" path="res://Levels/Level4/level_4.gd" id="1_ej23p"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://pqhpiebi5gjk" path="res://Entities/Unit/Units/Fisherman.tscn" id="3_ej23p"]
 [ext_resource type="PackedScene" uid="uid://b37lh0usdau8" path="res://Entities/Unit/Units/OneEye.tscn" id="4_iy0oy"]
 [ext_resource type="PackedScene" uid="uid://3shc41rae0sc" path="res://Entities/Unit/Units/Monster.tscn" id="5_ldvuh"]
+[ext_resource type="PackedScene" uid="uid://0s4ylsmp2k26" path="res://Entities/Unit/Units/Pufferfish.tscn" id="7_iy0oy"]
 
 [node name="Level4" type="Node2D"]
 script = ExtResource("1_ej23p")
@@ -39,60 +40,22 @@ position = Vector2(254, 54)
 [node name="Enemy5" parent="Main/Units" index="7" instance=ExtResource("5_ldvuh")]
 position = Vector2(97, 337)
 
-[node name="Enemy6" parent="Main/Units" index="8" instance=ExtResource("5_ldvuh")]
-position = Vector2(376, 337)
-max_hp = 120
-hp = 120
-damage = 60
-max_movement = 3
-attack_range = 2
+[node name="Pufferfish" parent="Main/Units" index="8" instance=ExtResource("7_iy0oy")]
+position = Vector2(580, 52)
 
-[node name="Enemy7" parent="Main/Units" index="9" instance=ExtResource("5_ldvuh")]
-position = Vector2(577, 55)
-max_hp = 120
-hp = 120
-damage = 60
-max_movement = 3
-attack_range = 2
+[node name="Pufferfish2" parent="Main/Units" index="9" instance=ExtResource("7_iy0oy")]
+position = Vector2(498, 215)
 
-[node name="Enemy8" parent="Main/Units" index="10" instance=ExtResource("5_ldvuh")]
-position = Vector2(501, 217)
-max_hp = 120
-hp = 120
-damage = 60
-max_movement = 3
-attack_range = 2
+[node name="Pufferfish3" parent="Main/Units" index="10" instance=ExtResource("7_iy0oy")]
+position = Vector2(627, 213)
 
-[node name="Enemy9" parent="Main/Units" index="11" instance=ExtResource("5_ldvuh")]
-position = Vector2(618, 217)
-max_hp = 120
-hp = 120
-damage = 60
-max_movement = 3
-attack_range = 2
+[node name="Pufferfish4" parent="Main/Units" index="11" instance=ExtResource("7_iy0oy")]
+position = Vector2(617, 163)
 
-[node name="Enemy10" parent="Main/Units" index="12" instance=ExtResource("5_ldvuh")]
-position = Vector2(619, 170)
-max_hp = 120
-hp = 120
-damage = 60
-max_movement = 3
-attack_range = 2
+[node name="Pufferfish5" parent="Main/Units" index="12" instance=ExtResource("7_iy0oy")]
+position = Vector2(613, 125)
 
-[node name="Enemy11" parent="Main/Units" index="13" instance=ExtResource("5_ldvuh")]
-position = Vector2(619, 130)
-max_hp = 120
-hp = 120
-damage = 60
-max_movement = 3
-attack_range = 2
-
-[node name="Enemy12" parent="Main/Units" index="14" instance=ExtResource("5_ldvuh")]
-position = Vector2(620, 94)
-max_hp = 120
-hp = 120
-damage = 60
-max_movement = 3
-attack_range = 2
+[node name="Pufferfish6" parent="Main/Units" index="13" instance=ExtResource("7_iy0oy")]
+position = Vector2(615, 91)
 
 [editable path="Main"]
