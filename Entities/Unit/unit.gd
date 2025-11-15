@@ -137,12 +137,17 @@ func update_reflection_uv_bounds() -> void:
     var region = atlas_texture.region
 
     var atlas_width = atlas.get_width()
+    var atlas_height = atlas.get_height()
     var uv_left = region.position.x / atlas_width
     var uv_right = (region.position.x + region.size.x) / atlas_width
+    var uv_top = region.position.y / atlas_height
+    var uv_bottom = (region.position.y + region.size.y) / atlas_height
 
     var shader_material = reflection.material as ShaderMaterial
     shader_material.set_shader_parameter("uv_left", uv_left)
     shader_material.set_shader_parameter("uv_right", uv_right)
+    shader_material.set_shader_parameter("uv_top", uv_top)
+    shader_material.set_shader_parameter("uv_bottom", uv_bottom)
 
 func start_text_list(texts: Array[String]) -> void:
     text_list = texts

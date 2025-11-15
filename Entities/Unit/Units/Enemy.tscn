@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://3shc41rae0sc"]
+[gd_scene load_steps=20 format=3 uid="uid://3shc41rae0sc"]
 
 [ext_resource type="PackedScene" uid="uid://05oo7vpmyn03" path="res://Entities/Unit/Unit.tscn" id="1_58qg8"]
 [ext_resource type="Texture2D" uid="uid://smaao715r2hq" path="res://Textures/Monsters enemies/Swamp monster/Swamp monster קטן.png" id="2_5dv8j"]
@@ -6,27 +6,15 @@
 [ext_resource type="Shader" uid="uid://b20ld62ku3mg8" path="res://Entities/Unit/Reflection.gdshader" id="2_olqx6"]
 [ext_resource type="Shader" uid="uid://bn0wv35v1nuq4" path="res://Entities/Unit/Unit.gdshader" id="4_5dv8j"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xoo6t"]
-atlas = ExtResource("2_5dv8j")
-region = Rect2(5, 20, 50, 40)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_p337n"]
 atlas = ExtResource("2_5dv8j")
-region = Rect2(5, 20, 50, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vojdm"]
-atlas = ExtResource("2_5dv8j")
-region = Rect2(5, 20, 50, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vpyme"]
-atlas = ExtResource("2_5dv8j")
-region = Rect2(5, 20, 50, 40)
+region = Rect2(9, 24, 40, 31)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_olqx6"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xoo6t")
+"texture": SubResource("AtlasTexture_p337n")
 }],
 "loop": true,
 "name": &"down",
@@ -42,7 +30,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vojdm")
+"texture": SubResource("AtlasTexture_p337n")
 }],
 "loop": true,
 "name": &"right",
@@ -50,7 +38,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vpyme")
+"texture": SubResource("AtlasTexture_p337n")
 }],
 "loop": true,
 "name": &"up",
@@ -65,6 +53,8 @@ shader_parameter/wave_amplitude = 0.01
 shader_parameter/wave_frequency = 10.0
 shader_parameter/uv_left = 0.0
 shader_parameter/uv_right = 1.0
+shader_parameter/uv_top = 0.0
+shader_parameter/uv_bottom = 1.0
 shader_parameter/alpha = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ou22k"]
@@ -183,6 +173,7 @@ sprite_frames = SubResource("SpriteFrames_olqx6")
 [node name="Reflection" parent="." index="0"]
 material = SubResource("ShaderMaterial_bqqob")
 sprite_frames = SubResource("SpriteFrames_58qg8")
+frame_progress = 0.0
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 material = SubResource("ShaderMaterial_p337n")

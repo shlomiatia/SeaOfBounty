@@ -15,8 +15,10 @@ shader = ExtResource("2_qbw00")
 shader_parameter/wave_speed = 2.0
 shader_parameter/wave_amplitude = 0.01
 shader_parameter/wave_frequency = 10.0
-shader_parameter/uv_left = 0.0
-shader_parameter/uv_right = 1.0
+shader_parameter/uv_left = 0.752
+shader_parameter/uv_right = 0.988
+shader_parameter/uv_top = 0.0
+shader_parameter/uv_bottom = 1.0
 shader_parameter/alpha = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ou22k"]
@@ -157,10 +159,12 @@ script = ExtResource("1_b8oma")
 
 [node name="Reflection" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_rlkj8")
-position = Vector2(0, 9)
+position = Vector2(1, 17)
+scale = Vector2(1, -1)
 sprite_frames = SubResource("SpriteFrames_rlkj8")
-animation = &"right"
+animation = &"left"
 autoplay = "right"
+frame_progress = 0.164638
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_qbw00")
