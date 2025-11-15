@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://jcucm5nqpvg7"]
 
 [ext_resource type="Texture2D" uid="uid://5ccalp0qy0w0" path="res://Textures/BattleUnits/Orphan/Normal.PNG" id="1_7mqyg"]
-[ext_resource type="Script" uid="uid://blitmqem0wv3w" path="res://Scripts/battle_unit.gd" id="1_77el4"]
+[ext_resource type="Script" uid="uid://blitmqem0wv3w" path="res://Entities/BattleUnits/battle_unit.gd" id="1_77el4"]
 [ext_resource type="Texture2D" uid="uid://da3nsy7ke7p0k" path="res://Textures/BattleUnits/Orphan/Weapon.PNG" id="2_77el4"]
 [ext_resource type="AudioStream" uid="uid://bkwnoar5axhau" path="res://Sounds/Sfx/ground slam.wav" id="4_adp12"]
 
@@ -55,8 +55,12 @@ tracks/3/keys = {
 "end_offset": 0.0,
 "start_offset": 0.0,
 "stream": ExtResource("4_adp12")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": null
 }],
-"times": PackedFloat32Array(0.1)
+"times": PackedFloat32Array(0.1, 1)
 }
 tracks/3/use_blend = true
 

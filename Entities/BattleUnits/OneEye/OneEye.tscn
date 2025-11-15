@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dh8jigtbw6tet"]
 
 [ext_resource type="Texture2D" uid="uid://b3qwng2lshr82" path="res://Textures/BattleUnits/OneEye/Normal.PNG" id="1_d07oe"]
-[ext_resource type="Script" uid="uid://blitmqem0wv3w" path="res://Scripts/battle_unit.gd" id="1_yokgm"]
+[ext_resource type="Script" uid="uid://blitmqem0wv3w" path="res://Entities/BattleUnits/battle_unit.gd" id="1_yokgm"]
 [ext_resource type="Texture2D" uid="uid://c11pv0ms2vp16" path="res://Textures/BattleUnits/OneEye/Weapon.PNG" id="2_yokgm"]
 
 [sub_resource type="Animation" id="Animation_ybfrq"]
