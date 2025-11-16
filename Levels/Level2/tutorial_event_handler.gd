@@ -6,6 +6,7 @@ class_name TutorialEventHandler extends ColorRect
 @onready var main: Main = $"../Main"
 @onready var tutorial_highlight: TileMapLayer = $"../TutorialHighlight"
 @onready var tutorial_label: TypingLabel = $"../TutorialLabel"
+@onready var battle_meter: BattleMeter = $"../Main/Battle/BattleMeter"
 
 var tutorial_active: bool = false
 var tutorial_step: int = 0
@@ -22,11 +23,22 @@ var tutorial_cells: Array[Vector2i] = [
     Vector2i(2, 0)
 ]
 
+var attack_tutorial_done: bool = false
+var defend_tutorial_done: bool = false
+var current_battle_tutorial: String = ""
 
 func _ready() -> void:
     main.player_turn_started.connect(on_player_turn_started)
+    battle_meter.indicator_started.connect(on_battle_started)
+    battle_meter.indicator_stopped.connect(on_indicator_stopped)
+
+func _process(_delta: float) -> void:
+    check_battle_meter_tutorial()
 
 func _input(event: InputEvent) -> void:
+    if !is_battle_input_allowed():
+        get_viewport().set_input_as_handled()
+        
     if not tutorial_active:
         return
 
@@ -112,3 +124,39 @@ func show_tutorial_at_step(step: int) -> void:
                 tutorial_highlight.set_cell(cell, 0, Vector2i(2, 0))
 
     tutorial_label.text = get_tutorial_text(step)
+
+func on_battle_started(battle_mode: String) -> void:
+    current_battle_tutorial = battle_mode
+
+func is_battle_tutorial() -> bool:
+    return current_battle_tutorial != ""
+
+func check_battle_meter_tutorial() -> void:
+    if !is_battle_tutorial():
+        return
+
+    if battle_meter.get_indicator_distance_from_center() <= 4:
+        Engine.time_scale = 0.01
+        if current_battle_tutorial == "attack":
+            tutorial_label.text = "Press to attack now!"
+        else:
+            tutorial_label.text = "Press to defend now!"
+    else:
+        Engine.time_scale = 1
+        tutorial_label.text = "Wait for the right moment..."
+
+func is_battle_input_allowed() -> bool:
+    if !is_battle_tutorial():
+        return true
+    return battle_meter.get_indicator_distance_from_center() <= 4
+
+func on_indicator_stopped(_value: float) -> void:
+    print("on_indicator_stopped")
+    if current_battle_tutorial == "attack":
+        attack_tutorial_done = true
+    elif current_battle_tutorial == "defend":
+        defend_tutorial_done = true
+
+    tutorial_label.text = ""
+    Engine.time_scale = 1
+    current_battle_tutorial = ""

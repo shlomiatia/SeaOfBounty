@@ -1,48 +1,29 @@
 class_name BattleMeter extends Node2D
 
 signal indicator_stopped(value: float)
+signal indicator_started(mode: String)
 
 @onready var indicator = $Indicator
-@onready var label = $"../Label"
 
 var tween: Tween
 var current_mode: String = "attack"
-var attack_tutorial_done: bool = false
-var defend_tutorial_done: bool = false
-
-func _process(_delta: float) -> void:
-    if is_tutorial():
-        if get_indicator_distance_from_center() <= 4 && tween:
-            Engine.time_scale = 0.01
-            if current_mode == "attack":
-                label.text = "Press to attack now!"
-            else:
-                label.text = "Press to defend now!"
-        else:
-            Engine.time_scale = 1
-            label.text = "Wait for the right moment..."
 
 func _input(event: InputEvent) -> void:
     if event.is_action_pressed("confirm"):
         if !tween:
             return
 
-        if is_tutorial() && get_indicator_distance_from_center() > 4:
-            return
         stop()
 
 func start(mode: String = "attack") -> void:
     current_mode = mode
+    indicator_started.emit(mode)
 
     var start_pos = Vector2(0, -55)
     var end_pos = start_pos + Vector2(0, 110)
 
     var random_offset := randf() * 110
     var go_down := randf() > 0.5
-
-    if is_tutorial():
-        random_offset = 50
-        go_down = false
 
     indicator.position = start_pos + Vector2(0, random_offset)
     var target_pos = end_pos if go_down else start_pos
@@ -69,14 +50,8 @@ func stop() -> void:
     if tween:
         tween.kill()
     tween = null
-    Engine.time_scale = 1
 
     var distance_from_center = get_indicator_distance_from_center()
-
-    if current_mode == "attack":
-        attack_tutorial_done = true
-    else:
-        defend_tutorial_done = true
 
     var value := 0.0
     if current_mode == "attack":
@@ -100,9 +75,7 @@ func stop() -> void:
 
     indicator_stopped.emit(value)
 
-func is_tutorial() -> bool:
-    return (current_mode == "attack" and !attack_tutorial_done) or (current_mode == "defend" and !defend_tutorial_done)
-
+    
 func get_indicator_distance_from_center() -> int:
     var center_pos = 0
     var current_pos = indicator.position.y
