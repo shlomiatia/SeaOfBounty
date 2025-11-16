@@ -7,6 +7,7 @@ class_name TutorialEventHandler extends ColorRect
 @onready var tutorial_highlight: TileMapLayer = $"../TutorialHighlight"
 @onready var tutorial_label: TypingLabel = $"../TutorialLabel"
 @onready var battle_meter: BattleMeter = $"../Main/Battle/BattleMeter"
+@onready var battle_label: Label = $"../Main/Battle/Label"
 
 var tutorial_active: bool = false
 var tutorial_step: int = 0
@@ -126,7 +127,10 @@ func show_tutorial_at_step(step: int) -> void:
     tutorial_label.text = get_tutorial_text(step)
 
 func on_battle_started(battle_mode: String) -> void:
+    if battle_mode == "attack" && attack_tutorial_done || battle_mode == "defend" && defend_tutorial_done:
+        return
     current_battle_tutorial = battle_mode
+    battle_label.text = "Wait for the right moment..."
 
 func is_battle_tutorial() -> bool:
     return current_battle_tutorial != ""
@@ -138,12 +142,12 @@ func check_battle_meter_tutorial() -> void:
     if battle_meter.get_indicator_distance_from_center() <= 4:
         Engine.time_scale = 0.01
         if current_battle_tutorial == "attack":
-            tutorial_label.text = "Press to attack now!"
+            battle_label.text = "Press to attack now!"
         else:
-            tutorial_label.text = "Press to defend now!"
+            battle_label.text = "Press to defend now!"
     else:
         Engine.time_scale = 1
-        tutorial_label.text = "Wait for the right moment..."
+        battle_label.text = "Wait for the right moment..."
 
 func is_battle_input_allowed() -> bool:
     if !is_battle_tutorial():
@@ -151,7 +155,6 @@ func is_battle_input_allowed() -> bool:
     return battle_meter.get_indicator_distance_from_center() <= 4
 
 func on_indicator_stopped(_value: float) -> void:
-    print("on_indicator_stopped")
     if current_battle_tutorial == "attack":
         attack_tutorial_done = true
     elif current_battle_tutorial == "defend":
