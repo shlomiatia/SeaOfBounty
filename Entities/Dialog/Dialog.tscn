@@ -10,7 +10,7 @@ atlas = ExtResource("2_y3mms")
 region = Rect2(69, 197, 504, 150)
 
 [node name="Dialog" type="Node2D"]
-z_index = 2
+z_index = 1
 script = ExtResource("1_y3mms")
 
 [node name="Hero" type="Sprite2D" parent="."]

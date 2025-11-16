@@ -79,13 +79,13 @@ func on_player_turn_started() -> void:
 func get_tutorial_text(step: int) -> String:
     match step:
         0:
-            return "Move cursor with mouse / D-pad / WASD.\nSelect kate with left mouse button / gamepad A / enter."
+            return "Move cursor with mouse / D-pad / WASD.\nSelect Kate with left mouse button / gamepad A / enter."
         1:
             return "Your movement range is in green, and attack range in red.\nSelect the enemy to attack it."
         2:
             return "Select the enemy to see it's range."
         3:
-            return "Move kate outside the enemy range."
+            return "Move Kate outside the enemy range."
         7:
             return "Select Finn."
         8:
