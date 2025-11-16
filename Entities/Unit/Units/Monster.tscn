@@ -170,9 +170,11 @@ animations = [{
 
 [node name="Enemy" groups=["enemies"] instance=ExtResource("1_6tfl6")]
 sprite_frames = SubResource("SpriteFrames_olqx6")
+set_flip_h = true
 
 [node name="Reflection" parent="." index="0"]
 material = SubResource("ShaderMaterial_bqqob")
+position = Vector2(0, 10)
 sprite_frames = SubResource("SpriteFrames_58qg8")
 frame_progress = 0.0
 

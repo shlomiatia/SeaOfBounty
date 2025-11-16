@@ -12,6 +12,7 @@ const movement_speed: float = 300.0
 @export var initial_direction: String = "right"
 @export var sprite_frames: SpriteFrames
 @export var display_name: String = "Monster"
+@export var set_flip_h: bool
 
 @onready var map: Map = $"../../Map"
 @onready var animated_sprite_2d = $AnimatedSprite2D
@@ -37,9 +38,7 @@ func _ready() -> void:
         reflection.sprite_frames = sprite_frames
 
     position = map.map_to_local(map.local_to_map(position))
-    animated_sprite_2d.play(initial_direction)
-    reflection.play(initial_direction)
-    update_reflection_uv_bounds()
+    play_animation(initial_direction)
 
 func _process(_delta: float) -> void:
     status_label.text = "%s\n%s/%s" % [display_name, hp, max_hp]
@@ -103,9 +102,7 @@ func animate_along_path(tile_path: Array[Vector2i]) -> void:
         var direction = (target_world_pos - position).normalized()
 
         var animation = get_animation(direction)
-        animated_sprite_2d.play(animation)
-        reflection.play(animation)
-        update_reflection_uv_bounds()
+        play_animation(animation)
 
         var tween = create_tween()
         var distance = position.distance_to(target_world_pos)
@@ -186,3 +183,15 @@ func fade_out_sound(duration: float = 2.0):
     await audio_stream_player_tween.finished
     audio_stream_player.volume_db = 0
     audio_stream_player_tween = null
+
+func play_animation(anim: String) -> void:
+    animated_sprite_2d.play(anim)
+    reflection.play(anim)
+    update_reflection_uv_bounds()
+    if set_flip_h:
+        if anim == "left":
+            animated_sprite_2d.flip_h = true
+            reflection.flip_h = true
+        elif anim == "right":
+            animated_sprite_2d.flip_h = false
+            reflection.flip_h = false

@@ -159,7 +159,7 @@ script = ExtResource("1_b8oma")
 
 [node name="Reflection" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_rlkj8")
-position = Vector2(1, 17)
+position = Vector2(0, 17)
 scale = Vector2(1, -1)
 sprite_frames = SubResource("SpriteFrames_rlkj8")
 animation = &"left"

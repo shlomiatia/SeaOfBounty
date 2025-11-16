@@ -20,15 +20,15 @@ static func move_and_attack(main: Main, clicked_grid_pos: Vector2i) -> bool:
             var can_attack = Utils.is_in_range(current_hero, clicked_grid_pos, map)
             if can_attack:
                 await battle.start(current_hero, enemy)
-                current_hero.activated = can_attack
+                current_hero.activated = true
 
             current_hero.moved = true
             main.is_input_disabled = false
 
             var heroes = main.get_tree().get_nodes_in_group("heroes")
             for hero in heroes:
-                if !hero.activated:
-                    hero.activated = main.map.get_enemy_tiles().filter(func(enemy_tile): return Utils.is_in_range(current_hero, enemy_tile, map)).size() == 0
+                if hero.moved && !hero.activated:
+                    hero.activated = main.map.get_enemy_tiles().filter(func(enemy_tile): return Utils.is_in_range(hero, enemy_tile, map)).size() == 0
 
             if !current_hero.activated:
                 main.movement_overlay.highlight_movement_and_attack(clicked_grid_pos, "heroes")

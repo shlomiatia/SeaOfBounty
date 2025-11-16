@@ -81,15 +81,15 @@ func get_tutorial_text(step: int) -> String:
         0:
             return "Move cursor with mouse / D-pad / WASD.\nSelect kate with left mouse button / gamepad A / enter."
         1:
-            return "Select the enemy to attack it."
+            return "Your movement range is in green, and attack range in red.\nSelect the enemy to attack it."
         2:
             return "Select the enemy to see it's range."
         3:
             return "Move kate outside the enemy range."
         7:
-            return "Finn has a ranged attack.\nSelect him to see it's range."
+            return "Select Finn."
         8:
-            return "Move Finn into range."
+            return "Finn has a ranged attack.\nMove Finn into range."
         9:
             return "Attack the enemy.\nIt's out of range and won't retaliate."
         _:
