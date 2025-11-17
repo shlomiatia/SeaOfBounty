@@ -12,5 +12,6 @@ void fragment() {
     if (UV.y > cutoff && color.a > 0.0) {
         color = water_color;
     }
+    color *= modulate;
     COLOR = color;
 }

@@ -1,15 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://dx5eqw4ffmyug"]
 
 [ext_resource type="Script" uid="uid://buv6hpq6dhbol" path="res://Entities/BattleMeter/battle_meter.gd" id="1_dgcy4"]
-[ext_resource type="Texture2D" uid="uid://cn7lnyhgoyx6h" path="res://Textures/BattleMeter.png" id="1_m0rrt"]
-[ext_resource type="Texture2D" uid="uid://dinggy31maret" path="res://Textures/BattleMeterIndicator.png" id="2_syl4k"]
+[ext_resource type="Texture2D" uid="uid://b0glbf3h1udxv" path="res://Textures/Ui - Layer 21.png" id="2_bl03b"]
+[ext_resource type="Texture2D" uid="uid://bi82juv0lb7xu" path="res://Textures/Ui - Layer 6.png" id="3_fr3sr"]
 
 [node name="BattleMeter" type="Node2D"]
 script = ExtResource("1_dgcy4")
 
 [node name="Meter" type="Sprite2D" parent="."]
-texture = ExtResource("1_m0rrt")
+position = Vector2(0, 6)
+texture = ExtResource("2_bl03b")
 
 [node name="Indicator" type="Sprite2D" parent="."]
-position = Vector2(0, -55)
-texture = ExtResource("2_syl4k")
+texture = ExtResource("3_fr3sr")

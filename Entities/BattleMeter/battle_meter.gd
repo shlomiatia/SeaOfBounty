@@ -1,5 +1,7 @@
 class_name BattleMeter extends Node2D
 
+const height := 180.0
+
 signal indicator_stopped(value: float)
 signal indicator_started(mode: String)
 
@@ -19,16 +21,16 @@ func start(mode: String = "attack") -> void:
     current_mode = mode
     indicator_started.emit(mode)
 
-    var start_pos = Vector2(0, -55)
-    var end_pos = start_pos + Vector2(0, 110)
+    var start_pos = Vector2(0, -height / 2.0)
+    var end_pos = start_pos + Vector2(0, height)
 
-    var random_offset := randf() * 110
+    var random_offset := randf() * height
     var go_down := randf() > 0.5
 
     indicator.position = start_pos + Vector2(0, random_offset)
     var target_pos = end_pos if go_down else start_pos
     var distance = abs(target_pos.y - indicator.position.y)
-    var initial_duration = distance / 110.0
+    var initial_duration = distance / height
 
     tween = create_tween()
     tween.tween_property(indicator, "position", target_pos, initial_duration).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
@@ -55,20 +57,20 @@ func stop() -> void:
 
     var value := 0.0
     if current_mode == "attack":
-        if distance_from_center <= 4:
+        if distance_from_center <= 8:
             value = 1.5
-        elif distance_from_center <= 15:
+        elif distance_from_center <= 24:
             value = 1.0
-        elif distance_from_center <= 20:
+        elif distance_from_center <= 34:
             value = 0.5
         else:
             value = 0.0
     else:
-        if distance_from_center <= 4:
+        if distance_from_center <= 8:
             value = 0.25
         elif distance_from_center <= 15:
             value = 0.5
-        elif distance_from_center <= 20:
+        elif distance_from_center <= 34:
             value = 0.75
         else:
             value = 1.0
