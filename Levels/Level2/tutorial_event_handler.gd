@@ -139,7 +139,7 @@ func check_battle_meter_tutorial() -> void:
     if !is_battle_tutorial():
         return
 
-    if battle_meter.get_indicator_distance_from_center() <= 16:
+    if battle_meter.get_indicator_distance_from_center() <= 8:
         Engine.time_scale = 0.01
         if current_battle_tutorial == "attack":
             battle_label.text = "Press to attack now!"
@@ -152,7 +152,7 @@ func check_battle_meter_tutorial() -> void:
 func is_battle_input_allowed() -> bool:
     if !is_battle_tutorial():
         return true
-    return battle_meter.get_indicator_distance_from_center() <= 16
+    return battle_meter.get_indicator_distance_from_center() <= 8
 
 func on_indicator_stopped(_value: float) -> void:
     if current_battle_tutorial == "attack":
