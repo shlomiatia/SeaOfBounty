@@ -114,6 +114,7 @@ resource_local_to_scene = true
 shader = ExtResource("5_pkid6")
 shader_parameter/hide_pixels = 0.0
 shader_parameter/modulate = Color(0, 0, 0, 1)
+shader_parameter/water_color = Color(0, 0, 0, 1)
 
 [node name="Pufferfish" groups=["enemies"] instance=ExtResource("1_4y516")]
 max_movement = 3
