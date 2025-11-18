@@ -17,7 +17,7 @@ var is_input_disabled: bool = true
 
 func _process(_delta: float) -> void:
     controls_label.visible = !is_input_disabled && current_hero != null
-    controls_label.text = "%s - Skip hero turn." % [LastInput.get_text("Backspace", "Backspace", "Gamepad Y")]
+    controls_label.text = "%s - Skip hero turn.\n%s - Deselect hero." % [LastInput.get_text("Middle mouse button", "Backspace", "Y button"), LastInput.get_text("Right mouse button", "Esc", "B button")]
 
     if is_input_disabled:
         return

@@ -45,6 +45,7 @@ offset_top = -27.0
 offset_right = 351.0
 grow_vertical = 0
 theme = ExtResource("2_dchpf")
+theme_override_font_sizes/font_size = 12
 text = "Gamepad Y / Backspace to skip hero turn"
 
 [node name="Map" parent="." instance=ExtResource("2_avnir")]

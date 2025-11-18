@@ -97,7 +97,7 @@ func on_player_turn_started() -> void:
 func get_tutorial_text(step: int) -> String:
     match step:
         0:
-            return "Move cursor with mouse / D-pad / WASD.\nSelect Kate with left mouse button / gamepad A / enter."
+            return "Move cursor with %s.\nSelect Kate with %s." % [LastInput.get_text("mouse", "D-pad", "WASD"), LastInput.get_text("left mouse button", "A button", "enter")]
         1:
             return "Your movement range is in green, and attack range in red.\nSelect the enemy to attack it."
         2:
@@ -148,9 +148,9 @@ func check_battle_meter_tutorial() -> void:
     if battle_meter.get_indicator_distance_from_center() <= 8:
         Engine.time_scale = 0.01
         if current_battle_tutorial == "attack":
-            tutorial_label.text = "Attack with left mouse button / gamepad A / enter now!"
+            tutorial_label.text = "Attack with %s now!" % [LastInput.get_text("left mouse button", "A button", "enter")]
         else:
-            tutorial_label.text = "Defend with left mouse button / gamepad A / enter now!"
+            tutorial_label.text = "Defend with %s now!" % [LastInput.get_text("left mouse button", "A button", "enter")]
     else:
         Engine.time_scale = 1
         tutorial_label.text = "Wait for it..."
