@@ -44,6 +44,7 @@ func _input(event: InputEvent) -> void:
 
         handle_confirm(cursor.position)
     elif event.is_action_pressed("cancel"):
+        current_hero = null
         clear()
 
 func handle_confirm(cursor_pos: Vector2) -> void:

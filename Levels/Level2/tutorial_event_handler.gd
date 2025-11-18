@@ -43,7 +43,7 @@ func _input(event: InputEvent) -> void:
     if not tutorial_active:
         return
 
-    if event.is_action_pressed("cancel"):
+    if event.is_action_pressed("cancel") || event.is_action_pressed("skip"):
         get_viewport().set_input_as_handled()
 
     if event.is_action_pressed("confirm"):

@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://mqt15vv182dj"]
+
+[ext_resource type="Script" uid="uid://syrpuhupsmua" path="res://Entities/UnitStatus/unit_status.gd" id="1_f7el6"]
+[ext_resource type="Texture2D" uid="uid://sypeuli5oxi2" path="res://Textures/Ui - Layer 2.png" id="1_wibhy"]
+[ext_resource type="FontFile" uid="uid://eaj6785edr8f" path="res://Fonts/Minecraftia-Regular.ttf" id="2_f7el6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0yq0"]
+atlas = ExtResource("1_wibhy")
+region = Rect2(7, 0, 44, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s60q0"]
+atlas = ExtResource("1_wibhy")
+region = Rect2(8, 38, 38, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyi6a"]
+atlas = ExtResource("1_wibhy")
+region = Rect2(0, 50, 25, 3)
+
+[node name="UnitStatus" type="Node2D"]
+z_index = 1
+script = ExtResource("1_f7el6")
+
+[node name="Box" type="Node2D" parent="."]
+visible = false
+
+[node name="Background" type="Sprite2D" parent="Box"]
+texture = SubResource("AtlasTexture_w0yq0")
+
+[node name="Label" type="Label" parent="Box"]
+offset_left = -16.0
+offset_top = -12.0
+offset_right = 26.0
+offset_bottom = 8.0
+theme_override_colors/font_color = Color(0.917647, 0.831373, 0.666667, 1)
+theme_override_constants/line_spacing = -2
+theme_override_fonts/font = ExtResource("2_f7el6")
+theme_override_font_sizes/font_size = 6
+text = "Name
+100/100"
+
+[node name="Border" type="Sprite2D" parent="."]
+position = Vector2(0, 10)
+texture = SubResource("AtlasTexture_s60q0")
+
+[node name="HPBar" type="Sprite2D" parent="Border"]
+scale = Vector2(1.44, 1)
+texture = SubResource("AtlasTexture_gyi6a")

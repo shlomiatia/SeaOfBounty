@@ -17,14 +17,10 @@ const movement_speed: float = 300.0
 @onready var map: Map = $"../../Map"
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var reflection = $Reflection
-@onready var status: Node2D = $Status
-@onready var status_background: Sprite2D = $Status/Box/Background
-@onready var hp_border: Sprite2D = $Status/Border
-@onready var status_label: Label = $Status/Box/Label
-@onready var hp_bar: Sprite2D = $Status/Border/HPBar
-@onready var status_box: Node2D = $Status/Box
 @onready var typing_label: TypingLabel = $TypingLabel
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var status_box: Node2D = $UnitStatus/Box
+
 
 var moved: bool
 var activated: bool
@@ -41,22 +37,6 @@ func _ready() -> void:
     play_animation(initial_direction)
 
 func _process(_delta: float) -> void:
-    status_label.text = "%s\n%s/%s" % [display_name, hp, max_hp]
-    var hp_percentage = float(hp) / float(max_hp)
-    hp_bar.scale.x = hp_percentage * 1.44
-    hp_bar.position.x = -18 * (1 - hp_percentage)
-        
-    if position.y > 20:
-        status.position.y = -33
-        status_background.scale.y = 1
-        status_label.position.y = -12
-        hp_border.position.y = 10
-    else:
-        status.position.y = 36
-        status_background.scale.y = -1
-        status_label.position.y = -5
-        hp_border.position.y = -10
-
     if hp > 0:
         if !moved || !activated:
             modulate = Color(1, 1, 1)
