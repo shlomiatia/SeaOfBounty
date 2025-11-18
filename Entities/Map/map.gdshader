@@ -13,12 +13,9 @@ bool colors_match(vec4 a, vec4 b) {
 void fragment() {
     vec2 norm_direction = normalize(direction);
 
-    //float current_offset = mod(floor(TIME * pixels_per_second), max_distance + 1.0);
-
     float time_in_cycle = mod(floor(TIME * pixels_per_second), max_distance * 2.0);
     float current_offset;
 
-    // Ping-pong motion: go forward, then return
     if (time_in_cycle < max_distance) {
         current_offset = time_in_cycle;
     } else {
