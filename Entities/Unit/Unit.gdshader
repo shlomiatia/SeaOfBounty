@@ -8,10 +8,9 @@ void fragment() {
     vec2 texture_size = vec2(textureSize(TEXTURE, 0));
     float cutoff = (texture_size.y - hide_pixels) / texture_size.y;
 
-    vec4 color = texture(TEXTURE, UV);
+    vec4 color = texture(TEXTURE, UV) * modulate;
     if (UV.y > cutoff && color.a > 0.0) {
         color = water_color;
     }
-    color *= modulate;
     COLOR = color;
 }

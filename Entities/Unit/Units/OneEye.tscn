@@ -14,7 +14,7 @@ region = Rect2(206, 1, 40, 40)
 atlas = ExtResource("2_a0bd2")
 region = Rect2(288, 1, 40, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v4r20"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkgvi"]
 atlas = ExtResource("2_a0bd2")
 region = Rect2(247, 1, 40, 40)
 
@@ -42,7 +42,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v4r20")
+"texture": SubResource("AtlasTexture_pkgvi")
 }],
 "loop": true,
 "name": &"right",
@@ -125,7 +125,8 @@ animations = [{
 resource_local_to_scene = true
 shader = ExtResource("4_1i3bn")
 shader_parameter/hide_pixels = 0.0
-shader_parameter/modulate = Color(0, 0, 0, 1)
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/water_color = Color(0.752941, 0.796078, 0.862745, 0.501961)
 
 [node name="OneEye" groups=["heroes"] instance=ExtResource("1_34gy5")]
 max_movement = 3
