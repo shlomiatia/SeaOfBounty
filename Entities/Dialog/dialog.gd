@@ -15,7 +15,8 @@ var is_input_disabled: bool = true
 const HERO_DATA = {
     "Finn": ["Finn", "#a22633"],
     "Kate": ["Kate", "#fee761"],
-    "OneEye": ["One Eye", "#f0deb4"]
+    "OneEye": ["One Eye", "#f0deb4"],
+    "Lia": ["Lia", "#d77643"]
 }
 
 func start(pairs: Array[Array]) -> void:

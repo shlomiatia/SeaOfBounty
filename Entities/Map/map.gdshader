@@ -7,7 +7,7 @@ uniform float max_distance : hint_range(0.0, 100.0) = 10.0;
 uniform float pixels_per_second : hint_range(0.1, 100.0) = 5.0;
 
 bool colors_match(vec4 a, vec4 b) {
-    return distance(a, b) < 0.1;
+    return distance(a, b) < 0.01;
 }
 
 void fragment() {

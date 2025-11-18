@@ -1,0 +1,143 @@
+[gd_scene load_steps=18 format=3 uid="uid://cg6try7ca348a"]
+
+[ext_resource type="PackedScene" uid="uid://05oo7vpmyn03" path="res://Entities/Unit/Unit.tscn" id="1_y43qn"]
+[ext_resource type="Texture2D" uid="uid://bg1eseam7hn7f" path="res://Textures/Smaller boat characters.png" id="2_bs46t"]
+[ext_resource type="Shader" uid="uid://b20ld62ku3mg8" path="res://Entities/Unit/Reflection.gdshader" id="2_q40oa"]
+[ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="3_bs46t"]
+[ext_resource type="Shader" uid="uid://bn0wv35v1nuq4" path="res://Entities/Unit/Unit.gdshader" id="4_gbi30"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbi30"]
+atlas = ExtResource("2_bs46t")
+region = Rect2(42, 54, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_688q3"]
+atlas = ExtResource("2_bs46t")
+region = Rect2(124, 54, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78lic"]
+atlas = ExtResource("2_bs46t")
+region = Rect2(83, 54, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kskuc"]
+atlas = ExtResource("2_bs46t")
+region = Rect2(1, 54, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yucex"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbi30")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_688q3")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78lic")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kskuc")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_688q3"]
+resource_local_to_scene = true
+shader = ExtResource("2_q40oa")
+shader_parameter/wave_speed = 2.0
+shader_parameter/wave_amplitude = 0.001
+shader_parameter/wave_frequency = 10.0
+shader_parameter/uv_left = 0.0
+shader_parameter/uv_right = 1.0
+shader_parameter/uv_top = 0.0
+shader_parameter/uv_bottom = 1.0
+shader_parameter/alpha = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ou22k"]
+atlas = ExtResource("3_bs46t")
+region = Rect2(42, 1, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32ibj"]
+atlas = ExtResource("3_bs46t")
+region = Rect2(124, 1, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbw00"]
+atlas = ExtResource("3_bs46t")
+region = Rect2(83, 1, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlkj8"]
+atlas = ExtResource("3_bs46t")
+region = Rect2(1, 1, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_78lic"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ou22k")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32ibj")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbw00")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlkj8")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kskuc"]
+resource_local_to_scene = true
+shader = ExtResource("4_gbi30")
+shader_parameter/hide_pixels = 0.0
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/water_color = Color(0.752941, 0.796078, 0.862745, 0.501961)
+shader_parameter/uv_bottom = 1.0
+
+[node name="Lia" groups=["heroes"] instance=ExtResource("1_y43qn")]
+sprite_frames = SubResource("SpriteFrames_yucex")
+display_name = "Lia"
+
+[node name="Reflection" parent="." index="0"]
+material = SubResource("ShaderMaterial_688q3")
+sprite_frames = SubResource("SpriteFrames_78lic")
+frame_progress = 0.0
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_kskuc")
+sprite_frames = SubResource("SpriteFrames_78lic")

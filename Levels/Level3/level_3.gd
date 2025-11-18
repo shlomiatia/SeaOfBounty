@@ -32,7 +32,7 @@ func _on_dialog_finished() -> void:
         var array: Array[Array] = [
             ["Kate", "Where is everybody?!"],
             ["OneEye", "That's a good question."],
-            ["Kate", "What are you doing here, lady?! \nStealing our bounty??"],
+            ["Kate", "What are you doing here, lady?! \nStealing our reward??"],
             ["OneEye", "I dealt with the monsters.\nYou mean there were more?"],
             ["Finn", "And the village is empty..."],
             ["OneEye", "We need to get out of here."],
