@@ -71,9 +71,9 @@ func preview_movement_path(unit: Unit, target_pos: Vector2) -> void:
                         var tile_transform = get_transform_for_straight(prev_dir, isLeft)
                         set_cell(tile_pos, 0, straight_tile, tile_transform)
                     else:
-                        var turn_tile = get_tile_for_turn(prev_dir, next_dir)
+                        var turn_tile = Vector2i(1, 1)
                         var tile_transform = get_transform_for_turn(prev_dir, next_dir)
-                        if tile_transform != -1:
+                        if turn_tile != Vector2i.MIN && tile_transform != -1:
                             set_cell(tile_pos, 0, turn_tile, tile_transform)
 
 func get_direction_from_previous(tile_path: Array[Vector2i], index: int) -> Vector2i:
@@ -117,43 +117,21 @@ func get_transform_for_straight(direction: Vector2i, isLeft: bool) -> int:
     else:
         return TileTransform.ROTATE_0
 
-func get_tile_for_turn(prev_dir: Vector2i, next_dir: Vector2i) -> Vector2i:
-    if prev_dir.x > 0 and next_dir.y > 0:
-        return Vector2i.MIN
-    elif prev_dir.y < 0 and next_dir.x > 0:
-        return Vector2i(0, 1)
-    elif prev_dir.x < 0 and next_dir.y < 0:
-        return Vector2i(1, 1)
-    elif prev_dir.y > 0 and next_dir.x < 0:
-        return Vector2i(2, 1)
-    elif prev_dir.x > 0 and next_dir.y < 0:
-        return Vector2i(1, 1)
-    elif prev_dir.y > 0 and next_dir.x > 0:
-        return Vector2i(0, 1)
-    elif prev_dir.x < 0 and next_dir.y > 0:
-        return Vector2i.MIN
-    elif prev_dir.y < 0 and next_dir.x < 0:
-        return Vector2i(0, 1)
-
-    return Vector2i.MIN
-
-
 func get_transform_for_turn(prev_dir: Vector2i, next_dir: Vector2i) -> int:
     if prev_dir.x > 0 and next_dir.y > 0:
-        return -1
+        return TileSetAtlasSource.TRANSFORM_FLIP_V
     elif prev_dir.y < 0 and next_dir.x > 0:
-        return TileTransform.ROTATE_0
+        return TileTransform.ROTATE_270 | TileSetAtlasSource.TRANSFORM_FLIP_H
     elif prev_dir.x < 0 and next_dir.y < 0:
-        return TileSetAtlasSource.TRANSFORM_FLIP_H # TileTransform.ROTATE_90
+        return TileSetAtlasSource.TRANSFORM_FLIP_H
     elif prev_dir.y > 0 and next_dir.x < 0:
-        return TileTransform.ROTATE_90
+        return TileSetAtlasSource.TRANSFORM_TRANSPOSE
     elif prev_dir.x > 0 and next_dir.y < 0:
         return TileTransform.ROTATE_0
     elif prev_dir.y > 0 and next_dir.x > 0:
-        return TileTransform.ROTATE_270
+        return TileTransform.ROTATE_90
     elif prev_dir.x < 0 and next_dir.y > 0:
-        return -1
+        return TileTransform.ROTATE_180
     elif prev_dir.y < 0 and next_dir.x < 0:
-        return TileSetAtlasSource.TRANSFORM_FLIP_H
-
+        return TileTransform.ROTATE_270
     return TileTransform.ROTATE_0
