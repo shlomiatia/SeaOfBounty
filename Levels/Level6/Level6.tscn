@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://5gf1oj7jaoyd"]
+[gd_scene load_steps=6 format=4 uid="uid://5gf1oj7jaoyd"]
 
 [ext_resource type="PackedScene" uid="uid://bblitdo328h8a" path="res://Levels/Main/Main.tscn" id="1_dlowv"]
 [ext_resource type="Script" uid="uid://hku2nuu5bc6c" path="res://Levels/Level6/level_6.gd" id="1_xao8x"]
 [ext_resource type="PackedScene" uid="uid://cg6try7ca348a" path="res://Entities/Unit/Units/Lia.tscn" id="2_mawyh"]
 [ext_resource type="PackedScene" uid="uid://3shc41rae0sc" path="res://Entities/Unit/Units/Monster.tscn" id="3_xao8x"]
+[ext_resource type="PackedScene" uid="uid://cfctb2urg6bq8" path="res://Entities/Unit/Units/Mermaid.tscn" id="5_whijr"]
 
 [node name="Level6" type="Node2D"]
 script = ExtResource("1_xao8x")
@@ -18,5 +19,8 @@ position = Vector2(20, 261)
 
 [node name="Enemy" parent="Main/Units" index="1" instance=ExtResource("3_xao8x")]
 position = Vector2(296, 302)
+
+[node name="Unit" parent="Main/Units" index="2" instance=ExtResource("5_whijr")]
+position = Vector2(534, 301)
 
 [editable path="Main"]

@@ -1,0 +1,135 @@
+[gd_scene load_steps=15 format=3 uid="uid://cfctb2urg6bq8"]
+
+[ext_resource type="PackedScene" uid="uid://05oo7vpmyn03" path="res://Entities/Unit/Unit.tscn" id="1_2ji75"]
+[ext_resource type="Texture2D" uid="uid://c0yi5ujwdga3k" path="res://Textures/Monsters enemies/בת ים כילשון/בת ים תוקפת כילשון קטן.png" id="2_254kf"]
+[ext_resource type="Shader" uid="uid://b20ld62ku3mg8" path="res://Entities/Unit/Reflection.gdshader" id="2_rv5tu"]
+[ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="3_254kf"]
+[ext_resource type="Shader" uid="uid://cypse4d5fbt7o" path="res://Entities/Unit/monster.gdshader" id="5_rv5tu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rv5tu"]
+atlas = ExtResource("2_254kf")
+region = Rect2(8, 22, 37, 41)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_62sox"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rv5tu")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rv5tu")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rv5tu")
+}],
+"loop": true,
+"name": &"right",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rv5tu")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_053js"]
+resource_local_to_scene = true
+shader = ExtResource("2_rv5tu")
+shader_parameter/wave_speed = 2.0
+shader_parameter/wave_amplitude = 0.001
+shader_parameter/wave_frequency = 10.0
+shader_parameter/uv_left = 0.0
+shader_parameter/uv_right = 1.0
+shader_parameter/uv_top = 0.0
+shader_parameter/uv_bottom = 1.0
+shader_parameter/alpha = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ou22k"]
+atlas = ExtResource("3_254kf")
+region = Rect2(42, 1, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32ibj"]
+atlas = ExtResource("3_254kf")
+region = Rect2(124, 1, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbw00"]
+atlas = ExtResource("3_254kf")
+region = Rect2(83, 1, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlkj8"]
+atlas = ExtResource("3_254kf")
+region = Rect2(1, 1, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w7nqf"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ou22k")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32ibj")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbw00")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlkj8")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gbhqv"]
+resource_local_to_scene = true
+shader = ExtResource("5_rv5tu")
+shader_parameter/hide_pixels = 0.0
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/water_color = Color(0.0705882, 0.305882, 0.537255, 1)
+shader_parameter/bottom = 0.175
+
+[node name="Unit" groups=["enemies"] instance=ExtResource("1_2ji75")]
+max_hp = 120
+hp = 120
+damage = 60
+sprite_frames = SubResource("SpriteFrames_62sox")
+display_name = "Mermaid"
+set_flip_h = true
+
+[node name="Reflection" parent="." index="0"]
+material = SubResource("ShaderMaterial_053js")
+sprite_frames = SubResource("SpriteFrames_w7nqf")
+frame_progress = 0.0
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_gbhqv")
+sprite_frames = SubResource("SpriteFrames_w7nqf")
