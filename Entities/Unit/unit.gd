@@ -20,6 +20,7 @@ const movement_speed: float = 300.0
 @onready var typing_label: TypingLabel = $TypingLabel
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var status_box: Node2D = $UnitStatus/Box
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 var moved: bool
@@ -29,6 +30,7 @@ var current_text_index: int = 0
 var audio_stream_player_tween: Tween
 
 func _ready() -> void:
+    animation_player.seek(randf() * 2.0)
     if sprite_frames:
         animated_sprite_2d.sprite_frames = sprite_frames
         reflection.sprite_frames = sprite_frames

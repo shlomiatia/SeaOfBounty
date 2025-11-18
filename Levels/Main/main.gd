@@ -16,7 +16,7 @@ var current_hero: Unit = null
 var is_input_disabled: bool = true
 
 func _process(_delta: float) -> void:
-    controls_label.visible = current_hero != null
+    controls_label.visible = !is_input_disabled && current_hero != null
 
     if is_input_disabled:
         return

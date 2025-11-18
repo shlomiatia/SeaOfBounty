@@ -7,7 +7,7 @@ class_name TutorialEventHandler extends ColorRect
 @onready var tutorial_highlight: TileMapLayer = $"../TutorialHighlight"
 @onready var tutorial_label: TypingLabel = $"../TutorialLabel"
 @onready var battle_meter: BattleMeter = $"../Main/Battle/BattleMeter"
-@onready var battle_label: Label = $"../Main/Battle/Label"
+@onready var controls_label: Label = $"../Main/CanvasLayer/ControlsLabel"
 
 var tutorial_active: bool = false
 var tutorial_step: int = 0
@@ -35,6 +35,11 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
     check_battle_meter_tutorial()
+    controls_label.hide()
+    if current_battle_tutorial != "":
+        tutorial_label.position.y = 325.0
+    else:
+        tutorial_label.position.y = 270.0
 
 func _input(event: InputEvent) -> void:
     if !is_battle_input_allowed():
@@ -130,7 +135,8 @@ func on_battle_started(battle_mode: String) -> void:
     if battle_mode == "attack" && attack_tutorial_done || battle_mode == "defend" && defend_tutorial_done:
         return
     current_battle_tutorial = battle_mode
-    battle_label.text = "Wait for the right moment..."
+    tutorial_label.text = "Wait for the right moment..."
+    tutorial_label.finish_typing()
 
 func is_battle_tutorial() -> bool:
     return current_battle_tutorial != ""
@@ -142,12 +148,13 @@ func check_battle_meter_tutorial() -> void:
     if battle_meter.get_indicator_distance_from_center() <= 8:
         Engine.time_scale = 0.01
         if current_battle_tutorial == "attack":
-            battle_label.text = "Press to attack now!"
+            tutorial_label.text = "Attack with left mouse button / gamepad A / enter now!"
         else:
-            battle_label.text = "Press to defend now!"
+            tutorial_label.text = "Defend with left mouse button / gamepad A / enter now!"
     else:
         Engine.time_scale = 1
-        battle_label.text = "Wait for the right moment..."
+        tutorial_label.text = "Wait for it..."
+    tutorial_label.finish_typing()
 
 func is_battle_input_allowed() -> bool:
     if !is_battle_tutorial():

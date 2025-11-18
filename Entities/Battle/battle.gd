@@ -1,11 +1,10 @@
 class_name Battle extends Node2D
 
-@onready var label: Label = $Label
 @onready var battle_meter: BattleMeter = $BattleMeter
 @onready var hero_placeholder: Node2D = $Hero
 @onready var enemy_placeholder: Node2D = $Enemy
-@onready var hero_hp_label: Label = $Hero/HeroHP
-@onready var enemy_hp_label: Label = $Enemy/EnemyHP
+@onready var hero_hp_label: Label = $HeroHP
+@onready var enemy_hp_label: Label = $EnemyHP
 @onready var map: Map = $"../Map"
 @onready var shaking_camera: Camera2D = $"../ShakingCamera"
 
@@ -30,8 +29,8 @@ func start(attacker: Unit, defender: Unit) -> void:
         hero = attacker
         enemy = defender
 
-    hero_hp_label.text = str(hero.hp)
-    enemy_hp_label.text = str(enemy.hp)
+    set_hp_label(hero_hp_label, hero, hero.hp)
+    set_hp_label(enemy_hp_label, enemy, enemy.hp)
     
     var hero_unit = "res://Entities/BattleUnits/%s/%s.tscn" % [hero_name, hero_name]
     var battle_hero: BattleUnit = load(hero_unit).instantiate() as BattleUnit
@@ -69,38 +68,40 @@ func _can_counter_attack(attacker: Unit, defender: Unit) -> bool:
 
 func _perform_attack(hero: Unit, enemy: Unit, battle_hero: BattleUnit) -> void:
     battle_hero.start()
-    label.text = "Attack"
     battle_meter.start("attack")
     var attack_value = await battle_meter.indicator_stopped
 
-    assign_damage(hero, enemy, enemy_hp_label, attack_value)
+    assign_damage(hero, enemy, hero_hp_label, enemy_hp_label, attack_value)
     await battle_hero.attack()
 
 func _perform_defend(hero: Unit, enemy: Unit, battle_enemy: BattleUnit) -> void:
     battle_enemy.start()
-    label.text = "Defend"
     battle_meter.start("defend")
     var defend_value = await battle_meter.indicator_stopped
 
-    assign_damage(enemy, hero, hero_hp_label, defend_value)
+    assign_damage(enemy, hero, enemy_hp_label, hero_hp_label, defend_value)
     await battle_enemy.attack()
 
 func _fade_out_and_remove(unit: Unit) -> void:
     unit.remove_from_group("heroes")
     unit.remove_from_group("enemies")
-    label.text = ""
     var tween = create_tween()
     tween.tween_property(unit, "modulate:a", 0.0, 1.0)
     await tween.finished
     unit.queue_free()
 
-func assign_damage(attacker: Unit, defender: Unit, hp_label: Label, modifier: float) -> void:
+func assign_damage(attacker: Unit, defender: Unit, attacker_hp_label: Label, defender_hp_label: Label, modifier: float) -> void:
     var damage_dealt = int(attacker.damage * modifier)
+    if damage_dealt == 0:
+        attacker_hp_label.text = "Miss!"
+    else:
+        attacker_hp_label.text = "%s damage (%s%%)" % [damage_dealt, int(modifier * 100)]
+        
+
     var old_hp = defender.hp
     defender.hp = max(0, defender.hp - damage_dealt)
     var new_hp = defender.hp
 
-    label.text = ""
     var duration = 0.2
     var steps = abs(new_hp - old_hp)
 
@@ -118,5 +119,8 @@ func assign_damage(attacker: Unit, defender: Unit, hp_label: Label, modifier: fl
         else:
             current_hp += 1
 
-        hp_label.text = str(current_hp)
+        set_hp_label(defender_hp_label, defender, current_hp)
         await get_tree().create_timer(time_per_step).timeout
+
+func set_hp_label(label: Label, unit: Unit, hp: float) -> void:
+    label.text = "%s - %s HP" % [unit.display_name, int(hp)]

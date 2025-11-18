@@ -23,33 +23,24 @@ texture = ExtResource("4_8k270")
 texture = ExtResource("2_h3cav")
 
 [node name="Hero" type="Node2D" parent="."]
-position = Vector2(-120, 60)
-
-[node name="HeroHP" type="Label" parent="Hero"]
-offset_left = -40.0
-offset_top = -160.0
-offset_right = 40.0
-offset_bottom = -132.0
-theme = ExtResource("4_h3cav")
-text = "100"
-horizontal_alignment = 1
+position = Vector2(-150, 60)
 
 [node name="Enemy" type="Node2D" parent="."]
-position = Vector2(120, 60)
+position = Vector2(150, 60)
 
-[node name="EnemyHP" type="Label" parent="Enemy"]
-offset_left = -40.0
-offset_top = -160.0
-offset_right = 40.0
-offset_bottom = -132.0
-theme = ExtResource("4_h3cav")
-horizontal_alignment = 1
-
-[node name="Label" type="Label" parent="."]
+[node name="HeroHP" type="Label" parent="."]
 offset_left = -242.0
 offset_top = 85.0
 offset_right = -20.0
 offset_bottom = 115.0
 theme = ExtResource("4_h3cav")
-text = "Attack"
+text = "100"
+horizontal_alignment = 1
+
+[node name="EnemyHP" type="Label" parent="."]
+offset_left = 13.0
+offset_top = 85.0
+offset_right = 235.0
+offset_bottom = 115.0
+theme = ExtResource("4_h3cav")
 horizontal_alignment = 1
