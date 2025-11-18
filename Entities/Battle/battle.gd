@@ -29,8 +29,8 @@ func start(attacker: Unit, defender: Unit) -> void:
         hero = attacker
         enemy = defender
 
-    set_hp_label(hero_hp_label, hero, hero.hp)
-    set_hp_label(enemy_hp_label, enemy, enemy.hp)
+    set_hp_label(hero_hp_label, hero.hp)
+    set_hp_label(enemy_hp_label, enemy.hp)
     
     var hero_unit = "res://Entities/BattleUnits/%s/%s.tscn" % [hero_name, hero_name]
     var battle_hero: BattleUnit = load(hero_unit).instantiate() as BattleUnit
@@ -119,8 +119,8 @@ func assign_damage(attacker: Unit, defender: Unit, attacker_hp_label: Label, def
         else:
             current_hp += 1
 
-        set_hp_label(defender_hp_label, defender, current_hp)
+        set_hp_label(defender_hp_label, current_hp)
         await get_tree().create_timer(time_per_step).timeout
 
-func set_hp_label(label: Label, unit: Unit, hp: float) -> void:
-    label.text = "%s - %s HP" % [unit.display_name, int(hp)]
+func set_hp_label(label: Label, hp: float) -> void:
+    label.text = "%s HP" % [int(hp)]

@@ -18,7 +18,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 1),
 "transitions": PackedFloat32Array(0.5, 2, 2),
 "update": 0,
-"values": [Vector2(92, 0), Vector2(184, 0), Vector2(0, -6)]
+"values": [Vector2(80, 0), Vector2(184, 0), Vector2(0, -6)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -66,7 +66,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
-"values": [Vector2(92, 2), Vector2(92, -2)]
+"values": [Vector2(80, 2), Vector2(80, -2)]
 }
 
 [sub_resource type="Animation" id="Animation_gqsh2"]
@@ -81,7 +81,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(0.5, 2),
 "update": 0,
-"values": [Vector2(0, -6), Vector2(92, 2)]
+"values": [Vector2(0, -6), Vector2(80, 2)]
 }
 
 [sub_resource type="Animation" id="Animation_sfwkr"]
