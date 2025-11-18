@@ -176,7 +176,7 @@ offset_bottom = 50.0
 autowrap_mode = 0
 
 [node name="UnitStatus" parent="." instance=ExtResource("6_gyi6a")]
-position = Vector2(0, -36)
+position = Vector2(0, -33)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_w0yq0")
