@@ -127,6 +127,7 @@ shader = ExtResource("4_1i3bn")
 shader_parameter/hide_pixels = 0.0
 shader_parameter/modulate = Color(1, 1, 1, 1)
 shader_parameter/water_color = Color(0.752941, 0.796078, 0.862745, 0.501961)
+shader_parameter/uv_bottom = 0.0
 
 [node name="OneEye" groups=["heroes"] instance=ExtResource("1_34gy5")]
 max_movement = 3

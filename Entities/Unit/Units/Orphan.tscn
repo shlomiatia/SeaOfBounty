@@ -127,6 +127,7 @@ shader = ExtResource("4_1d3p5")
 shader_parameter/hide_pixels = 0.0
 shader_parameter/modulate = Color(1, 1, 1, 1)
 shader_parameter/water_color = Color(0.752941, 0.796078, 0.862745, 0.501961)
+shader_parameter/uv_bottom = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yqfd1"]
 atlas = ExtResource("2_yqfd1")

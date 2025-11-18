@@ -79,6 +79,7 @@ shader = ExtResource("2_32ibj")
 shader_parameter/hide_pixels = 0.0
 shader_parameter/modulate = Color(1, 1, 1, 1)
 shader_parameter/water_color = Color(0.752941, 0.796078, 0.862745, 0.501961)
+shader_parameter/uv_bottom = 1.0
 
 [sub_resource type="Animation" id="Animation_32ibj"]
 resource_name = "Default"
