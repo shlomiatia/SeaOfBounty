@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://0s4ylsmp2k26"]
+[gd_scene load_steps=16 format=3 uid="uid://0s4ylsmp2k26"]
 
 [ext_resource type="PackedScene" uid="uid://05oo7vpmyn03" path="res://Entities/Unit/Unit.tscn" id="1_4y516"]
 [ext_resource type="Texture2D" uid="uid://b5sx3d1oldjtc" path="res://Textures/Monsters enemies/sheet puffing fish/דג מתנפח קטן .png" id="2_1ae0a"]
 [ext_resource type="Shader" uid="uid://b20ld62ku3mg8" path="res://Entities/Unit/Reflection.gdshader" id="3_ymjga"]
 [ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="4_6n4rm"]
 [ext_resource type="Shader" uid="uid://bn0wv35v1nuq4" path="res://Entities/Unit/Unit.gdshader" id="5_pkid6"]
+[ext_resource type="AudioStream" uid="uid://bwip184ynacos" path="res://Sounds/Sfx/monster screech_.wav" id="6_1ae0a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o53la"]
 atlas = ExtResource("2_1ae0a")
@@ -115,6 +116,7 @@ shader = ExtResource("5_pkid6")
 shader_parameter/hide_pixels = 0.0
 shader_parameter/modulate = Color(0, 0, 0, 1)
 shader_parameter/water_color = Color(0.752941, 0.796078, 0.862745, 0.501961)
+shader_parameter/uv_bottom = 0.0
 
 [node name="Pufferfish" groups=["enemies"] instance=ExtResource("1_4y516")]
 max_movement = 3
@@ -131,3 +133,6 @@ frame_progress = 0.0
 [node name="AnimatedSprite2D" parent="." index="1"]
 material = SubResource("ShaderMaterial_r5wf8")
 sprite_frames = SubResource("SpriteFrames_bpino")
+
+[node name="AudioStreamPlayer" parent="." index="5"]
+stream = ExtResource("6_1ae0a")
