@@ -3,7 +3,8 @@
     "allow": [
       "Bash(move possible_attack.gd attack_range.gd)",
       "Bash(cat:*)",
-      "Bash(godot --headless --quit:*)"
+      "Bash(godot --headless --quit:*)",
+      "Bash(grep:*)"
     ],
     "deny": [],
     "ask": []
