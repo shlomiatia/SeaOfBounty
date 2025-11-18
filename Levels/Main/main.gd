@@ -10,11 +10,14 @@ signal won;
 @onready var turn_label: Label = $CanvasLayer/TurnLabel
 @onready var cursor: Cursor = $Cursor
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var controls_label: Label = $CanvasLayer/ControlsLabel
 
 var current_hero: Unit = null
 var is_input_disabled: bool = true
 
 func _process(_delta: float) -> void:
+    controls_label.visible = current_hero != null
+
     if is_input_disabled:
         return
 
@@ -27,9 +30,15 @@ func _input(event: InputEvent) -> void:
     if is_input_disabled:
         return
 
+    if event.is_action_pressed("skip") && current_hero:
+        current_hero.moved = true
+        current_hero.activated = true
+        current_hero = null
+        clear()
+        start_enemy_turn_if_needed()
+
     if event.is_action_pressed("confirm"):
-        var heroes = get_tree().get_nodes_in_group("heroes")
-        if heroes.size() == 0:
+        if is_game_over():
             get_tree().reload_current_scene()
             return
 
