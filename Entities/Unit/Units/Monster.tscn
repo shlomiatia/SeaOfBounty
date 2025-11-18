@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://smaao715r2hq" path="res://Textures/Monsters enemies/Swamp monster/Swamp monster קטן.png" id="2_rp5vi"]
 [ext_resource type="Shader" uid="uid://b20ld62ku3mg8" path="res://Entities/Unit/Reflection.gdshader" id="3_gpogl"]
 [ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="4_3muu2"]
-[ext_resource type="Shader" uid="uid://bn0wv35v1nuq4" path="res://Entities/Unit/Unit.gdshader" id="5_vxbu3"]
+[ext_resource type="Shader" uid="uid://cypse4d5fbt7o" path="res://Entities/Unit/monster.gdshader" id="5_rp5vi"]
 [ext_resource type="AudioStream" uid="uid://bwip184ynacos" path="res://Sounds/Sfx/monster screech_.wav" id="6_rp5vi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p337n"]
@@ -112,10 +112,11 @@ animations = [{
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p337n"]
 resource_local_to_scene = true
-shader = ExtResource("5_vxbu3")
+shader = ExtResource("5_rp5vi")
 shader_parameter/hide_pixels = 0.0
 shader_parameter/modulate = Color(1, 1, 1, 1)
-shader_parameter/water_color = Color(0.752941, 0.796078, 0.862745, 0.501961)
+shader_parameter/water_color = Color(0.14902, 0.360784, 0.258824, 1)
+shader_parameter/uv_bottom = 0.104
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ack4w"]
 atlas = ExtResource("4_3muu2")
