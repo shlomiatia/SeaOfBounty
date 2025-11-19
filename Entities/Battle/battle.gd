@@ -42,13 +42,13 @@ func start(attacker: Unit, defender: Unit) -> void:
 
 
     if defender_is_hero:
-        await _perform_defend(defender, attacker, battle_enemy)
+        await _perform_defend(defender, attacker, battle_enemy, battle_hero)
         if attacker.hp > 0 and defender.hp > 0 and can_counter_attack:
-            await _perform_attack(defender, attacker, battle_hero)
+            await _perform_attack(defender, attacker, battle_hero, battle_enemy)
     else:
-        await _perform_attack(attacker, defender, battle_hero)
+        await _perform_attack(attacker, defender, battle_hero, battle_enemy)
         if attacker.hp > 0 and defender.hp > 0 and can_counter_attack:
-            await _perform_defend(attacker, defender, battle_enemy)
+            await _perform_defend(attacker, defender, battle_enemy, battle_hero)
         
     await get_tree().create_timer(0.2).timeout
 
@@ -66,20 +66,20 @@ func _can_counter_attack(attacker: Unit, defender: Unit) -> bool:
     var attacker_grid_pos = map.local_to_map(attacker.position)
     return Utils.is_in_range(defender, attacker_grid_pos, map)
 
-func _perform_attack(hero: Unit, enemy: Unit, battle_hero: BattleUnit) -> void:
+func _perform_attack(hero: Unit, enemy: Unit, battle_hero: BattleUnit, battle_enemy: BattleUnit) -> void:
     battle_hero.start()
     battle_meter.start("attack")
     var attack_value = await battle_meter.indicator_stopped
 
-    assign_damage(hero, enemy, hero_hp_label, enemy_hp_label, attack_value)
+    assign_damage(hero, enemy, hero_hp_label, enemy_hp_label, attack_value, battle_enemy)
     await battle_hero.attack()
 
-func _perform_defend(hero: Unit, enemy: Unit, battle_enemy: BattleUnit) -> void:
+func _perform_defend(hero: Unit, enemy: Unit, battle_enemy: BattleUnit, battle_hero: BattleUnit) -> void:
     battle_enemy.start()
     battle_meter.start("defend")
     var defend_value = await battle_meter.indicator_stopped
 
-    assign_damage(enemy, hero, enemy_hp_label, hero_hp_label, defend_value)
+    assign_damage(enemy, hero, enemy_hp_label, hero_hp_label, defend_value, battle_hero)
     await battle_enemy.attack()
 
 func _fade_out_and_remove(unit: Unit) -> void:
@@ -90,19 +90,21 @@ func _fade_out_and_remove(unit: Unit) -> void:
     await tween.finished
     unit.queue_free()
 
-func assign_damage(attacker: Unit, defender: Unit, attacker_hp_label: Label, defender_hp_label: Label, modifier: float) -> void:
+func assign_damage(attacker: Unit, defender: Unit, attacker_hp_label: Label, defender_hp_label: Label, modifier: float, battle_unit: BattleUnit) -> void:
     var damage_dealt = int(attacker.damage * modifier)
     if damage_dealt == 0:
         attacker_hp_label.text = "Miss!"
     else:
         attacker_hp_label.text = "%s damage (%s%%)" % [damage_dealt, int(modifier * 100)]
+        var tween = create_tween()
+        battle_unit.modulate = Color.RED
+        tween.tween_property(battle_unit, "modulate", Color.WHITE, 0.5)
         
-
     var old_hp = defender.hp
     defender.hp = max(0, defender.hp - damage_dealt)
     var new_hp = defender.hp
 
-    var duration = 0.2
+    var duration = 0.5
     var steps = abs(new_hp - old_hp)
 
     if steps == 0:

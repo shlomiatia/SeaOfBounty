@@ -15,6 +15,7 @@ script = ExtResource("1_y3mms")
 
 [node name="Hero" type="Sprite2D" parent="."]
 position = Vector2(160, 193)
+scale = Vector2(2, 2)
 
 [node name="Ui-Layer1" type="Sprite2D" parent="."]
 position = Vector2(320, 277)
