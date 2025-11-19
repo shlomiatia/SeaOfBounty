@@ -11,9 +11,11 @@ func _ready() -> void:
 
     orphan.start_text_list(["There are so many!"])
     await orphan.text_list_finished
+    await get_tree().process_frame
 
     one_eye.start_text_list(["That's our only way out."])
     await one_eye.text_list_finished
+    await get_tree().process_frame
 
     finn.start_text_list(["Then we fight!"])
     await finn.text_list_finished
