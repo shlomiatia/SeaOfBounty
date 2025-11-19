@@ -69,7 +69,6 @@ func is_typing() -> bool:
     return _is_typing
 
 func finish_typing() -> void:
-    print_stack()
     _is_typing = false
     visible_characters = _target_visible_chars
 

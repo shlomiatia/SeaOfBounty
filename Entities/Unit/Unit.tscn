@@ -144,11 +144,9 @@ _data = {
 }
 
 [node name="Unit" type="Node2D" groups=["units"]]
-y_sort_enabled = true
 script = ExtResource("1_b8oma")
 
 [node name="Reflection" type="AnimatedSprite2D" parent="."]
-y_sort_enabled = true
 material = SubResource("ShaderMaterial_rlkj8")
 position = Vector2(0, 17)
 scale = Vector2(1, -1)
@@ -158,7 +156,6 @@ autoplay = "right"
 frame_progress = 0.393646
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-y_sort_enabled = true
 material = SubResource("ShaderMaterial_qbw00")
 sprite_frames = SubResource("SpriteFrames_rlkj8")
 animation = &"right"

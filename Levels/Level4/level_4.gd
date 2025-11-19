@@ -3,6 +3,7 @@ class_name Level4 extends Node2D
 @onready var orphan: Unit = $Main/Units/Orphan
 @onready var finn: Unit = $Main/Units/Fisherman
 @onready var one_eye: Unit = $Main/Units/OneEye
+@onready var fade: Fade = $Main/CanvasLayer/Fade
 
 func _ready() -> void:
     MusicPlayer.stream = preload("res://Music/Drums B.mp3")
@@ -21,3 +22,7 @@ func _ready() -> void:
     await finn.text_list_finished
 
     $Main.start_player_turn()
+
+func on_won() -> void:
+    await fade.fade_out()
+    get_tree().change_scene_to_file("res://Levels/Level5/Level5.tscn")
