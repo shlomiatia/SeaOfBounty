@@ -61,6 +61,8 @@ color = Color(0.0627451, 0.509804, 0.560784, 1)
 
 [node name="MovementPreview" parent="." instance=ExtResource("4_7l01x")]
 
+[node name="EyeCandies" type="Node2D" parent="."]
+
 [node name="Units" type="Node2D" parent="."]
 
 [node name="Cursor" parent="." instance=ExtResource("10_ehtx6")]
