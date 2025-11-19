@@ -48,6 +48,13 @@ theme = ExtResource("2_dchpf")
 theme_override_font_sizes/font_size = 12
 text = "Gamepad Y / Backspace to skip hero turn"
 
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -2
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
+color = Color(0.0627451, 0.509804, 0.560784, 1)
+
 [node name="Map" parent="." instance=ExtResource("2_avnir")]
 
 [node name="MovementOverlay" parent="." instance=ExtResource("8_ehtx6")]
