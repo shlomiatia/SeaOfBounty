@@ -170,7 +170,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Enemy" groups=["enemies"] instance=ExtResource("1_6tfl6")]
+[node name="Monster" groups=["enemies"] instance=ExtResource("1_6tfl6")]
 sprite_frames = SubResource("SpriteFrames_olqx6")
 set_flip_h = true
 

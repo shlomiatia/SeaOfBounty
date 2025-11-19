@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=4 uid="uid://5gf1oj7jaoyd"]
+[gd_scene load_steps=9 format=4 uid="uid://5gf1oj7jaoyd"]
 
 [ext_resource type="PackedScene" uid="uid://bblitdo328h8a" path="res://Levels/Main/Main.tscn" id="1_dlowv"]
 [ext_resource type="Script" uid="uid://hku2nuu5bc6c" path="res://Levels/Level6/level_6.gd" id="1_xao8x"]
 [ext_resource type="PackedScene" uid="uid://cg6try7ca348a" path="res://Entities/Unit/Units/Lia.tscn" id="2_mawyh"]
-[ext_resource type="PackedScene" uid="uid://3shc41rae0sc" path="res://Entities/Unit/Units/Monster.tscn" id="3_xao8x"]
+[ext_resource type="PackedScene" uid="uid://b11pnk6iom8yp" path="res://Entities/Unit/Units/Orphan.tscn" id="5_jo5ud"]
 [ext_resource type="PackedScene" uid="uid://cfctb2urg6bq8" path="res://Entities/Unit/Units/Mermaid.tscn" id="5_whijr"]
+[ext_resource type="PackedScene" uid="uid://b37lh0usdau8" path="res://Entities/Unit/Units/OneEye.tscn" id="6_ufydp"]
+[ext_resource type="PackedScene" uid="uid://0s4ylsmp2k26" path="res://Entities/Unit/Units/Pufferfish.tscn" id="7_a34f1"]
+[ext_resource type="PackedScene" uid="uid://pqhpiebi5gjk" path="res://Entities/Unit/Units/Fisherman.tscn" id="8_q2muv"]
 
 [node name="Level6" type="Node2D"]
 script = ExtResource("1_xao8x")
@@ -15,12 +18,63 @@ script = ExtResource("1_xao8x")
 tile_map_data = PackedByteArray("AAAAAAAAAAAJAAMAAAAAAAEAAAAOAAYAAAAAAAIAAAAOAAYAAAAAAAMAAAAOAAYAAAAAAAQAAAANAAQAAAAAAAUAAAAOAAYAAAAAAAYAAAAOAAYAAAAAAAcAAAAPAAAAAAAAAAgAAAANAAcAAAABAAAAAAAMAAUAAAABAAEAAAAIAAMAAAABAAIAAAAOAAYAAAABAAMAAAAOAAYAAAABAAQAAAAOAAQAAAABAAUAAAAOAAYAAAABAAYAAAAOAAYAAAABAAcAAAAOAAYAAAABAAgAAAAOAAcAAAACAAAAAAAJAAEAAAACAAEAAAAKAAMAAAACAAIAAAAOAAYAAAACAAMAAAAOAAYAAAACAAQAAAANAAQAAAACAAUAAAAOAAYAAAACAAYAAAAOAAYAAAACAAcAAAAOAAYAAAACAAgAAAAOAAAAAAADAAAAAAAKAAUAAAADAAEAAAALAAMAAAADAAIAAAAOAAYAAAADAAMAAAAOAAYAAAADAAQAAAANAAQAAAADAAUAAAAOAAYAAAADAAYAAAAOAAYAAAADAAcAAAAOAAYAAAADAAgAAAAPAAAAAAAEAAAAAAAMAAUAAAAEAAEAAAAIAAMAAAAEAAIAAAAOAAYAAAAEAAMAAAAOAAYAAAAEAAQAAAAOAAQAAAAEAAUAAAAOAAYAAAAEAAYAAAAOAAYAAAAEAAcAAAAOAAYAAAAEAAgAAAAMAAAAAAAFAAAAAAAKAAUAAAAFAAEAAAALAAMAAAAFAAIAAAAOAAYAAAAFAAMAAAAOAAYAAAAFAAQAAAANAAQAAAAFAAUAAAAOAAYAAAAFAAYAAAAOAAYAAAAFAAcAAAAMAAAAAAAFAAgAAAAPAAcAAAAGAAAAAAAJAAMAAAAGAAEAAAAOAAYAAAAGAAIAAAAOAAYAAAAGAAMAAAAOAAYAAAAGAAQAAAAOAAQAAAAGAAUAAAAOAAYAAAAGAAYAAAAOAAYAAAAGAAcAAAAPAAAAAAAGAAgAAAANAAcAAAAHAAAAAAAKAAMAAAAHAAEAAAAOAAYAAAAHAAIAAAAOAAYAAAAHAAMAAAAOAAYAAAAHAAQAAAAOAAQAAAAHAAUAAAAOAAYAAAAHAAYAAAAOAAYAAAAHAAcAAAAOAAYAAAAHAAgAAAAOAAAAAAAIAAAAAAALAAMAAAAIAAEAAAAOAAYAAAAIAAIAAAAOAAYAAAAIAAMAAAAOAAYAAAAIAAQAAAANAAQAAAAIAAUAAAAOAAYAAAAIAAYAAAAOAAYAAAAIAAcAAAAOAAYAAAAIAAgAAAAOAAcAAAAJAAAAAAAIAAMAAAAJAAEAAAAOAAYAAAAJAAIAAAAOAAYAAAAJAAMAAAAOAAYAAAAJAAQAAAAOAAQAAAAJAAUAAAAOAAYAAAAJAAYAAAAOAAYAAAAJAAcAAAAOAAYAAAAJAAgAAAANAAAAAAAKAAAAAAAMAAUAAAAKAAEAAAAIAAMAAAAKAAIAAAAOAAYAAAAKAAMAAAAOAAYAAAAKAAQAAAANAAQAAAAKAAUAAAAOAAYAAAAKAAYAAAAOAAYAAAAKAAcAAAAMAAAAAAAKAAgAAAAPAAcAAAALAAAAAAAKAAUAAAALAAEAAAALAAMAAAALAAIAAAAOAAYAAAALAAMAAAAOAAYAAAALAAQAAAANAAQAAAALAAUAAAAOAAYAAAALAAYAAAAOAAYAAAALAAcAAAANAAAAAAALAAgAAAAOAAEAAAAMAAAAAAAJAAMAAAAMAAEAAAAOAAYAAAAMAAIAAAAOAAYAAAAMAAMAAAAOAAYAAAAMAAQAAAAPAAQAAAAMAAUAAAAOAAYAAAAMAAYAAAAOAAYAAAAMAAcAAAAPAAAAAAAMAAgAAAANAAcAAAANAAAAAAAKAAMAAAANAAEAAAAOAAYAAAANAAIAAAAOAAYAAAANAAMAAAAOAAYAAAANAAQAAAAOAAYAAAANAAUAAAAOAAYAAAANAAYAAAAOAAYAAAANAAcAAAAOAAYAAAANAAgAAAANAAAAAAAOAAAAAAAMAAUAAAAOAAEAAAAIAAMAAAAOAAIAAAAOAAYAAAAOAAMAAAAOAAYAAAAOAAQAAAAOAAYAAAAOAAUAAAAOAAYAAAAOAAYAAAAOAAYAAAAOAAcAAAAMAAAAAAAOAAgAAAAPAAcAAAAPAAAAAAAKAAIAAAAPAAEAAAAMAAUAAAAPAAIAAAAIAAIAAAAPAAMAAAAIAAMAAAAPAAQAAAAMAAAAAAAPAAUAAAAMAAEAAAAPAAYAAAAMAAIAAAAPAAcAAAAPAAcAAAAPAAgAAAAOAAIAAAA=")
 
 [node name="Lia" parent="Main/Units" index="0" instance=ExtResource("2_mawyh")]
-position = Vector2(20, 261)
+position = Vector2(67, 261)
 
-[node name="Enemy" parent="Main/Units" index="1" instance=ExtResource("3_xao8x")]
-position = Vector2(296, 302)
+[node name="Mermaid" parent="Main/Units" index="1" instance=ExtResource("5_whijr")]
+position = Vector2(130, 142)
 
-[node name="Unit" parent="Main/Units" index="2" instance=ExtResource("5_whijr")]
-position = Vector2(534, 301)
+[node name="Mermaid2" parent="Main/Units" index="2" instance=ExtResource("5_whijr")]
+position = Vector2(214, 92)
+
+[node name="Mermaid3" parent="Main/Units" index="3" instance=ExtResource("5_whijr")]
+position = Vector2(216, 137)
+
+[node name="Mermaid4" parent="Main/Units" index="4" instance=ExtResource("5_whijr")]
+position = Vector2(421, 98)
+
+[node name="Mermaid5" parent="Main/Units" index="5" instance=ExtResource("5_whijr")]
+position = Vector2(418, 141)
+
+[node name="Mermaid6" parent="Main/Units" index="6" instance=ExtResource("5_whijr")]
+position = Vector2(134, 94)
+
+[node name="Mermaid7" parent="Main/Units" index="7" instance=ExtResource("5_whijr")]
+position = Vector2(58, 138)
+
+[node name="Mermaid8" parent="Main/Units" index="8" instance=ExtResource("5_whijr")]
+position = Vector2(58, 92)
+
+[node name="Orphan" parent="Main/Units" index="9" instance=ExtResource("5_jo5ud")]
+position = Vector2(68, 219)
+
+[node name="OneEye" parent="Main/Units" index="10" instance=ExtResource("6_ufydp")]
+position = Vector2(20, 259)
+
+[node name="Pufferfish" parent="Main/Units" index="11" instance=ExtResource("7_a34f1")]
+position = Vector2(229, 219)
+
+[node name="Pufferfish2" parent="Main/Units" index="12" instance=ExtResource("7_a34f1")]
+position = Vector2(423, 218)
+
+[node name="Pufferfish3" parent="Main/Units" index="13" instance=ExtResource("7_a34f1")]
+position = Vector2(425, 261)
+
+[node name="Pufferfish4" parent="Main/Units" index="14" instance=ExtResource("7_a34f1")]
+position = Vector2(483, 257)
+
+[node name="Pufferfish5" parent="Main/Units" index="15" instance=ExtResource("7_a34f1")]
+position = Vector2(538, 174)
+
+[node name="Pufferfish6" parent="Main/Units" index="16" instance=ExtResource("7_a34f1")]
+position = Vector2(585, 174)
+
+[node name="Pufferfish7" parent="Main/Units" index="17" instance=ExtResource("7_a34f1")]
+position = Vector2(227, 262)
+
+[node name="w" parent="Main/Units" index="18" instance=ExtResource("7_a34f1")]
+position = Vector2(476, 215)
+
+[node name="Fisherman" parent="Main/Units" index="19" instance=ExtResource("8_q2muv")]
+position = Vector2(19, 220)
 
 [editable path="Main"]

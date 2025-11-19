@@ -127,12 +127,6 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="Animation" id="Animation_skpxf"]
-resource_name = "MoveToBeforeAttack"
-
-[sub_resource type="Animation" id="Animation_j4e2h"]
-resource_name = "BeforeAttack"
-
 [sub_resource type="Animation" id="Animation_4wvbh"]
 resource_name = "Attack"
 tracks/0/type = "method"
@@ -152,6 +146,12 @@ tracks/0/keys = {
 "method": &"play"
 }]
 }
+
+[sub_resource type="Animation" id="Animation_j4e2h"]
+resource_name = "BeforeAttack"
+
+[sub_resource type="Animation" id="Animation_skpxf"]
+resource_name = "MoveToBeforeAttack"
 
 [sub_resource type="Animation" id="Animation_0nbyy"]
 length = 0.001

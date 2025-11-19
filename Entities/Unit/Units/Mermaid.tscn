@@ -117,7 +117,7 @@ shader_parameter/modulate = Color(1, 1, 1, 1)
 shader_parameter/water_color = Color(0.0705882, 0.305882, 0.537255, 1)
 shader_parameter/bottom = 0.175
 
-[node name="Unit" groups=["enemies"] instance=ExtResource("1_2ji75")]
+[node name="Mermaid" groups=["enemies"] instance=ExtResource("1_2ji75")]
 max_hp = 120
 hp = 120
 damage = 60
