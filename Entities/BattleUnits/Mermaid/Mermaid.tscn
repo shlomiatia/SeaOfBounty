@@ -1,7 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://mrjfnvg80o3x"]
+[gd_scene load_steps=25 format=3 uid="uid://mrjfnvg80o3x"]
 
 [ext_resource type="Script" uid="uid://blitmqem0wv3w" path="res://Entities/BattleUnits/battle_unit.gd" id="1_sr6v8"]
 [ext_resource type="Texture2D" uid="uid://c0yi5ujwdga3k" path="res://Textures/Monsters enemies/בת ים כילשון/בת ים תוקפת כילשון קטן.png" id="3_4wvbh"]
+[ext_resource type="AudioStream" uid="uid://binsmj1m00a4d" path="res://Sounds/Sfx/offshore radio 2.mp3" id="3_j4e2h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g21pi"]
 atlas = ExtResource("3_4wvbh")
@@ -123,8 +124,16 @@ animations = [{
 "texture": SubResource("AtlasTexture_j4e2h")
 }],
 "loop": true,
-"name": &"default",
+"name": &"before_attack",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skpxf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
 }]
 
 [sub_resource type="Animation" id="Animation_4wvbh"]
@@ -136,22 +145,52 @@ tracks/0/path = NodePath("AnimatedSprite2D")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "values": [{
 "args": [&"attack", 1.0, false],
 "method": &"play"
-}, {
-"args": [&"default", 1.0, false],
-"method": &"play"
 }]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.15,
+"stream": ExtResource("3_j4e2h")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": null
+}],
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_j4e2h"]
 resource_name = "BeforeAttack"
 
 [sub_resource type="Animation" id="Animation_skpxf"]
 resource_name = "MoveToBeforeAttack"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"before_attack", 1.0, false],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_0nbyy"]
 length = 0.001
