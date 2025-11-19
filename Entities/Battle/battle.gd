@@ -86,7 +86,7 @@ func _fade_out_and_remove(unit: Unit) -> void:
     unit.remove_from_group("heroes")
     unit.remove_from_group("enemies")
     var tween = create_tween()
-    tween.tween_property(unit, "modulate:a", 0.0, 1.0)
+    tween.tween_property(unit.animated_sprite_2d, "modulate:a", 0.0, 1.0)
     await tween.finished
     unit.queue_free()
 

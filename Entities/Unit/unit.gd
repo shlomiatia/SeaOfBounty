@@ -41,16 +41,16 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
     if hp > 0:
         if !moved || !activated:
-            modulate = Color(1, 1, 1)
+            animated_sprite_2d.modulate = Color(1, 1, 1)
         else:
-            modulate = Color(0.5, 0.5, 0.5)
+            animated_sprite_2d.modulate = Color(0.5, 0.5, 0.5)
 
     var unit_material = animated_sprite_2d.material as ShaderMaterial
-    unit_material.set_shader_parameter("modulate", modulate)
+    unit_material.set_shader_parameter("modulate", animated_sprite_2d.modulate)
 
     var reflection_material = reflection.material as ShaderMaterial
     if reflection_material:
-        reflection_material.set_shader_parameter("alpha", modulate.a)
+        reflection_material.set_shader_parameter("alpha", animated_sprite_2d.modulate.a)
 
     if current_text_index < text_list.size():
         if Input.is_action_just_pressed("confirm"):
