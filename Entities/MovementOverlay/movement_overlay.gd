@@ -4,6 +4,7 @@ class_name MovementOverlay extends Node2D
 @onready var possible_movement: PossibleMovement = $PossibleMovement
 @onready var attack_range: AttackRange = $AttackRange
 @onready var possible_attack: PossibleAttack = $PossibleAttack
+@onready var possible_buff: PossibleBuff = $PossibleBuff
 
 
 func highlight_movement_and_attack(clicked_grid_pos: Vector2i, group: String) -> Unit:
@@ -21,6 +22,7 @@ func highlight_movement_and_attack(clicked_grid_pos: Vector2i, group: String) ->
             possible_movement.highlight_possible_movement(clicked_grid_pos, movement)
             attack_range.highlight_attack_range(entity)
             possible_attack.highlight_possible_attack(entity)
+            possible_buff.highlight_possible_buff(entity)
             entity.status_box.show()
 
             return entity
@@ -34,3 +36,4 @@ func clear() -> void:
     possible_movement.clear()
     attack_range.clear()
     possible_attack.clear()
+    possible_buff.clear()

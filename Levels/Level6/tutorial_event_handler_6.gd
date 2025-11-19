@@ -10,8 +10,8 @@ class_name TutorialEventHandler6 extends ColorRect
 var tutorial_active: bool = false
 var tutorial_step: int = 0
 var tutorial_cells: Array[Vector2i] = [
+    Vector2i(0, 6),
     Vector2i(1, 6),
-    Vector2i(1, 5),
 ]
 
 func _input(event: InputEvent) -> void:

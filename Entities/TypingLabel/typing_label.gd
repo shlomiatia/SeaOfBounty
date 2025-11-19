@@ -69,7 +69,6 @@ func is_typing() -> bool:
     return _is_typing
 
 func finish_typing() -> void:
-    prints("finish_typing", text)
     print_stack()
     _is_typing = false
     visible_characters = _target_visible_chars
@@ -93,7 +92,6 @@ func _play_random_sound() -> void:
 func _set(property: StringName, value: Variant) -> bool:
     if property == "text":
         text = value
-        prints("_set", text, is_node_ready())
         if is_node_ready():
             _start_typing()
         return true

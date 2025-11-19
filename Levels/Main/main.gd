@@ -51,6 +51,20 @@ func _input(event: InputEvent) -> void:
 func handle_confirm(cursor_pos: Vector2) -> void:
     var clicked_grid_pos := map.local_to_map(cursor_pos)
 
+    if current_hero != null && current_hero.display_name == "Lia":
+        var hero = Utils.get_entity_at_tile(map, clicked_grid_pos, "heroes")
+        if hero != current_hero && hero != null && hero.hp < hero.max_hp:
+            hero.hp = min(hero.hp + 20, hero.max_hp)
+            current_hero.moved = true
+            current_hero.activated = true
+            current_hero = null
+            clear()
+            audio_stream_player.stream = preload("res://Sounds/Sfx/lazer.wav")
+            audio_stream_player.play()
+            start_enemy_turn_if_needed()
+            return
+
+
     var entity = movement_overlay.highlight_movement_and_attack(clicked_grid_pos, "heroes")
     if entity != null:
         play_confirm()
