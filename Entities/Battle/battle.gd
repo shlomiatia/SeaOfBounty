@@ -98,31 +98,34 @@ func assign_damage(attacker: Unit, defender: Unit, attacker_hp_label: Label, def
         attacker_hp_label.text = "%s damage (%s%%)" % [damage_dealt, int(modifier * 100)]
         var tween = create_tween()
         battle_unit.modulate = Color.RED
-        tween.tween_property(battle_unit, "modulate", Color.WHITE, 0.5)
+        tween.tween_property(battle_unit, "modulate", Color.WHITE, 1.0)
         
     var old_hp = defender.hp
     defender.hp = max(0, defender.hp - damage_dealt)
     var new_hp = defender.hp
 
-    var duration = 0.5
-    var steps = abs(new_hp - old_hp)
+    var label_tween = create_tween()
+    label_tween.tween_method(func(value: float) -> void: set_hp_label(defender_hp_label, value), old_hp, new_hp, 1.0)
 
-    if steps == 0:
-        return
+    #var duration = 0.5
+    #var steps = abs(new_hp - old_hp)
 
-    shaking_camera.start_screen_shake()
+    #if steps == 0:
+    #    return
 
-    var time_per_step = duration / steps
-    var current_hp = old_hp
+    #shaking_camera.start_screen_shake()
 
-    while current_hp != new_hp:
-        if old_hp > new_hp:
-            current_hp -= 1
-        else:
-            current_hp += 1
+    #var time_per_step = duration / steps
+    #var current_hp = old_hp
 
-        set_hp_label(defender_hp_label, current_hp)
-        await get_tree().create_timer(time_per_step).timeout
+    #while current_hp != new_hp:
+    #    if old_hp > new_hp:
+    #        current_hp -= 1
+    #    else:
+    #        current_hp += 1
+
+    #    set_hp_label(defender_hp_label, current_hp)
+    #    await get_tree().create_timer(time_per_step).timeout
 
 func set_hp_label(label: Label, hp: float) -> void:
     label.text = "%s HP" % [int(hp)]

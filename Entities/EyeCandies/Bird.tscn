@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://btbf2bq7q8noi"]
+[gd_scene load_steps=20 format=3 uid="uid://btbf2bq7q8noi"]
 
 [ext_resource type="Texture2D" uid="uid://ckret0pe13yo7" path="res://Textures/AnimatedEyeCandies/שחף.png" id="1_32ej2"]
 [ext_resource type="Texture2D" uid="uid://bh16e7wut5vy5" path="res://Textures/AnimatedEyeCandies/צל של שחף.png" id="2_ggsxx"]
+[ext_resource type="Script" uid="uid://ck76g7u4m11ml" path="res://Entities/EyeCandies/bird_shadow.gd" id="2_ryp1v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0aol3"]
 atlas = ExtResource("2_ggsxx")
@@ -121,6 +122,7 @@ animations = [{
 sprite_frames = SubResource("SpriteFrames_4nt6u")
 autoplay = "default"
 frame_progress = 0.148996
+script = ExtResource("2_ryp1v")
 
 [node name="Bird" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_eyhpw")
