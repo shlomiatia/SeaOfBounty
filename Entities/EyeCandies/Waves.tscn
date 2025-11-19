@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://dvla1w60eh23h"]
+
+[ext_resource type="Texture2D" uid="uid://cln0upmbnyv4a" path="res://Textures/AnimatedEyeCandies/גלים לים .png" id="1_d34rs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vs0im"]
+atlas = ExtResource("1_d34rs")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gkva"]
+atlas = ExtResource("1_d34rs")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7h5xm"]
+atlas = ExtResource("1_d34rs")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqiov"]
+atlas = ExtResource("1_d34rs")
+region = Rect2(0, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vji7a"]
+atlas = ExtResource("1_d34rs")
+region = Rect2(100, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpo6r"]
+atlas = ExtResource("1_d34rs")
+region = Rect2(200, 100, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p1728"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vs0im")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gkva")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7h5xm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqiov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vji7a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpo6r")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Waves" type="AnimatedSprite2D"]
+z_index = -1
+sprite_frames = SubResource("SpriteFrames_p1728")
+frame = 5
+frame_progress = 1.0

@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://dn7tdn7xf0n6m"]
+
+[ext_resource type="Script" uid="uid://c8p1slwn3tdlq" path="res://Entities/EyeCandies/eye_candies.gd" id="1_2mksn"]
+[ext_resource type="PackedScene" uid="uid://btbf2bq7q8noi" path="res://Entities/EyeCandies/Bird.tscn" id="2_yqr7a"]
+[ext_resource type="PackedScene" uid="uid://bxjjldng7rgf0" path="res://Entities/EyeCandies/Fish.tscn" id="3_v0w1r"]
+[ext_resource type="PackedScene" uid="uid://c6y85253iio63" path="res://Entities/EyeCandies/Crab.tscn" id="4_2h8ff"]
+
+[node name="EyeCandies" type="Node2D"]
+script = ExtResource("1_2mksn")
+
+[node name="Fish" parent="." instance=ExtResource("3_v0w1r")]
+visible = false
+
+[node name="Crab" parent="." instance=ExtResource("4_2h8ff")]
+visible = false
+
+[node name="BirdShadow" parent="." instance=ExtResource("2_yqr7a")]
+visible = false

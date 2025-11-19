@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bblitdo328h8a"]
+[gd_scene load_steps=11 format=3 uid="uid://bblitdo328h8a"]
 
 [ext_resource type="Script" uid="uid://currcp3fjqvdh" path="res://Levels/Main/main.gd" id="1_8ofus"]
 [ext_resource type="PackedScene" uid="uid://b6mjpkkw6ptwr" path="res://Entities/Map/map.tscn" id="2_avnir"]
 [ext_resource type="Theme" uid="uid://b6vxvs080c1o3" path="res://Themes/Label.tres" id="2_dchpf"]
 [ext_resource type="PackedScene" uid="uid://dnwug4pxdwecg" path="res://Entities/SinWaveTransform/Fade.tscn" id="3_ehtx6"]
 [ext_resource type="PackedScene" uid="uid://dwli7df7clyar" path="res://Entities/MovementPreview/movement_preview.tscn" id="4_7l01x"]
+[ext_resource type="PackedScene" uid="uid://dn7tdn7xf0n6m" path="res://Entities/EyeCandies/EyeCandies.tscn" id="7_dl1uj"]
 [ext_resource type="PackedScene" uid="uid://df84bkpjfqdm5" path="res://Entities/Battle/Battle.tscn" id="7_tftr3"]
 [ext_resource type="PackedScene" uid="uid://lfbidqmbpqnv" path="res://Entities/MovementOverlay/MovementOverlay.tscn" id="8_ehtx6"]
 [ext_resource type="PackedScene" uid="uid://bwrk5kjmoamkl" path="res://Entities/Cursor/Cursor.tscn" id="10_ehtx6"]
@@ -61,9 +62,9 @@ color = Color(0.0627451, 0.509804, 0.560784, 1)
 
 [node name="MovementPreview" parent="." instance=ExtResource("4_7l01x")]
 
-[node name="EyeCandies" type="Node2D" parent="."]
-
 [node name="Units" type="Node2D" parent="."]
+
+[node name="EyeCandies" parent="." instance=ExtResource("7_dl1uj")]
 
 [node name="Cursor" parent="." instance=ExtResource("10_ehtx6")]
 

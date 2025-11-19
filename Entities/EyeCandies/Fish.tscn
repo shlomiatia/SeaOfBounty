@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://bxjjldng7rgf0"]
+
+[ext_resource type="Texture2D" uid="uid://d2h4avnk6euix" path="res://Textures/AnimatedEyeCandies/דג במים.png" id="1_0veyw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7quii"]
+atlas = ExtResource("1_0veyw")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcwry"]
+atlas = ExtResource("1_0veyw")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ua4x8"]
+atlas = ExtResource("1_0veyw")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nysut"]
+atlas = ExtResource("1_0veyw")
+region = Rect2(0, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_406wx"]
+atlas = ExtResource("1_0veyw")
+region = Rect2(100, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uunvm"]
+atlas = ExtResource("1_0veyw")
+region = Rect2(200, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cbo2"]
+atlas = ExtResource("1_0veyw")
+region = Rect2(0, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jyuw"]
+atlas = ExtResource("1_0veyw")
+region = Rect2(100, 200, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_smk2l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7quii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcwry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ua4x8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nysut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_406wx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uunvm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7cbo2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jyuw")
+}],
+"loop": false,
+"name": &"default",
+"speed": 19.0
+}]
+
+[node name="Fish" type="AnimatedSprite2D"]
+z_index = -1
+sprite_frames = SubResource("SpriteFrames_smk2l")
+frame = 7
+frame_progress = 1.0

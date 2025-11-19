@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=3 uid="uid://c6y85253iio63"]
+
+[ext_resource type="Texture2D" uid="uid://bcr7er7e8flvw" path="res://Textures/AnimatedEyeCandies/UntitledArtwork9.png" id="1_r6koo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6koo"]
+atlas = ExtResource("1_r6koo")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ujav"]
+atlas = ExtResource("1_r6koo")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xpfx"]
+atlas = ExtResource("1_r6koo")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6egn"]
+atlas = ExtResource("1_r6koo")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mda4n"]
+atlas = ExtResource("1_r6koo")
+region = Rect2(0, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqlct"]
+atlas = ExtResource("1_r6koo")
+region = Rect2(100, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6r6p"]
+atlas = ExtResource("1_r6koo")
+region = Rect2(200, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_do4fu"]
+atlas = ExtResource("1_r6koo")
+region = Rect2(300, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtmup"]
+atlas = ExtResource("1_r6koo")
+region = Rect2(0, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncowp"]
+atlas = ExtResource("1_r6koo")
+region = Rect2(100, 200, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5atug"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6koo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ujav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xpfx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6egn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mda4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqlct")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6r6p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_do4fu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mtmup")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncowp")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Crab" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-10, 0)
+sprite_frames = SubResource("SpriteFrames_5atug")
