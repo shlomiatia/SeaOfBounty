@@ -1,0 +1,227 @@
+[gd_scene load_steps=26 format=3 uid="uid://t1qbcf70qpph"]
+
+[ext_resource type="Script" uid="uid://blitmqem0wv3w" path="res://Entities/BattleUnits/battle_unit.gd" id="1_ggdo1"]
+[ext_resource type="Texture2D" uid="uid://bkbhn2qvukg14" path="res://Textures/Monsters enemies/בת ים כילשון/כילשון קטן 2.png" id="2_e2unc"]
+[ext_resource type="AudioStream" uid="uid://binsmj1m00a4d" path="res://Sounds/Sfx/offshore radio 2.mp3" id="3_xjc0j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifqwr"]
+atlas = ExtResource("2_e2unc")
+region = Rect2(80, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfjfi"]
+atlas = ExtResource("2_e2unc")
+region = Rect2(160, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsw4b"]
+atlas = ExtResource("2_e2unc")
+region = Rect2(240, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvg2y"]
+atlas = ExtResource("2_e2unc")
+region = Rect2(0, 160, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5043c"]
+atlas = ExtResource("2_e2unc")
+region = Rect2(80, 160, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_178ds"]
+atlas = ExtResource("2_e2unc")
+region = Rect2(160, 160, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yywva"]
+atlas = ExtResource("2_e2unc")
+region = Rect2(240, 160, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7h60x"]
+atlas = ExtResource("2_e2unc")
+region = Rect2(0, 240, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nccub"]
+atlas = ExtResource("2_e2unc")
+region = Rect2(80, 240, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cyybm"]
+atlas = ExtResource("2_e2unc")
+region = Rect2(160, 240, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4x1w"]
+atlas = ExtResource("2_e2unc")
+region = Rect2(240, 240, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rvvh"]
+atlas = ExtResource("2_e2unc")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_upi40"]
+atlas = ExtResource("2_e2unc")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6art"]
+atlas = ExtResource("2_e2unc")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_foqb1"]
+atlas = ExtResource("2_e2unc")
+region = Rect2(0, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjsy7"]
+atlas = ExtResource("2_e2unc")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wvg2y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifqwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfjfi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dsw4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvg2y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5043c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_178ds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yywva")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7h60x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nccub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cyybm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4x1w")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rvvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_upi40")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6art")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_foqb1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6art")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_upi40")
+}],
+"loop": true,
+"name": &"before_attack",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjsy7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_4wvbh"]
+resource_name = "Attack"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"attack", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.15,
+"stream": ExtResource("3_xjc0j")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": null
+}],
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_j4e2h"]
+resource_name = "BeforeAttack"
+
+[sub_resource type="Animation" id="Animation_skpxf"]
+resource_name = "MoveToBeforeAttack"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"before_attack", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_0nbyy"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j4e2h"]
+_data = {
+&"Attack": SubResource("Animation_4wvbh"),
+&"BeforeAttack": SubResource("Animation_j4e2h"),
+&"MoveToBeforeAttack": SubResource("Animation_skpxf"),
+&"RESET": SubResource("Animation_0nbyy")
+}
+
+[node name="Mermaiden" type="Node2D"]
+script = ExtResource("1_ggdo1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-18, -32)
+scale = Vector2(-2, 2)
+sprite_frames = SubResource("SpriteFrames_wvg2y")
+animation = &"attack"
+autoplay = "default"
+frame = 10
+frame_progress = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_j4e2h")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
