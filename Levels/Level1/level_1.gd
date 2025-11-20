@@ -2,6 +2,7 @@ class_name Level1 extends Node2D
 
 @onready var dialog: Dialog = $Dialog
 @onready var fade: Fade = $CanvasLayer/Fade
+@onready var background: Sprite2D = $Background
 var stage := 0
 
 func _input(event: InputEvent) -> void:
@@ -17,7 +18,7 @@ func start() -> void:
     MusicPlayer.play()
     var array: Array[Array] = [
         ["", "Somwhere in the caribbeans..."],
-        ["Kate", "Caught anything?"],
+        ["Kate", "Caught anything yet?"],
         ["Finn", "The sea is silent.\nSomething is scaring the fish..."],
         ["Kate", "Whoo, Monsters?!"],
         ["Finn", "Yes. The island folk sent word."],
@@ -30,6 +31,7 @@ func start() -> void:
 func _on_dialog_finished() -> void:
     await fade.fade_out()
     if stage == 1:
+        background.texture = preload("res://Textures/רקעים/Background4.png")
         stage += 1
         var array: Array[Array] = [
             ["OneEye", "Took you long enough, old man."],
@@ -43,6 +45,7 @@ func _on_dialog_finished() -> void:
         dialog.start(array)
         
     elif stage == 2:
+        background.texture = preload("res://Textures/רקעים/Background2.png")
         stage += 1
         var array: Array[Array] = [
             ["", "The next morning...\nKate bed is empty."],

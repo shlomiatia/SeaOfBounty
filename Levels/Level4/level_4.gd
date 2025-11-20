@@ -17,9 +17,9 @@ func _ready() -> void:
     await get_tree().process_frame
 
     one_eye.start_text_list(
-        ["Finn, throw your harpoon at the monsters from a distance!.",
+        ["Finn, throw your harpoon at the monsters from a distance!",
         "I'm the only who outrange the puffers so leave them to me!",
-        "Kate, you finish both off when they're weakened!"])
+        "Kate, you finish them off when they're weakened!"])
     await one_eye.text_list_finished
     await get_tree().process_frame
 

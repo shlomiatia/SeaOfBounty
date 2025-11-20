@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1bj3du40co4k"
-path="res://.godot/imported/רקעים - Reference Layer 2.png-f9965aaf319fb5f380dd7d3320a630ec.ctex"
+uid="uid://56tks4ux444g"
+path="res://.godot/imported/Background4.png-c321ae511968a1c7361556c2f3fc5c57.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/רקעים/רקעים - Reference Layer 2.png"
-dest_files=["res://.godot/imported/רקעים - Reference Layer 2.png-f9965aaf319fb5f380dd7d3320a630ec.ctex"]
+source_file="res://Textures/רקעים/Background4.png"
+dest_files=["res://.godot/imported/Background4.png-c321ae511968a1c7361556c2f3fc5c57.ctex"]
 
 [params]
 
