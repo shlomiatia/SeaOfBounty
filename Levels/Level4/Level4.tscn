@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://d3p7w2yvp2t1w"]
+[gd_scene load_steps=17 format=4 uid="uid://d3p7w2yvp2t1w"]
 
 [ext_resource type="PackedScene" uid="uid://bblitdo328h8a" path="res://Levels/Main/Main.tscn" id="1_5kkv1"]
 [ext_resource type="Script" uid="uid://cqebvrf6iwaqm" path="res://Levels/Level4/level_4.gd" id="1_ej23p"]
@@ -7,13 +7,22 @@
 [ext_resource type="PackedScene" uid="uid://b37lh0usdau8" path="res://Entities/Unit/Units/OneEye.tscn" id="4_iy0oy"]
 [ext_resource type="PackedScene" uid="uid://3shc41rae0sc" path="res://Entities/Unit/Units/Monster.tscn" id="5_ldvuh"]
 [ext_resource type="PackedScene" uid="uid://0s4ylsmp2k26" path="res://Entities/Unit/Units/Pufferfish.tscn" id="7_iy0oy"]
+[ext_resource type="Texture2D" uid="uid://c4pk4tkr8eep0" path="res://Textures/קישוטים/קישוטים  - Layer 10.png" id="8_chhg7"]
+[ext_resource type="Texture2D" uid="uid://dyy2f6rmkjk0e" path="res://Textures/קישוטים/קישוטים  - Layer 11.png" id="9_5xq35"]
+[ext_resource type="Texture2D" uid="uid://bkry51hjq74ua" path="res://Textures/קישוטים/קישוטים  - Layer 12.png" id="10_0n11m"]
+[ext_resource type="Texture2D" uid="uid://bvaem2qjq4wek" path="res://Textures/קישוטים/קישוטים  - Layer 13.png" id="11_6h6pd"]
+[ext_resource type="Texture2D" uid="uid://bmj8kkbspmj31" path="res://Textures/קישוטים/קישוטים  - Layer 14.png" id="12_o8ipd"]
+[ext_resource type="Texture2D" uid="uid://d26kfku50atj0" path="res://Textures/קישוטים/קישוטים  - Layer 15.png" id="13_cs3pp"]
+[ext_resource type="Texture2D" uid="uid://bbxxayyvc1wem" path="res://Textures/קישוטים/קישוטים  - Layer 16.png" id="14_egqk7"]
+[ext_resource type="Texture2D" uid="uid://dp2gjlytjmbxs" path="res://Textures/קישוטים/קישוטים  - Layer 17.png" id="15_rjd5p"]
+[ext_resource type="Texture2D" uid="uid://n41o7krbafq6" path="res://Textures/קישוטים/קישוטים  - Layer 18.png" id="16_2lc02"]
 
 [node name="Level4" type="Node2D"]
 script = ExtResource("1_ej23p")
 
 [node name="Main" parent="." instance=ExtResource("1_5kkv1")]
 
-[node name="Map" parent="Main" index="1"]
+[node name="Map" parent="Main" index="2"]
 tile_map_data = PackedByteArray("AAAAAAAAAAAOAAYAAAAAAAEAAAAOAAYAAAAAAAIAAAAOAAYAAAAAAAMAAAAOAAYAAAAAAAQAAAAOAAYAAAAAAAUAAAAOAAYAAAAAAAYAAAAPAAAAAAAAAAcAAAAPAAEAAAAAAAgAAAANAAcAAAABAAAAAAAOAAYAAAABAAEAAAAOAAYAAAABAAIAAAAMAAQAAAABAAMAAAAOAAYAAAABAAQAAAAOAAYAAAABAAUAAAAOAAYAAAABAAYAAAAOAAYAAAABAAcAAAAOAAYAAAABAAgAAAAPAAAAAAACAAAAAAAOAAYAAAACAAEAAAAOAAYAAAACAAIAAAANAAQAAAACAAMAAAAOAAYAAAACAAQAAAAOAAYAAAACAAUAAAAOAAYAAAACAAYAAAAOAAYAAAACAAcAAAAOAAYAAAACAAgAAAAOAAYAAAADAAAAAAAOAAYAAAADAAEAAAAOAAYAAAADAAIAAAAOAAQAAAADAAMAAAAOAAYAAAADAAQAAAAOAAYAAAADAAUAAAAOAAYAAAADAAYAAAAOAAYAAAADAAcAAAAOAAYAAAADAAgAAAAOAAYAAAAEAAAAAAAOAAYAAAAEAAEAAAAOAAYAAAAEAAIAAAAPAAQAAAAEAAMAAAAOAAYAAAAEAAQAAAAOAAYAAAAEAAUAAAAOAAYAAAAEAAYAAAAOAAYAAAAEAAcAAAAOAAYAAAAEAAgAAAAOAAYAAAAFAAAAAAAOAAYAAAAFAAEAAAAOAAYAAAAFAAIAAAAOAAYAAAAFAAMAAAAOAAYAAAAFAAQAAAAMAAAAAAAFAAUAAAAMAAMAAAAFAAYAAAAOAAYAAAAFAAcAAAAOAAYAAAAFAAgAAAAOAAYAAAAGAAAAAAAMAAMAAAAGAAEAAAAOAAYAAAAGAAIAAAAMAAAAAAAGAAMAAAAMAAEAAAAGAAQAAAAPAAcAAAAGAAUAAAAOAAMAAAAGAAYAAAAOAAYAAAAGAAcAAAAMAAQAAAAGAAgAAAAOAAYAAAAHAAAAAAAPAAUAAAAHAAEAAAAMAAEAAAAHAAIAAAAPAAcAAAAHAAMAAAANAAUAAAAHAAQAAAAPAAEAAAAHAAUAAAAPAAMAAAAHAAYAAAAOAAYAAAAHAAcAAAAPAAQAAAAHAAgAAAAOAAYAAAAIAAAAAAANAAcAAAAIAAEAAAANAAUAAAAIAAIAAAANAAYAAAAIAAMAAAAPAAMAAAAIAAQAAAAOAAYAAAAIAAUAAAAOAAYAAAAIAAYAAAAOAAYAAAAIAAcAAAAOAAYAAAAIAAgAAAAOAAYAAAAJAAAAAAAPAAcAAAAJAAEAAAAPAAUAAAAJAAIAAAAMAAMAAAAJAAMAAAAOAAYAAAAJAAQAAAAOAAYAAAAJAAUAAAAMAAAAAAAJAAYAAAAMAAEAAAAJAAcAAAAMAAMAAAAJAAgAAAAOAAYAAAAKAAAAAAANAAUAAAAKAAEAAAANAAcAAAAKAAIAAAANAAMAAAAKAAMAAAAOAAYAAAAKAAQAAAAMAAAAAAAKAAUAAAAPAAcAAAAKAAYAAAANAAIAAAAKAAcAAAAPAAUAAAAKAAgAAAAMAAMAAAALAAAAAAAOAAUAAAALAAEAAAAOAAcAAAALAAIAAAAOAAMAAAALAAMAAAAOAAYAAAALAAQAAAAPAAAAAAALAAUAAAAPAAIAAAALAAYAAAANAAcAAAALAAcAAAAOAAIAAAALAAgAAAAPAAUAAAAMAAAAAAAPAAUAAAAMAAEAAAAPAAcAAAAMAAIAAAANAAMAAAAMAAMAAAAOAAYAAAAMAAQAAAAOAAYAAAAMAAUAAAAOAAYAAAAMAAYAAAAOAAAAAAAMAAcAAAANAAEAAAAMAAgAAAANAAIAAAANAAAAAAANAAUAAAANAAEAAAANAAYAAAANAAIAAAAPAAMAAAANAAMAAAAOAAYAAAANAAQAAAAOAAYAAAANAAUAAAAMAAAAAAANAAYAAAAPAAcAAAANAAcAAAANAAUAAAANAAgAAAANAAYAAAAOAAAAAAANAAMAAAAOAAEAAAAOAAYAAAAOAAIAAAAOAAYAAAAOAAMAAAAOAAYAAAAOAAQAAAAOAAYAAAAOAAUAAAAPAAAAAAAOAAYAAAANAAcAAAAOAAcAAAAOAAUAAAAOAAgAAAAOAAYAAAAPAAAAAAAPAAUAAAAPAAEAAAAMAAMAAAAPAAIAAAAOAAYAAAAPAAMAAAAOAAYAAAAPAAQAAAAOAAYAAAAPAAUAAAAOAAYAAAAPAAYAAAANAAAAAAAPAAcAAAAPAAUAAAAPAAgAAAAPAAYAAAA=")
 
 [node name="Orphan" parent="Main/Units" index="0" instance=ExtResource("2_uxo6m")]
@@ -60,5 +69,41 @@ initial_direction = "left"
 [node name="Pufferfish5" parent="Main/Units" index="11" instance=ExtResource("7_iy0oy")]
 position = Vector2(94, 342)
 initial_direction = "left"
+
+[node name="קישוטים-Layer10" type="Sprite2D" parent="."]
+position = Vector2(574, 332)
+texture = ExtResource("8_chhg7")
+
+[node name="קישוטים-Layer11" type="Sprite2D" parent="."]
+position = Vector2(144, 97)
+texture = ExtResource("9_5xq35")
+
+[node name="קישוטים-Layer12" type="Sprite2D" parent="."]
+position = Vector2(47, 344)
+texture = ExtResource("10_0n11m")
+
+[node name="קישוטים-Layer13" type="Sprite2D" parent="."]
+position = Vector2(244, 204)
+texture = ExtResource("11_6h6pd")
+
+[node name="קישוטים-Layer14" type="Sprite2D" parent="."]
+position = Vector2(274, 20)
+texture = ExtResource("12_o8ipd")
+
+[node name="קישוטים-Layer15" type="Sprite2D" parent="."]
+position = Vector2(486, 274)
+texture = ExtResource("13_cs3pp")
+
+[node name="קישוטים-Layer16" type="Sprite2D" parent="."]
+position = Vector2(515, 275)
+texture = ExtResource("14_egqk7")
+
+[node name="קישוטים-Layer17" type="Sprite2D" parent="."]
+position = Vector2(490, 68)
+texture = ExtResource("15_rjd5p")
+
+[node name="קישוטים-Layer18" type="Sprite2D" parent="."]
+position = Vector2(318, 114)
+texture = ExtResource("16_2lc02")
 
 [editable path="Main"]

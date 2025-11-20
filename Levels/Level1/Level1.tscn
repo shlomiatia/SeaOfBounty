@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://h3dyl075pasl" path="res://Entities/Dialog/Dialog.tscn" id="2_n7uxk"]
 [ext_resource type="Theme" uid="uid://b6vxvs080c1o3" path="res://Themes/Label.tres" id="3_xwq7n"]
 [ext_resource type="PackedScene" uid="uid://c6o8c7ihgcm2t" path="res://Entities/SinWaveTransform/Blink.tscn" id="4_olbyf"]
-[ext_resource type="Texture2D" uid="uid://csia50mbm6yqw" path="res://Textures/רקעים/רקעים - Reference Layer 2 (2).png" id="6_olbyf"]
+[ext_resource type="Texture2D" uid="uid://cmiync2my87wc" path="res://Textures/רקעים/background1.png" id="6_olbyf"]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_n7uxk")

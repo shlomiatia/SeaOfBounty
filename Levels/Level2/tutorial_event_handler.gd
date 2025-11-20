@@ -121,22 +121,18 @@ func show_tutorial_at_step(step: int) -> void:
     tutorial_active = true
     typing_label.text = ""
 
-    tutorial_highlight.clear()
-    var map_rect = map.get_used_rect()
-    for x in range(map_rect.position.x, map_rect.position.x + map_rect.size.x):
-        for y in range(map_rect.position.y, map_rect.position.y + map_rect.size.y):
-            var cell = Vector2i(x, y)
-            if cell != tutorial_cells[step]:
-                tutorial_highlight.set_cell(cell, 0, Vector2i(2, 0))
+    set_tutorial_highlight(tutorial_cells[step])
 
     tutorial_label.text = get_tutorial_text(step)
 
 func on_battle_started(battle_mode: String) -> void:
     if battle_mode == "attack" && attack_tutorial_done || battle_mode == "defend" && defend_tutorial_done:
         return
+
     current_battle_tutorial = battle_mode
-    tutorial_label.text = "Wait for the right moment..."
-    tutorial_label.finish_typing()
+    set_tutorial_highlight(Vector2i.MIN)
+    battle_meter.z_index = 2
+
 
 func is_battle_tutorial() -> bool:
     return current_battle_tutorial != ""
@@ -163,10 +159,22 @@ func is_battle_input_allowed() -> bool:
 
 func on_indicator_stopped(_value: float) -> void:
     if current_battle_tutorial == "attack":
+        tutorial_highlight.clear()
         attack_tutorial_done = true
     elif current_battle_tutorial == "defend":
+        tutorial_highlight.clear()
         defend_tutorial_done = true
 
+    battle_meter.z_index = 0
     tutorial_label.text = ""
     Engine.time_scale = 1
     current_battle_tutorial = ""
+
+func set_tutorial_highlight(cell_to_highlight: Vector2i) -> void:
+    tutorial_highlight.clear()
+    var map_rect = map.get_used_rect()
+    for x in range(map_rect.position.x, map_rect.position.x + map_rect.size.x):
+        for y in range(map_rect.position.y, map_rect.position.y + map_rect.size.y):
+            var cell = Vector2i(x, y)
+            if cell != cell_to_highlight:
+                tutorial_highlight.set_cell(cell, 0, Vector2i(2, 0))
