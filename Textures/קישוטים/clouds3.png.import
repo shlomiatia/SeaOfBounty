@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d4dvj3i1lt44h"
-path="res://.godot/imported/קישוטים  - Layer 4 (4).png-e9bb2ae20a95d1a2dac3e960adf42050.ctex"
+path="res://.godot/imported/clouds3.png-c5aed97f9ee80fac62b7978a115e6936.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/קישוטים/קישוטים  - Layer 4 (4).png"
-dest_files=["res://.godot/imported/קישוטים  - Layer 4 (4).png-e9bb2ae20a95d1a2dac3e960adf42050.ctex"]
+source_file="res://Textures/קישוטים/clouds3.png"
+dest_files=["res://.godot/imported/clouds3.png-c5aed97f9ee80fac62b7978a115e6936.ctex"]
 
 [params]
 

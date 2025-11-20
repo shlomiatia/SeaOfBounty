@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dn7tdn7xf0n6m"]
+[gd_scene load_steps=7 format=3 uid="uid://dn7tdn7xf0n6m"]
 
 [ext_resource type="Script" uid="uid://c8p1slwn3tdlq" path="res://Entities/EyeCandies/eye_candies.gd" id="1_2mksn"]
 [ext_resource type="PackedScene" uid="uid://btbf2bq7q8noi" path="res://Entities/EyeCandies/Bird.tscn" id="2_yqr7a"]
 [ext_resource type="PackedScene" uid="uid://bxjjldng7rgf0" path="res://Entities/EyeCandies/Fish.tscn" id="3_v0w1r"]
 [ext_resource type="PackedScene" uid="uid://c6y85253iio63" path="res://Entities/EyeCandies/Crab.tscn" id="4_2h8ff"]
 [ext_resource type="PackedScene" uid="uid://dvla1w60eh23h" path="res://Entities/EyeCandies/Waves.tscn" id="5_yqr7a"]
+[ext_resource type="PackedScene" uid="uid://cu4dgs38yjndq" path="res://Entities/EyeCandies/Clouds.tscn" id="6_v0w1r"]
 
 [node name="EyeCandies" type="Node2D"]
 script = ExtResource("1_2mksn")
@@ -19,3 +20,5 @@ visible = false
 visible = false
 
 [node name="Waves" parent="." instance=ExtResource("5_yqr7a")]
+
+[node name="Clouds" parent="." instance=ExtResource("6_v0w1r")]

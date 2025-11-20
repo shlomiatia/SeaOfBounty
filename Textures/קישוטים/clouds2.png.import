@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c18pugdn7d1wr"
-path="res://.godot/imported/קישוטים  - Layer 4.png-173e245d9aaed7fd9deb17c4e16512d6.ctex"
+uid="uid://s7ebpgxohsqk"
+path="res://.godot/imported/clouds2.png-6b32a9f9ae2dc3c0cf43bb981893ec08.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/קישוטים/קישוטים  - Layer 4.png"
-dest_files=["res://.godot/imported/קישוטים  - Layer 4.png-173e245d9aaed7fd9deb17c4e16512d6.ctex"]
+source_file="res://Textures/קישוטים/clouds2.png"
+dest_files=["res://.godot/imported/clouds2.png-6b32a9f9ae2dc3c0cf43bb981893ec08.ctex"]
 
 [params]
 

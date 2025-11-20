@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cu4dgs38yjndq"]
+
+[ext_resource type="Script" uid="uid://e8mrofcaxkr0" path="res://Entities/EyeCandies/clouds.gd" id="1_hiou7"]
+
+[node name="Clouds" type="Node2D"]
+script = ExtResource("1_hiou7")
