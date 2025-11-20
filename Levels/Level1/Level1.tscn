@@ -41,5 +41,5 @@ offset_bottom = 360.0
 color = Color(0, 0, 0, 1)
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(320, 180)
+position = Vector2(320, 213)
 texture = ExtResource("6_olbyf")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://csebfm1q3widl"]
+[gd_scene load_steps=5 format=3 uid="uid://csebfm1q3widl"]
 
 [ext_resource type="Script" uid="uid://d4awh8biobnbw" path="res://Levels/Level5/level_5.gd" id="1_level5"]
 [ext_resource type="PackedScene" uid="uid://dnwug4pxdwecg" path="res://Entities/SinWaveTransform/Fade.tscn" id="2_fade"]
 [ext_resource type="PackedScene" uid="uid://h3dyl075pasl" path="res://Entities/Dialog/Dialog.tscn" id="3_dialog"]
+[ext_resource type="Texture2D" uid="uid://cmiync2my87wc" path="res://Textures/רקעים/background1.png" id="4_8b7fd"]
 
 [node name="Level5" type="Node2D"]
 script = ExtResource("1_level5")
@@ -17,4 +18,8 @@ script = ExtResource("1_level5")
 offset_right = 640.0
 offset_bottom = 360.0
 mouse_filter = 2
-color = Color(0.0627451, 0.509804, 0.560784, 1)
+color = Color(0, 0, 0, 1)
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(320, 213)
+texture = ExtResource("4_8b7fd")

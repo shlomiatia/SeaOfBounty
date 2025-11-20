@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://5gf1oj7jaoyd"]
+[gd_scene load_steps=31 format=4 uid="uid://5gf1oj7jaoyd"]
 
 [ext_resource type="PackedScene" uid="uid://bblitdo328h8a" path="res://Levels/Main/Main.tscn" id="1_dlowv"]
 [ext_resource type="Script" uid="uid://hku2nuu5bc6c" path="res://Levels/Level6/level_6.gd" id="1_xao8x"]
@@ -12,6 +12,20 @@
 [ext_resource type="Texture2D" uid="uid://cibgr2kd341oe" path="res://Textures/tilemap.png" id="9_tutorial"]
 [ext_resource type="TileSet" uid="uid://dy500uswj08ie" path="res://Levels/Main/Main.tres" id="9_ufydp"]
 [ext_resource type="Script" uid="uid://cxd68g7t2rmat" path="res://Levels/Level6/tutorial_event_handler_6.gd" id="11_q2muv"]
+[ext_resource type="Texture2D" uid="uid://d26kfku50atj0" path="res://Textures/קישוטים/קישוטים  - Layer 15.png" id="13_k67py"]
+[ext_resource type="Texture2D" uid="uid://bbxxayyvc1wem" path="res://Textures/קישוטים/קישוטים  - Layer 16.png" id="14_7hjhr"]
+[ext_resource type="Texture2D" uid="uid://dyy2f6rmkjk0e" path="res://Textures/קישוטים/קישוטים  - Layer 11.png" id="15_0ocn5"]
+[ext_resource type="Texture2D" uid="uid://r821ls130akc" path="res://Textures/קישוטים/קישוטים  - Layer 9.png" id="16_dhm77"]
+[ext_resource type="Texture2D" uid="uid://bmj8kkbspmj31" path="res://Textures/קישוטים/קישוטים  - Layer 14.png" id="17_sv0sy"]
+[ext_resource type="Texture2D" uid="uid://d3hl0j6t3wpd3" path="res://Textures/קישוטים/קישוטים  - Layer 8.png" id="18_dpfky"]
+[ext_resource type="Texture2D" uid="uid://bkry51hjq74ua" path="res://Textures/קישוטים/קישוטים  - Layer 12.png" id="19_joj6b"]
+[ext_resource type="Texture2D" uid="uid://dp2gjlytjmbxs" path="res://Textures/קישוטים/קישוטים  - Layer 17.png" id="20_3pyup"]
+[ext_resource type="Texture2D" uid="uid://n41o7krbafq6" path="res://Textures/קישוטים/קישוטים  - Layer 18.png" id="21_48o8y"]
+[ext_resource type="Texture2D" uid="uid://csjl8k8qwig41" path="res://Textures/קישוטים/קישוטים  - Layer 19.png" id="22_iglgv"]
+[ext_resource type="Texture2D" uid="uid://bvaem2qjq4wek" path="res://Textures/קישוטים/קישוטים  - Layer 13.png" id="23_xrepi"]
+[ext_resource type="Texture2D" uid="uid://b2fgrfsmt1572" path="res://Textures/קישוטים/קישוטים  - Layer 7.png" id="24_61bg1"]
+[ext_resource type="Texture2D" uid="uid://36bvi12ylvdl" path="res://Textures/קישוטים/קישוטים  - Layer 20.png" id="25_wh132"]
+[ext_resource type="Texture2D" uid="uid://dbi51a3rip6lf" path="res://Textures/קישוטים/קישוטים  - Layer 2.png" id="26_i3y84"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5lkka"]
 atlas = ExtResource("9_tutorial")
@@ -60,7 +74,7 @@ script = ExtResource("1_xao8x")
 
 [node name="Main" parent="." instance=ExtResource("1_dlowv")]
 
-[node name="Map" parent="Main" index="1"]
+[node name="Map" parent="Main" index="2"]
 tile_map_data = PackedByteArray("AAAAAAAAAAAJAAMAAAAAAAEAAAAOAAYAAAAAAAIAAAAOAAYAAAAAAAMAAAAOAAYAAAAAAAQAAAANAAQAAAAAAAUAAAAOAAYAAAAAAAYAAAAOAAYAAAAAAAcAAAAPAAAAAAAAAAgAAAANAAcAAAABAAAAAAAMAAUAAAABAAEAAAAIAAMAAAABAAIAAAAOAAYAAAABAAMAAAAOAAYAAAABAAQAAAAOAAQAAAABAAUAAAAOAAYAAAABAAYAAAAOAAYAAAABAAcAAAAOAAYAAAABAAgAAAAOAAcAAAACAAAAAAAJAAEAAAACAAEAAAAKAAMAAAACAAIAAAAOAAYAAAACAAMAAAAOAAYAAAACAAQAAAANAAQAAAACAAUAAAAOAAYAAAACAAYAAAAOAAYAAAACAAcAAAAOAAYAAAACAAgAAAAOAAAAAAADAAAAAAAKAAUAAAADAAEAAAALAAMAAAADAAIAAAAOAAYAAAADAAMAAAAOAAYAAAADAAQAAAANAAQAAAADAAUAAAAOAAYAAAADAAYAAAAOAAYAAAADAAcAAAAMAAAAAAADAAgAAAAPAAcAAAAEAAAAAAAMAAUAAAAEAAEAAAAIAAMAAAAEAAIAAAAOAAYAAAAEAAMAAAAOAAYAAAAEAAQAAAAOAAQAAAAEAAUAAAAOAAYAAAAEAAYAAAAOAAYAAAAEAAcAAAAPAAAAAAAEAAgAAAANAAcAAAAFAAAAAAAKAAUAAAAFAAEAAAALAAMAAAAFAAIAAAAOAAYAAAAFAAMAAAAOAAYAAAAFAAQAAAANAAQAAAAFAAUAAAAOAAYAAAAFAAYAAAAOAAYAAAAFAAcAAAAOAAYAAAAFAAgAAAAPAAAAAAAGAAAAAAAJAAMAAAAGAAEAAAAOAAYAAAAGAAIAAAAOAAYAAAAGAAMAAAAOAAYAAAAGAAQAAAAOAAQAAAAGAAUAAAAOAAYAAAAGAAYAAAAOAAYAAAAGAAcAAAAOAAYAAAAGAAgAAAAMAAAAAAAHAAAAAAAKAAMAAAAHAAEAAAAOAAYAAAAHAAIAAAAOAAYAAAAHAAMAAAAOAAYAAAAHAAQAAAAOAAQAAAAHAAUAAAAOAAYAAAAHAAYAAAAOAAYAAAAHAAcAAAAOAAYAAAAHAAgAAAAOAAAAAAAIAAAAAAALAAMAAAAIAAEAAAAOAAYAAAAIAAIAAAAOAAYAAAAIAAMAAAAOAAYAAAAIAAQAAAANAAQAAAAIAAUAAAAOAAYAAAAIAAYAAAAOAAYAAAAIAAcAAAAOAAYAAAAIAAgAAAAOAAcAAAAJAAAAAAAIAAMAAAAJAAEAAAAOAAYAAAAJAAIAAAAOAAYAAAAJAAMAAAAOAAYAAAAJAAQAAAAOAAQAAAAJAAUAAAAOAAYAAAAJAAYAAAAOAAYAAAAJAAcAAAAOAAYAAAAJAAgAAAANAAAAAAAKAAAAAAAMAAUAAAAKAAEAAAAIAAMAAAAKAAIAAAAOAAYAAAAKAAMAAAAOAAYAAAAKAAQAAAANAAQAAAAKAAUAAAAOAAYAAAAKAAYAAAAOAAYAAAAKAAcAAAAMAAAAAAAKAAgAAAAPAAcAAAALAAAAAAAKAAUAAAALAAEAAAALAAMAAAALAAIAAAAOAAYAAAALAAMAAAAOAAYAAAALAAQAAAANAAQAAAALAAUAAAAOAAYAAAALAAYAAAAOAAYAAAALAAcAAAANAAAAAAALAAgAAAAOAAEAAAAMAAAAAAAJAAMAAAAMAAEAAAAOAAYAAAAMAAIAAAAOAAYAAAAMAAMAAAAOAAYAAAAMAAQAAAAPAAQAAAAMAAUAAAAOAAYAAAAMAAYAAAAOAAYAAAAMAAcAAAAPAAAAAAAMAAgAAAANAAcAAAANAAAAAAAKAAMAAAANAAEAAAAOAAYAAAANAAIAAAAOAAYAAAANAAMAAAAOAAYAAAANAAQAAAAOAAYAAAANAAUAAAAOAAYAAAANAAYAAAAOAAYAAAANAAcAAAAOAAYAAAANAAgAAAANAAAAAAAOAAAAAAAMAAUAAAAOAAEAAAAIAAMAAAAOAAIAAAAOAAYAAAAOAAMAAAAOAAYAAAAOAAQAAAAOAAYAAAAOAAUAAAAOAAYAAAAOAAYAAAAOAAYAAAAOAAcAAAAMAAAAAAAOAAgAAAAPAAcAAAAPAAAAAAAKAAIAAAAPAAEAAAAMAAUAAAAPAAIAAAAIAAIAAAAPAAMAAAAIAAMAAAAPAAQAAAAMAAAAAAAPAAUAAAAMAAEAAAAPAAYAAAAMAAIAAAAPAAcAAAAPAAcAAAAPAAgAAAAOAAIAAAA=")
 
 [node name="Lia" parent="Main/Units" index="0" instance=ExtResource("2_mawyh")]
@@ -172,5 +186,135 @@ offset_bottom = 360.0
 mouse_filter = 1
 color = Color(1, 1, 1, 0)
 script = ExtResource("11_q2muv")
+
+[node name="קישוטים-Layer15" type="Sprite2D" parent="."]
+position = Vector2(13, 179)
+texture = ExtResource("13_k67py")
+
+[node name="קישוטים-Layer16" type="Sprite2D" parent="."]
+position = Vector2(34, 172)
+texture = ExtResource("14_7hjhr")
+
+[node name="קישוטים-Layer17" type="Sprite2D" parent="."]
+position = Vector2(86, 180)
+texture = ExtResource("13_k67py")
+
+[node name="קישוטים-Layer11" type="Sprite2D" parent="."]
+position = Vector2(164, 185)
+texture = ExtResource("15_0ocn5")
+
+[node name="קישוטים-Layer18" type="Sprite2D" parent="."]
+position = Vector2(206, 170)
+texture = ExtResource("13_k67py")
+
+[node name="קישוטים-Layer19" type="Sprite2D" parent="."]
+position = Vector2(233, 180)
+texture = ExtResource("14_7hjhr")
+
+[node name="קישוטים-Layer20" type="Sprite2D" parent="."]
+position = Vector2(276, 175)
+texture = ExtResource("14_7hjhr")
+
+[node name="קישוטים-Layer9" type="Sprite2D" parent="."]
+position = Vector2(340, 186)
+texture = ExtResource("16_dhm77")
+
+[node name="קישוטים-Layer21" type="Sprite2D" parent="."]
+position = Vector2(312, 173)
+texture = ExtResource("13_k67py")
+
+[node name="קישוטים-Layer22" type="Sprite2D" parent="."]
+position = Vector2(371, 176)
+texture = ExtResource("14_7hjhr")
+
+[node name="קישוטים-Layer14" type="Sprite2D" parent="."]
+position = Vector2(119, 179)
+texture = ExtResource("17_sv0sy")
+
+[node name="קישוטים-Layer23" type="Sprite2D" parent="."]
+position = Vector2(402, 179)
+texture = ExtResource("13_k67py")
+
+[node name="קישוטים-Layer24" type="Sprite2D" parent="."]
+position = Vector2(438, 173)
+texture = ExtResource("14_7hjhr")
+
+[node name="קישוטים-Layer25" type="Sprite2D" parent="."]
+position = Vector2(478, 177)
+texture = ExtResource("13_k67py")
+
+[node name="קישוטים-Layer8" type="Sprite2D" parent="."]
+position = Vector2(212, 33)
+texture = ExtResource("18_dpfky")
+
+[node name="קישוטים-Layer12" type="Sprite2D" parent="."]
+position = Vector2(616, 56)
+texture = ExtResource("19_joj6b")
+
+[node name="קישוטים-Layer13" type="Sprite2D" parent="."]
+position = Vector2(67, 23)
+scale = Vector2(-1, 1)
+texture = ExtResource("19_joj6b")
+
+[node name="קישוטים-Layer26" type="Sprite2D" parent="."]
+position = Vector2(160, 329)
+texture = ExtResource("20_3pyup")
+
+[node name="קישוטים-Layer27" type="Sprite2D" parent="."]
+position = Vector2(176, 328)
+texture = ExtResource("21_48o8y")
+
+[node name="קישוטים-Layer28" type="Sprite2D" parent="."]
+position = Vector2(166, 316)
+scale = Vector2(-1, 1)
+texture = ExtResource("20_3pyup")
+
+[node name="קישוטים-Layer29" type="Sprite2D" parent="."]
+position = Vector2(151, 317)
+scale = Vector2(-1, 1)
+texture = ExtResource("21_48o8y")
+
+[node name="קישוטים-Layer30" type="Sprite2D" parent="."]
+position = Vector2(439, 319)
+texture = ExtResource("22_iglgv")
+
+[node name="קישוטים-Layer31" type="Sprite2D" parent="."]
+position = Vector2(482, 306)
+texture = ExtResource("23_xrepi")
+
+[node name="קישוטים-Layer7" type="Sprite2D" parent="."]
+position = Vector2(631, 238)
+scale = Vector2(-1, 1)
+texture = ExtResource("24_61bg1")
+
+[node name="קישוטים-Layer32" type="Sprite2D" parent="."]
+position = Vector2(604, 314)
+texture = ExtResource("25_wh132")
+
+[node name="קישוטים-Layer2" type="Sprite2D" parent="."]
+position = Vector2(614, 302)
+texture = ExtResource("26_i3y84")
+
+[node name="קישוטים-Layer3" type="Sprite2D" parent="."]
+position = Vector2(619, 315)
+scale = Vector2(-1, 1)
+texture = ExtResource("26_i3y84")
+
+[node name="קישוטים-Layer33" type="Sprite2D" parent="."]
+position = Vector2(599, 301)
+scale = Vector2(-1, 1)
+texture = ExtResource("25_wh132")
+
+[node name="קישוטים-Layer34" type="Sprite2D" parent="."]
+position = Vector2(625, 198)
+texture = ExtResource("17_sv0sy")
+
+[node name="קישוטים-Layer10" type="Sprite2D" parent="."]
+position = Vector2(276, 347)
+texture = ExtResource("24_61bg1")
+
+[node name="קישוטים-Layer35" type="Sprite2D" parent="."]
+position = Vector2(485, 336)
+texture = ExtResource("22_iglgv")
 
 [editable path="Main"]

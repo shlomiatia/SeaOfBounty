@@ -2,6 +2,7 @@ class_name Level5 extends Node2D
 
 @onready var dialog: Dialog = $Dialog
 @onready var fade: Fade = $CanvasLayer/Fade
+@onready var background: Sprite2D = $Background
 var stage := 0
 
 func _ready() -> void:
@@ -27,6 +28,7 @@ func start() -> void:
 func _on_dialog_finished() -> void:
     await fade.fade_out()
     if stage == 1:
+        background.texture = preload("res://Textures/רקעים/Background7.png")
         stage += 1
         var array: Array[Array] = [
             ["", "<healing spell cast>"],
