@@ -28,7 +28,7 @@ func start() -> void:
 func _on_dialog_finished() -> void:
     await fade.fade_out()
     if stage == 1:
-        background.texture = preload("res://Textures/רקעים/Background7.png")
+        background.texture = preload("res://Textures/רקעים/Background6.png")
         stage += 1
         var array: Array[Array] = [
             ["", "<healing spell cast>"],
