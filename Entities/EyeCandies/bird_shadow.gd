@@ -70,11 +70,15 @@ func _start() -> void:
     if _velocity.x > 0:
         flip_h = true
         _bird_child.flip_h = true
-        _bird_child.position = Vector2(-x_offset, -y_offset)
+        # Bird is in front (positive offset), shadow moves forward to keep bird off-screen
+        _bird_child.position = Vector2(x_offset, -y_offset)
+        position.x += x_offset
     else:
         flip_h = false
         _bird_child.flip_h = false
-        _bird_child.position = Vector2(x_offset, -y_offset)
+        # Bird is in front (negative offset), shadow moves backward to keep bird off-screen
+        _bird_child.position = Vector2(-x_offset, -y_offset)
+        position.x -= x_offset
 
     _active = true
 

@@ -126,6 +126,7 @@ frame_progress = 0.148996
 script = ExtResource("2_ryp1v")
 
 [node name="Bird" type="AnimatedSprite2D" parent="."]
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_eyhpw")
 autoplay = "default"
 frame_progress = 0.264625
