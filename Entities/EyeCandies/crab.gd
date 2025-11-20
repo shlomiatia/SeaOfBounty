@@ -38,8 +38,6 @@ func _on_spawn() -> void:
                     candidates.append(cell)
                     break
 
-    prints(candidates.size())
-
     if candidates.size() == 0:
         return
     

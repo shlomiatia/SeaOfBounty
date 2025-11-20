@@ -39,8 +39,6 @@ func _on_spawn() -> void:
             if unit_at_tile == null:
                 candidates.append(cell)
 
-    prints(name, candidates.size())
-
     if candidates.size() == 0:
         _schedule_next_spawn()
         return
