@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dvla1w60eh23h"]
+[gd_scene load_steps=10 format=3 uid="uid://dvla1w60eh23h"]
 
 [ext_resource type="Texture2D" uid="uid://cln0upmbnyv4a" path="res://Textures/AnimatedEyeCandies/גלים לים .png" id="1_d34rs"]
+[ext_resource type="Script" uid="uid://bffn7qdaqelay" path="res://Entities/EyeCandies/water_eye_candy.gd" id="1_water"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vs0im"]
 atlas = ExtResource("1_d34rs")
@@ -52,8 +53,9 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Waves" type="AnimatedSprite2D"]
+[node name="Waves" type="Node2D"]
+script = ExtResource("1_water")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = -1
 sprite_frames = SubResource("SpriteFrames_p1728")
-frame = 5
-frame_progress = 1.0

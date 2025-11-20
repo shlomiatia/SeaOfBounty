@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://bxjjldng7rgf0"]
+[gd_scene load_steps=12 format=3 uid="uid://bxjjldng7rgf0"]
 
 [ext_resource type="Texture2D" uid="uid://d2h4avnk6euix" path="res://Textures/AnimatedEyeCandies/דג במים.png" id="1_0veyw"]
+[ext_resource type="Script" uid="uid://bffn7qdaqelay" path="res://Entities/EyeCandies/water_eye_candy.gd" id="1_7quii"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7quii"]
 atlas = ExtResource("1_0veyw")
@@ -63,10 +64,13 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 19.0
+"speed": 10.0
 }]
 
-[node name="Fish" type="AnimatedSprite2D"]
+[node name="Fish" type="Node2D"]
+script = ExtResource("1_7quii")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = -1
 sprite_frames = SubResource("SpriteFrames_smk2l")
 frame = 7

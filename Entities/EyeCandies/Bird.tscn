@@ -119,6 +119,7 @@ animations = [{
 }]
 
 [node name="BirdShadow" type="AnimatedSprite2D"]
+self_modulate = Color(1, 1, 1, 0.501961)
 sprite_frames = SubResource("SpriteFrames_4nt6u")
 autoplay = "default"
 frame_progress = 0.148996
