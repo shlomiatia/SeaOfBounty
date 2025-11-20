@@ -2,8 +2,8 @@ class_name Clouds extends Node2D
 
 @export var min_time: float = 5.0
 @export var max_time: float = 15.0
-@export var min_speed: float = 20.0
-@export var max_speed: float = 60.0
+@export var min_speed: float = 10.0
+@export var max_speed: float = 30.0
 @export var min_clouds_per_spawn: int = 1
 @export var max_clouds_per_spawn: int = 3
 @export var min_scale: int = 1

@@ -17,7 +17,7 @@ func start() -> void:
     stage = 1
     MusicPlayer.play()
     var array: Array[Array] = [
-        ["", "Somwhere in the caribbeans..."],
+        ["", "Somwhere in the ocean..."],
         ["Kate", "Caught anything yet?"],
         ["Finn", "The sea is silent.\nSomething is scaring the fish..."],
         ["Kate", "Whoo, Monsters?!"],
