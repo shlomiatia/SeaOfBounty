@@ -141,26 +141,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_dvkne"]
-resource_name = "MoveToBeforeAttack"
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [&"before_attack", 1.0, false],
-"method": &"play"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_kybsp"]
-resource_name = "BeforeAttack"
-
 [sub_resource type="Animation" id="Animation_qki12"]
 resource_name = "Attack"
 tracks/0/type = "method"
@@ -197,6 +177,26 @@ tracks/1/keys = {
 }
 tracks/1/use_blend = true
 
+[sub_resource type="Animation" id="Animation_kybsp"]
+resource_name = "BeforeAttack"
+
+[sub_resource type="Animation" id="Animation_dvkne"]
+resource_name = "MoveToBeforeAttack"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"before_attack", 1.0, false],
+"method": &"play"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_opjay"]
 _data = {
 &"Attack": SubResource("Animation_qki12"),
@@ -208,6 +208,8 @@ _data = {
 script = ExtResource("1_mndkm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-23, -66)
+scale = Vector2(-2, 2)
 sprite_frames = SubResource("SpriteFrames_ofbuk")
 autoplay = "default"
 

@@ -1,0 +1,147 @@
+[gd_scene load_steps=18 format=3 uid="uid://cj04xkkgixjwh"]
+
+[ext_resource type="PackedScene" uid="uid://05oo7vpmyn03" path="res://Entities/Unit/Unit.tscn" id="1_m14ef"]
+[ext_resource type="Shader" uid="uid://b20ld62ku3mg8" path="res://Entities/Unit/Reflection.gdshader" id="2_t5fqi"]
+[ext_resource type="Texture2D" uid="uid://bg1eseam7hn7f" path="res://Textures/Smaller boat characters.png" id="2_uc40j"]
+[ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="3_uc40j"]
+[ext_resource type="Shader" uid="uid://bn0wv35v1nuq4" path="res://Entities/Unit/Unit.gdshader" id="4_1p71h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1p71h"]
+atlas = ExtResource("2_uc40j")
+region = Rect2(206, 54, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irxba"]
+atlas = ExtResource("2_uc40j")
+region = Rect2(288, 54, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7v42"]
+atlas = ExtResource("2_uc40j")
+region = Rect2(247, 54, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htx6y"]
+atlas = ExtResource("2_uc40j")
+region = Rect2(165, 54, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ac3hh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1p71h")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irxba")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7v42")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htx6y")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_irxba"]
+resource_local_to_scene = true
+shader = ExtResource("2_t5fqi")
+shader_parameter/wave_speed = 2.0
+shader_parameter/wave_amplitude = 0.001
+shader_parameter/wave_frequency = 10.0
+shader_parameter/uv_left = 0.0
+shader_parameter/uv_right = 1.0
+shader_parameter/uv_top = 0.0
+shader_parameter/uv_bottom = 1.0
+shader_parameter/alpha = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ou22k"]
+atlas = ExtResource("3_uc40j")
+region = Rect2(42, 1, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32ibj"]
+atlas = ExtResource("3_uc40j")
+region = Rect2(124, 1, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbw00"]
+atlas = ExtResource("3_uc40j")
+region = Rect2(83, 1, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlkj8"]
+atlas = ExtResource("3_uc40j")
+region = Rect2(1, 1, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d7v42"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ou22k")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32ibj")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbw00")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlkj8")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_htx6y"]
+resource_local_to_scene = true
+shader = ExtResource("4_1p71h")
+shader_parameter/hide_pixels = 0.0
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/water_color = Color(0.752941, 0.796078, 0.862745, 0.501961)
+shader_parameter/uv_bottom = 1.0
+
+[node name="Constantine" groups=["heroes"] instance=ExtResource("1_m14ef")]
+max_hp = 80
+hp = 80
+damage = 50
+max_movement = 3
+attack_range = 4
+sprite_frames = SubResource("SpriteFrames_ac3hh")
+display_name = "Constantine"
+
+[node name="Reflection" parent="." index="0"]
+material = SubResource("ShaderMaterial_irxba")
+sprite_frames = SubResource("SpriteFrames_d7v42")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_htx6y")
+sprite_frames = SubResource("SpriteFrames_d7v42")
