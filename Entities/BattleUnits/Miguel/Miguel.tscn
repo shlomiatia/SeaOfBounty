@@ -1,0 +1,139 @@
+[gd_scene load_steps=10 format=3 uid="uid://doa360ehp0bwg"]
+
+[ext_resource type="Script" uid="uid://blitmqem0wv3w" path="res://Entities/BattleUnits/battle_unit.gd" id="1_1p2pp"]
+[ext_resource type="Texture2D" uid="uid://m4c4jhdoth13" path="res://Textures/BattleUnits/Musketeer/Normal.PNG" id="1_6wiy7"]
+[ext_resource type="Texture2D" uid="uid://638n4mto4dki" path="res://Textures/BattleUnits/Musketeer/Weapon.PNG" id="2_2uexu"]
+[ext_resource type="AudioStream" uid="uid://810ar01rwj3o" path="res://Sounds/Sfx/slice.mp3" id="3_2uexu"]
+
+[sub_resource type="Animation" id="Animation_6wiy7"]
+resource_name = "MoveToBeforeAttack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weapon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 2),
+"update": 0,
+"values": [Vector2(-14, -47), Vector2(65, -72)]
+}
+
+[sub_resource type="Animation" id="Animation_2uexu"]
+resource_name = "BeforeAttack"
+length = 2.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weapon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(65, -72), Vector2(65, -76)]
+}
+
+[sub_resource type="Animation" id="Animation_1p2pp"]
+resource_name = "Attack"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weapon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 1),
+"transitions": PackedFloat32Array(1, 0.5, -2, 2),
+"update": 0,
+"values": [Vector2(65, -72), Vector2(65, -72), Vector2(150, -72), Vector2(-14, -47)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weapon:rotation")
+tracks/1/interp = 3
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 1),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2),
+"update": 0,
+"values": [0.0, -1.5708, -1.5708, 0.0]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_2uexu")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": null
+}],
+"times": PackedFloat32Array(0.1, 1)
+}
+tracks/2/use_blend = true
+
+[sub_resource type="Animation" id="Animation_jqt5r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weapon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-14, -47)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weapon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jrr6h"]
+_data = {
+&"Attack": SubResource("Animation_1p2pp"),
+&"BeforeAttack": SubResource("Animation_2uexu"),
+&"MoveToBeforeAttack": SubResource("Animation_6wiy7"),
+&"RESET": SubResource("Animation_jqt5r")
+}
+
+[node name="Miguel" type="Node2D"]
+script = ExtResource("1_1p2pp")
+
+[node name="Normal" type="Sprite2D" parent="."]
+position = Vector2(-11, -72)
+texture = ExtResource("1_6wiy7")
+
+[node name="Weapon" type="Sprite2D" parent="."]
+position = Vector2(-14, -47)
+texture = ExtResource("2_2uexu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jrr6h")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

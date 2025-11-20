@@ -16,7 +16,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 1),
-"transitions": PackedFloat32Array(0.5, 2, 2),
+"transitions": PackedFloat32Array(0.5, -2, 2),
 "update": 0,
 "values": [Vector2(73, 0), Vector2(140, 0), Vector2(-58, 38)]
 }
@@ -28,7 +28,7 @@ tracks/1/interp = 3
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.2, 1),
-"transitions": PackedFloat32Array(0.5, 2, 2),
+"transitions": PackedFloat32Array(0.5, -2, 2),
 "update": 0,
 "values": [0.0, 3.12414, 0.0]
 }

@@ -1,0 +1,222 @@
+[gd_scene load_steps=26 format=3 uid="uid://dkcegpyykpxu6"]
+
+[ext_resource type="Script" uid="uid://blitmqem0wv3w" path="res://Entities/BattleUnits/battle_unit.gd" id="1_rbirs"]
+[ext_resource type="Texture2D" uid="uid://bniddpk0xsb56" path="res://Textures/Monsters enemies/בת ים קוסמת סלע/בת ים קוסמת 2קטן.png" id="2_q3kr3"]
+[ext_resource type="AudioStream" uid="uid://yuku8phbt0v3" path="res://Sounds/Sfx/monster screech 2.mp3" id="3_2txfk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anepb"]
+atlas = ExtResource("2_q3kr3")
+region = Rect2(100, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fq0fl"]
+atlas = ExtResource("2_q3kr3")
+region = Rect2(200, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c744y"]
+atlas = ExtResource("2_q3kr3")
+region = Rect2(300, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7sq6"]
+atlas = ExtResource("2_q3kr3")
+region = Rect2(0, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wttmo"]
+atlas = ExtResource("2_q3kr3")
+region = Rect2(100, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ej8yb"]
+atlas = ExtResource("2_q3kr3")
+region = Rect2(200, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gn2sw"]
+atlas = ExtResource("2_q3kr3")
+region = Rect2(300, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwgh2"]
+atlas = ExtResource("2_q3kr3")
+region = Rect2(0, 300, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tx4o"]
+atlas = ExtResource("2_q3kr3")
+region = Rect2(100, 300, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdi6h"]
+atlas = ExtResource("2_q3kr3")
+region = Rect2(200, 300, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdtwh"]
+atlas = ExtResource("2_q3kr3")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pj6el"]
+atlas = ExtResource("2_q3kr3")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xledr"]
+atlas = ExtResource("2_q3kr3")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2yqq"]
+atlas = ExtResource("2_q3kr3")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycx0m"]
+atlas = ExtResource("2_q3kr3")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuo8e"]
+atlas = ExtResource("2_q3kr3")
+region = Rect2(0, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6uhx2"]
+atlas = ExtResource("2_q3kr3")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_otfe5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anepb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fq0fl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c744y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7sq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wttmo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ej8yb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gn2sw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwgh2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tx4o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdi6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdtwh")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pj6el")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xledr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2yqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycx0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuo8e")
+}],
+"loop": true,
+"name": &"before_attack",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6uhx2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_qki12"]
+resource_name = "Attack"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"attack", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_2txfk")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": null
+}],
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_kybsp"]
+resource_name = "BeforeAttack"
+
+[sub_resource type="Animation" id="Animation_dvkne"]
+resource_name = "MoveToBeforeAttack"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"before_attack", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_opjay"]
+_data = {
+&"Attack": SubResource("Animation_qki12"),
+&"BeforeAttack": SubResource("Animation_kybsp"),
+&"MoveToBeforeAttack": SubResource("Animation_dvkne")
+}
+
+[node name="Merwitch" type="Node2D"]
+script = ExtResource("1_rbirs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_otfe5")
+animation = &"attack"
+autoplay = "default"
+frame = 10
+frame_progress = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_opjay")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
