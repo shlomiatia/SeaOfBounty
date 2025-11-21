@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://m4mtkwgy3pwv"
-path="res://.godot/imported/Weapon1.PNG-6ca72684965ce1cf69aff5e5f84ad45a.ctex"
+uid="uid://wk8n2cplevgr"
+path="res://.godot/imported/Weapon2.PNG-02c2b023e72108e8191d03a17e6ea61e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/BattleUnits/FireMage/Weapon1.PNG"
-dest_files=["res://.godot/imported/Weapon1.PNG-6ca72684965ce1cf69aff5e5f84ad45a.ctex"]
+source_file="res://Textures/BattleUnits/Constantine/Weapon2.PNG"
+dest_files=["res://.godot/imported/Weapon2.PNG-02c2b023e72108e8191d03a17e6ea61e.ctex"]
 
 [params]
 

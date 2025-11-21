@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://doa360ehp0bwg"]
 
 [ext_resource type="Script" uid="uid://blitmqem0wv3w" path="res://Entities/BattleUnits/battle_unit.gd" id="1_1p2pp"]
-[ext_resource type="Texture2D" uid="uid://m4c4jhdoth13" path="res://Textures/BattleUnits/Musketeer/Normal.PNG" id="1_6wiy7"]
-[ext_resource type="Texture2D" uid="uid://638n4mto4dki" path="res://Textures/BattleUnits/Musketeer/Weapon.PNG" id="2_2uexu"]
+[ext_resource type="Texture2D" uid="uid://m4c4jhdoth13" path="res://Textures/BattleUnits/Miguel/Normal.PNG" id="1_6wiy7"]
+[ext_resource type="Texture2D" uid="uid://638n4mto4dki" path="res://Textures/BattleUnits/Miguel/Weapon.PNG" id="2_2uexu"]
 [ext_resource type="AudioStream" uid="uid://810ar01rwj3o" path="res://Sounds/Sfx/slice.mp3" id="3_2uexu"]
 
 [sub_resource type="Animation" id="Animation_6wiy7"]

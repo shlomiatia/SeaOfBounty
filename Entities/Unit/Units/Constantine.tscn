@@ -141,6 +141,7 @@ display_name = "Constantine"
 [node name="Reflection" parent="." index="0"]
 material = SubResource("ShaderMaterial_irxba")
 sprite_frames = SubResource("SpriteFrames_d7v42")
+frame_progress = 0.0
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 material = SubResource("ShaderMaterial_htx6y")

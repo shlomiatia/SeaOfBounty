@@ -132,6 +132,7 @@ shader_parameter/uv_bottom = 1.0
 [node name="Miguel" groups=["heroes"] instance=ExtResource("1_f4mc1")]
 max_hp = 120
 hp = 120
+damage = 50
 sprite_frames = SubResource("SpriteFrames_mbqr7")
 display_name = "Miguel"
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://m4c4jhdoth13"
-path="res://.godot/imported/Normal.PNG-b62d0f6d52d86e7359edac0810132f24.ctex"
+uid="uid://cokto7jq35nrj"
+path="res://.godot/imported/Weapon5.PNG-2411c6d18b4e0d722a636c25e8dc8227.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/BattleUnits/Musketeer/Normal.PNG"
-dest_files=["res://.godot/imported/Normal.PNG-b62d0f6d52d86e7359edac0810132f24.ctex"]
+source_file="res://Textures/BattleUnits/Constantine/Weapon5.PNG"
+dest_files=["res://.godot/imported/Weapon5.PNG-2411c6d18b4e0d722a636c25e8dc8227.ctex"]
 
 [params]
 
