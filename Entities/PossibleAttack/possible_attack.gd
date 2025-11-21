@@ -18,3 +18,15 @@ func highlight_possible_attack(unit: Unit) -> void:
     for possible_tile in possible_tiles:
         if attack_range_cells.has(possible_tile):
             set_cell(possible_tile, 0, Vector2i(0, 0))
+
+func preview_attack(unit: Unit, target_pos: Vector2) -> void:
+    clear()
+
+    var possible_tiles: Array[Vector2i] = []
+
+    var movement_dest = map.local_to_map(target_pos)
+    possible_tiles = map.get_enemy_tiles()
+
+    for enemy_tile in possible_tiles:
+        if Utils.get_tile_distance(movement_dest, enemy_tile) <= unit.attack_range:
+            set_cell(enemy_tile, 0, Vector2i(0, 0))

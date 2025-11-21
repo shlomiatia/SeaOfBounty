@@ -26,6 +26,7 @@ func _process(_delta: float) -> void:
         return
 
     movement_preview.preview_movement_path(current_hero, cursor.position)
+    movement_overlay.possible_attack.preview_attack(current_hero, cursor.position)
 
 func _input(event: InputEvent) -> void:
     if is_input_disabled:

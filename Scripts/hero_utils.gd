@@ -34,6 +34,7 @@ static func move_and_attack(main: Main, clicked_grid_pos: Vector2i) -> bool:
             if !current_hero.activated:
                 main.movement_overlay.highlight_movement_and_attack(clicked_grid_pos, "heroes")
                 main.movement_preview.preview_movement_path(current_hero, clicked_grid_pos)
+                #main.movement_overlay.possible_attack.preview_attack(current_hero, clicked_grid_pos)
             else:
                 main.current_hero = null
 
