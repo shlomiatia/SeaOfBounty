@@ -85,5 +85,6 @@ animations = [{
 script = ExtResource("1_2ujav")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-10, 0)
 sprite_frames = SubResource("SpriteFrames_5atug")
+frame = 9
+frame_progress = 1.0

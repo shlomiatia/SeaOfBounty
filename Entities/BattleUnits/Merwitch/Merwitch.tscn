@@ -208,8 +208,8 @@ _data = {
 script = ExtResource("1_mndkm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(23, -66)
-scale = Vector2(2, 2)
+position = Vector2(-23, -66)
+scale = Vector2(-2, 2)
 sprite_frames = SubResource("SpriteFrames_otfe5")
 animation = &"attack"
 autoplay = "default"

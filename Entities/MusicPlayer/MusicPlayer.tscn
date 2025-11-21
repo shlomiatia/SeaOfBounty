@@ -1,7 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0p8a5r3y30tf"]
+[gd_scene load_steps=3 format=3 uid="uid://b0p8a5r3y30tf"]
 
 [ext_resource type="AudioStream" uid="uid://dy5enx1gytpt2" path="res://Music/Violin D.mp3" id="1_dcl5u"]
+[ext_resource type="Script" uid="uid://cs4mrxk4ohvba" path="res://Entities/MusicPlayer/music_player.gd" id="2_0l8su"]
 
 [node name="MusicPlayer" type="AudioStreamPlayer"]
 stream = ExtResource("1_dcl5u")
 volume_db = -6.0
+script = ExtResource("2_0l8su")

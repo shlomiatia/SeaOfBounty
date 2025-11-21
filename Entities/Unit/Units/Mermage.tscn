@@ -1,20 +1,20 @@
 [gd_scene load_steps=15 format=3 uid="uid://dl1q2y4idbalt"]
 
 [ext_resource type="PackedScene" uid="uid://05oo7vpmyn03" path="res://Entities/Unit/Unit.tscn" id="1_0ka8v"]
-[ext_resource type="Texture2D" uid="uid://bniddpk0xsb56" path="res://Textures/Monsters enemies/בת ים קוסמת סלע/בת ים קוסמת 2קטן.png" id="2_nm1ar"]
+[ext_resource type="Texture2D" uid="uid://bjfqtcrwakorr" path="res://Textures/Monsters enemies/בת ים קוסמת סלע/בת ים מתקיפה קטנה .png" id="2_0ka8v"]
 [ext_resource type="Shader" uid="uid://b20ld62ku3mg8" path="res://Entities/Unit/Reflection.gdshader" id="3_sku1a"]
 [ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="4_ajok3"]
 [ext_resource type="Shader" uid="uid://bn0wv35v1nuq4" path="res://Entities/Unit/Unit.gdshader" id="5_abbh2"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vfao0"]
-atlas = ExtResource("2_nm1ar")
+[sub_resource type="AtlasTexture" id="AtlasTexture_nm1ar"]
+atlas = ExtResource("2_0ka8v")
 region = Rect2(20, 31, 40, 52)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ri5tf"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_0ka8v"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vfao0")
+"texture": SubResource("AtlasTexture_nm1ar")
 }],
 "loop": true,
 "name": &"down",
@@ -22,7 +22,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vfao0")
+"texture": SubResource("AtlasTexture_nm1ar")
 }],
 "loop": true,
 "name": &"left",
@@ -30,7 +30,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vfao0")
+"texture": SubResource("AtlasTexture_nm1ar")
 }],
 "loop": true,
 "name": &"right",
@@ -38,7 +38,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vfao0")
+"texture": SubResource("AtlasTexture_nm1ar")
 }],
 "loop": true,
 "name": &"up",
@@ -121,7 +121,7 @@ shader_parameter/uv_bottom = 1.0
 damage = 60
 max_movement = 0
 attack_range = 4
-sprite_frames = SubResource("SpriteFrames_ri5tf")
+sprite_frames = SubResource("SpriteFrames_0ka8v")
 display_name = "Mermage"
 set_flip_h = true
 
