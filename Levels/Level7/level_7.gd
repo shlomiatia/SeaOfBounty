@@ -22,7 +22,7 @@ func start() -> void:
         ["Constantine", "Disgusting creatures… I scorch five, and ten more crawl out!"],
         ["Miguel", "Ah, but you handle it with such elegance..."],
         ["Constantine", "Don't flatter me while I'm irritated!"],
-        ["Miguel", "That mean you'll never get compliments, and that won't do."],
+        ["Miguel", "That mean you'll never get compliments.\nThat won't do."],
         ["Constantine", "<sigh> They're coming from the north, it's obvious now."],
         ["Miguel", "Than that's our destination."],
         ["Constantine", "It's not our problem!"],
