@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://mw17bslxspnt"]
+[gd_scene load_steps=21 format=4 uid="uid://mw17bslxspnt"]
 
 [ext_resource type="Script" uid="uid://cch2bpf1eb1ew" path="res://Levels/Level8/level_8.gd" id="1_f0x5g"]
 [ext_resource type="PackedScene" uid="uid://bblitdo328h8a" path="res://Levels/Main/Main.tscn" id="1_p675t"]
@@ -12,6 +12,52 @@
 [ext_resource type="Texture2D" uid="uid://n41o7krbafq6" path="res://Textures/קישוטים/קישוטים  - Layer 18.png" id="9_4c5y7"]
 [ext_resource type="Texture2D" uid="uid://bkry51hjq74ua" path="res://Textures/קישוטים/קישוטים  - Layer 12.png" id="10_q7jug"]
 [ext_resource type="Texture2D" uid="uid://d3hl0j6t3wpd3" path="res://Textures/קישוטים/קישוטים  - Layer 8.png" id="11_j5vyj"]
+[ext_resource type="TileSet" uid="uid://dy500uswj08ie" path="res://Levels/Main/Main.tres" id="13_dnpoc"]
+[ext_resource type="PackedScene" uid="uid://bxwemukvgjghr" path="res://Entities/TypingLabel/TypingLabel.tscn" id="14_xj1b0"]
+[ext_resource type="Texture2D" uid="uid://cibgr2kd341oe" path="res://Textures/tilemap.png" id="15_0w75a"]
+[ext_resource type="Script" uid="uid://sx2qyg3unn6b" path="res://Levels/Level8/tutorial_event_handler_8.gd" id="16_2ks7q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqegj"]
+atlas = ExtResource("15_0w75a")
+region = Rect2(120, 0, 40, 40)
+
+[sub_resource type="Animation" id="Animation_bgei7"]
+resource_name = "Default"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+
+[sub_resource type="Animation" id="Animation_nce42"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l4j0s"]
+_data = {
+&"Default": SubResource("Animation_bgei7"),
+&"RESET": SubResource("Animation_nce42")
+}
 
 [node name="Level8" type="Node2D"]
 script = ExtResource("1_f0x5g")
@@ -98,5 +144,53 @@ position = Vector2(535, 135)
 rotation = 3.14159
 scale = Vector2(1, -1)
 texture = ExtResource("11_j5vyj")
+
+[node name="TutorialHighlight" type="TileMapLayer" parent="."]
+modulate = Color(0, 0, 0, 0.501961)
+z_index = 3
+tile_set = ExtResource("13_dnpoc")
+
+[node name="TutorialLabel" parent="." instance=ExtResource("14_xj1b0")]
+z_index = 4
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 270.0
+offset_right = 640.0
+offset_bottom = 298.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+
+[node name="Tutorial" type="Node2D" parent="."]
+visible = false
+z_index = 3
+position = Vector2(26, 180)
+
+[node name="Tutorial" type="Sprite2D" parent="Tutorial"]
+modulate = Color(1, 1, 1, 0.501961)
+texture = SubResource("AtlasTexture_iqegj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tutorial/Tutorial"]
+libraries = {
+&"": SubResource("AnimationLibrary_l4j0s")
+}
+autoplay = "Default"
+
+[node name="TypingLabel" parent="Tutorial" instance=ExtResource("14_xj1b0")]
+offset_left = -17.0
+offset_top = 21.0
+offset_right = 58.0
+offset_bottom = 49.0
+text = "Click me!"
+
+[node name="TutorialEventHandler" type="ColorRect" parent="."]
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 1
+color = Color(1, 1, 1, 0)
+script = ExtResource("16_2ks7q")
 
 [editable path="Main"]

@@ -128,7 +128,6 @@ set_flip_h = true
 
 [node name="Reflection" parent="." index="0"]
 material = SubResource("ShaderMaterial_053js")
-position = Vector2(0, 40)
 sprite_frames = SubResource("SpriteFrames_w7nqf")
 frame_progress = 0.0
 

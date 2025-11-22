@@ -13,8 +13,6 @@ var tutorial_cells: Array[Vector2i] = [
 	Vector2i(0, 0),
 ]
 
-var skip_pressed: bool = false
-
 func _input(event: InputEvent) -> void:
 	if not tutorial_active:
 		return
@@ -23,6 +21,8 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 	if tutorial_step == 0:
+		if event.is_action_pressed("skip"):
+			get_viewport().set_input_as_handled()
 		if event.is_action_pressed("confirm"):
 			var clicked_pos = main.cursor.position
 			var clicked_cell = map.local_to_map(clicked_pos)
@@ -31,17 +31,14 @@ func _input(event: InputEvent) -> void:
 				tutorial_active = false
 				tutorial_highlight.clear()
 				show_tutorial_at_step(1)
-			else:
-				get_viewport().set_input_as_handled()
-				typing_label.text = "Click me!"
 	elif tutorial_step == 1:
+		if event.is_action_pressed("confirm"):
+			get_viewport().set_input_as_handled()
 		if event.is_action_pressed("skip"):
-			skip_pressed = true
 			tutorial_active = false
 			tutorial_highlight.clear()
 			tutorial.visible = false
 			tutorial_label.text = ""
-			get_viewport().set_input_as_handled()
 
 func get_tutorial_text(step: int) -> String:
 	match step:

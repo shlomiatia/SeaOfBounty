@@ -10,11 +10,13 @@ func _ready() -> void:
     MusicPlayer.play()
     await get_tree().create_timer(1.0).timeout
 
-    miguel.start_text_list(["Charge my friend!, charge!!!"])
+    miguel.start_text_list(["To battle, my friend! Charge!!!"])
     await miguel.text_list_finished
     await get_tree().process_frame
 
-    constantine.start_text_list(["Pfff, sometimes the best strategy is to fall back."])
+    constantine.start_text_list(
+        ["Pfff, that mermaid witch will burn us while we fight her friend.",
+        "Sometimes the best strategy is to fall back."])
     await constantine.text_list_finished
     await get_tree().process_frame
 

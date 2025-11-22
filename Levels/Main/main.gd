@@ -33,6 +33,7 @@ func _input(event: InputEvent) -> void:
         return
 
     if event.is_action_pressed("skip") && current_hero:
+        play_confirm()
         current_hero.moved = true
         current_hero.activated = true
         current_hero = null
