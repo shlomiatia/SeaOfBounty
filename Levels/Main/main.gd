@@ -55,8 +55,8 @@ func handle_confirm(cursor_pos: Vector2) -> void:
 
     if current_hero != null && current_hero.display_name == "Lia":
         var hero = Utils.get_entity_at_tile(map, clicked_grid_pos, "heroes")
-        if hero != current_hero && hero != null && hero.hp < hero.max_hp:
-            hero.hp = min(hero.hp + 20, hero.max_hp)
+        if hero != null && hero.hp < hero.max_hp:
+            hero.hp = min(hero.hp + 40, hero.max_hp)
             current_hero.moved = true
             current_hero.activated = true
             current_hero = null

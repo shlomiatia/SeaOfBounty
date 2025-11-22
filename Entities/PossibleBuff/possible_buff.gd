@@ -9,8 +9,6 @@ func highlight_possible_buff(unit: Unit) -> void:
         return
 
     for hero_unit in get_tree().get_nodes_in_group("heroes"):
-        if hero_unit == unit:
-            continue
         if hero_unit.hp >= hero_unit.max_hp:
             continue
 
