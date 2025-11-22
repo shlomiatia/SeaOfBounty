@@ -134,3 +134,6 @@ frame_progress = 0.0
 [node name="AnimatedSprite2D" parent="." index="1"]
 material = SubResource("ShaderMaterial_qylag")
 sprite_frames = SubResource("SpriteFrames_4gcwc")
+
+[node name="AnimationPlayer" parent="." index="2"]
+autoplay = ""

@@ -36,7 +36,7 @@ func _on_dialog_finished() -> void:
             ["Lia", "You're lucky you made it here.\nMonsters are going berserk everywhere."],
             ["Finn", "Then we're going north."],
             ["OneEye", "Are you insane?\nThat's where the monsters are from!"],
-            ["Finn", "Exactly.\nIf they're migrating south, something up north is responsible."],
+            ["Finn", "Exactly.\nSomething up north is resposible for this migration."],
             ["OneEye", "This is a terrible idea!\nBut the only one we have..."],
             ["Lia", "Then I suppose I'm coming too.\nSomeone has to keep you alive."],
         ]
