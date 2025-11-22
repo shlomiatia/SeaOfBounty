@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ngurocytcnq2"
-path="res://.godot/imported/קראקן גדול.png-7cc4f0f193f302c69889427d276053c7.ctex"
+uid="uid://c4e2ggo5doj5"
+path="res://.godot/imported/יתומה תוקפת.png-9580dede8ac354b83fe28f0e9c0aaaf6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Monsters enemies/Kraken/קראקן גדול.png"
-dest_files=["res://.godot/imported/קראקן גדול.png-7cc4f0f193f302c69889427d276053c7.ctex"]
+source_file="res://Textures/BattleUnits/Kate/יתומה תוקפת.png"
+dest_files=["res://.godot/imported/יתומה תוקפת.png-9580dede8ac354b83fe28f0e9c0aaaf6.ctex"]
 
 [params]
 

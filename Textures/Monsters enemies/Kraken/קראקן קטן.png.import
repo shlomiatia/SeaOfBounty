@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5eqdicy1rq3c"
-path="res://.godot/imported/Bop animation.png-3b716a8637a89f9d3e6f1a3217b70ad0.ctex"
+uid="uid://br061awmoknws"
+path="res://.godot/imported/קראקן קטן.png-ea7924f8bf2437f83094a9a65121376c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Monsters enemies/בת ים כילשון/Bop animation.png"
-dest_files=["res://.godot/imported/Bop animation.png-3b716a8637a89f9d3e6f1a3217b70ad0.ctex"]
+source_file="res://Textures/Monsters enemies/Kraken/קראקן קטן.png"
+dest_files=["res://.godot/imported/קראקן קטן.png-ea7924f8bf2437f83094a9a65121376c.ctex"]
 
 [params]
 

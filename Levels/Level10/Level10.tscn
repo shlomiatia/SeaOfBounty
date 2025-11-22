@@ -19,8 +19,6 @@ tile_map_data = PackedByteArray("AAAAAAAAAAABAAUAAAAAAAEAAAAHAAIAAAAAAAIAAAAHAAM
 
 [node name="Crab" parent="Main/Units" index="0" instance=ExtResource("2_7ouqf")]
 position = Vector2(612, 236)
-rotation = 0.0437009
-scale = Vector2(1, 1)
 
 [node name="Constantine" parent="Main/Units" index="1" instance=ExtResource("3_otnm8")]
 position = Vector2(26, 202)

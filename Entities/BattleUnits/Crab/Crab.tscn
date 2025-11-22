@@ -1,7 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://mlw1w5t0f8ik"]
+[gd_scene load_steps=25 format=3 uid="uid://mlw1w5t0f8ik"]
 
 [ext_resource type="Script" uid="uid://blitmqem0wv3w" path="res://Entities/BattleUnits/battle_unit.gd" id="1_shgl1"]
 [ext_resource type="Texture2D" uid="uid://tsy18myesm3f" path="res://Textures/Monsters enemies/סרטן/סרטן רגיל.png" id="2_ipuo3"]
+[ext_resource type="AudioStream" uid="uid://dttyhj2wa8yii" path="res://Sounds/Sfx/grapple slash.wav" id="3_ipuo3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_shgl1"]
 atlas = ExtResource("2_ipuo3")
@@ -136,26 +137,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_shgl1"]
-resource_name = "MoveToBeforeAttack"
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [&"before_attack", 1.0, false],
-"method": &"play"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_ipuo3"]
-resource_name = "BeforeAttack"
-
 [sub_resource type="Animation" id="Animation_6dyws"]
 resource_name = "Attack"
 tracks/0/type = "method"
@@ -169,6 +150,45 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [&"attack", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_ipuo3")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_ipuo3")
+}],
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_ipuo3"]
+resource_name = "BeforeAttack"
+
+[sub_resource type="Animation" id="Animation_shgl1"]
+resource_name = "MoveToBeforeAttack"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"before_attack", 1.0, false],
 "method": &"play"
 }]
 }
@@ -187,9 +207,7 @@ script = ExtResource("1_shgl1")
 position = Vector2(12, -34)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_sk1pj")
-animation = &"attack"
-frame = 11
-frame_progress = 1.0
+autoplay = "default"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
