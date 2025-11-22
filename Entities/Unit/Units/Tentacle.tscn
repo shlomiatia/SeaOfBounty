@@ -1,0 +1,131 @@
+[gd_scene load_steps=15 format=3 uid="uid://1dyaua32kpeu"]
+
+[ext_resource type="PackedScene" uid="uid://05oo7vpmyn03" path="res://Entities/Unit/Unit.tscn" id="1_gls4s"]
+[ext_resource type="Shader" uid="uid://b20ld62ku3mg8" path="res://Entities/Unit/Reflection.gdshader" id="2_ngmd1"]
+[ext_resource type="Texture2D" uid="uid://dbgoe6rojic8x" path="res://Textures/Monsters enemies/Kraken/זרועות קטן.png" id="2_xvh6v"]
+[ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="3_xvh6v"]
+[ext_resource type="Shader" uid="uid://bn0wv35v1nuq4" path="res://Entities/Unit/Unit.gdshader" id="4_pblyq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pblyq"]
+atlas = ExtResource("2_xvh6v")
+region = Rect2(126, 32, 26, 31)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_55wun"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pblyq")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pblyq")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pblyq")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pblyq")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_55wun"]
+resource_local_to_scene = true
+shader = ExtResource("2_ngmd1")
+shader_parameter/wave_speed = 2.0
+shader_parameter/wave_amplitude = 0.001
+shader_parameter/wave_frequency = 10.0
+shader_parameter/uv_left = 0.0
+shader_parameter/uv_right = 1.0
+shader_parameter/uv_top = 0.0
+shader_parameter/uv_bottom = 1.0
+shader_parameter/alpha = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ou22k"]
+atlas = ExtResource("3_xvh6v")
+region = Rect2(42, 1, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32ibj"]
+atlas = ExtResource("3_xvh6v")
+region = Rect2(124, 1, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbw00"]
+atlas = ExtResource("3_xvh6v")
+region = Rect2(83, 1, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlkj8"]
+atlas = ExtResource("3_xvh6v")
+region = Rect2(1, 1, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0t8h0"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ou22k")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32ibj")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbw00")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlkj8")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pa0pq"]
+resource_local_to_scene = true
+shader = ExtResource("4_pblyq")
+shader_parameter/hide_pixels = 0.0
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/water_color = Color(0.752941, 0.796078, 0.862745, 0.501961)
+shader_parameter/uv_bottom = 1.0
+
+[node name="Tentacle" instance=ExtResource("1_gls4s")]
+max_movement = 0
+sprite_frames = SubResource("SpriteFrames_55wun")
+display_name = "Tentacle"
+
+[node name="Reflection" parent="." index="0"]
+material = SubResource("ShaderMaterial_55wun")
+sprite_frames = SubResource("SpriteFrames_0t8h0")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_pa0pq")
+sprite_frames = SubResource("SpriteFrames_0t8h0")

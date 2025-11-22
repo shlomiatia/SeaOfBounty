@@ -1,0 +1,117 @@
+[gd_scene load_steps=13 format=3 uid="uid://csfaflxkg73r6"]
+
+[ext_resource type="PackedScene" uid="uid://05oo7vpmyn03" path="res://Entities/Unit/Unit.tscn" id="1_b2ajr"]
+[ext_resource type="Shader" uid="uid://b20ld62ku3mg8" path="res://Entities/Unit/Reflection.gdshader" id="2_3c2my"]
+[ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="3_n7pxf"]
+[ext_resource type="Shader" uid="uid://bn0wv35v1nuq4" path="res://Entities/Unit/Unit.gdshader" id="4_kwrtb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b2ajr"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ik6f"]
+resource_local_to_scene = true
+shader = ExtResource("2_3c2my")
+shader_parameter/wave_speed = 2.0
+shader_parameter/wave_amplitude = 0.001
+shader_parameter/wave_frequency = 10.0
+shader_parameter/uv_left = 0.0
+shader_parameter/uv_right = 1.0
+shader_parameter/uv_top = 0.0
+shader_parameter/uv_bottom = 1.0
+shader_parameter/alpha = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ou22k"]
+atlas = ExtResource("3_n7pxf")
+region = Rect2(42, 1, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32ibj"]
+atlas = ExtResource("3_n7pxf")
+region = Rect2(124, 1, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbw00"]
+atlas = ExtResource("3_n7pxf")
+region = Rect2(83, 1, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlkj8"]
+atlas = ExtResource("3_n7pxf")
+region = Rect2(1, 1, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e3wxt"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ou22k")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32ibj")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbw00")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlkj8")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f67t0"]
+resource_local_to_scene = true
+shader = ExtResource("4_kwrtb")
+shader_parameter/hide_pixels = 0.0
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/water_color = Color(0.752941, 0.796078, 0.862745, 0.501961)
+shader_parameter/uv_bottom = 1.0
+
+[node name="Kraken" groups=["enemies"] instance=ExtResource("1_b2ajr")]
+max_hp = 600
+hp = 600
+damage = 80
+attack_range = 2
+sprite_frames = SubResource("SpriteFrames_b2ajr")
+display_name = "Kraken"
+
+[node name="Reflection" parent="." index="0"]
+material = SubResource("ShaderMaterial_0ik6f")
+sprite_frames = SubResource("SpriteFrames_e3wxt")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_f67t0")
+sprite_frames = SubResource("SpriteFrames_e3wxt")

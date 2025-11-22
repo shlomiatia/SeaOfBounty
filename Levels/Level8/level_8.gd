@@ -4,6 +4,7 @@ class_name Level8 extends Node2D
 @onready var miguel: Unit = $Main/Units/Miguel
 @onready var constantine: Unit = $Main/Units/Constantine
 @onready var tutorial_event_handler: TutorialEventHandler8 = $TutorialEventHandler
+@onready var fade: Fade = $Main/CanvasLayer/Fade
 
 func _ready() -> void:
     MusicPlayer.stream = preload("res://Music/Flute B.mp3")
@@ -22,3 +23,11 @@ func _ready() -> void:
 
     main.start_player_turn()
     tutorial_event_handler.show_tutorial_at_step(0)
+
+func _process(_delta: float) -> void:
+    if Input.is_action_just_pressed("confirm") && Input.is_action_just_pressed("cancel"):
+        get_tree().change_scene_to_file("res://Levels/Level9/Level9.tscn")
+
+func on_won() -> void:
+    await fade.fade_out()
+    get_tree().change_scene_to_file("res://Levels/Level9/Level9.tscn")
