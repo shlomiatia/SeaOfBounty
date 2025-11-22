@@ -4,7 +4,8 @@
       "Bash(move possible_attack.gd attack_range.gd)",
       "Bash(cat:*)",
       "Bash(godot --headless --quit:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(mkdir:*)"
     ],
     "deny": [],
     "ask": []
