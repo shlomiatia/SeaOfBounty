@@ -61,7 +61,7 @@ static func execute_enemy_ai(main: Main) -> void:
         await execute_single_enemy_ai(enemy, main)
 
     var kraken: Unit = null
-    for enemy in enemies:
+    for enemy in main.get_tree().get_nodes_in_group("enemies"):
         if enemy.display_name == "Kraken":
             kraken = enemy
             break
