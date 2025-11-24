@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://efhr1m6inmv2"]
+[gd_scene load_steps=15 format=3 uid="uid://efhr1m6inmv2"]
 
 [ext_resource type="Script" uid="uid://blitmqem0wv3w" path="res://Entities/BattleUnits/battle_unit.gd" id="1_lc3co"]
 [ext_resource type="Texture2D" uid="uid://dbgoe6rojic8x" path="res://Textures/Monsters enemies/Kraken/זרועות קטן.png" id="2_soofq"]
+[ext_resource type="AudioStream" uid="uid://dyoan2kdemfqd" path="res://Sounds/Sfx/slash_attack.wav" id="3_n1jfs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n1jfs"]
 atlas = ExtResource("2_soofq")
@@ -85,6 +86,25 @@ tracks/0/keys = {
 "method": &"play"
 }]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_n1jfs")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": null
+}],
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_n1jfs"]
 resource_name = "BeforeAttack"
@@ -133,6 +153,9 @@ script = ExtResource("1_lc3co")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-42, -24)
 sprite_frames = SubResource("SpriteFrames_jpdoc")
+animation = &"attack"
+autoplay = "default"
+frame = 4
 frame_progress = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

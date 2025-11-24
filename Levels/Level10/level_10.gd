@@ -71,7 +71,7 @@ func on_won() -> void:
         var tentacle_sprite: AnimatedSprite2D = tentacle.get_node("AnimatedSprite2D")
         tentacle_sprite.play("emerge")
 
-    await get_tree().create_timer(1.0).timeout
+    await get_tree().create_timer(0.5).timeout
 
     constantine.start_text_list(["Your collosal beast! I imagined it will be bigger..."])
     await constantine.text_list_finished

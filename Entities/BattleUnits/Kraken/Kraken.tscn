@@ -1,5 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://bclkxx8hett17"]
+[gd_scene load_steps=16 format=3 uid="uid://bclkxx8hett17"]
 
+[ext_resource type="Script" uid="uid://blitmqem0wv3w" path="res://Entities/BattleUnits/battle_unit.gd" id="1_331am"]
 [ext_resource type="Texture2D" uid="uid://br061awmoknws" path="res://Textures/Monsters enemies/Kraken/קראקן קטן.png" id="1_383k4"]
 [ext_resource type="Texture2D" uid="uid://stkmmipe5fkv" path="res://Textures/Monsters enemies/מפלצות וחלק מהתקפות.png" id="2_mnobv"]
 [ext_resource type="AudioStream" uid="uid://lx83dxe0fieu" path="res://Sounds/Sfx/offshore end thing.mp3" id="3_mnobv"]
@@ -181,6 +182,7 @@ _data = {
 }
 
 [node name="Kraken" type="Node2D"]
+script = ExtResource("1_331am")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-24, -21)
