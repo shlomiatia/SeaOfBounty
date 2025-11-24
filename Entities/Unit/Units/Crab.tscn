@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://bly4nf1b0ylvs"]
+[gd_scene load_steps=16 format=3 uid="uid://bly4nf1b0ylvs"]
 
 [ext_resource type="PackedScene" uid="uid://05oo7vpmyn03" path="res://Entities/Unit/Unit.tscn" id="1_sgcnf"]
 [ext_resource type="Texture2D" uid="uid://tsy18myesm3f" path="res://Textures/Monsters enemies/סרטן/סרטן רגיל.png" id="2_auwyf"]
 [ext_resource type="Shader" uid="uid://b20ld62ku3mg8" path="res://Entities/Unit/Reflection.gdshader" id="3_jnvrg"]
 [ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="4_jsuah"]
 [ext_resource type="Shader" uid="uid://bn0wv35v1nuq4" path="res://Entities/Unit/Unit.gdshader" id="5_k0fnr"]
+[ext_resource type="AudioStream" uid="uid://25lj2d3ndjwj" path="res://Sounds/Sfx/offshore break and rumble.mp3" id="6_auwyf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6yfaq"]
 atlas = ExtResource("2_auwyf")
@@ -132,3 +133,6 @@ frame_progress = 0.0
 [node name="AnimatedSprite2D" parent="." index="1"]
 material = SubResource("ShaderMaterial_4jhnm")
 sprite_frames = SubResource("SpriteFrames_jlflj")
+
+[node name="AudioStreamPlayer" parent="." index="5"]
+stream = ExtResource("6_auwyf")

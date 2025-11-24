@@ -34,10 +34,12 @@ func start(attacker: Unit, defender: Unit) -> void:
     
     var hero_unit = "res://Entities/BattleUnits/%s/%s.tscn" % [hero_name, hero_name]
     var battle_hero: BattleUnit = load(hero_unit).instantiate() as BattleUnit
+    battle_hero.unit = hero
     hero_placeholder.add_child(battle_hero)
 
     var enemy_unit = "res://Entities/BattleUnits/%s/%s.tscn" % [enemy_name, enemy_name]
     var battle_enemy: BattleUnit = load(enemy_unit).instantiate() as BattleUnit
+    battle_enemy.unit = enemy
     enemy_placeholder.add_child(battle_enemy)
 
 
@@ -106,26 +108,6 @@ func assign_damage(attacker: Unit, defender: Unit, attacker_hp_label: Label, def
 
     var label_tween = create_tween()
     label_tween.tween_method(func(value: float) -> void: set_hp_label(defender_hp_label, value), old_hp, new_hp, 1.0)
-
-    #var duration = 0.5
-    #var steps = abs(new_hp - old_hp)
-
-    #if steps == 0:
-    #    return
-
-    #shaking_camera.start_screen_shake()
-
-    #var time_per_step = duration / steps
-    #var current_hp = old_hp
-
-    #while current_hp != new_hp:
-    #    if old_hp > new_hp:
-    #        current_hp -= 1
-    #    else:
-    #        current_hp += 1
-
-    #    set_hp_label(defender_hp_label, current_hp)
-    #    await get_tree().create_timer(time_per_step).timeout
 
 func set_hp_label(label: Label, hp: float) -> void:
     label.text = "%s HP" % [int(hp)]

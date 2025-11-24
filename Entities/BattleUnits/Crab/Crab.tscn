@@ -207,6 +207,7 @@ script = ExtResource("1_shgl1")
 position = Vector2(12, -34)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_sk1pj")
+animation = &"attack"
 autoplay = "default"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
