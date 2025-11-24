@@ -183,9 +183,7 @@ script = ExtResource("1_331am")
 position = Vector2(-48, -42)
 scale = Vector2(-2, 2)
 sprite_frames = SubResource("SpriteFrames_gary8")
-animation = &"attack"
 autoplay = "default"
-frame = 3
 
 [node name="Projectile" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
