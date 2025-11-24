@@ -14,7 +14,7 @@ var one_eye: Unit
 
 func _ready() -> void:
     main.won.connect(on_won)
-    MusicPlayer.stream = preload("res://Music/Piano B.mp3")
+    MusicPlayer.stream = preload("res://Music/piano B.mp3")
     MusicPlayer.play()
     await get_tree().create_timer(1.0).timeout
 

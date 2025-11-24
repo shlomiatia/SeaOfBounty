@@ -15,7 +15,7 @@ func _input(event: InputEvent) -> void:
 
 func start() -> void:
 	stage = 1
-	MusicPlayer.stream = preload("res://Music/Piano D.mp3")
+	MusicPlayer.stream = preload("res://Music/piano D.mp3")
 	MusicPlayer.play()
 	var array: Array[Array] = [
 		["", "The north."],
