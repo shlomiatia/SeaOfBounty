@@ -136,8 +136,8 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [&"BeforeAttack", 1.0, false],
-"method": &"before_attack"
+"args": [&"before_attack", 1.0, false],
+"method": &"play"
 }]
 }
 
