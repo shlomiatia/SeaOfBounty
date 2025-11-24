@@ -82,7 +82,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [&"Attack", 1.0, false],
+"args": [&"attack", 1.0, false],
 "method": &"play"
 }]
 }
@@ -135,7 +135,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [&"MoveToBeforeAttack", 1.0, false],
+"args": [&"before_attack", 1.0, false],
 "method": &"play"
 }]
 }
@@ -151,7 +151,8 @@ _data = {
 script = ExtResource("1_lc3co")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-42, -24)
+position = Vector2(-86, -48)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_jpdoc")
 animation = &"attack"
 autoplay = "default"

@@ -32,6 +32,13 @@ func _ready() -> void:
 
     main.start_player_turn()
 
+func _process(_delta: float) -> void:
+    if Input.is_action_just_pressed("confirm") && Input.is_action_just_pressed("cancel"):
+        for enemy in get_tree().get_nodes_in_group("enemies"):
+            enemy.queue_free()
+        await get_tree().process_frame
+        main.start_enemy_turn_if_needed()
+
 func on_won() -> void:
     for hero: Unit in get_tree().get_nodes_in_group("heroes"):
         hero.hp = hero.max_hp

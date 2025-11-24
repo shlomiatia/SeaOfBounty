@@ -66,7 +66,6 @@ region = Rect2(496, 278, 21, 49)
 
 [sub_resource type="Animation" id="Animation_1pse4"]
 resource_name = "Attack"
-length = 2.0
 step = 0.1
 tracks/0/type = "audio"
 tracks/0/imported = false
@@ -79,12 +78,8 @@ tracks/0/keys = {
 "end_offset": 0.0,
 "start_offset": 0.0,
 "stream": ExtResource("3_mnobv")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": null
 }],
-"times": PackedFloat32Array(0, 2)
+"times": PackedFloat32Array(0)
 }
 tracks/0/use_blend = true
 tracks/1/type = "method"
@@ -123,7 +118,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(0.5, 2),
 "update": 0,
-"values": [Vector2(-1.5, -11.5), Vector2(-200, -11.5)]
+"values": [Vector2(-2, -21), Vector2(-200, -21)]
 }
 
 [sub_resource type="Animation" id="Animation_qrtad"]
@@ -170,7 +165,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-1.5, -11.5)]
+"values": [Vector2(-2, -21)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gary8"]
@@ -185,8 +180,8 @@ _data = {
 script = ExtResource("1_331am")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-24, -21)
-scale = Vector2(-1, 1)
+position = Vector2(-48, -42)
+scale = Vector2(-2, 2)
 sprite_frames = SubResource("SpriteFrames_gary8")
 animation = &"attack"
 autoplay = "default"
@@ -194,8 +189,8 @@ frame = 3
 
 [node name="Projectile" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(-1.5, -11.5)
-scale = Vector2(-1, 1)
+position = Vector2(-2, -21)
+scale = Vector2(-2, 2)
 texture = SubResource("AtlasTexture_iwkaa")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

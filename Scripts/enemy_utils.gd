@@ -49,10 +49,13 @@ static func execute_enemy_ai(main: Main) -> void:
             tentacles.append(enemy)
             var animated_sprite = enemy.get_node("AnimatedSprite2D") as AnimatedSprite2D
             animated_sprite.play_backwards("emerge")
-            enemy.position = main.map.map_to_local(Vector2i(-1, -1))
         else:
             non_tentacle_enemies.append(enemy)
-    await main.get_tree().create_timer(0.5).timeout
+    if tentacles.size() > 0:
+        await main.get_tree().create_timer(0.5).timeout
+        for tentacle in tentacles:
+            tentacle.position = main.map.map_to_local(Vector2i(-1, -1))
+
 
     for enemy in non_tentacle_enemies:
         await execute_single_enemy_ai(enemy, main)
@@ -67,41 +70,27 @@ static func execute_enemy_ai(main: Main) -> void:
         return
 
     var kraken_tile = main.map.local_to_map(kraken.position)
-    var heroes = main.get_tree().get_nodes_in_group("heroes")
 
     for tentacle in tentacles:
-        var best_tile: Vector2i = Vector2i.MIN
-        var hero_adjcent := false
+        var tentacle_tile = Vector2i.MIN
 
         for ring_distance in range(1, 5):
-            for dx in [-ring_distance, ring_distance]:
-                for dy in [-ring_distance, ring_distance]:
-                    var tile = kraken_tile + Vector2i(dx, dy)
-
-                    var unit_at_tile = Utils.get_entity_at_tile(main.map, tile, "units")
-                    if unit_at_tile != null:
-                        continue
-
-                    best_tile = tile
-
-                    for hero in heroes:
-                        var hero_tile = main.map.local_to_map(hero.position)
-                        if Utils.get_tile_distance(tile, hero_tile) == 1:
-                            hero_adjcent = true
-                            break
-
-                    if hero_adjcent:
-                        free_tile = tile
-                        break
-
+            tentacle_tile = get_tentacle_tile(main, kraken_tile, ring_distance)
+            if tentacle_tile != Vector2i.MIN:
+                break
             
-        tentacle.position = main.map.map_to_local(best_tile)
+            
+        tentacle.position = main.map.map_to_local(tentacle_tile)
         var animated_sprite = tentacle.get_node("AnimatedSprite2D") as AnimatedSprite2D
         animated_sprite.play("emerge")
 
-        await execute_single_enemy_ai(tentacle, main)
+    if tentacles.size() > 0:
+        await main.get_tree().create_timer(0.5).timeout
 
-func get_tentacle_tile(main: Main, kraken_tile: Vector2i, radius: int):
+    for enemy in tentacles:
+        await execute_single_enemy_ai(enemy, main)
+
+static func get_tentacle_tile(main: Main, kraken_tile: Vector2i, radius: int):
     var goal_tile: Vector2i = Vector2i.MIN
     var heroes = main.get_tree().get_nodes_in_group("heroes")
     for row in range(kraken_tile.y - radius, kraken_tile.y + radius + 1):

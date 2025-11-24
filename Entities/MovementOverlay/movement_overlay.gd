@@ -19,7 +19,15 @@ func highlight_movement_and_attack(clicked_grid_pos: Vector2i, group: String) ->
             if entity.moved:
                 movement = 0
 
+            var tentacles: Array[Unit] = []
+            if entity.display_name == "Kraken":
+                for enemy in get_tree().get_nodes_in_group("enemies"):
+                    if enemy.display_name == "Tentacle":
+                        enemy.remove_from_group("enemies")
+                        tentacles.append(enemy)
             possible_movement.highlight_possible_movement(clicked_grid_pos, movement)
+            for tentacle in tentacles:
+                tentacle.add_to_group("enemies")
             attack_range.highlight_attack_range(entity)
             possible_attack.highlight_possible_attack(entity)
             possible_buff.highlight_possible_buff(entity)
