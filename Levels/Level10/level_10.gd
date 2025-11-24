@@ -18,15 +18,17 @@ func _ready() -> void:
     MusicPlayer.play()
     await get_tree().create_timer(1.0).timeout
 
-    # Initial dialog
     miguel.start_text_list(["An ambush!"])
     await miguel.text_list_finished
+    await get_tree().process_frame
 
     lia.start_text_list(["They want to flee, we're just in the way."])
     await lia.text_list_finished
+    await get_tree().process_frame
 
     constantine.start_text_list(["Bad luck for them!"])
     await constantine.text_list_finished
+    await get_tree().process_frame
 
     main.start_player_turn()
 
@@ -35,19 +37,15 @@ func on_won() -> void:
         return
     won_triggered = true
 
-    # Spawn Kraken out of screen and move to (14, 7)
     var kraken_prefab = preload("res://Entities/Unit/Units/Kraken.tscn")
     kraken = kraken_prefab.instantiate()
     units_node.add_child(kraken)
 
-    # Position Kraken off-screen (above the map)
-    kraken.position = map.map_to_local(Vector2i(14, -2))
+    kraken.position = map.map_to_local(Vector2i(17, 7))
 
-    # Move Kraken to (14, 7)
-    var kraken_path: Array[Vector2i] = [Vector2i(14, -2), Vector2i(14, -1), Vector2i(14, 0), Vector2i(14, 1), Vector2i(14, 2), Vector2i(14, 3), Vector2i(14, 4), Vector2i(14, 5), Vector2i(14, 6), Vector2i(14, 7)]
+    var kraken_path: Array[Vector2i] = [Vector2i(17, 7), Vector2i(16, 7), Vector2i(15, 7), Vector2i(14, 7)]
     await kraken.animate_along_path(kraken_path)
 
-    # Spawn 8 Tentacles around the Kraken at (14, 7)
     var tentacle_prefab = preload("res://Entities/Unit/Units/Tentacle.tscn")
     var tentacle_positions: Array[Vector2i] = [
         Vector2i(13, 6), # top-left
@@ -57,7 +55,7 @@ func on_won() -> void:
         Vector2i(15, 7), # right
         Vector2i(13, 8), # bottom-left
         Vector2i(14, 8), # bottom
-        Vector2i(15, 8)  # bottom-right
+        Vector2i(15, 8) # bottom-right
     ]
 
     var tentacles: Array[Unit] = []
@@ -67,33 +65,31 @@ func on_won() -> void:
         tentacle.position = map.map_to_local(pos)
         tentacles.append(tentacle)
 
-    # Play emerge animation on all tentacles
     for tentacle in tentacles:
         var tentacle_sprite: AnimatedSprite2D = tentacle.get_node("AnimatedSprite2D")
         tentacle_sprite.play("emerge")
 
-    # Wait for emerge animation to finish (assuming it takes about 1 second)
     await get_tree().create_timer(1.0).timeout
 
-    # Dialog after tentacles emerge
     constantine.start_text_list(["Your collosal beast! I imagined it will be bigger..."])
     await constantine.text_list_finished
+    await get_tree().process_frame
 
-    lia.start_text_list(["It's not the one we encountered.\nI think it's running too..."])
+    lia.start_text_list(["It's not the one we encountered.\nI think it's running away too..."])
     await lia.text_list_finished
+    await get_tree().process_frame
 
     miguel.start_text_list(["What can scare such a terrible behemoth..."])
     await miguel.text_list_finished
+    await get_tree().process_frame
 
-    # Spawn OneEye out of screen and move to any free tile on (X, 0)
     var one_eye_prefab = preload("res://Entities/Unit/Units/OneEye.tscn")
     one_eye = one_eye_prefab.instantiate()
     units_node.add_child(one_eye)
 
-    # Find a free tile at Y=0
-    var target_x: int = 8
-    for x in range(0, 16):
-        var check_pos = Vector2i(x, 0)
+    var target_y: int = 4
+    for y in range(4, 9):
+        var check_pos = Vector2i(0, y)
         var is_free = true
         for unit in units_node.get_children():
             if unit is Unit:
@@ -102,26 +98,28 @@ func on_won() -> void:
                     is_free = false
                     break
         if is_free:
-            target_x = x
+            target_y = y
             break
 
-    # Position OneEye off-screen (above the map)
-    one_eye.position = map.map_to_local(Vector2i(target_x, -2))
+    one_eye.position = map.map_to_local(Vector2i(-1, target_y))
 
-    # Move OneEye to target position
-    var one_eye_path: Array[Vector2i] = [Vector2i(target_x, -2), Vector2i(target_x, -1), Vector2i(target_x, 0)]
+    var one_eye_path: Array[Vector2i] = [Vector2i(-1, target_y), Vector2i(0, target_y)]
     await one_eye.animate_along_path(one_eye_path)
 
     one_eye.start_text_list(["It will soon run from me!"])
     await one_eye.text_list_finished
+    await get_tree().process_frame
 
     lia.start_text_list(["One Eye, you're alive!"])
     await lia.text_list_finished
+    await get_tree().process_frame
 
-    miguel.start_text_list(["This one is with you?"])
+    miguel.start_text_list(["This magnificant warrior is with you?"])
     await miguel.text_list_finished
+    await get_tree().process_frame
 
-    constantine.start_text_list(["Good, we have enough, attack!"])
+    constantine.start_text_list(["Good, that should be enough, attack!"])
     await constantine.text_list_finished
+    await get_tree().process_frame
 
     main.start_player_turn()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://efhr1m6inmv2"]
+[gd_scene load_steps=14 format=3 uid="uid://efhr1m6inmv2"]
 
 [ext_resource type="Script" uid="uid://blitmqem0wv3w" path="res://Entities/BattleUnits/battle_unit.gd" id="1_lc3co"]
 [ext_resource type="Texture2D" uid="uid://dbgoe6rojic8x" path="res://Textures/Monsters enemies/Kraken/זרועות קטן.png" id="2_soofq"]
@@ -20,6 +20,10 @@ atlas = ExtResource("2_soofq")
 region = Rect2(600, 0, 200, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mf4eh"]
+atlas = ExtResource("2_soofq")
+region = Rect2(800, 80, 200, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_soofq"]
 atlas = ExtResource("2_soofq")
 region = Rect2(800, 80, 200, 80)
 
@@ -58,11 +62,11 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mf4eh")
+"texture": SubResource("AtlasTexture_soofq")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 14.0
 }]
 
 [sub_resource type="Animation" id="Animation_gkhuo"]
@@ -129,8 +133,7 @@ script = ExtResource("1_lc3co")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-42, -24)
 sprite_frames = SubResource("SpriteFrames_jpdoc")
-autoplay = "default"
-frame_progress = 0.473572
+frame_progress = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
