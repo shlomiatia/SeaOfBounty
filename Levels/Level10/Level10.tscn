@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://djux53cx3trmu"]
+[gd_scene load_steps=16 format=4 uid="uid://djux53cx3trmu"]
 
 [ext_resource type="Script" uid="uid://c048mio3hc81w" path="res://Levels/Level10/level_10.gd" id="1_hgbca"]
 [ext_resource type="PackedScene" uid="uid://bblitdo328h8a" path="res://Levels/Main/Main.tscn" id="1_u4djg"]
@@ -8,6 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://cg6try7ca348a" path="res://Entities/Unit/Units/Lia.tscn" id="5_2mubl"]
 [ext_resource type="PackedScene" uid="uid://ckod0fymyd54" path="res://Entities/Unit/Units/Merwitch.tscn" id="7_wi85w"]
 [ext_resource type="PackedScene" uid="uid://dl1q2y4idbalt" path="res://Entities/Unit/Units/Mermage.tscn" id="8_umnx3"]
+[ext_resource type="Texture2D" uid="uid://bkry51hjq74ua" path="res://Textures/קישוטים/קישוטים  - Layer 12.png" id="9_mqlqt"]
+[ext_resource type="Texture2D" uid="uid://d3hl0j6t3wpd3" path="res://Textures/קישוטים/קישוטים  - Layer 8.png" id="10_t5nwn"]
+[ext_resource type="Texture2D" uid="uid://dp2gjlytjmbxs" path="res://Textures/קישוטים/קישוטים  - Layer 17.png" id="11_fgm3y"]
+[ext_resource type="Texture2D" uid="uid://n41o7krbafq6" path="res://Textures/קישוטים/קישוטים  - Layer 18.png" id="12_7qoxi"]
+[ext_resource type="Texture2D" uid="uid://r821ls130akc" path="res://Textures/קישוטים/קישוטים  - Layer 9.png" id="13_6cqsk"]
+[ext_resource type="Texture2D" uid="uid://dyy2f6rmkjk0e" path="res://Textures/קישוטים/קישוטים  - Layer 11.png" id="14_s3chn"]
+[ext_resource type="Texture2D" uid="uid://c4pk4tkr8eep0" path="res://Textures/קישוטים/קישוטים  - Layer 10.png" id="15_m27e4"]
 
 [node name="Level10" type="Node2D"]
 script = ExtResource("1_hgbca")
@@ -16,6 +23,9 @@ script = ExtResource("1_hgbca")
 
 [node name="Map" parent="Main" index="2"]
 tile_map_data = PackedByteArray("AAAAAAAAAAABAAUAAAAAAAEAAAAHAAIAAAAAAAIAAAAHAAMAAAAAAAMAAAAFAAcAAAAAAAQAAAAOAAYAAAAAAAUAAAAOAAYAAAAAAAYAAAAOAAYAAAAAAAcAAAAOAAYAAAAAAAgAAAAOAAYAAAABAAAAAAAFAAMAAAABAAEAAAAEAAQAAAABAAIAAAAFAAYAAAABAAMAAAAJAAUAAAABAAQAAAAEAAcAAAABAAUAAAAOAAYAAAABAAYAAAAOAAYAAAABAAcAAAAOAAYAAAABAAgAAAAOAAYAAAACAAAAAAAGAAMAAAACAAEAAAAHAAQAAAACAAIAAAAFAAYAAAACAAMAAAAFAAYAAAACAAQAAAAFAAcAAAACAAUAAAAOAAYAAAACAAYAAAAOAAYAAAACAAcAAAAOAAYAAAACAAgAAAAOAAYAAAADAAAAAAADAAUAAAADAAEAAAAEAAMAAAADAAIAAAAHAAUAAAADAAMAAAAGAAYAAAADAAQAAAAGAAcAAAADAAUAAAAOAAYAAAADAAYAAAAOAAYAAAADAAcAAAAOAAYAAAADAAgAAAAOAAYAAAAEAAAAAAAFAAEAAAAEAAEAAAAFAAMAAAAEAAIAAAAJAAUAAAAEAAMAAAAEAAcAAAAEAAQAAAAOAAYAAAAEAAUAAAAOAAYAAAAEAAYAAAAOAAYAAAAEAAcAAAAOAAYAAAAEAAgAAAAOAAYAAAAFAAAAAAABAAUAAAAFAAEAAAAHAAMAAAAFAAIAAAAHAAUAAAAFAAMAAAAGAAcAAAAFAAQAAAAOAAYAAAAFAAUAAAAOAAYAAAAFAAYAAAAOAAYAAAAFAAcAAAAOAAYAAAAFAAgAAAAOAAYAAAAGAAAAAAAGAAMAAAAGAAEAAAAFAAYAAAAGAAIAAAAIAAUAAAAGAAMAAAAOAAYAAAAGAAQAAAAOAAYAAAAGAAUAAAAOAAYAAAAGAAYAAAAOAAYAAAAGAAcAAAAOAAYAAAAGAAgAAAAOAAYAAAAHAAAAAAAGAAMAAAAHAAEAAAAFAAYAAAAHAAIAAAAFAAcAAAAHAAMAAAAEAAUAAAAHAAQAAAAEAAcAAAAHAAUAAAAOAAYAAAAHAAYAAAAOAAYAAAAHAAcAAAAOAAYAAAAHAAgAAAAOAAYAAAAIAAAAAAADAAUAAAAIAAEAAAAEAAMAAAAIAAIAAAAJAAUAAAAIAAMAAAAJAAcAAAAIAAQAAAAFAAcAAAAIAAUAAAAOAAYAAAAIAAYAAAAOAAYAAAAIAAcAAAAOAAYAAAAIAAgAAAAOAAYAAAAJAAAAAAAJAAIAAAAJAAEAAAADAAUAAAAJAAIAAAADAAYAAAAJAAMAAAAEAAMAAAAJAAQAAAAIAAUAAAAJAAUAAAAOAAYAAAAJAAYAAAAOAAYAAAAJAAcAAAAOAAYAAAAJAAgAAAAOAAYAAAAKAAAAAAAKAAIAAAAKAAEAAAAKAAEAAAAKAAIAAAABAAUAAAAKAAMAAAAHAAMAAAAKAAQAAAAJAAUAAAAKAAUAAAAEAAcAAAAKAAYAAAAOAAYAAAAKAAcAAAAOAAYAAAAKAAgAAAAOAAYAAAALAAAAAAABAAUAAAALAAEAAAAHAAEAAAALAAIAAAAHAAMAAAALAAMAAAAHAAUAAAALAAQAAAAGAAYAAAALAAUAAAAGAAcAAAALAAYAAAAOAAYAAAALAAcAAAAOAAYAAAALAAgAAAAOAAYAAAAMAAAAAAAGAAMAAAAMAAEAAAAFAAYAAAAMAAIAAAAEAAQAAAAMAAMAAAAFAAcAAAAMAAQAAAAOAAYAAAAMAAUAAAAOAAYAAAAMAAYAAAAOAAYAAAAMAAcAAAAOAAYAAAAMAAgAAAAOAAYAAAANAAAAAAAFAAMAAAANAAEAAAAFAAYAAAANAAIAAAAFAAQAAAANAAMAAAAIAAUAAAANAAQAAAAOAAYAAAANAAUAAAAOAAYAAAANAAYAAAAOAAYAAAANAAcAAAAOAAYAAAANAAgAAAAOAAYAAAAOAAAAAAAFAAMAAAAOAAEAAAAFAAYAAAAOAAIAAAAGAAQAAAAOAAMAAAAJAAUAAAAOAAQAAAAEAAcAAAAOAAUAAAAOAAYAAAAOAAYAAAAOAAYAAAAOAAcAAAAOAAYAAAAOAAgAAAAOAAYAAAAPAAAAAAADAAUAAAAPAAEAAAAEAAMAAAAPAAIAAAAHAAQAAAAPAAMAAAAFAAYAAAAPAAQAAAAFAAcAAAAPAAUAAAAOAAYAAAAPAAYAAAAOAAYAAAAPAAcAAAAOAAYAAAAPAAgAAAAOAAYAAAA=")
+
+[node name="Units" parent="Main" index="5"]
+y_sort_enabled = true
 
 [node name="Crab" parent="Main/Units" index="0" instance=ExtResource("2_7ouqf")]
 position = Vector2(219, 295)
@@ -39,5 +49,48 @@ initial_direction = "left"
 [node name="Mermage" parent="Main/Units" index="6" instance=ExtResource("8_umnx3")]
 position = Vector2(173, 292)
 initial_direction = "left"
+
+[node name="קישוטים-Layer12" type="Sprite2D" parent="Main"]
+position = Vector2(95, 95)
+texture = ExtResource("9_mqlqt")
+
+[node name="קישוטים-Layer13" type="Sprite2D" parent="Main"]
+position = Vector2(107, 95)
+scale = Vector2(-1, 1)
+texture = ExtResource("9_mqlqt")
+
+[node name="קישוטים-Layer14" type="Sprite2D" parent="Main"]
+position = Vector2(95, 105)
+scale = Vector2(1, -1)
+texture = ExtResource("9_mqlqt")
+
+[node name="קישוטים-Layer15" type="Sprite2D" parent="Main"]
+position = Vector2(107, 105)
+scale = Vector2(-1, -1)
+texture = ExtResource("9_mqlqt")
+
+[node name="קישוטים-Layer8" type="Sprite2D" parent="Main"]
+position = Vector2(262, 63)
+texture = ExtResource("10_t5nwn")
+
+[node name="קישוטים-Layer17" type="Sprite2D" parent="Main"]
+position = Vector2(141, 17)
+texture = ExtResource("11_fgm3y")
+
+[node name="קישוטים-Layer18" type="Sprite2D" parent="Main"]
+position = Vector2(623, 17)
+texture = ExtResource("12_7qoxi")
+
+[node name="קישוטים-Layer9" type="Sprite2D" parent="Main"]
+position = Vector2(622, 180)
+texture = ExtResource("13_6cqsk")
+
+[node name="קישוטים-Layer11" type="Sprite2D" parent="Main"]
+position = Vector2(61, 143)
+texture = ExtResource("14_s3chn")
+
+[node name="קישוטים-Layer10" type="Sprite2D" parent="Main"]
+position = Vector2(314, 116)
+texture = ExtResource("15_m27e4")
 
 [editable path="Main"]

@@ -4,23 +4,19 @@ class_name CrabAnimatedSprite extends AnimatedSprite2D
 
 var last_hp: int = -1
 
-func _ready() -> void:
-    sprite_frames = sprite_frames.duplicate(true)
-
 func _process(_delta: float) -> void:
     if unit != null && unit.hp != last_hp:
         last_hp = unit.hp
         update_crab_texture()
 
 func update_crab_texture() -> void:
-    prints(unit.name, name, "updating crab texture for HP:", unit.hp)
     var texture_path: String = ""
 
-    if unit.hp >= 300:
+    if unit.hp > 300:
         texture_path = "res://Textures/Monsters enemies/סרטן/סרטן רגיל.png"
-    elif unit.hp >= 200:
+    elif unit.hp > 200:
         texture_path = "res://Textures/Monsters enemies/סרטן/סרטן מכה 1.png"
-    elif unit.hp >= 100:
+    elif unit.hp > 100:
         texture_path = "res://Textures/Monsters enemies/סרטן/סרטן מכה 2.png"
     else:
         texture_path = "res://Textures/Monsters enemies/סרטן/סרטן מכה 3.png"

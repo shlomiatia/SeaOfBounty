@@ -8,15 +8,15 @@
 [ext_resource type="AudioStream" uid="uid://25lj2d3ndjwj" path="res://Sounds/Sfx/offshore break and rumble.mp3" id="6_auwyf"]
 [ext_resource type="Script" uid="uid://evi1cehhrjcy" path="res://Scripts/crab_animated_sprite.gd" id="6_jnvrg"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6yfaq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnvrg"]
 atlas = ExtResource("2_auwyf")
-region = Rect2(26, 29, 38, 38)
+region = Rect2(26, 29, 40, 38)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vqlr1"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6yfaq")
+"texture": SubResource("AtlasTexture_jnvrg")
 }],
 "loop": true,
 "name": &"down",
@@ -24,7 +24,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6yfaq")
+"texture": SubResource("AtlasTexture_jnvrg")
 }],
 "loop": true,
 "name": &"left",
@@ -32,7 +32,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6yfaq")
+"texture": SubResource("AtlasTexture_jnvrg")
 }],
 "loop": true,
 "name": &"right",
@@ -40,7 +40,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6yfaq")
+"texture": SubResource("AtlasTexture_jnvrg")
 }],
 "loop": true,
 "name": &"up",

@@ -6,7 +6,8 @@
       "Bash(godot --headless --quit:*)",
       "Bash(grep:*)",
       "Bash(mkdir:*)",
-      "Bash(nul)"
+      "Bash(nul)",
+      "Bash(dir:*)"
     ],
     "deny": [],
     "ask": []

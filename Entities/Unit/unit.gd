@@ -32,8 +32,8 @@ var audio_stream_player_tween: Tween
 func _ready() -> void:
     animation_player.seek(randf() * 2.0)
     if sprite_frames:
-        animated_sprite_2d.sprite_frames = sprite_frames
-        reflection.sprite_frames = sprite_frames
+        animated_sprite_2d.sprite_frames = sprite_frames.duplicate(true)
+        reflection.sprite_frames = sprite_frames.duplicate(true)
 
     position = map.map_to_local(map.local_to_map(position))
     play_animation(initial_direction)

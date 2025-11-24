@@ -30,7 +30,6 @@ func _process(_delta: float) -> void:
         get_tree().change_scene_to_file("res://Levels/Level3/Level3.tscn")
 
 func on_won() -> void:
-    prints(won_triggered)
     if won_triggered:
         await fade.fade_out()
         get_tree().change_scene_to_file("res://Levels/Level3/Level3.tscn")
