@@ -1,28 +1,45 @@
-[gd_scene load_steps=13 format=3 uid="uid://csfaflxkg73r6"]
+[gd_scene load_steps=15 format=3 uid="uid://csfaflxkg73r6"]
 
 [ext_resource type="PackedScene" uid="uid://05oo7vpmyn03" path="res://Entities/Unit/Unit.tscn" id="1_b2ajr"]
 [ext_resource type="Shader" uid="uid://b20ld62ku3mg8" path="res://Entities/Unit/Reflection.gdshader" id="2_3c2my"]
+[ext_resource type="Texture2D" uid="uid://br061awmoknws" path="res://Textures/Monsters enemies/Kraken/קראקן קטן.png" id="2_n7pxf"]
 [ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="3_n7pxf"]
 [ext_resource type="Shader" uid="uid://bn0wv35v1nuq4" path="res://Entities/Unit/Unit.gdshader" id="4_kwrtb"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwrtb"]
+atlas = ExtResource("2_n7pxf")
+region = Rect2(56, 29, 35, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_b2ajr"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwrtb")
+}],
 "loop": true,
 "name": &"down",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwrtb")
+}],
 "loop": true,
 "name": &"left",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwrtb")
+}],
 "loop": true,
 "name": &"right",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwrtb")
+}],
 "loop": true,
 "name": &"up",
 "speed": 5.0
@@ -101,16 +118,18 @@ shader_parameter/water_color = Color(0.752941, 0.796078, 0.862745, 0.501961)
 shader_parameter/uv_bottom = 1.0
 
 [node name="Kraken" groups=["enemies"] instance=ExtResource("1_b2ajr")]
-max_hp = 600
-hp = 600
+max_hp = 800
+hp = 800
 damage = 80
-attack_range = 2
+attack_range = 4
 sprite_frames = SubResource("SpriteFrames_b2ajr")
 display_name = "Kraken"
+set_flip_h = true
 
 [node name="Reflection" parent="." index="0"]
 material = SubResource("ShaderMaterial_0ik6f")
 sprite_frames = SubResource("SpriteFrames_e3wxt")
+frame_progress = 0.0
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 material = SubResource("ShaderMaterial_f67t0")

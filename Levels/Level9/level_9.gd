@@ -24,10 +24,10 @@ func start() -> void:
 		["Constantine", "Do you know why this place is vomiting horrors into the world?"],
 		["Lia", "The monsters aren't attacking...\nThey're fleeing."],
 		["Lia", "My group encountered this colossal beast...\nAn iceberg broke and created a tsunamy..."],
-		["Lia", "I don't know who made it."],
+		["Lia", "We got separated.\nI don't know who made it."],
 		["Constantine", "Lovely.\nCataclysmic wave, terrified monsters, missing expedition..."],
 		["Miguel", "...and three gorgeous idiots marching straight into it."],
-		["Lia", "Yes.. it's up to us now.\nLet's hope this isn't the end."],
+		["Lia", "It's up to us now.\nLet's hope this isn't the end."],
 	]
 	dialog.start(array)
 	dialog.dialog_finished.connect(_on_dialog_finished)

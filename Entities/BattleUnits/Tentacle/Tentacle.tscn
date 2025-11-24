@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://efhr1m6inmv2"]
+[gd_scene load_steps=13 format=3 uid="uid://efhr1m6inmv2"]
 
 [ext_resource type="Script" uid="uid://blitmqem0wv3w" path="res://Entities/BattleUnits/battle_unit.gd" id="1_lc3co"]
 [ext_resource type="Texture2D" uid="uid://dbgoe6rojic8x" path="res://Textures/Monsters enemies/Kraken/זרועות קטן.png" id="2_soofq"]
@@ -23,26 +23,6 @@ region = Rect2(600, 0, 200, 80)
 atlas = ExtResource("2_soofq")
 region = Rect2(800, 80, 200, 80)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1x0la"]
-atlas = ExtResource("2_soofq")
-region = Rect2(600, 80, 200, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t541s"]
-atlas = ExtResource("2_soofq")
-region = Rect2(400, 80, 200, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0ujkk"]
-atlas = ExtResource("2_soofq")
-region = Rect2(200, 80, 200, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ebraw"]
-atlas = ExtResource("2_soofq")
-region = Rect2(0, 80, 200, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d8jr4"]
-atlas = ExtResource("2_soofq")
-region = Rect2(0, 80, 200, 80)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_jpdoc"]
 animations = [{
 "frames": [{
@@ -60,18 +40,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mf4eh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1x0la")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t541s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0ujkk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ebraw")
 }],
 "loop": false,
 "name": &"attack",
@@ -90,35 +58,15 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d8jr4")
+"texture": SubResource("AtlasTexture_mf4eh")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ebraw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0ujkk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t541s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1x0la")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mf4eh")
-}],
-"loop": false,
-"name": &"move_to_before_attack",
-"speed": 10.0
 }]
 
-[sub_resource type="Animation" id="Animation_soofq"]
-resource_name = "MoveToBeforeAttack"
+[sub_resource type="Animation" id="Animation_gkhuo"]
+resource_name = "Attack"
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -129,7 +77,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [&"MoveToBeforeAttack", 1.0, false],
+"args": [&"Attack", 1.0, false],
 "method": &"play"
 }]
 }
@@ -151,8 +99,8 @@ tracks/0/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_gkhuo"]
-resource_name = "Attack"
+[sub_resource type="Animation" id="Animation_soofq"]
+resource_name = "MoveToBeforeAttack"
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -163,7 +111,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [&"Attack", 1.0, false],
+"args": [&"MoveToBeforeAttack", 1.0, false],
 "method": &"play"
 }]
 }
@@ -179,11 +127,10 @@ _data = {
 script = ExtResource("1_lc3co")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-42, -24)
 sprite_frames = SubResource("SpriteFrames_jpdoc")
-animation = &"attack"
 autoplay = "default"
-frame = 8
-frame_progress = 1.0
+frame_progress = 0.473572
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
