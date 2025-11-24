@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bly4nf1b0ylvs"]
+[gd_scene load_steps=17 format=3 uid="uid://bly4nf1b0ylvs"]
 
 [ext_resource type="PackedScene" uid="uid://05oo7vpmyn03" path="res://Entities/Unit/Unit.tscn" id="1_sgcnf"]
 [ext_resource type="Texture2D" uid="uid://tsy18myesm3f" path="res://Textures/Monsters enemies/סרטן/סרטן רגיל.png" id="2_auwyf"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="4_jsuah"]
 [ext_resource type="Shader" uid="uid://bn0wv35v1nuq4" path="res://Entities/Unit/Unit.gdshader" id="5_k0fnr"]
 [ext_resource type="AudioStream" uid="uid://25lj2d3ndjwj" path="res://Sounds/Sfx/offshore break and rumble.mp3" id="6_auwyf"]
+[ext_resource type="Script" uid="uid://evi1cehhrjcy" path="res://Scripts/crab_animated_sprite.gd" id="6_jnvrg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6yfaq"]
 atlas = ExtResource("2_auwyf")
@@ -125,14 +126,18 @@ damage = 80
 sprite_frames = SubResource("SpriteFrames_vqlr1")
 display_name = "Crab"
 
-[node name="Reflection" parent="." index="0"]
+[node name="Reflection" parent="." index="0" node_paths=PackedStringArray("unit")]
 material = SubResource("ShaderMaterial_5bdrp")
 sprite_frames = SubResource("SpriteFrames_jlflj")
 frame_progress = 0.0
+script = ExtResource("6_jnvrg")
+unit = NodePath("..")
 
-[node name="AnimatedSprite2D" parent="." index="1"]
+[node name="AnimatedSprite2D" parent="." index="1" node_paths=PackedStringArray("unit")]
 material = SubResource("ShaderMaterial_4jhnm")
 sprite_frames = SubResource("SpriteFrames_jlflj")
+script = ExtResource("6_jnvrg")
+unit = NodePath("..")
 
 [node name="AudioStreamPlayer" parent="." index="5"]
 stream = ExtResource("6_auwyf")

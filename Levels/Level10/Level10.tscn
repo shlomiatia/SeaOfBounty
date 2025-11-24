@@ -21,7 +21,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAABAAUAAAAAAAEAAAAHAAIAAAAAAAIAAAAHAAM
 position = Vector2(219, 295)
 
 [node name="Crab2" parent="Main/Units" index="1" instance=ExtResource("2_7ouqf")]
-position = Vector2(220, 219)
+position = Vector2(221, 168)
 
 [node name="Constantine" parent="Main/Units" index="2" instance=ExtResource("3_otnm8")]
 position = Vector2(26, 202)
@@ -33,11 +33,11 @@ position = Vector2(27, 252)
 position = Vector2(23, 300)
 
 [node name="Merwitch" parent="Main/Units" index="5" instance=ExtResource("7_wi85w")]
-position = Vector2(174, 219)
+position = Vector2(176, 170)
 initial_direction = "left"
 
 [node name="Mermage" parent="Main/Units" index="6" instance=ExtResource("8_umnx3")]
-position = Vector2(174, 297)
+position = Vector2(173, 292)
 initial_direction = "left"
 
 [editable path="Main"]

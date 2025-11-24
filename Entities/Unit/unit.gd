@@ -28,7 +28,6 @@ var activated: bool
 var text_list: Array[String] = []
 var current_text_index: int = 0
 var audio_stream_player_tween: Tween
-var last_hp: int = -1
 
 func _ready() -> void:
     animation_player.seek(randf() * 2.0)
@@ -38,14 +37,8 @@ func _ready() -> void:
 
     position = map.map_to_local(map.local_to_map(position))
     play_animation(initial_direction)
-    last_hp = hp
-    update_crab_texture()
 
 func _process(_delta: float) -> void:
-    if hp != last_hp:
-        last_hp = hp
-        update_crab_texture()
-
     if hp > 0:
         if !moved || !activated:
             animated_sprite_2d.modulate = Color(1, 1, 1)
@@ -187,44 +180,3 @@ func play_animation(anim: String) -> void:
         elif anim == "right":
             animated_sprite_2d.flip_h = false
             reflection.flip_h = false
-
-func update_crab_texture() -> void:
-    if display_name != "Crab":
-        return
-
-    var texture_path: String = ""
-
-    if hp >= 300:
-        texture_path = "res://Textures/Monsters enemies/סרטן/סרטן רגיל.png"
-    elif hp >= 200:
-        texture_path = "res://Textures/Monsters enemies/סרטן/סרטן מכה 1.png"
-    elif hp >= 100:
-        texture_path = "res://Textures/Monsters enemies/סרטן/סרטן מכה 2.png"
-    else:
-        texture_path = "res://Textures/Monsters enemies/סרטן/סרטן מכה 3.png"
-
-    var new_texture = load(texture_path)
-
-    # Update all frames in all animations
-    var sprite_frames_obj = animated_sprite_2d.sprite_frames
-    for animation_name in sprite_frames_obj.get_animation_names():
-        var frame_count = sprite_frames_obj.get_frame_count(animation_name)
-        for frame_idx in range(frame_count):
-            var atlas_texture = sprite_frames_obj.get_frame_texture(animation_name, frame_idx) as AtlasTexture
-            if atlas_texture:
-                var new_atlas = AtlasTexture.new()
-                new_atlas.atlas = new_texture
-                new_atlas.region = atlas_texture.region
-                sprite_frames_obj.set_frame(animation_name, frame_idx, new_atlas)
-
-    # Update reflection as well
-    var reflection_sprite_frames = reflection.sprite_frames
-    for animation_name in reflection_sprite_frames.get_animation_names():
-        var frame_count = reflection_sprite_frames.get_frame_count(animation_name)
-        for frame_idx in range(frame_count):
-            var atlas_texture = reflection_sprite_frames.get_frame_texture(animation_name, frame_idx) as AtlasTexture
-            if atlas_texture:
-                var new_atlas = AtlasTexture.new()
-                new_atlas.atlas = new_texture
-                new_atlas.region = atlas_texture.region
-                reflection_sprite_frames.set_frame(animation_name, frame_idx, new_atlas)
