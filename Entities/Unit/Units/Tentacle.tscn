@@ -153,7 +153,7 @@ shader_parameter/modulate = Color(1, 1, 1, 1)
 shader_parameter/water_color = Color(0.752941, 0.796078, 0.862745, 0.501961)
 shader_parameter/uv_bottom = 1.0
 
-[node name="Tentacle" instance=ExtResource("1_gls4s")]
+[node name="Tentacle" groups=["enemies"] instance=ExtResource("1_gls4s")]
 max_movement = 0
 sprite_frames = SubResource("SpriteFrames_55wun")
 display_name = "Tentacle"

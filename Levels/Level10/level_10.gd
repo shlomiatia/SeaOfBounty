@@ -33,6 +33,8 @@ func _ready() -> void:
     main.start_player_turn()
 
 func on_won() -> void:
+    for hero: Unit in get_tree().get_nodes_in_group("heroes"):
+        hero.hp = hero.max_hp
     if won_triggered:
         return
     won_triggered = true
@@ -75,7 +77,7 @@ func on_won() -> void:
     await constantine.text_list_finished
     await get_tree().process_frame
 
-    lia.start_text_list(["It's not the one we encountered.\nI think it's running away too..."])
+    lia.start_text_list(["It's not the one we encountered.", "I think it's running away too..."])
     await lia.text_list_finished
     await get_tree().process_frame
 
@@ -106,7 +108,7 @@ func on_won() -> void:
     var one_eye_path: Array[Vector2i] = [Vector2i(-1, target_y), Vector2i(0, target_y)]
     await one_eye.animate_along_path(one_eye_path)
 
-    one_eye.start_text_list(["It will soon run from me!"])
+    one_eye.start_text_list(["It will soon run away from me!"])
     await one_eye.text_list_finished
     await get_tree().process_frame
 
