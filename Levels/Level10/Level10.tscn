@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://djux53cx3trmu"]
+[gd_scene load_steps=18 format=4 uid="uid://djux53cx3trmu"]
 
 [ext_resource type="Script" uid="uid://c048mio3hc81w" path="res://Levels/Level10/level_10.gd" id="1_hgbca"]
 [ext_resource type="PackedScene" uid="uid://bblitdo328h8a" path="res://Levels/Main/Main.tscn" id="1_u4djg"]
@@ -15,6 +15,14 @@
 [ext_resource type="Texture2D" uid="uid://r821ls130akc" path="res://Textures/קישוטים/קישוטים  - Layer 9.png" id="13_6cqsk"]
 [ext_resource type="Texture2D" uid="uid://dyy2f6rmkjk0e" path="res://Textures/קישוטים/קישוטים  - Layer 11.png" id="14_s3chn"]
 [ext_resource type="Texture2D" uid="uid://c4pk4tkr8eep0" path="res://Textures/קישוטים/קישוטים  - Layer 10.png" id="15_m27e4"]
+[ext_resource type="Shader" uid="uid://csfshgyxqjafd" path="res://Entities/Map/map.gdshader" id="15_t5nwn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fgm3y"]
+shader = ExtResource("15_t5nwn")
+shader_parameter/color1 = Color(1, 1, 1, 1)
+shader_parameter/direction = Vector2(1, 0)
+shader_parameter/max_distance = 10.0
+shader_parameter/pixels_per_second = 5.0
 
 [node name="Level10" type="Node2D"]
 script = ExtResource("1_hgbca")
@@ -88,7 +96,8 @@ position = Vector2(61, 143)
 texture = ExtResource("14_s3chn")
 
 [node name="קישוטים-Layer10" type="Sprite2D" parent="Main/EyeCandies" index="14"]
-position = Vector2(314, 116)
+material = SubResource("ShaderMaterial_fgm3y")
+position = Vector2(268, 127)
 texture = ExtResource("15_m27e4")
 
 [editable path="Main"]

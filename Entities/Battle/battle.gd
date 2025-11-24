@@ -59,7 +59,12 @@ func start(attacker: Unit, defender: Unit) -> void:
     enemy_placeholder.remove_child(battle_enemy)
 
     if enemy.hp == 0:
+        if enemy.display_name == "Kraken":
+            for tentacle in get_tree().get_nodes_in_group("enemies"):
+                if tentacle.display_name == "Tentacle":
+                    _fade_out_and_remove(tentacle)
         await _fade_out_and_remove(enemy)
+    
     if hero.hp == 0:
         await _fade_out_and_remove(hero)
 

@@ -13,39 +13,8 @@ var kraken: Unit
 var one_eye: Unit
 
 func _ready() -> void:
-    main.won.connect(on_won)
-    MusicPlayer.stream = preload("res://Music/Piano B.mp3")
+    MusicPlayer.stream = preload("res://Music/Trumpet B.mp3")
     MusicPlayer.play()
-    await get_tree().create_timer(1.0).timeout
-
-    miguel.start_text_list(["An ambush!"])
-    await miguel.text_list_finished
-    await get_tree().process_frame
-
-    lia.start_text_list(["They want to flee, we're just in the way."])
-    await lia.text_list_finished
-    await get_tree().process_frame
-
-    constantine.start_text_list(["Bad luck for them!"])
-    await constantine.text_list_finished
-    await get_tree().process_frame
-
-    main.start_player_turn()
-
-func _process(_delta: float) -> void:
-    if Input.is_action_just_pressed("confirm") && Input.is_action_just_pressed("cancel"):
-        for enemy in get_tree().get_nodes_in_group("enemies"):
-            enemy.queue_free()
-        await get_tree().process_frame
-        main.start_enemy_turn_if_needed()
-
-func on_won() -> void:
-    for hero: Unit in get_tree().get_nodes_in_group("heroes"):
-        hero.hp = hero.max_hp
-    if won_triggered:
-        return
-    won_triggered = true
-
     var kraken_prefab = preload("res://Entities/Unit/Units/Kraken.tscn")
     kraken = kraken_prefab.instantiate()
     units_node.add_child(kraken)
