@@ -45,6 +45,10 @@ func _input(event: InputEvent) -> void:
             get_tree().reload_current_scene()
             return
 
+        if LastInput.last_input_type == LastInput.InputType.MOUSE:
+            var mouse_pos = get_global_mouse_position()
+            cursor.set_cursor_position(mouse_pos)
+
         handle_confirm(cursor.position)
     elif event.is_action_pressed("cancel"):
         current_hero = null

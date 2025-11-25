@@ -1,44 +1,111 @@
-[gd_scene load_steps=10 format=3 uid="uid://dh8jigtbw6tet"]
+[gd_scene load_steps=18 format=3 uid="uid://dh8jigtbw6tet"]
 
-[ext_resource type="Texture2D" uid="uid://b3qwng2lshr82" path="res://Textures/BattleUnits/OneEye/Normal.PNG" id="1_d07oe"]
 [ext_resource type="Script" uid="uid://blitmqem0wv3w" path="res://Entities/BattleUnits/battle_unit.gd" id="1_yokgm"]
-[ext_resource type="Texture2D" uid="uid://c11pv0ms2vp16" path="res://Textures/BattleUnits/OneEye/Weapon.PNG" id="2_yokgm"]
 [ext_resource type="AudioStream" uid="uid://b88kuk5ifc6od" path="res://Sounds/Sfx/box getting crushed by piston.wav" id="4_1xmqb"]
+[ext_resource type="Texture2D" uid="uid://dwi6nprfckg5x" path="res://Textures/BattleUnits/OneEye/שכירת חרב תוקפת.png" id="4_uvm46"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llug7"]
+atlas = ExtResource("4_uvm46")
+region = Rect2(480, 240, 240, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chbxh"]
+atlas = ExtResource("4_uvm46")
+region = Rect2(0, 480, 240, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2318h"]
+atlas = ExtResource("4_uvm46")
+region = Rect2(240, 480, 240, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30tet"]
+atlas = ExtResource("4_uvm46")
+region = Rect2(480, 480, 240, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oe8uw"]
+atlas = ExtResource("4_uvm46")
+region = Rect2(240, 240, 240, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vl3p6"]
+atlas = ExtResource("4_uvm46")
+region = Rect2(0, 240, 240, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4umj"]
+atlas = ExtResource("4_uvm46")
+region = Rect2(960, 0, 240, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wa0c"]
+atlas = ExtResource("4_uvm46")
+region = Rect2(0, 0, 240, 240)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eq7um"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llug7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chbxh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2318h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30tet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oe8uw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vl3p6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4umj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wa0c")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wa0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4umj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vl3p6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oe8uw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llug7")
+}],
+"loop": false,
+"name": &"before_attack",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wa0c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Animation" id="Animation_ybfrq"]
 resource_name = "Attack"
 step = 0.05
-tracks/0/type = "value"
+tracks/0/type = "audio"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Img3349/Img3350:position")
+tracks/0/path = NodePath("AudioStreamPlayer")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.2, 1),
-"transitions": PackedFloat32Array(0.5, 1, 2, 2),
-"update": 0,
-"values": [Vector2(52, -31), Vector2(40, -31), Vector2(52, -31), Vector2(-6, 14)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Img3349/Img3350:rotation")
-tracks/1/interp = 3
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.2, 1),
-"transitions": PackedFloat32Array(0.5, 1, 2, 2),
-"update": 0,
-"values": [-1.5708, -2.35619, -1.5708, 0.0]
-}
-tracks/2/type = "audio"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AudioStreamPlayer")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
@@ -50,78 +117,46 @@ tracks/2/keys = {
 }],
 "times": PackedFloat32Array(0.1, 1)
 }
-tracks/2/use_blend = true
+tracks/0/use_blend = true
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"attack", 1.0, false],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_3k1kq"]
 resource_name = "BeforeAttack"
 length = 2.0
 loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Img3349/Img3350:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(-2, -2),
-"update": 0,
-"values": [Vector2(52, -29), Vector2(52, -33)]
-}
 
 [sub_resource type="Animation" id="Animation_d07oe"]
 resource_name = "MoveToBeforeAttack"
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Img3349/Img3350:position")
+tracks/0/path = NodePath("AnimatedSprite2D")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.5, 2),
-"update": 0,
-"values": [Vector2(-6, 14), Vector2(52, -29)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Img3349/Img3350:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.5, 2),
-"update": 0,
-"values": [0.0, -1.5708]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"before_attack", 1.0, false],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_yokgm"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Img3349/Img3350:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-6, 14)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Img3349/Img3350:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yokgm"]
 _data = {
@@ -134,13 +169,10 @@ _data = {
 [node name="One Eye" type="Node2D"]
 script = ExtResource("1_yokgm")
 
-[node name="Img3349" type="Sprite2D" parent="."]
-position = Vector2(0, -66.5)
-texture = ExtResource("1_d07oe")
-
-[node name="Img3350" type="Sprite2D" parent="Img3349"]
-position = Vector2(-6, 14)
-texture = ExtResource("2_yokgm")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(19, -71)
+sprite_frames = SubResource("SpriteFrames_eq7um")
+autoplay = "default"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

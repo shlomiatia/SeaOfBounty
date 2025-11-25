@@ -7,6 +7,7 @@ class_name Level8 extends Node2D
 @onready var fade: Fade = $Main/CanvasLayer/Fade
 
 func _ready() -> void:
+    main.won.connect(on_won)
     MusicPlayer.stream = preload("res://Music/Flute B.mp3")
     MusicPlayer.play()
     await get_tree().create_timer(1.0).timeout

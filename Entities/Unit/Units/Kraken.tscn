@@ -119,8 +119,8 @@ shader_parameter/water_color = Color(0.752941, 0.796078, 0.862745, 0.501961)
 shader_parameter/uv_bottom = 1.0
 
 [node name="Kraken" groups=["enemies"] instance=ExtResource("1_b2ajr")]
-max_hp = 600
-hp = 600
+max_hp = 400
+hp = 400
 damage = 80
 max_movement = 5
 attack_range = 2

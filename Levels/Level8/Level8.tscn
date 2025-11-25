@@ -85,35 +85,25 @@ z_as_relative = false
 position = Vector2(64, 255)
 initial_direction = "left"
 
-[node name="Mermaid2" parent="Main/Units" index="3" instance=ExtResource("3_f0x5g")]
+[node name="Mermaiden" parent="Main/Units" index="3" instance=ExtResource("4_nf52x")]
 z_as_relative = false
-position = Vector2(212, 290)
+position = Vector2(212, 291)
 initial_direction = "left"
 
-[node name="Mermaiden" parent="Main/Units" index="4" instance=ExtResource("4_nf52x")]
-z_as_relative = false
-position = Vector2(576, 20)
-initial_direction = "left"
-
-[node name="Mermaiden2" parent="Main/Units" index="5" instance=ExtResource("4_nf52x")]
-z_as_relative = false
-position = Vector2(618, 21)
-initial_direction = "left"
-
-[node name="Constantine" parent="Main/Units" index="6" instance=ExtResource("5_trweb")]
+[node name="Constantine" parent="Main/Units" index="4" instance=ExtResource("5_trweb")]
 z_as_relative = false
 position = Vector2(20, 15)
 
-[node name="Miguel" parent="Main/Units" index="7" instance=ExtResource("6_i5d2o")]
+[node name="Miguel" parent="Main/Units" index="5" instance=ExtResource("6_i5d2o")]
 z_as_relative = false
 position = Vector2(62, 48)
 
-[node name="Mermage" parent="Main/Units" index="8" instance=ExtResource("8_4c5y7")]
+[node name="Mermage" parent="Main/Units" index="6" instance=ExtResource("8_4c5y7")]
 z_as_relative = false
 position = Vector2(212, 250)
 initial_direction = "left"
 
-[node name="Mermage2" parent="Main/Units" index="9" instance=ExtResource("8_4c5y7")]
+[node name="Mermage2" parent="Main/Units" index="7" instance=ExtResource("8_4c5y7")]
 position = Vector2(365, 291)
 initial_direction = "left"
 

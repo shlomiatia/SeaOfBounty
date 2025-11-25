@@ -27,8 +27,6 @@ func _input(event: InputEvent) -> void:
     if event is InputEventMouseMotion:
         var mouse_pos = get_global_mouse_position()
         set_cursor_position(mouse_pos)
-    if event is InputEventMouseButton:
-        set_cursor_position(get_global_mouse_position())
 
 func handle_cursor(delta: float) -> void:
     cursor_move_timer += delta

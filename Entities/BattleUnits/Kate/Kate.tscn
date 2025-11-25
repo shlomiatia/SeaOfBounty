@@ -1,56 +1,80 @@
-[gd_scene load_steps=10 format=3 uid="uid://jcucm5nqpvg7"]
+[gd_scene load_steps=14 format=3 uid="uid://jcucm5nqpvg7"]
 
 [ext_resource type="Script" uid="uid://blitmqem0wv3w" path="res://Entities/BattleUnits/battle_unit.gd" id="1_tgcg2"]
-[ext_resource type="Texture2D" uid="uid://5ccalp0qy0w0" path="res://Textures/BattleUnits/Kate/Normal.PNG" id="2_ibc28"]
-[ext_resource type="Texture2D" uid="uid://da3nsy7ke7p0k" path="res://Textures/BattleUnits/Kate/Weapon.PNG" id="3_75vt5"]
+[ext_resource type="Texture2D" uid="uid://c4e2ggo5doj5" path="res://Textures/BattleUnits/Kate/יתומה תוקפת.png" id="2_k5h3o"]
 [ext_resource type="AudioStream" uid="uid://bkwnoar5axhau" path="res://Sounds/Sfx/ground slam.wav" id="4_h8ghh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibc28"]
+atlas = ExtResource("2_k5h3o")
+region = Rect2(720, 0, 240, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75vt5"]
+atlas = ExtResource("2_k5h3o")
+region = Rect2(240, 240, 240, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8ghh"]
+atlas = ExtResource("2_k5h3o")
+region = Rect2(0, 480, 240, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tgcg2"]
+atlas = ExtResource("2_k5h3o")
+region = Rect2(0, 0, 240, 240)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tgcg2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibc28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75vt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8ghh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8ghh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75vt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibc28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tgcg2")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibc28")
+}],
+"loop": true,
+"name": &"before_attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tgcg2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Animation" id="Animation_d6qew"]
 resource_name = "Attack"
 step = 0.1
-tracks/0/type = "value"
+tracks/0/type = "audio"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Img3351/Img3353:position")
+tracks/0/path = NodePath("AudioStreamPlayer")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 1),
-"transitions": PackedFloat32Array(0.5, -2, 2),
-"update": 0,
-"values": [Vector2(73, 0), Vector2(140, 0), Vector2(-58, 38)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Img3351/Img3353:rotation")
-tracks/1/interp = 3
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 1),
-"transitions": PackedFloat32Array(0.5, -2, 2),
-"update": 0,
-"values": [0.0, 3.12414, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Img3351/Img3353:show_behind_parent")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "audio"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
@@ -60,92 +84,48 @@ tracks/3/keys = {
 "start_offset": 0.0,
 "stream": null
 }],
-"times": PackedFloat32Array(0.1, 1)
+"times": PackedFloat32Array(0.3, 1)
 }
-tracks/3/use_blend = true
+tracks/0/use_blend = true
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"attack", 1.0, false],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_xdgy5"]
 resource_name = "BeforeAttack"
 length = 2.0
 loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Img3351/Img3353:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(-2, -2),
-"update": 0,
-"values": [Vector2(73, 0), Vector2(73, -4)]
-}
 
 [sub_resource type="Animation" id="Animation_7mqyg"]
 resource_name = "MoveToBeforeAttack"
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Img3351/Img3353:position")
+tracks/0/path = NodePath("AnimatedSprite2D")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.5, 2),
-"update": 0,
-"values": [Vector2(-58, 38), Vector2(73, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Img3351/Img3353:show_behind_parent")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"values": [{
+"args": [&"before_attack", 1.0, false],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_77el4"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Img3351/Img3353:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-58, 38)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Img3351/Img3353:show_behind_parent")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Img3351/Img3353:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xdgy5"]
 _data = {
@@ -158,15 +138,13 @@ _data = {
 [node name="Kate" type="Node2D"]
 script = ExtResource("1_tgcg2")
 
-[node name="Img3351" type="Sprite2D" parent="."]
-position = Vector2(20, -59)
-texture = ExtResource("2_ibc28")
-
-[node name="Img3353" type="Sprite2D" parent="Img3351"]
-show_behind_parent = true
-position = Vector2(-58, 38)
-scale = Vector2(1.1, 1.1)
-texture = ExtResource("3_75vt5")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(42, -44)
+sprite_frames = SubResource("SpriteFrames_tgcg2")
+animation = &"attack"
+autoplay = "default"
+frame = 6
+frame_progress = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
