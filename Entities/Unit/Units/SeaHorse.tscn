@@ -1,0 +1,136 @@
+[gd_scene load_steps=15 format=3 uid="uid://dr754voq82mb0"]
+
+[ext_resource type="PackedScene" uid="uid://05oo7vpmyn03" path="res://Entities/Unit/Unit.tscn" id="1_e3mj2"]
+[ext_resource type="Texture2D" uid="uid://bi7qsb8r3micu" path="res://Textures/Monsters enemies/dragon seahorse/סוס ים דרקוני קטן.png" id="2_pcgbr"]
+[ext_resource type="Shader" uid="uid://b20ld62ku3mg8" path="res://Entities/Unit/Reflection.gdshader" id="3_he5ah"]
+[ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="4_3brkt"]
+[ext_resource type="Shader" uid="uid://bn0wv35v1nuq4" path="res://Entities/Unit/Unit.gdshader" id="5_qqcmw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdtqm"]
+atlas = ExtResource("2_pcgbr")
+region = Rect2(87, 27, 33, 37)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fel1r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdtqm")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdtqm")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdtqm")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdtqm")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0yk07"]
+resource_local_to_scene = true
+shader = ExtResource("3_he5ah")
+shader_parameter/wave_speed = 2.0
+shader_parameter/wave_amplitude = 0.001
+shader_parameter/wave_frequency = 10.0
+shader_parameter/uv_left = 0.0
+shader_parameter/uv_right = 1.0
+shader_parameter/uv_top = 0.0
+shader_parameter/uv_bottom = 1.0
+shader_parameter/alpha = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ou22k"]
+atlas = ExtResource("4_3brkt")
+region = Rect2(42, 1, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32ibj"]
+atlas = ExtResource("4_3brkt")
+region = Rect2(124, 1, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbw00"]
+atlas = ExtResource("4_3brkt")
+region = Rect2(83, 1, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlkj8"]
+atlas = ExtResource("4_3brkt")
+region = Rect2(1, 1, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kd8uu"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ou22k")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32ibj")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbw00")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlkj8")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rc8re"]
+resource_local_to_scene = true
+shader = ExtResource("5_qqcmw")
+shader_parameter/hide_pixels = 0.0
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/water_color = Color(0.752941, 0.796078, 0.862745, 0.501961)
+shader_parameter/uv_bottom = 1.0
+
+[node name="Unit" instance=ExtResource("1_e3mj2")]
+max_hp = 999
+hp = 999
+damage = 100
+max_movement = 6
+attack_range = 4
+sprite_frames = SubResource("SpriteFrames_fel1r")
+display_name = "Sea Horse"
+set_flip_h = true
+
+[node name="Reflection" parent="." index="0"]
+material = SubResource("ShaderMaterial_0yk07")
+sprite_frames = SubResource("SpriteFrames_kd8uu")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_rc8re")
+sprite_frames = SubResource("SpriteFrames_kd8uu")

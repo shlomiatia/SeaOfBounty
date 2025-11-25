@@ -57,7 +57,7 @@ func _input(event: InputEvent) -> void:
 func handle_confirm(cursor_pos: Vector2) -> void:
     var clicked_grid_pos := map.local_to_map(cursor_pos)
 
-    if current_hero != null && current_hero.display_name == "Lia":
+    if current_hero != null && current_hero.display_name == "Lia" && !current_hero.activated:
         var hero = Utils.get_entity_at_tile(map, clicked_grid_pos, "heroes")
         if hero != null && hero.hp < hero.max_hp:
             hero.hp = min(hero.hp + 40, hero.max_hp)

@@ -5,7 +5,7 @@ class_name PossibleBuff extends TileMapLayer
 func highlight_possible_buff(unit: Unit) -> void:
     clear()
 
-    if unit.display_name != "Lia":
+    if unit.display_name != "Lia" || unit.activated:
         return
 
     for hero_unit in get_tree().get_nodes_in_group("heroes"):
