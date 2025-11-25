@@ -24,10 +24,16 @@ func preview_attack(unit: Unit, target_pos: Vector2) -> void:
 
     var possible_tiles: Array[Vector2i] = []
 
-    possible_tiles = map.get_enemy_tiles()
-
     var movement_dest = map.local_to_map(target_pos)
     var attack_range_cells = attack_range.get_used_cells()
+
+    var enemy = Utils.get_entity_at_tile(map, movement_dest, "enemies")
+    if enemy:
+        if attack_range_cells.has(movement_dest):
+            set_cell(movement_dest, 0, Vector2i(0, 0))
+        return
+
+    possible_tiles = map.get_enemy_tiles()
 
     for enemy_tile in possible_tiles:
         if Utils.get_tile_distance(movement_dest, enemy_tile) <= unit.attack_range && attack_range_cells.has(enemy_tile):

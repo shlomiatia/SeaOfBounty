@@ -77,7 +77,7 @@ initial_direction = "left"
 
 [node name="Merwitch4" parent="Main/Units" index="1" instance=ExtResource("2_l0rm4")]
 z_as_relative = false
-position = Vector2(536, 263)
+position = Vector2(383, 136)
 initial_direction = "left"
 
 [node name="Mermaid" parent="Main/Units" index="2" instance=ExtResource("3_f0x5g")]
@@ -87,7 +87,7 @@ initial_direction = "left"
 
 [node name="Mermaiden" parent="Main/Units" index="3" instance=ExtResource("4_nf52x")]
 z_as_relative = false
-position = Vector2(212, 291)
+position = Vector2(378, 20)
 initial_direction = "left"
 
 [node name="Constantine" parent="Main/Units" index="4" instance=ExtResource("5_trweb")]
@@ -104,7 +104,7 @@ position = Vector2(212, 250)
 initial_direction = "left"
 
 [node name="Mermage2" parent="Main/Units" index="7" instance=ExtResource("8_4c5y7")]
-position = Vector2(365, 291)
+position = Vector2(383, 291)
 initial_direction = "left"
 
 [node name="קישוטים-Layer17" type="Sprite2D" parent="Main/EyeCandies" index="5"]

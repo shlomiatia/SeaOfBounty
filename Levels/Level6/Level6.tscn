@@ -121,7 +121,7 @@ initial_direction = "left"
 
 [node name="Pufferfish7" parent="Main/Units" index="9" instance=ExtResource("7_a34f1")]
 y_sort_enabled = false
-position = Vector2(269, 138)
+position = Vector2(137, 136)
 
 [node name="Pufferfish8" parent="Main/Units" index="10" instance=ExtResource("7_a34f1")]
 y_sort_enabled = false
@@ -133,7 +133,7 @@ position = Vector2(66, 216)
 
 [node name="Mermaiden" parent="Main/Units" index="12" instance=ExtResource("27_7hjhr")]
 y_sort_enabled = false
-position = Vector2(139, 141)
+position = Vector2(256, 141)
 
 [node name="Mermaiden2" parent="Main/Units" index="13" instance=ExtResource("27_7hjhr")]
 y_sort_enabled = false
