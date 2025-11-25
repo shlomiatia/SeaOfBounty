@@ -7,9 +7,15 @@ class_name Battle extends Node2D
 @onready var enemy_hp_label: Label = $EnemyHP
 @onready var map: Map = $"../Map"
 @onready var shaking_camera: Camera2D = $"../ShakingCamera"
+@onready var background: Sprite2D = $Background
+
+@export var winter: bool = false
 
 func start(attacker: Unit, defender: Unit) -> void:
+    if winter:
+        background.texture = preload("res://Textures/Ui - Layer 19 (2).png")
     visible = true
+    
 
     var defender_is_hero := defender.is_in_group("heroes")
     var can_counter_attack := _can_counter_attack(attacker, defender)

@@ -21,4 +21,22 @@ visible = false
 
 [node name="Waves" parent="." instance=ExtResource("5_yqr7a")]
 
+[node name="Waves2" parent="." instance=ExtResource("5_yqr7a")]
+
+[node name="Waves3" parent="." instance=ExtResource("5_yqr7a")]
+
+[node name="Waves4" parent="." instance=ExtResource("5_yqr7a")]
+
+[node name="Waves5" parent="." instance=ExtResource("5_yqr7a")]
+
+[node name="Waves6" parent="." instance=ExtResource("5_yqr7a")]
+
+[node name="Waves7" parent="." instance=ExtResource("5_yqr7a")]
+
+[node name="Waves8" parent="." instance=ExtResource("5_yqr7a")]
+
+[node name="Waves9" parent="." instance=ExtResource("5_yqr7a")]
+
+[node name="Waves10" parent="." instance=ExtResource("5_yqr7a")]
+
 [node name="Clouds" parent="." instance=ExtResource("6_v0w1r")]

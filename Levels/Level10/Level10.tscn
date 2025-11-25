@@ -100,4 +100,7 @@ material = SubResource("ShaderMaterial_fgm3y")
 position = Vector2(268, 127)
 texture = ExtResource("15_m27e4")
 
+[node name="Battle" parent="Main" index="8"]
+winter = true
+
 [editable path="Main"]

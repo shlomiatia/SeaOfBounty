@@ -87,4 +87,7 @@ position = Vector2(268, 127)
 texture = ExtResource("15_hub24")
 metadata/_edit_lock_ = true
 
+[node name="Battle" parent="Main" index="8"]
+winter = true
+
 [editable path="Main"]
