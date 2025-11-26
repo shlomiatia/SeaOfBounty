@@ -9,6 +9,11 @@ func _ready() -> void:
     if unit.display_name == "Crab":
         var crab_sprite: CrabAnimatedSprite = get_node("AnimatedSprite2D") as CrabAnimatedSprite
         crab_sprite.unit = unit
+    if unit.display_name == "Sea Horse" && unit.hp < 500:
+        $AnimatedSprite2D.hide()
+        $AnimatedSprite2D2.show()
+        $Projectile.hide()
+
 
 func start() -> void:
     animation_player.play("MoveToBeforeAttack")

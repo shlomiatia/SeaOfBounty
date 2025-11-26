@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c44cy63kd8ajn"]
+[gd_scene load_steps=27 format=3 uid="uid://c44cy63kd8ajn"]
 
 [ext_resource type="Script" uid="uid://blitmqem0wv3w" path="res://Entities/BattleUnits/battle_unit.gd" id="1_moymt"]
 [ext_resource type="Texture2D" uid="uid://bi7qsb8r3micu" path="res://Textures/Monsters enemies/dragon seahorse/סוס ים דרקוני קטן.png" id="2_ngd53"]
@@ -68,6 +68,83 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kigy"]
+atlas = ExtResource("2_ngd53")
+region = Rect2(800, 240, 200, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntg2x"]
+atlas = ExtResource("2_ngd53")
+region = Rect2(200, 320, 200, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amyw0"]
+atlas = ExtResource("2_ngd53")
+region = Rect2(400, 320, 200, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlj42"]
+atlas = ExtResource("2_ngd53")
+region = Rect2(600, 320, 200, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rf5b"]
+atlas = ExtResource("2_ngd53")
+region = Rect2(800, 320, 200, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sffol"]
+atlas = ExtResource("2_ngd53")
+region = Rect2(1000, 320, 200, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_moymt"]
+atlas = ExtResource("2_ngd53")
+region = Rect2(0, 240, 200, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngd53"]
+atlas = ExtResource("2_ngd53")
+region = Rect2(400, 240, 200, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_moymt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6kigy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ntg2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amyw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlj42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rf5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sffol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_moymt")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngd53")
+}],
+"loop": true,
+"name": &"before_attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_moymt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ccqym"]
 atlas = ExtResource("3_6kigy")
 region = Rect2(560, 124, 38, 27)
@@ -123,10 +200,28 @@ tracks/3/keys = {
 "end_offset": 0.0,
 "start_offset": 0.0,
 "stream": ExtResource("4_32fvi")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": null
 }],
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0, 1)
 }
 tracks/3/use_blend = true
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimatedSprite2D2")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"attack", 1.0, false],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_47er3"]
 resource_name = "BeforeAttacj"
@@ -140,6 +235,20 @@ tracks/0/path = NodePath("AnimatedSprite2D")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"before_attack", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -190,9 +299,16 @@ script = ExtResource("1_moymt")
 position = Vector2(-68, -46)
 scale = Vector2(-2, 2)
 sprite_frames = SubResource("SpriteFrames_l45xh")
+autoplay = "default"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(-68, -46)
+scale = Vector2(-2, 2)
+sprite_frames = SubResource("SpriteFrames_moymt")
 animation = &"attack"
 autoplay = "default"
-frame = 4
+frame = 6
 frame_progress = 1.0
 
 [node name="Projectile" type="Sprite2D" parent="."]
