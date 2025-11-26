@@ -66,10 +66,9 @@ func start(attacker: Unit, defender: Unit) -> void:
 
     if enemy.hp == 0:
         if enemy.display_name == "Kraken":
-            prints("kraken defeated")
             for tentacle in get_tree().get_nodes_in_group("enemies"):
                 if tentacle.display_name == "Tentacle":
-                    prints("tentaclle")
+                    tentacle.hp = 0
                     _fade_out_and_remove(tentacle)
         await _fade_out_and_remove(enemy)
     

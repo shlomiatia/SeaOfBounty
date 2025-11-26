@@ -66,23 +66,8 @@ func _ready() -> void:
     one_eye = one_eye_prefab.instantiate()
     units_node.add_child(one_eye)
 
-    var target_y: int = 4
-    for y in range(4, 9):
-        var check_pos = Vector2i(0, y)
-        var is_free = true
-        for unit in units_node.get_children():
-            if unit is Unit:
-                var unit_grid_pos = map.local_to_map(unit.position)
-                if unit_grid_pos == check_pos:
-                    is_free = false
-                    break
-        if is_free:
-            target_y = y
-            break
-
-    one_eye.position = map.map_to_local(Vector2i(-1, target_y))
-
-    var one_eye_path: Array[Vector2i] = [Vector2i(-1, target_y), Vector2i(0, target_y)]
+    one_eye.position = map.map_to_local(Vector2i(-1, 7))
+    var one_eye_path: Array[Vector2i] = [Vector2i(-1, 7), Vector2i(0, 7)]
     await one_eye.animate_along_path(one_eye_path)
 
     one_eye.start_text_list(["It will soon run away from me!"])

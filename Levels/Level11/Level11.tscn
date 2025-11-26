@@ -33,13 +33,13 @@ tile_map_data = PackedByteArray("AAAAAAAAAAABAAUAAAAAAAEAAAAHAAIAAAAAAAIAAAAHAAM
 y_sort_enabled = true
 
 [node name="Constantine" parent="Main/Units" index="0" instance=ExtResource("4_6e0mo")]
-position = Vector2(26, 202)
+position = Vector2(22, 203)
 
 [node name="Miguel" parent="Main/Units" index="1" instance=ExtResource("5_yxlom")]
-position = Vector2(27, 252)
+position = Vector2(76, 205)
 
 [node name="Lia" parent="Main/Units" index="2" instance=ExtResource("6_vosrr")]
-position = Vector2(23, 300)
+position = Vector2(22, 255)
 
 [node name="קישוטים-Layer12" type="Sprite2D" parent="Main/EyeCandies" index="5"]
 position = Vector2(95, 95)
