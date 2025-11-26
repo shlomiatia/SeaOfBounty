@@ -1,9 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://c44cy63kd8ajn"]
+[gd_scene load_steps=28 format=3 uid="uid://c44cy63kd8ajn"]
 
 [ext_resource type="Script" uid="uid://blitmqem0wv3w" path="res://Entities/BattleUnits/battle_unit.gd" id="1_moymt"]
 [ext_resource type="Texture2D" uid="uid://bi7qsb8r3micu" path="res://Textures/Monsters enemies/dragon seahorse/סוס ים דרקוני קטן.png" id="2_ngd53"]
 [ext_resource type="Texture2D" uid="uid://stkmmipe5fkv" path="res://Textures/Monsters enemies/מפלצות וחלק מהתקפות.png" id="3_6kigy"]
 [ext_resource type="AudioStream" uid="uid://do766lpyyhiji" path="res://Sounds/Sfx/offschore radio noise.mp3" id="4_32fvi"]
+[ext_resource type="AudioStream" uid="uid://dvtfi3xg3spgc" path="res://Sounds/Sfx/dash charge.wav" id="5_ngd53"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pfbm4"]
 atlas = ExtResource("2_ngd53")
@@ -222,6 +223,25 @@ tracks/4/keys = {
 "method": &"play"
 }]
 }
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = false
+tracks/5/path = NodePath("AudioStreamPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_ngd53")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": null
+}],
+"times": PackedFloat32Array(0, 1)
+}
+tracks/5/use_blend = true
 
 [sub_resource type="Animation" id="Animation_47er3"]
 resource_name = "BeforeAttacj"
