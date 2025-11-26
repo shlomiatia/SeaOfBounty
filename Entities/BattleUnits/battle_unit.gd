@@ -13,6 +13,9 @@ func _ready() -> void:
         $AnimatedSprite2D.hide()
         $AnimatedSprite2D2.show()
         $Projectile.hide()
+        var attack_animation: Animation = animation_player.get_animation("Attack")
+        attack_animation.track_set_enabled(3, false)
+        attack_animation.track_set_enabled(5, true)
 
 
 func start() -> void:
