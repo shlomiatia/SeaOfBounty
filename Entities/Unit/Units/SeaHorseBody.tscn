@@ -138,5 +138,8 @@ frame_progress = 0.0
 material = SubResource("ShaderMaterial_rc8re")
 sprite_frames = SubResource("SpriteFrames_kd8uu")
 
+[node name="UnitStatus" parent="." index="4"]
+visible = false
+
 [node name="AudioStreamPlayer" parent="." index="5"]
 stream = ExtResource("6_8k1u7")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://d08k8ewhos6gf"]
+[gd_scene load_steps=21 format=4 uid="uid://d08k8ewhos6gf"]
 
 [ext_resource type="Script" uid="uid://dg5si3gox3vy0" path="res://Levels/Level12/level_12.gd" id="1_3myry"]
 [ext_resource type="PackedScene" uid="uid://bblitdo328h8a" path="res://Levels/Main/Main.tscn" id="2_4clmf"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://n41o7krbafq6" path="res://Textures/קישוטים/קישוטים  - Layer 18.png" id="9_th4c8"]
 [ext_resource type="PackedScene" uid="uid://csvcdqr0ekf5t" path="res://Entities/Unit/Units/SeaHorseTail.tscn" id="9_uf5gw"]
 [ext_resource type="Texture2D" uid="uid://r821ls130akc" path="res://Textures/קישוטים/קישוטים  - Layer 9.png" id="10_ccv1w"]
+[ext_resource type="PackedScene" uid="uid://b11pnk6iom8yp" path="res://Entities/Unit/Units/Orphan.tscn" id="10_qid5q"]
+[ext_resource type="PackedScene" uid="uid://pqhpiebi5gjk" path="res://Entities/Unit/Units/Fisherman.tscn" id="11_eln4h"]
 [ext_resource type="Texture2D" uid="uid://dyy2f6rmkjk0e" path="res://Textures/קישוטים/קישוטים  - Layer 11.png" id="11_upjaj"]
 [ext_resource type="Shader" uid="uid://csfshgyxqjafd" path="res://Entities/Map/map.gdshader" id="12_igkn2"]
 [ext_resource type="Texture2D" uid="uid://c4pk4tkr8eep0" path="res://Textures/קישוטים/קישוטים  - Layer 10.png" id="13_k3jhl"]
@@ -37,28 +39,34 @@ tile_map_data = PackedByteArray("AAAAAAAAAAABAAUAAAAAAAEAAAAHAAIAAAAAAAIAAAAHAAM
 y_sort_enabled = true
 
 [node name="Constantine" parent="Main/Units" index="0" instance=ExtResource("3_r21ux")]
-position = Vector2(26, 202)
+position = Vector2(25, 215)
 
 [node name="Miguel" parent="Main/Units" index="1" instance=ExtResource("4_spy0q")]
-position = Vector2(27, 252)
+position = Vector2(65, 215)
 
 [node name="Lia" parent="Main/Units" index="2" instance=ExtResource("5_ohpbf")]
-position = Vector2(23, 300)
+position = Vector2(65, 249)
 
 [node name="SeaHorseHead" parent="Main/Units" index="3" instance=ExtResource("14_j3euv")]
-position = Vector2(544, 265)
+position = Vector2(666, 263)
 initial_direction = "left"
 
 [node name="OneEye" parent="Main/Units" index="4" instance=ExtResource("7_3myry")]
-position = Vector2(27, 168)
+position = Vector2(22, 254)
 
 [node name="SeaHorseBody" parent="Main/Units" index="5" instance=ExtResource("8_g2n1r")]
-position = Vector2(585, 266)
+position = Vector2(707, 264)
 initial_direction = "left"
 
 [node name="SeaHorseTail" parent="Main/Units" index="6" instance=ExtResource("9_uf5gw")]
-position = Vector2(626, 264)
+position = Vector2(748, 262)
 initial_direction = "left"
+
+[node name="Orphan" parent="Main/Units" index="7" instance=ExtResource("10_qid5q")]
+position = Vector2(69, 415)
+
+[node name="Fisherman" parent="Main/Units" index="8" instance=ExtResource("11_eln4h")]
+position = Vector2(21, 414)
 
 [node name="קישוטים-Layer12" type="Sprite2D" parent="Main/EyeCandies" index="5"]
 position = Vector2(95, 95)
