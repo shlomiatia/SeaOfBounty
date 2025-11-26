@@ -4,12 +4,12 @@ static func execute_enemy_ai(main: Main) -> void:
     var tentacles = await handle_kraken_tentacles_before(main)
 
     var enemies = main.get_tree().get_nodes_in_group("enemies")
-    var non_tentacle_enemies: Array[Unit] = []
+    var regular_enemies: Array[Unit] = []
     for enemy in enemies:
-        if enemy.display_name != "Tentacle":
-            non_tentacle_enemies.append(enemy)
+        if enemy.display_name != "Tentacle" and enemy.name != "SeaHorseBody" and enemy.name != "SeaHorseTail":
+            regular_enemies.append(enemy)
 
-    for enemy in non_tentacle_enemies:
+    for enemy in regular_enemies:
         await execute_single_enemy_ai(enemy, main)
 
     await handle_kraken_tentacles_after(main, tentacles)
@@ -48,10 +48,34 @@ static func execute_single_enemy_ai(enemy: Unit, main: Main) -> void:
 
 
     if shortest_path.size() > 0:
-        await enemy.move_to(shortest_path[shortest_path.size() - 1])
+        if enemy.name == "SeaHorseHead":
+            await move_sea_horse(enemy, shortest_path, main)
+        else:
+            await enemy.move_to(shortest_path[shortest_path.size() - 1])
 
     if shortest_path_in_range.size() > 0:
         await main.battle.start(enemy, nearest_hero)
+
+static func move_sea_horse(head: Unit, path: Array[Vector2i], main: Main) -> void:
+    var enemies = main.get_tree().get_nodes_in_group("enemies")
+    var body: Unit = null
+    var tail: Unit = null
+
+    for enemy in enemies:
+        if enemy.name == "SeaHorseBody":
+            body = enemy
+        elif enemy.name == "SeaHorseTail":
+            tail = enemy
+
+    var head_target = path[path.size() - 1]
+    var body_path = path.slice(0, path.size() - 1)
+    body_path.insert(0, main.map.local_to_map(head.position))
+    var tail_path = body_path.slice(0, body_path.size() - 1)
+    tail_path.insert(0, main.map.local_to_map(body.position))
+
+    tail.animate_along_path(tail_path)
+    body.animate_along_path(body_path)
+    await head.move_to(head_target)
 
 static func handle_kraken_tentacles_before(main: Main) -> Array[Unit]:
     var enemies = main.get_tree().get_nodes_in_group("enemies")
