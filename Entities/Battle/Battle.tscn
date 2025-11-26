@@ -23,10 +23,10 @@ texture = ExtResource("4_8k270")
 texture = ExtResource("2_h3cav")
 
 [node name="Hero" type="Node2D" parent="."]
-position = Vector2(-150, 60)
+position = Vector2(-130, 60)
 
 [node name="Enemy" type="Node2D" parent="."]
-position = Vector2(150, 60)
+position = Vector2(130, 60)
 
 [node name="HeroHP" type="Label" parent="."]
 offset_left = -242.0

@@ -1,32 +1,32 @@
 [gd_scene load_steps=18 format=3 uid="uid://c44cy63kd8ajn"]
 
-[ext_resource type="Script" uid="uid://blitmqem0wv3w" path="res://Entities/BattleUnits/battle_unit.gd" id="1_omarh"]
-[ext_resource type="Texture2D" uid="uid://bi7qsb8r3micu" path="res://Textures/Monsters enemies/dragon seahorse/סוס ים דרקוני קטן.png" id="1_rf2p8"]
-[ext_resource type="Texture2D" uid="uid://stkmmipe5fkv" path="res://Textures/Monsters enemies/מפלצות וחלק מהתקפות.png" id="2_rixan"]
-[ext_resource type="AudioStream" uid="uid://do766lpyyhiji" path="res://Sounds/Sfx/offschore radio noise.mp3" id="4_6d5gx"]
+[ext_resource type="Script" uid="uid://blitmqem0wv3w" path="res://Entities/BattleUnits/battle_unit.gd" id="1_moymt"]
+[ext_resource type="Texture2D" uid="uid://bi7qsb8r3micu" path="res://Textures/Monsters enemies/dragon seahorse/סוס ים דרקוני קטן.png" id="2_ngd53"]
+[ext_resource type="Texture2D" uid="uid://stkmmipe5fkv" path="res://Textures/Monsters enemies/מפלצות וחלק מהתקפות.png" id="3_6kigy"]
+[ext_resource type="AudioStream" uid="uid://do766lpyyhiji" path="res://Sounds/Sfx/offschore radio noise.mp3" id="4_32fvi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pfbm4"]
-atlas = ExtResource("1_rf2p8")
+atlas = ExtResource("2_ngd53")
 region = Rect2(400, 80, 200, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_47er3"]
-atlas = ExtResource("1_rf2p8")
+atlas = ExtResource("2_ngd53")
 region = Rect2(800, 80, 200, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q7nre"]
-atlas = ExtResource("1_rf2p8")
+atlas = ExtResource("2_ngd53")
 region = Rect2(1000, 80, 200, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2vs4f"]
-atlas = ExtResource("1_rf2p8")
+atlas = ExtResource("2_ngd53")
 region = Rect2(1000, 160, 200, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_omarh"]
-atlas = ExtResource("1_rf2p8")
+atlas = ExtResource("2_ngd53")
 region = Rect2(0, 0, 200, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6d5gx"]
-atlas = ExtResource("1_rf2p8")
+atlas = ExtResource("2_ngd53")
 region = Rect2(0, 80, 200, 80)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l45xh"]
@@ -69,28 +69,8 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ccqym"]
-atlas = ExtResource("2_rixan")
+atlas = ExtResource("3_6kigy")
 region = Rect2(560, 124, 38, 27)
-
-[sub_resource type="Animation" id="Animation_pfbm4"]
-resource_name = "MoveToBeforeAttack"
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [&"before_attack", 1.0, false],
-"method": &"play"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_47er3"]
-resource_name = "BeforeAttacj"
 
 [sub_resource type="Animation" id="Animation_q7nre"]
 resource_name = "Attack"
@@ -142,11 +122,31 @@ tracks/3/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("4_6d5gx")
+"stream": ExtResource("4_32fvi")
 }],
 "times": PackedFloat32Array(0)
 }
 tracks/3/use_blend = true
+
+[sub_resource type="Animation" id="Animation_47er3"]
+resource_name = "BeforeAttacj"
+
+[sub_resource type="Animation" id="Animation_pfbm4"]
+resource_name = "MoveToBeforeAttack"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"before_attack", 1.0, false],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_2vs4f"]
 length = 0.001
@@ -184,7 +184,7 @@ _data = {
 }
 
 [node name="Head" type="Node2D"]
-script = ExtResource("1_omarh")
+script = ExtResource("1_moymt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-68, -46)

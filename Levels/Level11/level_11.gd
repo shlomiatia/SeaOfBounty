@@ -13,6 +13,7 @@ var kraken: Unit
 var one_eye: Unit
 
 func _ready() -> void:
+    main.won.connect(on_won)
     MusicPlayer.stream = preload("res://Music/Trumpet B.mp3")
     MusicPlayer.play()
     var kraken_prefab = preload("res://Entities/Unit/Units/Kraken.tscn")
@@ -101,3 +102,11 @@ func _ready() -> void:
     await get_tree().process_frame
 
     main.start_player_turn()
+
+func _process(_delta: float) -> void:
+    if Input.is_action_just_pressed("confirm") && Input.is_action_just_pressed("cancel"):
+        get_tree().change_scene_to_file("res://Levels/Level12/Level12.tscn")
+
+func on_won() -> void:
+    await fade.fade_out()
+    get_tree().change_scene_to_file("res://Levels/Level12/Level12.tscn")

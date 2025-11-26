@@ -1,0 +1,101 @@
+[gd_scene load_steps=17 format=4 uid="uid://d08k8ewhos6gf"]
+
+[ext_resource type="Script" uid="uid://dg5si3gox3vy0" path="res://Levels/Level12/level_12.gd" id="1_3myry"]
+[ext_resource type="PackedScene" uid="uid://bblitdo328h8a" path="res://Levels/Main/Main.tscn" id="2_4clmf"]
+[ext_resource type="PackedScene" uid="uid://cj04xkkgixjwh" path="res://Entities/Unit/Units/Constantine.tscn" id="3_r21ux"]
+[ext_resource type="PackedScene" uid="uid://cblgxp6jostso" path="res://Entities/Unit/Units/Miguel.tscn" id="4_spy0q"]
+[ext_resource type="PackedScene" uid="uid://cg6try7ca348a" path="res://Entities/Unit/Units/Lia.tscn" id="5_ohpbf"]
+[ext_resource type="Texture2D" uid="uid://bkry51hjq74ua" path="res://Textures/קישוטים/קישוטים  - Layer 12.png" id="6_sryml"]
+[ext_resource type="PackedScene" uid="uid://b37lh0usdau8" path="res://Entities/Unit/Units/OneEye.tscn" id="7_3myry"]
+[ext_resource type="Texture2D" uid="uid://d3hl0j6t3wpd3" path="res://Textures/קישוטים/קישוטים  - Layer 8.png" id="7_5uaox"]
+[ext_resource type="Texture2D" uid="uid://dp2gjlytjmbxs" path="res://Textures/קישוטים/קישוטים  - Layer 17.png" id="8_p1k61"]
+[ext_resource type="Texture2D" uid="uid://n41o7krbafq6" path="res://Textures/קישוטים/קישוטים  - Layer 18.png" id="9_th4c8"]
+[ext_resource type="Texture2D" uid="uid://r821ls130akc" path="res://Textures/קישוטים/קישוטים  - Layer 9.png" id="10_ccv1w"]
+[ext_resource type="Texture2D" uid="uid://dyy2f6rmkjk0e" path="res://Textures/קישוטים/קישוטים  - Layer 11.png" id="11_upjaj"]
+[ext_resource type="Shader" uid="uid://csfshgyxqjafd" path="res://Entities/Map/map.gdshader" id="12_igkn2"]
+[ext_resource type="Texture2D" uid="uid://c4pk4tkr8eep0" path="res://Textures/קישוטים/קישוטים  - Layer 10.png" id="13_k3jhl"]
+[ext_resource type="PackedScene" uid="uid://dr754voq82mb0" path="res://Entities/Unit/Units/SeaHorseHead.tscn" id="14_j3euv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wni3c"]
+shader = ExtResource("12_igkn2")
+shader_parameter/color1 = Color(1, 1, 1, 1)
+shader_parameter/direction = Vector2(1, 0)
+shader_parameter/max_distance = 10.0
+shader_parameter/pixels_per_second = 5.0
+
+[node name="Level11" type="Node2D"]
+script = ExtResource("1_3myry")
+
+[node name="Main" parent="." instance=ExtResource("2_4clmf")]
+
+[node name="Map" parent="Main" index="2"]
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAUAAAAAAAEAAAAHAAIAAAAAAAIAAAAHAAMAAAAAAAMAAAAFAAcAAAAAAAQAAAAOAAYAAAAAAAUAAAAOAAYAAAAAAAYAAAAOAAYAAAAAAAcAAAAOAAYAAAAAAAgAAAAOAAYAAAABAAAAAAAFAAMAAAABAAEAAAAEAAQAAAABAAIAAAAFAAYAAAABAAMAAAAJAAUAAAABAAQAAAAEAAcAAAABAAUAAAAOAAYAAAABAAYAAAAOAAYAAAABAAcAAAAOAAYAAAABAAgAAAAOAAYAAAACAAAAAAAGAAMAAAACAAEAAAAHAAQAAAACAAIAAAAFAAYAAAACAAMAAAAFAAYAAAACAAQAAAAFAAcAAAACAAUAAAAOAAYAAAACAAYAAAAOAAYAAAACAAcAAAAOAAYAAAACAAgAAAAOAAYAAAADAAAAAAADAAUAAAADAAEAAAAEAAMAAAADAAIAAAAHAAUAAAADAAMAAAAGAAYAAAADAAQAAAAGAAcAAAADAAUAAAAOAAYAAAADAAYAAAAOAAYAAAADAAcAAAAOAAYAAAADAAgAAAAOAAYAAAAEAAAAAAAFAAEAAAAEAAEAAAAFAAMAAAAEAAIAAAAJAAUAAAAEAAMAAAAEAAcAAAAEAAQAAAAOAAYAAAAEAAUAAAAOAAYAAAAEAAYAAAAOAAYAAAAEAAcAAAAOAAYAAAAEAAgAAAAOAAYAAAAFAAAAAAABAAUAAAAFAAEAAAAHAAMAAAAFAAIAAAAHAAUAAAAFAAMAAAAGAAcAAAAFAAQAAAAOAAYAAAAFAAUAAAAOAAYAAAAFAAYAAAAOAAYAAAAFAAcAAAAOAAYAAAAFAAgAAAAOAAYAAAAGAAAAAAAGAAMAAAAGAAEAAAAFAAYAAAAGAAIAAAAIAAUAAAAGAAMAAAAOAAYAAAAGAAQAAAAOAAYAAAAGAAUAAAAOAAYAAAAGAAYAAAAOAAYAAAAGAAcAAAAOAAYAAAAGAAgAAAAOAAYAAAAHAAAAAAAGAAMAAAAHAAEAAAAFAAYAAAAHAAIAAAAFAAcAAAAHAAMAAAAEAAUAAAAHAAQAAAAEAAcAAAAHAAUAAAAOAAYAAAAHAAYAAAAOAAYAAAAHAAcAAAAOAAYAAAAHAAgAAAAOAAYAAAAIAAAAAAADAAUAAAAIAAEAAAAEAAMAAAAIAAIAAAAJAAUAAAAIAAMAAAAJAAcAAAAIAAQAAAAFAAcAAAAIAAUAAAAOAAYAAAAIAAYAAAAOAAYAAAAIAAcAAAAOAAYAAAAIAAgAAAAOAAYAAAAJAAAAAAAJAAIAAAAJAAEAAAADAAUAAAAJAAIAAAADAAYAAAAJAAMAAAAEAAMAAAAJAAQAAAAIAAUAAAAJAAUAAAAOAAYAAAAJAAYAAAAOAAYAAAAJAAcAAAAOAAYAAAAJAAgAAAAOAAYAAAAKAAAAAAAKAAIAAAAKAAEAAAAKAAEAAAAKAAIAAAABAAUAAAAKAAMAAAAHAAMAAAAKAAQAAAAJAAUAAAAKAAUAAAAEAAcAAAAKAAYAAAAOAAYAAAAKAAcAAAAOAAYAAAAKAAgAAAAOAAYAAAALAAAAAAABAAUAAAALAAEAAAAHAAEAAAALAAIAAAAHAAMAAAALAAMAAAAHAAUAAAALAAQAAAAGAAYAAAALAAUAAAAGAAcAAAALAAYAAAAOAAYAAAALAAcAAAAOAAYAAAALAAgAAAAOAAYAAAAMAAAAAAAGAAMAAAAMAAEAAAAFAAYAAAAMAAIAAAAEAAQAAAAMAAMAAAAFAAcAAAAMAAQAAAAOAAYAAAAMAAUAAAAOAAYAAAAMAAYAAAAOAAYAAAAMAAcAAAAOAAYAAAAMAAgAAAAOAAYAAAANAAAAAAAFAAMAAAANAAEAAAAFAAYAAAANAAIAAAAFAAQAAAANAAMAAAAIAAUAAAANAAQAAAAOAAYAAAANAAUAAAAOAAYAAAANAAYAAAAOAAYAAAANAAcAAAAOAAYAAAANAAgAAAAOAAYAAAAOAAAAAAAFAAMAAAAOAAEAAAAFAAYAAAAOAAIAAAAGAAQAAAAOAAMAAAAJAAUAAAAOAAQAAAAEAAcAAAAOAAUAAAAOAAYAAAAOAAYAAAAOAAYAAAAOAAcAAAAOAAYAAAAOAAgAAAAOAAYAAAAPAAAAAAADAAUAAAAPAAEAAAAEAAMAAAAPAAIAAAAHAAQAAAAPAAMAAAAFAAYAAAAPAAQAAAAFAAcAAAAPAAUAAAAOAAYAAAAPAAYAAAAOAAYAAAAPAAcAAAAOAAYAAAAPAAgAAAAOAAYAAAA=")
+
+[node name="Units" parent="Main" index="5"]
+y_sort_enabled = true
+
+[node name="Constantine" parent="Main/Units" index="0" instance=ExtResource("3_r21ux")]
+position = Vector2(26, 202)
+
+[node name="Miguel" parent="Main/Units" index="1" instance=ExtResource("4_spy0q")]
+position = Vector2(27, 252)
+
+[node name="Lia" parent="Main/Units" index="2" instance=ExtResource("5_ohpbf")]
+position = Vector2(23, 300)
+
+[node name="SeaHorseHead" parent="Main/Units" index="3" instance=ExtResource("14_j3euv")]
+position = Vector2(519, 278)
+
+[node name="OneEye" parent="Main/Units" index="4" instance=ExtResource("7_3myry")]
+position = Vector2(27, 168)
+
+[node name="קישוטים-Layer12" type="Sprite2D" parent="Main/EyeCandies" index="5"]
+position = Vector2(95, 95)
+texture = ExtResource("6_sryml")
+
+[node name="קישוטים-Layer13" type="Sprite2D" parent="Main/EyeCandies" index="6"]
+position = Vector2(107, 95)
+rotation = 3.14159
+scale = Vector2(1, -1)
+texture = ExtResource("6_sryml")
+
+[node name="קישוטים-Layer14" type="Sprite2D" parent="Main/EyeCandies" index="7"]
+position = Vector2(95, 105)
+scale = Vector2(1, -1)
+texture = ExtResource("6_sryml")
+
+[node name="קישוטים-Layer15" type="Sprite2D" parent="Main/EyeCandies" index="8"]
+position = Vector2(107, 105)
+rotation = 3.14159
+texture = ExtResource("6_sryml")
+
+[node name="קישוטים-Layer8" type="Sprite2D" parent="Main/EyeCandies" index="9"]
+position = Vector2(262, 63)
+texture = ExtResource("7_5uaox")
+
+[node name="קישוטים-Layer17" type="Sprite2D" parent="Main/EyeCandies" index="10"]
+position = Vector2(141, 17)
+texture = ExtResource("8_p1k61")
+
+[node name="קישוטים-Layer18" type="Sprite2D" parent="Main/EyeCandies" index="11"]
+position = Vector2(623, 17)
+texture = ExtResource("9_th4c8")
+
+[node name="קישוטים-Layer9" type="Sprite2D" parent="Main/EyeCandies" index="12"]
+position = Vector2(622, 180)
+texture = ExtResource("10_ccv1w")
+
+[node name="קישוטים-Layer11" type="Sprite2D" parent="Main/EyeCandies" index="13"]
+position = Vector2(61, 143)
+texture = ExtResource("11_upjaj")
+
+[node name="קישוטים-Layer10" type="Sprite2D" parent="Main/EyeCandies" index="14"]
+material = SubResource("ShaderMaterial_wni3c")
+position = Vector2(268, 127)
+texture = ExtResource("13_k3jhl")
+metadata/_edit_lock_ = true
+
+[node name="Battle" parent="Main" index="8"]
+winter = true
+
+[editable path="Main"]
