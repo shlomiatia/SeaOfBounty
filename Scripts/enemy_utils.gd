@@ -1,55 +1,18 @@
 class_name EnemyUtils
 
 static func execute_enemy_ai(main: Main) -> void:
-    var enemies = main.get_tree().get_nodes_in_group("enemies")
-    var tentacles: Array[Unit] = []
+    var tentacles = await handle_kraken_tentacles_before(main)
 
+    var enemies = main.get_tree().get_nodes_in_group("enemies")
     var non_tentacle_enemies: Array[Unit] = []
     for enemy in enemies:
-        if enemy.display_name == "Tentacle":
-            tentacles.append(enemy)
-            var animated_sprite = enemy.get_node("AnimatedSprite2D") as AnimatedSprite2D
-            animated_sprite.play_backwards("emerge")
-        else:
+        if enemy.display_name != "Tentacle":
             non_tentacle_enemies.append(enemy)
-    if tentacles.size() > 0:
-        await main.get_tree().create_timer(0.5).timeout
-        for tentacle in tentacles:
-            tentacle.position = main.map.map_to_local(Vector2i(-1, -1))
-
 
     for enemy in non_tentacle_enemies:
         await execute_single_enemy_ai(enemy, main)
 
-    var kraken: Unit = null
-    for enemy in main.get_tree().get_nodes_in_group("enemies"):
-        if enemy.display_name == "Kraken":
-            kraken = enemy
-            break
-
-    if kraken == null:
-        return
-
-    var kraken_tile = main.map.local_to_map(kraken.position)
-
-    for tentacle in tentacles:
-        var tentacle_tile = Vector2i.MIN
-
-        for ring_distance in range(1, 5):
-            tentacle_tile = get_tentacle_tile(main, kraken_tile, ring_distance)
-            if tentacle_tile != Vector2i.MIN:
-                break
-            
-            
-        tentacle.position = main.map.map_to_local(tentacle_tile)
-        var animated_sprite = tentacle.get_node("AnimatedSprite2D") as AnimatedSprite2D
-        animated_sprite.play("emerge")
-
-    if tentacles.size() > 0:
-        await main.get_tree().create_timer(0.5).timeout
-
-    for enemy in tentacles:
-        await execute_single_enemy_ai(enemy, main)
+    await handle_kraken_tentacles_after(main, tentacles)
 
 static func execute_single_enemy_ai(enemy: Unit, main: Main) -> void:
     var shortest_path: Array[Vector2i] = []
@@ -89,6 +52,53 @@ static func execute_single_enemy_ai(enemy: Unit, main: Main) -> void:
 
     if shortest_path_in_range.size() > 0:
         await main.battle.start(enemy, nearest_hero)
+
+static func handle_kraken_tentacles_before(main: Main) -> Array[Unit]:
+    var enemies = main.get_tree().get_nodes_in_group("enemies")
+    var tentacles: Array[Unit] = []
+
+    for enemy in enemies:
+        if enemy.display_name == "Tentacle":
+            tentacles.append(enemy)
+            var animated_sprite = enemy.get_node("AnimatedSprite2D") as AnimatedSprite2D
+            animated_sprite.play_backwards("emerge")
+
+    if tentacles.size() > 0:
+        await main.get_tree().create_timer(0.5).timeout
+        for tentacle in tentacles:
+            tentacle.position = main.map.map_to_local(Vector2i(-1, -1))
+
+    return tentacles
+
+static func handle_kraken_tentacles_after(main: Main, tentacles: Array[Unit]) -> void:
+    var kraken: Unit = null
+    for enemy in main.get_tree().get_nodes_in_group("enemies"):
+        if enemy.display_name == "Kraken":
+            kraken = enemy
+            break
+
+    if kraken == null:
+        return
+
+    var kraken_tile = main.map.local_to_map(kraken.position)
+
+    for tentacle in tentacles:
+        var tentacle_tile = Vector2i.MIN
+
+        for ring_distance in range(1, 5):
+            tentacle_tile = get_tentacle_tile(main, kraken_tile, ring_distance)
+            if tentacle_tile != Vector2i.MIN:
+                break
+
+        tentacle.position = main.map.map_to_local(tentacle_tile)
+        var animated_sprite = tentacle.get_node("AnimatedSprite2D") as AnimatedSprite2D
+        animated_sprite.play("emerge")
+
+    if tentacles.size() > 0:
+        await main.get_tree().create_timer(0.5).timeout
+
+    for enemy in tentacles:
+        await execute_single_enemy_ai(enemy, main)
 
 static func get_tentacle_tile(main: Main, kraken_tile: Vector2i, radius: int):
     var goal_tile: Vector2i = Vector2i.MIN
