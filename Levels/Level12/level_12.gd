@@ -14,7 +14,16 @@ class_name Level12 extends Node2D
 @onready var orphan: Unit = $Main/Units/Orphan
 @onready var fisherman: Unit = $Main/Units/Fisherman
 
+func _on_won() -> void:
+    await fade.fade_out()
+    get_tree().change_scene_to_file("res://Levels/Level13/Level13.tscn")
+
+func _process(_delta: float) -> void:
+    if Input.is_action_pressed("confirm") && Input.is_action_pressed("cancel"):
+        get_tree().change_scene_to_file("res://Levels/Level13/Level13.tscn")
+
 func _ready() -> void:
+    main.won.connect(_on_won)
     MusicPlayer.stream = preload("res://Music/Pirate stuff.mp3")
     MusicPlayer.play()
 
