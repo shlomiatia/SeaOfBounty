@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://cix8euxqgklnh"]
+[gd_scene load_steps=17 format=3 uid="uid://cix8euxqgklnh"]
 
 [ext_resource type="PackedScene" uid="uid://05oo7vpmyn03" path="res://Entities/Unit/Unit.tscn" id="1_1lya0"]
 [ext_resource type="Texture2D" uid="uid://bi7qsb8r3micu" path="res://Textures/Monsters enemies/dragon seahorse/סוס ים דרקוני קטן.png" id="2_csypr"]
 [ext_resource type="Shader" uid="uid://b20ld62ku3mg8" path="res://Entities/Unit/Reflection.gdshader" id="3_xcopu"]
 [ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="4_gnayf"]
 [ext_resource type="Shader" uid="uid://bn0wv35v1nuq4" path="res://Entities/Unit/Unit.gdshader" id="5_3263x"]
+[ext_resource type="Script" uid="uid://cw1hjobvqdhir" path="res://Scripts/sea_horse_animated_sprite.gd" id="5_csypr"]
 [ext_resource type="AudioStream" uid="uid://25lj2d3ndjwj" path="res://Sounds/Sfx/offshore break and rumble.mp3" id="6_8k1u7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1lya0"]
@@ -128,15 +129,23 @@ sprite_frames = SubResource("SpriteFrames_csypr")
 display_name = "Sea Horse"
 set_flip_h = true
 
-[node name="Reflection" parent="." index="0"]
+[node name="Reflection" parent="." index="0" node_paths=PackedStringArray("unit")]
 material = SubResource("ShaderMaterial_0yk07")
 position = Vector2(0, 35)
 sprite_frames = SubResource("SpriteFrames_kd8uu")
 frame_progress = 0.0
+script = ExtResource("5_csypr")
+unit = NodePath("..")
+region_offset = Vector2(46, 269)
+region_size = Vector2(41, 34)
 
-[node name="AnimatedSprite2D" parent="." index="1"]
+[node name="AnimatedSprite2D" parent="." index="1" node_paths=PackedStringArray("unit")]
 material = SubResource("ShaderMaterial_rc8re")
 sprite_frames = SubResource("SpriteFrames_kd8uu")
+script = ExtResource("5_csypr")
+unit = NodePath("..")
+region_offset = Vector2(46, 269)
+region_size = Vector2(41, 34)
 
 [node name="UnitStatus" parent="." index="4"]
 visible = false

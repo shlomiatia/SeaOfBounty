@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://dr754voq82mb0"]
+[gd_scene load_steps=17 format=3 uid="uid://dr754voq82mb0"]
 
 [ext_resource type="PackedScene" uid="uid://05oo7vpmyn03" path="res://Entities/Unit/Unit.tscn" id="1_hvnk6"]
 [ext_resource type="Texture2D" uid="uid://bi7qsb8r3micu" path="res://Textures/Monsters enemies/dragon seahorse/סוס ים דרקוני קטן.png" id="2_rje6i"]
 [ext_resource type="Shader" uid="uid://b20ld62ku3mg8" path="res://Entities/Unit/Reflection.gdshader" id="3_jbcch"]
 [ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="4_rrt82"]
 [ext_resource type="Shader" uid="uid://bn0wv35v1nuq4" path="res://Entities/Unit/Unit.gdshader" id="5_0dlpf"]
+[ext_resource type="Script" uid="uid://cw1hjobvqdhir" path="res://Scripts/sea_horse_animated_sprite.gd" id="5_rje6i"]
 [ext_resource type="AudioStream" uid="uid://25lj2d3ndjwj" path="res://Sounds/Sfx/offshore break and rumble.mp3" id="6_pr5ay"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fdtqm"]
@@ -121,22 +122,30 @@ shader_parameter/uv_bottom = 1.0
 [node name="SeaHorseHead" groups=["enemies"] instance=ExtResource("1_hvnk6")]
 max_hp = 999
 hp = 999
-damage = 100
+damage = 80
 max_movement = 6
 attack_range = 4
 sprite_frames = SubResource("SpriteFrames_fel1r")
 display_name = "Sea Horse"
 set_flip_h = true
 
-[node name="Reflection" parent="." index="0"]
+[node name="Reflection" parent="." index="0" node_paths=PackedStringArray("unit")]
 material = SubResource("ShaderMaterial_0yk07")
-position = Vector2(0, 35)
+position = Vector2(0, 30)
 sprite_frames = SubResource("SpriteFrames_kd8uu")
 frame_progress = 0.0
+script = ExtResource("5_rje6i")
+unit = NodePath("..")
+region_offset = Vector2(96, 271)
+region_size = Vector2(38, 34)
 
-[node name="AnimatedSprite2D" parent="." index="1"]
+[node name="AnimatedSprite2D" parent="." index="1" node_paths=PackedStringArray("unit")]
 material = SubResource("ShaderMaterial_rc8re")
 sprite_frames = SubResource("SpriteFrames_kd8uu")
+script = ExtResource("5_rje6i")
+unit = NodePath("..")
+region_offset = Vector2(96, 271)
+region_size = Vector2(38, 34)
 
 [node name="AudioStreamPlayer" parent="." index="5"]
 stream = ExtResource("6_pr5ay")
