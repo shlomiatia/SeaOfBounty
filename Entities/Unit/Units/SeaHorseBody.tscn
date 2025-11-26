@@ -1,21 +1,21 @@
-[gd_scene load_steps=16 format=3 uid="uid://dr754voq82mb0"]
+[gd_scene load_steps=16 format=3 uid="uid://cix8euxqgklnh"]
 
-[ext_resource type="PackedScene" uid="uid://05oo7vpmyn03" path="res://Entities/Unit/Unit.tscn" id="1_hvnk6"]
-[ext_resource type="Texture2D" uid="uid://bi7qsb8r3micu" path="res://Textures/Monsters enemies/dragon seahorse/סוס ים דרקוני קטן.png" id="2_rje6i"]
-[ext_resource type="Shader" uid="uid://b20ld62ku3mg8" path="res://Entities/Unit/Reflection.gdshader" id="3_jbcch"]
-[ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="4_rrt82"]
-[ext_resource type="Shader" uid="uid://bn0wv35v1nuq4" path="res://Entities/Unit/Unit.gdshader" id="5_0dlpf"]
-[ext_resource type="AudioStream" uid="uid://25lj2d3ndjwj" path="res://Sounds/Sfx/offshore break and rumble.mp3" id="6_pr5ay"]
+[ext_resource type="PackedScene" uid="uid://05oo7vpmyn03" path="res://Entities/Unit/Unit.tscn" id="1_1lya0"]
+[ext_resource type="Texture2D" uid="uid://bi7qsb8r3micu" path="res://Textures/Monsters enemies/dragon seahorse/סוס ים דרקוני קטן.png" id="2_csypr"]
+[ext_resource type="Shader" uid="uid://b20ld62ku3mg8" path="res://Entities/Unit/Reflection.gdshader" id="3_xcopu"]
+[ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="4_gnayf"]
+[ext_resource type="Shader" uid="uid://bn0wv35v1nuq4" path="res://Entities/Unit/Unit.gdshader" id="5_3263x"]
+[ext_resource type="AudioStream" uid="uid://25lj2d3ndjwj" path="res://Sounds/Sfx/offshore break and rumble.mp3" id="6_8k1u7"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fdtqm"]
-atlas = ExtResource("2_rje6i")
-region = Rect2(87, 27, 33, 37)
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lya0"]
+atlas = ExtResource("2_csypr")
+region = Rect2(49, 26, 34, 37)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_fel1r"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_csypr"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fdtqm")
+"texture": SubResource("AtlasTexture_1lya0")
 }],
 "loop": true,
 "name": &"down",
@@ -23,7 +23,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fdtqm")
+"texture": SubResource("AtlasTexture_1lya0")
 }],
 "loop": true,
 "name": &"left",
@@ -31,7 +31,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fdtqm")
+"texture": SubResource("AtlasTexture_1lya0")
 }],
 "loop": true,
 "name": &"right",
@@ -39,7 +39,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fdtqm")
+"texture": SubResource("AtlasTexture_1lya0")
 }],
 "loop": true,
 "name": &"up",
@@ -48,7 +48,7 @@ animations = [{
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0yk07"]
 resource_local_to_scene = true
-shader = ExtResource("3_jbcch")
+shader = ExtResource("3_xcopu")
 shader_parameter/wave_speed = 2.0
 shader_parameter/wave_amplitude = 0.001
 shader_parameter/wave_frequency = 10.0
@@ -59,19 +59,19 @@ shader_parameter/uv_bottom = 1.0
 shader_parameter/alpha = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ou22k"]
-atlas = ExtResource("4_rrt82")
+atlas = ExtResource("4_gnayf")
 region = Rect2(42, 1, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_32ibj"]
-atlas = ExtResource("4_rrt82")
+atlas = ExtResource("4_gnayf")
 region = Rect2(124, 1, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qbw00"]
-atlas = ExtResource("4_rrt82")
+atlas = ExtResource("4_gnayf")
 region = Rect2(83, 1, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rlkj8"]
-atlas = ExtResource("4_rrt82")
+atlas = ExtResource("4_gnayf")
 region = Rect2(1, 1, 40, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kd8uu"]
@@ -112,19 +112,19 @@ animations = [{
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rc8re"]
 resource_local_to_scene = true
-shader = ExtResource("5_0dlpf")
+shader = ExtResource("5_3263x")
 shader_parameter/hide_pixels = 0.0
 shader_parameter/modulate = Color(1, 1, 1, 1)
 shader_parameter/water_color = Color(0.752941, 0.796078, 0.862745, 0.501961)
 shader_parameter/uv_bottom = 1.0
 
-[node name="SeaHorseHead" groups=["enemies"] instance=ExtResource("1_hvnk6")]
+[node name="SeaHorseBody" groups=["enemies"] instance=ExtResource("1_1lya0")]
 max_hp = 999
 hp = 999
 damage = 100
-max_movement = 6
-attack_range = 4
-sprite_frames = SubResource("SpriteFrames_fel1r")
+max_movement = 0
+attack_range = 0
+sprite_frames = SubResource("SpriteFrames_csypr")
 display_name = "Sea Horse"
 set_flip_h = true
 
@@ -139,4 +139,4 @@ material = SubResource("ShaderMaterial_rc8re")
 sprite_frames = SubResource("SpriteFrames_kd8uu")
 
 [node name="AudioStreamPlayer" parent="." index="5"]
-stream = ExtResource("6_pr5ay")
+stream = ExtResource("6_8k1u7")

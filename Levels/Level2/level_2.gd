@@ -26,7 +26,7 @@ func _ready() -> void:
     tutorial_event_handler.show_tutorial_at_step(0)
 
 func _process(_delta: float) -> void:
-    if Input.is_action_just_pressed("confirm") && Input.is_action_just_pressed("cancel"):
+    if Input.is_action_pressed("confirm") && Input.is_action_pressed("cancel"):
         get_tree().change_scene_to_file("res://Levels/Level3/Level3.tscn")
 
 func on_won() -> void:
