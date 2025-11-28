@@ -20,11 +20,40 @@ func preview_movement_path(unit: Unit, target_pos: Vector2) -> void:
     for enemy_grid_pos in enemy_tiles:
         if target_grid_pos != enemy_grid_pos:
             continue
-        
+
         var path = Utils.find_path_to_tile_in_range(unit, target_pos, map)
-        
+
         if path.size() == 0:
-            break
+            # Check if there are cells in possible_movement that are in range of target_pos
+            var cells_in_range: Array[Vector2i] = []
+            var used_cells = possible_movement.get_used_cells()
+
+            for cell in used_cells:
+                var distance_to_target = Utils.get_tile_distance(cell, enemy_grid_pos)
+                if distance_to_target <= unit.attack_range:
+                    cells_in_range.append(cell)
+
+            # If no cells in range, break
+            if cells_in_range.size() == 0:
+                break
+
+            # Get the cell closest to the unit position
+            var closest_cell: Vector2i = cells_in_range[0]
+            var closest_distance = Utils.get_tile_distance(unit_grid_pos, closest_cell)
+
+            for cell in cells_in_range:
+                var distance = Utils.get_tile_distance(unit_grid_pos, cell)
+                if distance < closest_distance:
+                    closest_distance = distance
+                    closest_cell = cell
+
+            # Find path to the closest cell
+            var closest_cell_world_pos = map.map_to_local(closest_cell)
+            path = map.find_tile_path(unit.position, closest_cell_world_pos, true)
+            path = path.slice(0, unit.max_movement + 1)
+
+            if path.size() == 0:
+                break
 
         var last_tile_in_path = path[path.size() - 1]
 
