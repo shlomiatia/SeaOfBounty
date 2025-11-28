@@ -85,7 +85,7 @@ func _input(event: InputEvent) -> void:
                 tutorial_label.text = ""
         else:
             get_viewport().set_input_as_handled()
-            typing_label.text = DialogData.tutorial_level2_click_me
+            typing_label.text = DialogData.tutorial_click_me
 
 
 func on_player_turn_started() -> void:

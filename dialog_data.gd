@@ -265,7 +265,7 @@ static func get_tutorial_level2_text(step: int) -> String:
 		_:
 			return ""
 
-static var tutorial_level2_click_me: String = "Click me!"
+static var tutorial_click_me: String = "Click me!"
 static var tutorial_level2_wait: String = "Wait for it..."
 static var tutorial_level2_attack: String = "Attack with %s now!"
 static var tutorial_level2_defend: String = "Defend with %s now!"
@@ -279,8 +279,6 @@ static func get_tutorial_level6_text(step: int) -> String:
 			return "Select Kate to heal her."
 		_:
 			return ""
-
-static var tutorial_level6_click_me: String = "Click me!"
 
 # Tutorial texts - Level 8
 static func get_tutorial_level8_text(step: int) -> String:

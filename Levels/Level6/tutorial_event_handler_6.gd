@@ -36,7 +36,7 @@ func _input(event: InputEvent) -> void:
                 tutorial_label.text = ""
         else:
             get_viewport().set_input_as_handled()
-            typing_label.text = DialogData.tutorial_level6_click_me
+            typing_label.text = DialogData.tutorial_click_me
 
 func get_tutorial_text(step: int) -> String:
     return DialogData.get_tutorial_level6_text(step)
