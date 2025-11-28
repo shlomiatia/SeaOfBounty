@@ -174,9 +174,9 @@ autoplay = "Default"
 [node name="TypingLabel" parent="." instance=ExtResource("6_rlkj8")]
 z_index = 1
 offset_left = -17.0
-offset_top = 22.0
+offset_top = 17.0
 offset_right = 42.0
-offset_bottom = 50.0
+offset_bottom = 45.0
 autowrap_mode = 0
 
 [node name="UnitStatus" parent="." instance=ExtResource("6_gyi6a")]

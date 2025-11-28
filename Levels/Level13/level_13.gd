@@ -16,9 +16,9 @@ func start() -> void:
 	var array: Array[Array] = [
 		["Lia", "I think we did it. The poor monsters seem to return north."],
 		["Constantine", "Poor monsters.. Bah! What we did is triumph!"],
-		["Miguel", "We did both my friend., thanks to our lovely companions."],
+		["Miguel", "We did both my friend, thanks to our lovely companions."],
 		["OneEye", "I usually fight solo, but teaming up is not too bad..."],
 		["Kate", "Finn! Can we bash heads with the pirate lady, please??"],
-		["Finn", "<sigh>You're friends now? Sure, we can return home together."],
+		["Finn", "<sigh> You're friends now?\n Sure, we can return home together."],
 	]
 	dialog.start(array)

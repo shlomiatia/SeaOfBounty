@@ -122,7 +122,10 @@ func assign_damage(attacker: Unit, defender: Unit, attacker_hp_label: Label, def
         var tween = create_tween()
         battle_unit.modulate = Color.RED
         tween.tween_property(battle_unit, "modulate", Color.WHITE, 1.0)
-        shaking_camera.start_screen_shake()
+        get_tree().create_timer(0.2).timeout.connect((func() -> void:
+            shaking_camera.start_screen_shake()
+        ))
+        
         
     var old_hp = defender.hp
     defender.hp = max(0, defender.hp - damage_dealt)
