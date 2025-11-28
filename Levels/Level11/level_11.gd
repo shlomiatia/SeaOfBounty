@@ -50,15 +50,15 @@ func _ready() -> void:
 
     await get_tree().create_timer(0.5).timeout
 
-    constantine.start_text_list(["Your collosal beast! I imagined it will be bigger..."])
+    constantine.start_text_list(DialogData.level_11_constantine)
     await constantine.text_list_finished
     await get_tree().process_frame
 
-    lia.start_text_list(["It's not the one we encountered.", "I think it's running away too..."])
+    lia.start_text_list(DialogData.level_11_lia)
     await lia.text_list_finished
     await get_tree().process_frame
 
-    miguel.start_text_list(["What can scare such a terrible behemoth..."])
+    miguel.start_text_list(DialogData.level_11_miguel)
     await miguel.text_list_finished
     await get_tree().process_frame
 
@@ -70,19 +70,19 @@ func _ready() -> void:
     var one_eye_path: Array[Vector2i] = [Vector2i(-1, 7), Vector2i(0, 7)]
     await one_eye.animate_along_path(one_eye_path)
 
-    one_eye.start_text_list(["It will soon run away from me!"])
+    one_eye.start_text_list(DialogData.level_11_one_eye_1)
     await one_eye.text_list_finished
     await get_tree().process_frame
 
-    lia.start_text_list(["One Eye, you're alive!"])
+    lia.start_text_list(DialogData.level_11_lia_2)
     await lia.text_list_finished
     await get_tree().process_frame
 
-    miguel.start_text_list(["This magnificant warrior is with you?"])
+    miguel.start_text_list(DialogData.level_11_miguel_2)
     await miguel.text_list_finished
     await get_tree().process_frame
 
-    constantine.start_text_list(["Good, that should be enough, attack!"])
+    constantine.start_text_list(DialogData.level_11_constantine_2)
     await constantine.text_list_finished
     await get_tree().process_frame
 

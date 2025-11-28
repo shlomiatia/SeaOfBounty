@@ -35,19 +35,19 @@ func _ready() -> void:
     sea_horse_body.animate_along_path(body_path)
     await sea_horse_tail.animate_along_path(tail_path)
 
-    constantine.start_text_list(["This is the one?"])
+    constantine.start_text_list(DialogData.level_12_constantine_1)
     await constantine.text_list_finished
     await get_tree().process_frame
 
-    lia.start_text_list(["This is it."])
+    lia.start_text_list(DialogData.level_12_lia_1)
     await lia.text_list_finished
     await get_tree().process_frame
 
-    constantine.start_text_list(["We are going to die."])
+    constantine.start_text_list(DialogData.level_12_constantine_2)
     await constantine.text_list_finished
     await get_tree().process_frame
 
-    miguel.start_text_list(["At least we'll die together!"])
+    miguel.start_text_list(DialogData.level_12_miguel)
     await miguel.text_list_finished
     await get_tree().process_frame
 
@@ -57,23 +57,23 @@ func _ready() -> void:
     orphan.animate_along_path(orphan_path)
     await fisherman.animate_along_path(fisherman_path)
 
-    orphan.start_text_list(["You guys wanted to die without us??"])
+    orphan.start_text_list(DialogData.level_12_orphan_1)
     await orphan.text_list_finished
     await get_tree().process_frame
 
-    one_eye.start_text_list(["Kate! Finn! You made it!"])
+    one_eye.start_text_list(DialogData.level_12_one_eye)
     await one_eye.text_list_finished
     await get_tree().process_frame
 
-    fisherman.start_text_list(["Just in time for the last battle. Ready?"])
+    fisherman.start_text_list(DialogData.level_12_fisherman)
     await fisherman.text_list_finished
     await get_tree().process_frame
 
-    lia.start_text_list(["Yes!"])
-    constantine.start_text_list(["Yes!"])
-    miguel.start_text_list(["Yes!"])
-    one_eye.start_text_list(["Yes!"])
-    orphan.start_text_list(["Yes!"])
+    lia.start_text_list(DialogData.level_12_lia_2)
+    constantine.start_text_list(DialogData.level_12_constantine_3)
+    miguel.start_text_list(DialogData.level_12_miguel_2)
+    one_eye.start_text_list(DialogData.level_12_one_eye_2)
+    orphan.start_text_list(DialogData.level_12_orphan_2)
     await orphan.text_list_finished
     await get_tree().process_frame
 

@@ -12,11 +12,11 @@ func _ready() -> void:
     MusicPlayer.play()
     await get_tree().create_timer(1.0).timeout
 
-    kate.start_text_list(["That ugly fish spitted on me!"])
+    kate.start_text_list(DialogData.level_6_kate)
     await kate.text_list_finished
     await get_tree().process_frame
 
-    lia.start_text_list(["I'll patch you up."])
+    lia.start_text_list(DialogData.level_6_lia)
     await lia.text_list_finished
     await get_tree().process_frame
 

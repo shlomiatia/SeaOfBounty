@@ -41,13 +41,10 @@ func _input(event: InputEvent) -> void:
 			tutorial_label.text = ""
 
 func get_tutorial_text(step: int) -> String:
-	match step:
-		0:
-			return "Select Constantine."
-		1:
-			return "Press %s to skip hero turn." % [LastInput.get_text("Middle mouse button", "Backspace", "Y button")]
-		_:
-			return ""
+	var text = DialogData.get_tutorial_level8_text(step)
+	if step == 1:
+		return text % [LastInput.get_text("Middle mouse button", "Backspace", "Y button")]
+	return text
 
 func show_tutorial_at_step(step: int) -> void:
 	tutorial_step = step

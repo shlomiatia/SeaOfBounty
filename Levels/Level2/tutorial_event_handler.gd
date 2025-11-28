@@ -85,7 +85,7 @@ func _input(event: InputEvent) -> void:
                 tutorial_label.text = ""
         else:
             get_viewport().set_input_as_handled()
-            typing_label.text = "Click me!"
+            typing_label.text = DialogData.tutorial_level2_click_me
 
 
 func on_player_turn_started() -> void:
@@ -95,23 +95,10 @@ func on_player_turn_started() -> void:
         show_tutorial_at_step(5)
 
 func get_tutorial_text(step: int) -> String:
-    match step:
-        0:
-            return "Move cursor with %s.\nSelect Kate with %s." % [LastInput.get_text("mouse", "WASD", "D-pad"), LastInput.get_text("left mouse button", "enter", "A button")]
-        1:
-            return "Your movement range is in green, and attack range in red.\nSelect the enemy to attack it."
-        2:
-            return "Select the enemy to see it's range."
-        3:
-            return "Move Kate outside the enemy range."
-        7:
-            return "Select Finn."
-        8:
-            return "Finn has a ranged attack.\nMove Finn into range."
-        9:
-            return "Attack the enemy.\nIt's out of range and won't retaliate."
-        _:
-            return ""
+    var text = DialogData.get_tutorial_level2_text(step)
+    if step == 0:
+        return text % [LastInput.get_text("mouse", "WASD", "D-pad"), LastInput.get_text("left mouse button", "enter", "A button")]
+    return text
 
 func show_tutorial_at_step(step: int) -> void:
     tutorial_step = step
@@ -144,12 +131,12 @@ func check_battle_meter_tutorial() -> void:
     if battle_meter.get_indicator_distance_from_center() <= 8:
         Engine.time_scale = 0.01
         if current_battle_tutorial == "attack":
-            tutorial_label.text = "Attack with %s now!" % [LastInput.get_text("left mouse button", "enter", "A button")]
+            tutorial_label.text = DialogData.tutorial_level2_attack % [LastInput.get_text("left mouse button", "enter", "A button")]
         else:
-            tutorial_label.text = "Defend with %s now!" % [LastInput.get_text("left mouse button", "enter", "A button")]
+            tutorial_label.text = DialogData.tutorial_level2_defend % [LastInput.get_text("left mouse button", "enter", "A button")]
     else:
         Engine.time_scale = 1
-        tutorial_label.text = "Wait for it..."
+        tutorial_label.text = DialogData.tutorial_level2_wait
     tutorial_label.finish_typing()
 
 func is_battle_input_allowed() -> bool:

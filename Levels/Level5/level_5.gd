@@ -17,12 +17,7 @@ func start() -> void:
     stage = 1
     MusicPlayer.stream = preload("res://Music/Cello D.mp3")
     MusicPlayer.play()
-    var array: Array[Array] = [
-        ["Kate", "Ouch! It hurts!"],
-        ["Finn", "We need a healer."],
-        ["OneEye", "I know one, she's not far.\nFollow me."],
-    ]
-    dialog.start(array)
+    dialog.start(DialogData.level_5_intro)
     dialog.dialog_finished.connect(_on_dialog_finished)
 
 func _on_dialog_finished() -> void:
@@ -30,17 +25,7 @@ func _on_dialog_finished() -> void:
     if stage == 1:
         background.texture = preload("res://Textures/רקעים/Background6.png")
         stage += 1
-        var array: Array[Array] = [
-            ["", "<healing spell cast>"],
-            ["Kate", "All better now! Thanks miss healer lady!"],
-            ["Lia", "You're lucky you made it here.\nMonsters are going berserk everywhere."],
-            ["Finn", "Then we're going north."],
-            ["OneEye", "Are you insane?\nThat's where the monsters are from!"],
-            ["Finn", "Exactly.\nSomething up north is resposible for this migration."],
-            ["OneEye", "This is a terrible idea!\nBut the only one we have..."],
-            ["Lia", "Then I suppose I'm coming too.\nSomeone has to keep you alive."],
-        ]
         await fade.fade_in()
-        dialog.start(array)
+        dialog.start(DialogData.level_5_stage_2)
     elif stage == 2:
         get_tree().change_scene_to_file("res://Levels/Level6/Level6.tscn")

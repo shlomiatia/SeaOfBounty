@@ -17,19 +17,7 @@ func start() -> void:
     stage = 1
     MusicPlayer.stream = preload("res://Music/Flute D.mp3")
     MusicPlayer.play()
-    var array: Array[Array] = [
-        ["", "Somewhere else, not far..."],
-        ["Constantine", "Disgusting creatures… I scorch five, and ten more crawl out!"],
-        ["Miguel", "Ah, but you handle it with such elegance..."],
-        ["Constantine", "Don't flatter me while I'm irritated!"],
-        ["Miguel", "That mean you'll never get compliments.\nThat won't do."],
-        ["Constantine", "<sigh> They're coming from the north, it's obvious now."],
-        ["Miguel", "Than that's our destination."],
-        ["Constantine", "It's not our problem!"],
-        ["Miguel", "Would you rather burn the source or the leftovers?"],
-        ["Constantine", "...Let's go."],
-    ]
-    dialog.start(array)
+    dialog.start(DialogData.level_7_intro)
     dialog.dialog_finished.connect(_on_dialog_finished)
 
 func _on_dialog_finished() -> void:

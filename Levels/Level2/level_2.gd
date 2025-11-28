@@ -15,12 +15,8 @@ func _ready() -> void:
     MusicPlayer.stream = preload("res://Music/violin B.mp3")
     MusicPlayer.play()
     await get_tree().create_timer(1.0).timeout
-    var array: Array[String] = [
-        "I'll beat those monsters and win the bounty!",
-        "Finn will be so proud..."
-    ]
 
-    orphan.start_text_list(array)
+    orphan.start_text_list(DialogData.level_2_intro)
     await orphan.text_list_finished
     main.start_player_turn()
     tutorial_event_handler.show_tutorial_at_step(0)
@@ -36,7 +32,7 @@ func on_won() -> void:
         return
     won_triggered = true
 
-    orphan.start_text_list(["Huh! That's what you get!"])
+    orphan.start_text_list(DialogData.level_2_won_1)
     await orphan.text_list_finished
 
     var monster_prefab = preload("res://Entities/Unit/Units/Monster.tscn")
@@ -60,7 +56,7 @@ func on_won() -> void:
     monster2.animate_along_path(path2)
     await monster3.animate_along_path(path3)
 
-    orphan.start_text_list(["Oh no, it's too many!"])
+    orphan.start_text_list(DialogData.level_2_won_2)
     await orphan.text_list_finished
 
     fisherman = preload("res://Entities/Unit/Units/Fisherman.tscn").instantiate()
@@ -70,7 +66,7 @@ func on_won() -> void:
     var fisherman_path: Array[Vector2i] = [Vector2i(-1, 4), Vector2i(0, 4)]
     await fisherman.animate_along_path(fisherman_path)
 
-    fisherman.start_text_list(["Kate I'm here!", "Leave her alone you creeps!"])
+    fisherman.start_text_list(DialogData.level_2_fisherman)
     await fisherman.text_list_finished
 
     main.start_player_turn()

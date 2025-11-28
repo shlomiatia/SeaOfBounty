@@ -18,15 +18,15 @@ func _ready() -> void:
     MusicPlayer.play()
     await get_tree().create_timer(1.0).timeout
 
-    miguel.start_text_list(["An ambush!"])
+    miguel.start_text_list(DialogData.level_10_miguel)
     await miguel.text_list_finished
     await get_tree().process_frame
 
-    lia.start_text_list(["They want to flee, we're just in the way."])
+    lia.start_text_list(DialogData.level_10_lia)
     await lia.text_list_finished
     await get_tree().process_frame
 
-    constantine.start_text_list(["Bad luck for them!"])
+    constantine.start_text_list(DialogData.level_10_constantine)
     await constantine.text_list_finished
     await get_tree().process_frame
 

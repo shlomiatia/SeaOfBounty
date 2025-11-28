@@ -17,13 +17,7 @@ func start() -> void:
     stage = 1
     MusicPlayer.stream = preload("res://Music/Drums D.mp3")
     MusicPlayer.play()
-    var array: Array[Array] = [
-        ["Kate", "I'm sorry, Finn… \nI wanted to prove I'm strong too…"],
-        ["Finn", "You already are."],
-        ["Kate", "I hope you're right…\nI'll need to carry so much gold!"],
-        ["Finn", "<shakes head> Let's go collect it."],
-    ]
-    dialog.start(array)
+    dialog.start(DialogData.level_3_intro)
     dialog.dialog_finished.connect(_on_dialog_finished)
 
 func _on_dialog_finished() -> void:
@@ -31,18 +25,8 @@ func _on_dialog_finished() -> void:
     background.texture = preload("res://Textures/רקעים/Background3.png")
     if stage == 1:
         stage += 1
-        var array: Array[Array] = [
-            ["Kate", "Where is everybody?!"],
-            ["OneEye", "That's a good question."],
-            ["Kate", "What are you doing here, lady?! \nStealing our reward??"],
-            ["OneEye", "I dealt with the monsters.\nYou mean there were more?"],
-            ["Finn", "And the village is empty..."],
-            ["OneEye", "We need to get out of here."],
-            ["Finn", "Agreed. Let's stick together."],
-            ["Kate", "With her?! <frown>"],
-        ]
         await fade.fade_in()
-        dialog.start(array)
+        dialog.start(DialogData.level_3_stage_2)
 
     elif stage == 2:
         get_tree().change_scene_to_file("res://Levels/Level4/Level4.tscn")

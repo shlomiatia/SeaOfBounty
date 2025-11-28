@@ -12,18 +12,15 @@ func _ready() -> void:
     MusicPlayer.play()
     await get_tree().create_timer(1.0).timeout
 
-    finn.start_text_list(["So many..."])
+    finn.start_text_list(DialogData.level_4_finn)
     await finn.text_list_finished
     await get_tree().process_frame
 
-    one_eye.start_text_list(
-        ["Finn, throw your harpoon at the monsters from a distance!",
-        "I'm the only who outrange the puffers so leave them to me!",
-        "Kate, you finish them off when they're weakened!"])
+    one_eye.start_text_list(DialogData.level_4_one_eye)
     await one_eye.text_list_finished
     await get_tree().process_frame
 
-    orphan.start_text_list(["Aren't you a control freak lady!"])
+    orphan.start_text_list(DialogData.level_4_orphan)
     await orphan.text_list_finished
     await get_tree().process_frame
 
