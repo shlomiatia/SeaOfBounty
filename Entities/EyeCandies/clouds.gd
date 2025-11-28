@@ -86,7 +86,7 @@ func _spawn_single_cloud() -> void:
 	var scale_value = float(randi_range(min_scale, max_scale))
 	sprite.scale = Vector2(scale_value, scale_value)
 
-	sprite.modulate = Color(1, 1, 1, randf_range(0.6, 0.9))
+	sprite.modulate = Color(1, 1, 1, randf_range(0.3, 0.6))
 
 	add_child(sprite)
 
