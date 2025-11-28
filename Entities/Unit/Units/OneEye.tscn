@@ -134,6 +134,7 @@ max_movement = 3
 attack_range = 3
 sprite_frames = SubResource("SpriteFrames_jsgm1")
 display_name = "One Eye"
+label_color = Color(0.941176, 0.870588, 0.705882, 1)
 
 [node name="Reflection" parent="." index="0"]
 material = SubResource("ShaderMaterial_3wkfp")

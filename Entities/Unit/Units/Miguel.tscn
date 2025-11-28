@@ -135,6 +135,7 @@ hp = 120
 damage = 50
 sprite_frames = SubResource("SpriteFrames_mbqr7")
 display_name = "Miguel"
+label_color = Color(0.635294, 0.14902, 0.2, 1)
 
 [node name="Reflection" parent="." index="0"]
 material = SubResource("ShaderMaterial_vxp35")

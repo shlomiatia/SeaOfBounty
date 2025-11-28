@@ -186,6 +186,7 @@ damage = 60
 max_movement = 5
 sprite_frames = SubResource("SpriteFrames_1d3p5")
 display_name = "Kate"
+label_color = Color(0.996078, 0.905882, 0.380392, 1)
 
 [node name="Reflection" parent="." index="0"]
 material = SubResource("ShaderMaterial_1d3p5")

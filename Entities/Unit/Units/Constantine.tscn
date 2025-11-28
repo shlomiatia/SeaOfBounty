@@ -137,6 +137,7 @@ max_movement = 3
 attack_range = 4
 sprite_frames = SubResource("SpriteFrames_ac3hh")
 display_name = "Constantine"
+label_color = Color(0.14902, 0.360784, 0.258824, 1)
 
 [node name="Reflection" parent="." index="0"]
 material = SubResource("ShaderMaterial_irxba")

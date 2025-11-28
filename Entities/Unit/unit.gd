@@ -13,6 +13,7 @@ const movement_speed: float = 300.0
 @export var sprite_frames: SpriteFrames
 @export var display_name: String = "Monster"
 @export var set_flip_h: bool
+@export var label_color: Color = Color.WHITE
 
 @onready var map: Map = $"../../Map"
 @onready var animated_sprite_2d = $AnimatedSprite2D
@@ -37,6 +38,8 @@ func _ready() -> void:
 
     position = map.map_to_local(map.local_to_map(position))
     play_animation(initial_direction)
+
+    typing_label.modulate = label_color
 
 func _process(_delta: float) -> void:
     if hp > 0:

@@ -132,6 +132,7 @@ shader_parameter/uv_bottom = 1.0
 [node name="Lia" groups=["heroes"] instance=ExtResource("1_y43qn")]
 sprite_frames = SubResource("SpriteFrames_yucex")
 display_name = "Lia"
+label_color = Color(0.843137, 0.462745, 0.262745, 1)
 
 [node name="Reflection" parent="." index="0"]
 material = SubResource("ShaderMaterial_688q3")
