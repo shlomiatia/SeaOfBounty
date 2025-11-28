@@ -39,6 +39,7 @@ func on_won() -> void:
     var monster1 = monster_prefab.instantiate()
     var monster2 = monster_prefab.instantiate()
     var monster3 = monster_prefab.instantiate()
+    monster3.initial_direction = "left"
 
     units_node.add_child(monster1)
     units_node.add_child(monster2)
@@ -47,7 +48,7 @@ func on_won() -> void:
     monster1.position = map.map_to_local(Vector2i(2, -1))
     monster2.position = map.map_to_local(Vector2i(2, 9))
     monster3.position = map.map_to_local(Vector2i(15, 9))
-
+    
     var path1: Array[Vector2i] = [Vector2i(2, -1), Vector2i(2, 0)]
     var path2: Array[Vector2i] = [Vector2i(2, 9), Vector2i(2, 8)]
     var path3: Array[Vector2i] = [Vector2i(15, 9), Vector2i(15, 8)]

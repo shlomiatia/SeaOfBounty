@@ -11,6 +11,6 @@ func _ready() -> void:
 
 func start() -> void:
 	stage = 1
-	MusicPlayer.stream = preload("res://Music/piano D.mp3")
+	MusicPlayer.stream = preload("res://Music/trumpet D.mp3")
 	MusicPlayer.play()
 	dialog.start(DialogData.level_13_ending)
