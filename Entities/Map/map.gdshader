@@ -4,6 +4,7 @@ uniform vec4 color1 : source_color = vec4(1.0, 0.0, 0.0, 1.0);
 uniform vec2 direction = vec2(1.0, 0.0);
 uniform float max_distance : hint_range(0.0, 100.0) = 10.0;
 uniform float pixels_per_second : hint_range(0.1, 100.0) = 5.0;
+uniform float custom_time = 0.0;
 
 bool colors_match(vec4 a, vec4 b) {
     return distance(a, b) < 0.01;
@@ -12,7 +13,7 @@ bool colors_match(vec4 a, vec4 b) {
 void fragment() {
     vec2 norm_direction = normalize(direction);
 
-    float time_in_cycle = mod(floor(TIME * pixels_per_second), max_distance * 2.0);
+    float time_in_cycle = mod(floor(custom_time * pixels_per_second), max_distance * 2.0);
     float current_offset;
 
     if (time_in_cycle < max_distance) {

@@ -10,6 +10,7 @@ shader_parameter/color1 = Color(0.776471, 0.839216, 0.917647, 1)
 shader_parameter/direction = Vector2(-1, 0)
 shader_parameter/max_distance = 3.0
 shader_parameter/pixels_per_second = 3.0
+shader_parameter/custom_time = 0.0
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_eapu7"]
 vertices = PackedVector2Array(20, 20, -20, 20, -20, -20, 20, -20)

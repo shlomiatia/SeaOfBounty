@@ -1,5 +1,36 @@
 class_name Map extends TileMapLayer
 
+var direction_timer: Timer
+var shader_time: float = 0.0
+
+func _ready():
+    direction_timer = Timer.new()
+    direction_timer.wait_time = 2.0
+    direction_timer.timeout.connect(_randomize_shader_direction)
+    add_child(direction_timer)
+    direction_timer.start()
+
+    _randomize_shader_direction()
+
+func _process(delta):
+    shader_time += delta
+    if material:
+        material.set_shader_parameter("custom_time", shader_time)
+
+func _randomize_shader_direction():
+    if material:
+        var random_x = [-1, 0, 1].pick_random()
+        var random_y: int
+        if random_x == 0:
+            random_y = [-1, 1].pick_random()
+        else:
+            random_y = [-1, 0, 1].pick_random()
+
+        material.set_shader_parameter("direction", Vector2(random_x, random_y))
+
+        shader_time = 0.0
+        material.set_shader_parameter("custom_time", 0.0)
+
 func find_tile_path(from: Vector2, to: Vector2, to_opponent: bool = false) -> Array[Vector2i]:
     var from_tile = local_to_map(from)
     var to_tile = local_to_map(to)
