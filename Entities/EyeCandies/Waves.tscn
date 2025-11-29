@@ -1,61 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dvla1w60eh23h"]
+[gd_scene load_steps=3 format=3 uid="uid://dvla1w60eh23h"]
 
-[ext_resource type="Texture2D" uid="uid://cln0upmbnyv4a" path="res://Textures/AnimatedEyeCandies/גלים לים .png" id="1_d34rs"]
 [ext_resource type="Script" uid="uid://bffn7qdaqelay" path="res://Entities/EyeCandies/water_eye_candy.gd" id="1_water"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vs0im"]
-atlas = ExtResource("1_d34rs")
-region = Rect2(0, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5gkva"]
-atlas = ExtResource("1_d34rs")
-region = Rect2(100, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7h5xm"]
-atlas = ExtResource("1_d34rs")
-region = Rect2(200, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iqiov"]
-atlas = ExtResource("1_d34rs")
-region = Rect2(0, 100, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vji7a"]
-atlas = ExtResource("1_d34rs")
-region = Rect2(100, 100, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dpo6r"]
-atlas = ExtResource("1_d34rs")
-region = Rect2(200, 100, 100, 100)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_p1728"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vs0im")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5gkva")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7h5xm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iqiov")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vji7a")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dpo6r")
-}],
-"loop": false,
-"name": &"default",
-"speed": 10.0
-}]
+[ext_resource type="PackedScene" uid="uid://b0xxyo6avatm6" path="res://Entities/EyeCandies/Wave.tscn" id="2_vs0im"]
 
 [node name="Waves" type="Node2D"]
 script = ExtResource("1_water")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-z_index = -1
-sprite_frames = SubResource("SpriteFrames_p1728")
+[node name="AnimatedSprite2D" parent="." instance=ExtResource("2_vs0im")]
