@@ -6,11 +6,10 @@ class_name Level1 extends Node2D
 var stage := 0
 
 func _ready() -> void:
-    if SaveManager.has_save():
-        var saved_level = SaveManager.load_progress()
-        if saved_level > 1:
-            get_tree().change_scene_to_file(SaveManager.get_level_path(saved_level))
-            return
+    var saved_level = SaveManager.load_progress()
+    if saved_level > 1:
+        get_tree().change_scene_to_file(SaveManager.get_level_path(saved_level))
+        return
 
 func _input(event: InputEvent) -> void:
     if stage == 0 && (event.is_action_pressed("confirm") || event.is_action_pressed("cancel")):
