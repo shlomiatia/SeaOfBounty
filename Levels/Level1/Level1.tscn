@@ -27,7 +27,7 @@ offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_xwq7n")
-text = "Left mouse button / Gamepad A / enter to start"
+text = "Left mouse button / Controller A button / enter to start"
 horizontal_alignment = 1
 
 [node name="Blink" parent="CanvasLayer/Label" instance=ExtResource("4_olbyf")]
