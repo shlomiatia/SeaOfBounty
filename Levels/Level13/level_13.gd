@@ -6,6 +6,7 @@ class_name Level13 extends Node2D
 var stage := 0
 
 func _ready() -> void:
+	SaveManager.save_progress(13)
 	await get_tree().create_timer(1.0).timeout
 	start()
 

@@ -6,6 +6,7 @@ class_name Level7 extends Node2D
 var stage := 0
 
 func _ready() -> void:
+    SaveManager.save_progress(7)
     await get_tree().create_timer(1.0).timeout
     start()
 

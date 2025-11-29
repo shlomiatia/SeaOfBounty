@@ -13,6 +13,7 @@ var kraken: Unit
 var one_eye: Unit
 
 func _ready() -> void:
+    SaveManager.save_progress(11)
     main.won.connect(on_won)
     MusicPlayer.stream = preload("res://Music/Trumpet B.mp3")
     MusicPlayer.play()

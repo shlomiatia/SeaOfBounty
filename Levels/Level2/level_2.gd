@@ -11,6 +11,7 @@ var won_triggered: bool = false
 var fisherman: Unit
 
 func _ready() -> void:
+    SaveManager.save_progress(2)
     main.won.connect(on_won)
     MusicPlayer.stream = preload("res://Music/violin B.mp3")
     MusicPlayer.play()

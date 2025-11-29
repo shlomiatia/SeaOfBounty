@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+SaveManager="*res://Scripts/save_manager.gd"
 MusicPlayer="*res://Entities/MusicPlayer/MusicPlayer.tscn"
 LastInput="*res://Entities/LastInput/LastInput.tscn"
 

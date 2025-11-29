@@ -7,6 +7,7 @@ class_name Level6 extends Node2D
 @onready var fade: Fade = $Main/CanvasLayer/Fade
 
 func _ready() -> void:
+    SaveManager.save_progress(6)
     main.won.connect(on_won)
     MusicPlayer.stream = preload("res://Music/Cello B.mp3")
     MusicPlayer.play()
