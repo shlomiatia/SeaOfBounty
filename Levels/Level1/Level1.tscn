@@ -47,7 +47,7 @@ grow_vertical = 2
 theme = ExtResource("3_xwq7n")
 theme_override_font_sizes/font_size = 10
 text = "The game auto save at the start of each level.
-It takes around 30 minutes to complete."
+It takes around 20 minutes to complete."
 horizontal_alignment = 1
 
 [node name="Dialog" parent="." instance=ExtResource("2_n7uxk")]
