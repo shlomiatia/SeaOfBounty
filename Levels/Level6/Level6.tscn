@@ -316,9 +316,9 @@ autoplay = "Default"
 [node name="TypingLabel" parent="Tutorial" instance=ExtResource("9_q2muv")]
 offset_left = -17.0
 offset_top = 21.0
-offset_right = 58.0
+offset_right = 66.0
 offset_bottom = 49.0
-text = "Click me!"
+text = "Click here!"
 
 [node name="TutorialEventHandler" type="ColorRect" parent="."]
 offset_right = 640.0
