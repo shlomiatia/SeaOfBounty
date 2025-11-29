@@ -23,6 +23,7 @@ func _input(event: InputEvent) -> void:
 
 func start() -> void:
     $CanvasLayer/Label.modulate = Color.TRANSPARENT
+    $CanvasLayer/Label2.modulate = Color.TRANSPARENT
     stage = 1
     MusicPlayer.play()
     dialog.start(DialogData.level_1_intro)

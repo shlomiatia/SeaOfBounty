@@ -86,7 +86,7 @@ static var level_5_intro: Array[Array] = [
 ]
 
 static var level_5_stage_2: Array[Array] = [
-	["", "<healing spell cast>"],
+	["Lia", "<healing spell cast>"],
 	["Kate", "All better now! Thanks miss healer lady!"],
 	["Lia", "You're lucky you made it here.\nMonsters are going berserk everywhere."],
 	["Finn", "Then we're going north."],
@@ -242,7 +242,7 @@ static var level_13_ending: Array[Array] = [
 	["Miguel", "We did both my friend, thanks to our lovely companions."],
 	["OneEye", "I usually fight solo, but teaming up is not too bad..."],
 	["Kate", "Finn! Can we bash heads with the pirate lady, please??"],
-	["Finn", "<sigh> You're friends now?\n Sure, we can return home together."],
+	["Finn", "<sigh> You're friends now?\n Sure, we can return home together."]
 ]
 
 # Tutorial texts - Level 2
@@ -265,7 +265,7 @@ static func get_tutorial_level2_text(step: int) -> String:
 		_:
 			return ""
 
-static var tutorial_click_me: String = "Click me!"
+static var tutorial_click_me: String = "Click here!"
 static var tutorial_level2_wait: String = "Wait for it..."
 static var tutorial_level2_attack: String = "Attack with %s now!"
 static var tutorial_level2_defend: String = "Defend with %s now!"

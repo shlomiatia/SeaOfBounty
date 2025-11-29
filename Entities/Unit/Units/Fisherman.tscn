@@ -185,6 +185,7 @@ animations = [{
 attack_range = 2
 sprite_frames = SubResource("SpriteFrames_wdp2b")
 display_name = "Finn"
+label_color = Color(0.666667, 0.666667, 0.666667, 1)
 
 [node name="Reflection" parent="." index="0"]
 material = SubResource("ShaderMaterial_4homq")

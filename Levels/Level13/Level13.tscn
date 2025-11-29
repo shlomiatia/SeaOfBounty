@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cq8uj5n7j4kwt"]
+[gd_scene load_steps=6 format=3 uid="uid://cq8uj5n7j4kwt"]
 
-[ext_resource type="Script" path="res://Levels/Level13/level_13.gd" id="1_level13"]
+[ext_resource type="Script" uid="uid://b1fkhl5n4s4wd" path="res://Levels/Level13/level_13.gd" id="1_level13"]
 [ext_resource type="PackedScene" uid="uid://dnwug4pxdwecg" path="res://Entities/SinWaveTransform/Fade.tscn" id="2_fade"]
 [ext_resource type="PackedScene" uid="uid://h3dyl075pasl" path="res://Entities/Dialog/Dialog.tscn" id="3_dialog"]
+[ext_resource type="Theme" uid="uid://b6vxvs080c1o3" path="res://Themes/Label.tres" id="3_wkqpv"]
 [ext_resource type="Texture2D" uid="uid://cmiync2my87wc" path="res://Textures/רקעים/background1.png" id="4_background"]
 
 [node name="Level13" type="Node2D"]
@@ -12,12 +13,24 @@ script = ExtResource("1_level13")
 
 [node name="Fade" parent="CanvasLayer" instance=ExtResource("2_fade")]
 
-[node name="Dialog" parent="." instance=ExtResource("3_dialog")]
+[node name="Label" type="Label" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -13.0
+offset_right = 251.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_wkqpv")
+text = "Thanks for playing!"
+horizontal_alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 640.0
-offset_bottom = 360.0
-color = Color(0, 0, 0, 1)
+[node name="Dialog" parent="." instance=ExtResource("3_dialog")]
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(320, 213)

@@ -6,12 +6,17 @@ class_name Level13 extends Node2D
 var stage := 0
 
 func _ready() -> void:
-	SaveManager.save_progress(13)
-	await get_tree().create_timer(1.0).timeout
-	start()
+    SaveManager.clear_save()
+    await get_tree().create_timer(1.0).timeout
+    start()
 
 func start() -> void:
-	stage = 1
-	MusicPlayer.stream = preload("res://Music/trumpet D.mp3")
-	MusicPlayer.play()
-	dialog.start(DialogData.level_13_ending)
+    MusicPlayer.stream = preload("res://Music/trumpet D.mp3")
+    MusicPlayer.play()
+    dialog.start(DialogData.level_13_ending)
+    dialog.dialog_finished.connect(_on_dialog_finished)
+
+func _on_dialog_finished() -> void:
+    $Dialog.hide()
+    var tween := create_tween()
+    tween.tween_property($CanvasLayer/Label, "modulate:a", 1.0, 1.0)
