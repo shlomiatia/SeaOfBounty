@@ -81,7 +81,11 @@ func animate_along_path(tile_path: Array[Vector2i]) -> void:
         audio_stream_player_tween = null
 
     audio_stream_player.play()
+
+    var wave_scene = preload("res://Entities/EyeCandies/Wave.tscn")
+
     for i in range(1, tile_path.size()):
+        var current_tile = tile_path[i - 1]
         var target_tile = tile_path[i]
         var target_world_pos = map.map_to_local(target_tile)
 
@@ -89,6 +93,23 @@ func animate_along_path(tile_path: Array[Vector2i]) -> void:
 
         var animation = get_animation(direction)
         play_animation(animation)
+
+        var wave = wave_scene.instantiate()
+        wave.position = map.map_to_local(current_tile)
+
+        if abs(direction.x) > abs(direction.y):
+            if direction.x < 0:
+                wave.scale.x = -1
+        else:
+            if direction.y < 0:
+                wave.rotation_degrees = -90
+            else:
+                wave.rotation_degrees = 90
+
+        get_parent().add_child(wave)
+
+        wave.play("default")
+        wave.animation_finished.connect(func(): wave.queue_free())
 
         var tween = create_tween()
         var distance = position.distance_to(target_world_pos)
