@@ -4,7 +4,7 @@ class_name DialogData extends RefCounted
 static var level_1_intro: Array[Array] = [
 	["", "Somewhere in the middle of the ocean..."],
 	["Kate", "Catch anything yet?"],
-	["Finn", "The sea is silent.\nSomething is scaring the fish.."],
+	["Finn", "The sea is silent.\nSomething is scaring the fish..."],
 	["Kate", "Oooohhh, monsters?!"],
 	["Finn", "Yes. The island folk sent word."],
 	["Kate", "Oh please, can we go??"],
@@ -54,10 +54,10 @@ static var level_3_intro: Array[Array] = [
 
 static var level_3_stage_2: Array[Array] = [
 	["Kate", "Where is everyone?!"],
-	["OneEye", "Good question.."],
+	["OneEye", "Good question..."],
 	["Kate", "What are you doing here, lady?! \nHere to steal our reward??"],
-	["OneEye", "I earned that reward killing the monsters.\nYou mean.. there were more?!"],
-	["Finn", "And the village is empty.."],
+	["OneEye", "I earned that reward killing the monsters.\nYou mean... there were more?!"],
+	["Finn", "And the village is empty..."],
 	["OneEye", "We need to get out of here."],
 	["Finn", "Agreed. Let's stick together."],
 	["Kate", "With her?! <frown>"],
@@ -65,7 +65,7 @@ static var level_3_stage_2: Array[Array] = [
 
 # Level 4 dialogs
 static var level_4_finn: Array[String] = [
-	"They're everywhere.."
+	"They're everywhere..."
 ]
 
 static var level_4_one_eye: Array[String] = [
@@ -80,7 +80,7 @@ static var level_4_orphan: Array[String] = [
 
 # Level 5 dialogs
 static var level_5_intro: Array[Array] = [
-	["Kate", "Argh! I'm hurt.."],
+	["Kate", "Argh! I'm hurt..."],
 	["Finn", "We need a healer."],
 	["OneEye", "I know a good one not far from here.\nFollow me."],
 ]
@@ -92,7 +92,7 @@ static var level_5_stage_2: Array[Array] = [
 	["Finn", "Then we're headed north."],
 	["OneEye", "Are you insane?\nThat's where the monsters are coming from!"],
 	["Finn", "Exactly.\nSomething up north is responsible for this migration."],
-	["OneEye", "That's a terrible plan..\nBut it's the only one we've got."],
+	["OneEye", "That's a terrible plan...\nBut it's the only one we've got."],
 	["Lia", "Then I suppose I'm coming too.\nSomeone has to keep you alive."],
 ]
 
@@ -133,10 +133,10 @@ static var level_8_constantine: Array[String] = [
 static var level_9_intro: Array[Array] = [
 	["", "The north."],
 	["Miguel", "Whoa! Who are you, m'lady?"],
-	["Lia", "You're not monsters..\nGood! I've had enough of them."],
+	["Lia", "You're not monsters...\nGood! I've had enough of them."],
 	["Constantine", "Do you know why this place is vomiting horrors into the world?"],
 	["Lia", "The monsters aren't attacking...\nThey're fleeing."],
-	["Lia", "My group encountered this colossal beast...\nAn iceberg broke and created a tsunami.."],
+	["Lia", "My group encountered this colossal beast...\nAn iceberg broke and created a tsunami..."],
 	["Lia", "We got separated.\nI don't know who made it."],
 	["Constantine", "Lovely.\nCataclysmic wave, terrified monsters, missing expedition..."],
 	["Miguel", "...and three gorgeous idiots marching straight into it."],
@@ -158,16 +158,16 @@ static var level_10_constantine: Array[String] = [
 
 # Level 11 dialogs
 static var level_11_constantine: Array[String] = [
-	"Your colossal beast! I pictures something bigger.."
+	"Your colossal beast! I pictured something bigger..."
 ]
 
 static var level_11_lia: Array[String] = [
 	"That's not the one we encountered.",
-	"I think it's running away too.."
+	"I think it's running away too..."
 ]
 
 static var level_11_miguel: Array[String] = [
-	"What could scare such a terrible behemoth.."
+	"What could scare such a terrible behemoth..."
 ]
 
 static var level_11_one_eye_1: Array[String] = [
@@ -238,7 +238,7 @@ static var level_12_orphan_2: Array[String] = [
 # Level 13 dialogs
 static var level_13_ending: Array[Array] = [
 	["Lia", "I think we did it.\nThose poor monsters seem to be headed back north."],
-	["Constantine", "Poor monsters.. bah! What we did is triumph!"],
+	["Constantine", "Poor monsters... bah! What we did is triumph!"],
 	["Miguel", "We did both my friend, thanks to our lovely companions."],
 	["OneEye", "I usually fight solo, but having backup isn't too bad..."],
 	["Kate", "Finn! Can we bash heads with the pirate lady, please??"],
