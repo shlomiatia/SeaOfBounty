@@ -126,7 +126,7 @@ damage = 80
 max_movement = 13
 attack_range = 4
 sprite_frames = SubResource("SpriteFrames_fel1r")
-display_name = "Dragon"
+display_name = "Sea Horse"
 set_flip_h = true
 prefer_max_movement = true
 
