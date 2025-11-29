@@ -24,10 +24,6 @@ func _ready() -> void:
     main.start_player_turn()
     tutorial_event_handler.show_tutorial_at_step(0)
 
-func _process(_delta: float) -> void:
-    if Input.is_action_pressed("confirm") && Input.is_action_pressed("cancel"):
-        get_tree().change_scene_to_file("res://Levels/Level9/Level9.tscn")
-
 func on_won() -> void:
     await fade.fade_out()
     get_tree().change_scene_to_file("res://Levels/Level9/Level9.tscn")

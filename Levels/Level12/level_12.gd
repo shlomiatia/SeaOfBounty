@@ -18,10 +18,6 @@ func _on_won() -> void:
     await fade.fade_out()
     get_tree().change_scene_to_file("res://Levels/Level13/Level13.tscn")
 
-func _process(_delta: float) -> void:
-    if Input.is_action_pressed("confirm") && Input.is_action_pressed("cancel"):
-        get_tree().change_scene_to_file("res://Levels/Level13/Level13.tscn")
-
 func _ready() -> void:
     SaveManager.save_progress(12)
     main.won.connect(_on_won)

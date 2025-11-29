@@ -33,10 +33,6 @@ func _ready() -> void:
 
     main.start_player_turn()
 
-func _process(_delta: float) -> void:
-    if Input.is_action_pressed("confirm") && Input.is_action_pressed("cancel"):
-        get_tree().change_scene_to_file("res://Levels/Level11/Level11.tscn")
-
 func on_won() -> void:
     await fade.fade_out()
     get_tree().change_scene_to_file("res://Levels/Level11/Level11.tscn")
