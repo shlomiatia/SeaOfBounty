@@ -2,62 +2,62 @@ class_name DialogData extends RefCounted
 
 # Level 1 dialogs
 static var level_1_intro: Array[Array] = [
-	["", "Somwhere in the ocean..."],
-	["Kate", "Caught anything yet?"],
-	["Finn", "The sea is silent.\nSomething is scaring the fish..."],
-	["Kate", "Whoo, Monsters?!"],
+	["", "Somewhere in the middle of the ocean..."],
+	["Kate", "Catch anything yet?"],
+	["Finn", "The sea is silent.\nSomething is scaring the fish.."],
+	["Kate", "Oooohhh, monsters?!"],
 	["Finn", "Yes. The island folk sent word."],
-	["Kate", "Can we go, please??"],
+	["Kate", "Oh please, can we go??"],
 	["Finn", "<sigh> We're going..."],
 ]
 
 static var level_1_stage_2: Array[Array] = [
 	["OneEye", "Took you long enough, old man."],
-	["Finn", "Didn't know this job was taken."],
+	["Finn", "Didn't realize this job was spoken for."],
 	["OneEye", "It isn't. Just don't expect me to share."],
-	["Kate", "So… whoever kills them first??"],
-	["OneEye", "You got spirit kid...\nThat's fair."],
+	["Kate", "So… first come, first served??"],
+	["OneEye", "You got spirit kid...\nSounds fair enough."],
 	["Finn", "We hunt at first light.\nGet some rest."],
 ]
 
 static var level_1_stage_3: Array[Array] = [
-	["", "The next morning...\nKate bed is empty."],
+	["", "The next morning...\nKate's bed is empty."],
 	["Finn", "Not again..."],
 ]
 
 # Level 2 dialogs
 static var level_2_intro: Array[String] = [
-	"I'll beat those monsters and win the bounty!",
-	"Finn will be so proud..."
+	"I'll defeat those monsters and win the bounty!",
+	"Finn will be so proud."
 ]
 
 static var level_2_won_1: Array[String] = [
-	"Huh! That's what you get!"
+	"Ha! That's what you get!"
 ]
 
 static var level_2_won_2: Array[String] = [
-	"Oh no, it's too many!"
+	"Oh no, there are too many!"
 ]
 
 static var level_2_fisherman: Array[String] = [
-	"Kate I'm here!",
-	"Leave her alone you creeps!"
+	"Kate, I'm here!",
+	"Get away from her, you creeps!"
 ]
 
 # Level 3 dialogs
 static var level_3_intro: Array[Array] = [
 	["Kate", "I'm sorry, Finn… \nI wanted to prove I'm strong too…"],
-	["Finn", "You already are."],
-	["Kate", "I hope you're right…\nI'll need to carry so much gold!"],
-	["Finn", "<shakes head> Let's go collect it."],
+	["Finn", "You are strong, Kate."],
+	["Kate", "I hope you're right…\nI'll need it to carry all that gold!"],
+	["Finn", "<shakes head> Let's go collect."],
 ]
 
 static var level_3_stage_2: Array[Array] = [
-	["Kate", "Where is everybody?!"],
-	["OneEye", "That's a good question."],
-	["Kate", "What are you doing here, lady?! \nStealing our reward??"],
-	["OneEye", "I dealt with the monsters.\nYou mean there were more?"],
-	["Finn", "And the village is empty..."],
+	["Kate", "Where is everyone?!"],
+	["OneEye", "Good question.."],
+	["Kate", "What are you doing here, lady?! \nHere to steal our reward??"],
+	["OneEye", "I earned that reward killing the monsters.\nYou mean.. there were more?!"],
+	["Finn", "And the village is empty.."],
 	["OneEye", "We need to get out of here."],
 	["Finn", "Agreed. Let's stick together."],
 	["Kate", "With her?! <frown>"],
@@ -65,58 +65,58 @@ static var level_3_stage_2: Array[Array] = [
 
 # Level 4 dialogs
 static var level_4_finn: Array[String] = [
-	"So many..."
+	"They're everywhere.."
 ]
 
 static var level_4_one_eye: Array[String] = [
-	"Finn, throw your harpoon at the monsters from a distance!",
-	"I'm the only who outrange the puffers so leave them to me!",
-	"Kate, you finish them off when they're weakened!"
+	"Finn, you harpoon the monsters from a distance!",
+	"I'm the only one who can outrange the puffers, so leave those to me!",
+	"Kate, you finish them off when they're weakened."
 ]
 
 static var level_4_orphan: Array[String] = [
-	"Aren't you a control freak lady!"
+	"Control freak much, lady?"
 ]
 
 # Level 5 dialogs
 static var level_5_intro: Array[Array] = [
-	["Kate", "Ouch! It hurts!"],
+	["Kate", "Argh! I'm hurt.."],
 	["Finn", "We need a healer."],
-	["OneEye", "I know one, she's not far.\nFollow me."],
+	["OneEye", "I know a good one not far from here.\nFollow me."],
 ]
 
 static var level_5_stage_2: Array[Array] = [
 	["Lia", "<healing spell cast>"],
 	["Kate", "All better now! Thanks miss healer lady!"],
 	["Lia", "You're lucky you made it here.\nMonsters are going berserk everywhere."],
-	["Finn", "Then we're going north."],
-	["OneEye", "Are you insane?\nThat's where the monsters are from!"],
-	["Finn", "Exactly.\nSomething up north is resposible for this migration."],
-	["OneEye", "This is a terrible idea!\nBut the only one we have..."],
+	["Finn", "Then we're headed north."],
+	["OneEye", "Are you insane?\nThat's where the monsters are coming from!"],
+	["Finn", "Exactly.\nSomething up north is responsible for this migration."],
+	["OneEye", "That's a terrible plan..\nBut it's the only one we've got."],
 	["Lia", "Then I suppose I'm coming too.\nSomeone has to keep you alive."],
 ]
 
 # Level 6 dialogs
 static var level_6_kate: Array[String] = [
-	"That ugly fish spitted on me!"
+	"That ugly fish spat on me!"
 ]
 
 static var level_6_lia: Array[String] = [
-	"I'll patch you up."
+	"I'll patch you right up."
 ]
 
 # Level 7 dialogs
 static var level_7_intro: Array[Array] = [
-	["", "Somewhere else, not far..."],
-	["Constantine", "Disgusting creatures… I scorch five, and ten more crawl out!"],
+	["", "Elsewhere, nearby..."],
+	["Constantine", "Disgusting creatures.\nI scorch five, and ten more crawl out!"],
 	["Miguel", "Ah, but you handle it with such elegance..."],
-	["Constantine", "Don't flatter me while I'm irritated!"],
-	["Miguel", "That mean you'll never get compliments.\nThat won't do."],
+	["Constantine", "Don't flatter me when I'm irritated!"],
+	["Miguel", "Then you'd never get any compliments.\nThat wouldn't do."],
 	["Constantine", "<sigh> They're coming from the north, it's obvious now."],
-	["Miguel", "Than that's our destination."],
+	["Miguel", "Then that's our destination."],
 	["Constantine", "It's not our problem!"],
-	["Miguel", "Would you rather burn the source or the leftovers?"],
-	["Constantine", "...Let's go."],
+	["Miguel", "Would you rather burn the source, or the leftovers?"],
+	["Constantine", "Hmm... ok.\nLet's go!"],
 ]
 
 # Level 8 dialogs
@@ -132,11 +132,11 @@ static var level_8_constantine: Array[String] = [
 # Level 9 dialogs
 static var level_9_intro: Array[Array] = [
 	["", "The north."],
-	["Miguel", "Whoa! Who are you milady?"],
-	["Lia", "You're not monsters...\nGood. I had enough of those."],
+	["Miguel", "Whoa! Who are you, m'lady?"],
+	["Lia", "You're not monsters..\nGood! I've had enough of them."],
 	["Constantine", "Do you know why this place is vomiting horrors into the world?"],
 	["Lia", "The monsters aren't attacking...\nThey're fleeing."],
-	["Lia", "My group encountered this colossal beast...\nAn iceberg broke and created a tsunamy..."],
+	["Lia", "My group encountered this colossal beast...\nAn iceberg broke and created a tsunami.."],
 	["Lia", "We got separated.\nI don't know who made it."],
 	["Constantine", "Lovely.\nCataclysmic wave, terrified monsters, missing expedition..."],
 	["Miguel", "...and three gorgeous idiots marching straight into it."],
@@ -158,32 +158,32 @@ static var level_10_constantine: Array[String] = [
 
 # Level 11 dialogs
 static var level_11_constantine: Array[String] = [
-	"Your collosal beast! I imagined it will be bigger..."
+	"Your colossal beast! I pictures something bigger.."
 ]
 
 static var level_11_lia: Array[String] = [
-	"It's not the one we encountered.",
-	"I think it's running away too..."
+	"That's not the one we encountered.",
+	"I think it's running away too.."
 ]
 
 static var level_11_miguel: Array[String] = [
-	"What can scare such a terrible behemoth..."
+	"What could scare such a terrible behemoth.."
 ]
 
 static var level_11_one_eye_1: Array[String] = [
-	"It will soon run away from me!"
+	"It will soon be fleeing me!"
 ]
 
 static var level_11_lia_2: Array[String] = [
-	"One Eye, you're alive!"
+	"One Eye! You're alive!"
 ]
 
 static var level_11_miguel_2: Array[String] = [
-	"This magnificant warrior is with you?"
+	"This magnificent warrior is with you?"
 ]
 
 static var level_11_constantine_2: Array[String] = [
-	"Good, that should be enough, attack!"
+	"Good, that should be enough. Attack!"
 ]
 
 # Level 12 dialogs
@@ -237,12 +237,12 @@ static var level_12_orphan_2: Array[String] = [
 
 # Level 13 dialogs
 static var level_13_ending: Array[Array] = [
-	["Lia", "I think we did it. The poor monsters seem to return north."],
-	["Constantine", "Poor monsters.. Bah! What we did is triumph!"],
+	["Lia", "I think we did it.\nThose poor monsters seem to be headed back north."],
+	["Constantine", "Poor monsters.. bah! What we did is triumph!"],
 	["Miguel", "We did both my friend, thanks to our lovely companions."],
-	["OneEye", "I usually fight solo, but teaming up is not too bad..."],
+	["OneEye", "I usually fight solo, but having backup isn't too bad..."],
 	["Kate", "Finn! Can we bash heads with the pirate lady, please??"],
-	["Finn", "<sigh> You're friends now?\n Sure, we can return home together."]
+	["Finn", "<sigh> You're friends now?\nSure, we can return home together."],
 ]
 
 # Tutorial texts - Level 2
@@ -251,11 +251,11 @@ static func get_tutorial_level2_text(step: int) -> String:
 		0:
 			return "Move cursor with %s.\nSelect Kate with %s."
 		1:
-			return "Your movement range is in green, and attack range in red.\nSelect the enemy to attack it."
+			return "Green is your range of mobility, and red is your range of attack.\nSelect the enemy to strike it."
 		2:
-			return "Select the enemy to see it's range."
+			return "Select the enemy to see its range."
 		3:
-			return "Move Kate outside the enemy range."
+			return "Move Kate outside the enemy's range."
 		7:
 			return "Select Finn."
 		8:
