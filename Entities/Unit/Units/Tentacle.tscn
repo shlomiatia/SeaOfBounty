@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://1dyaua32kpeu"]
+[gd_scene load_steps=20 format=3 uid="uid://1dyaua32kpeu"]
 
 [ext_resource type="PackedScene" uid="uid://05oo7vpmyn03" path="res://Entities/Unit/Unit.tscn" id="1_gls4s"]
 [ext_resource type="Shader" uid="uid://b20ld62ku3mg8" path="res://Entities/Unit/Reflection.gdshader" id="2_ngmd1"]
@@ -6,9 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://byqt0ntk0ox8g" path="res://Textures/Untitled copy 2.png" id="3_xvh6v"]
 [ext_resource type="Shader" uid="uid://bn0wv35v1nuq4" path="res://Entities/Unit/Unit.gdshader" id="4_pblyq"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pa0pq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pblyq"]
 atlas = ExtResource("2_xvh6v")
-region = Rect2(922, 108, 30, 37)
+region = Rect2(932, 108, 20, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ngmd1"]
 atlas = ExtResource("2_xvh6v")
@@ -26,11 +26,15 @@ region = Rect2(524, 108, 30, 37)
 atlas = ExtResource("2_xvh6v")
 region = Rect2(723, 108, 30, 37)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_pa0pq"]
+atlas = ExtResource("2_xvh6v")
+region = Rect2(922, 108, 30, 37)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_55wun"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pa0pq")
+"texture": SubResource("AtlasTexture_pblyq")
 }],
 "loop": true,
 "name": &"down",
@@ -58,7 +62,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pa0pq")
+"texture": SubResource("AtlasTexture_pblyq")
 }],
 "loop": true,
 "name": &"left",
@@ -66,7 +70,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pa0pq")
+"texture": SubResource("AtlasTexture_pblyq")
 }],
 "loop": true,
 "name": &"right",
@@ -74,7 +78,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pa0pq")
+"texture": SubResource("AtlasTexture_pblyq")
 }],
 "loop": true,
 "name": &"up",

@@ -123,6 +123,7 @@ shader_parameter/uv_bottom = 1.0
 max_hp = 400
 hp = 400
 damage = 80
+max_movement = 5
 sprite_frames = SubResource("SpriteFrames_vqlr1")
 display_name = "Crab"
 prefer_max_movement = true

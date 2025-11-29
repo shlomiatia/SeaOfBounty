@@ -21,7 +21,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0n11m"]
 shader = ExtResource("8_5xq35")
 shader_parameter/color1 = Color(1, 1, 1, 1)
-shader_parameter/direction = Vector2(0, -1)
+shader_parameter/direction = Vector2(0, 1)
 shader_parameter/max_distance = 2.0
 shader_parameter/pixels_per_second = 2.0
 shader_parameter/custom_time = -1.0

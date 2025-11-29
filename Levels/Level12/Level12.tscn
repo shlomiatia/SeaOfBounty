@@ -23,7 +23,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wni3c"]
 shader = ExtResource("12_igkn2")
 shader_parameter/color1 = Color(1, 1, 1, 1)
-shader_parameter/direction = Vector2(0, -1)
+shader_parameter/direction = Vector2(0, 1)
 shader_parameter/max_distance = 2.0
 shader_parameter/pixels_per_second = 2.0
 shader_parameter/custom_time = -1.0
@@ -111,7 +111,7 @@ texture = ExtResource("11_upjaj")
 
 [node name="קישוטים-Layer10" type="Sprite2D" parent="Main/EyeCandies" index="14"]
 material = SubResource("ShaderMaterial_wni3c")
-position = Vector2(268, 127)
+position = Vector2(548, 169)
 texture = ExtResource("13_k3jhl")
 metadata/_edit_lock_ = true
 
