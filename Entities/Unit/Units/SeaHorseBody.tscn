@@ -122,7 +122,7 @@ shader_parameter/uv_bottom = 1.0
 [node name="SeaHorseBody" groups=["enemies"] instance=ExtResource("1_1lya0")]
 max_hp = 999
 hp = 999
-damage = 100
+damage = 80
 max_movement = 0
 attack_range = 0
 sprite_frames = SubResource("SpriteFrames_csypr")

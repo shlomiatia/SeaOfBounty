@@ -127,6 +127,7 @@ attack_range = 2
 sprite_frames = SubResource("SpriteFrames_b2ajr")
 display_name = "Kraken"
 set_flip_h = true
+prefer_max_movement = true
 
 [node name="Reflection" parent="." index="0"]
 material = SubResource("ShaderMaterial_0ik6f")

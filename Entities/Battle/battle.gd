@@ -15,6 +15,11 @@ func start(attacker: Unit, defender: Unit) -> void:
     if winter:
         background.texture = preload("res://Textures/Ui - Layer 19 (2).png")
     visible = true
+
+    if defender.name == "SeaHorseBody" or defender.name == "SeaHorseTail":
+        defender = get_tree().get_nodes_in_group("enemies").filter(func(unit: Unit) -> bool:
+            return unit.name == "SeaHorseHead"
+        )[0]
     
 
     var defender_is_hero := defender.is_in_group("heroes")
@@ -76,10 +81,6 @@ func start(attacker: Unit, defender: Unit) -> void:
                     sea_horse_part.hp = 0
                     _fade_out_and_remove(sea_horse_part)
         await _fade_out_and_remove(enemy)
-    elif enemy.name == "SeaHorseHead" or enemy.name == "SeaHorseBody" or enemy.name == "SeaHorseTail":
-        for sea_horse_part in get_tree().get_nodes_in_group("enemies"):
-            if sea_horse_part.name == "SeaHorseHead" or sea_horse_part.name == "SeaHorseBody" or sea_horse_part.name == "SeaHorseTail":
-                sea_horse_part.hp = enemy.hp
 
     if hero.hp == 0:
         await _fade_out_and_remove(hero)

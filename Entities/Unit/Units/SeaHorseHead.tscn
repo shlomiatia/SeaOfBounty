@@ -128,6 +128,7 @@ attack_range = 4
 sprite_frames = SubResource("SpriteFrames_fel1r")
 display_name = "Sea Horse"
 set_flip_h = true
+prefer_max_movement = true
 
 [node name="Reflection" parent="." index="0" node_paths=PackedStringArray("unit")]
 material = SubResource("ShaderMaterial_0yk07")

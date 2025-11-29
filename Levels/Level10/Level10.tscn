@@ -49,7 +49,7 @@ position = Vector2(27, 252)
 position = Vector2(23, 300)
 
 [node name="Merwitch" parent="Main/Units" index="4" instance=ExtResource("7_wi85w")]
-position = Vector2(176, 170)
+position = Vector2(218, 252)
 initial_direction = "left"
 
 [node name="Mermage" parent="Main/Units" index="5" instance=ExtResource("8_umnx3")]
