@@ -60,13 +60,14 @@ func handle_confirm(cursor_pos: Vector2) -> void:
     if current_hero != null && current_hero.display_name == "Lia" && !current_hero.activated:
         var hero = Utils.get_entity_at_tile(map, clicked_grid_pos, "heroes")
         if hero != null && hero.hp < hero.max_hp:
-            hero.hp = min(hero.hp + 40, hero.max_hp)
             current_hero.moved = true
             current_hero.activated = true
             current_hero = null
             clear()
             audio_stream_player.stream = preload("res://Sounds/Sfx/lazer.wav")
             audio_stream_player.play()
+            var tween = create_tween()
+            tween.tween_method(func(value: float): hero.hp = value, hero.hp, min(hero.hp + 40, hero.max_hp), 0.5)
             start_enemy_turn_if_needed()
             return
 
