@@ -14,6 +14,7 @@ const movement_speed: float = 300.0
 @export var display_name: String = "Monster"
 @export var set_flip_h: bool
 @export var label_color: Color = Color.WHITE
+@export var prefer_max_movement: bool = false
 
 @onready var map: Map = $"../../Map"
 @onready var animated_sprite_2d = $AnimatedSprite2D

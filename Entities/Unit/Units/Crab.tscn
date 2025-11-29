@@ -125,6 +125,7 @@ hp = 400
 damage = 80
 sprite_frames = SubResource("SpriteFrames_vqlr1")
 display_name = "Crab"
+prefer_max_movement = true
 
 [node name="Reflection" parent="." index="0" node_paths=PackedStringArray("unit")]
 material = SubResource("ShaderMaterial_5bdrp")

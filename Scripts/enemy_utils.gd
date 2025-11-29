@@ -24,6 +24,13 @@ static func execute_single_enemy_ai(enemy: Unit, main: Main) -> void:
         if hero.hp == 0:
             continue
         var hero_pos = hero.position
+        
+        if Utils.is_in_range(enemy, main.map.local_to_map(hero_pos), main.map):
+            shortest_path = []
+            shortest_path_in_range = [main.map.local_to_map(enemy.position)]
+            nearest_hero = hero
+            break
+
         var path = Utils.find_path_to_tile_in_range(enemy, hero_pos, main.map)
 
         if path.size() > 0:
@@ -39,12 +46,6 @@ static func execute_single_enemy_ai(enemy: Unit, main: Main) -> void:
             if path.size() > 0 && (shortest_path.size() == 0 || path.size() < shortest_path.size()):
                 shortest_path = path
                 nearest_hero = hero
-
-        if Utils.is_in_range(enemy, main.map.local_to_map(hero_pos), main.map):
-            shortest_path = []
-            shortest_path_in_range = [main.map.local_to_map(enemy.position)]
-            nearest_hero = hero
-            break
 
 
     if shortest_path.size() > 0:
@@ -128,6 +129,8 @@ static func get_tentacle_tile(main: Main, kraken_tile: Vector2i, radius: int):
     var heroes = main.get_tree().get_nodes_in_group("heroes")
     for row in range(kraken_tile.y - radius, kraken_tile.y + radius + 1):
         for col in range(kraken_tile.x - radius, kraken_tile.x + radius + 1):
+            if row > 9 || row < 0 || col > 15 || col < 0:
+                continue
             if row == kraken_tile.y and col == kraken_tile.x:
                 continue
             var tile = Vector2i(col, row)
