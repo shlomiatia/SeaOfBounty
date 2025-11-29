@@ -11,15 +11,15 @@ config_version=5
 [application]
 
 config/name="SeaOfBounty"
-run/main_scene="uid://bqidmdl4wc8qg"
+run/main_scene="uid://mw17bslxspnt"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-SaveManager="*res://Scripts/save_manager.gd"
 MusicPlayer="*res://Entities/MusicPlayer/MusicPlayer.tscn"
 LastInput="*res://Entities/LastInput/LastInput.tscn"
+SaveManager="*res://Scripts/save_manager.gd"
 
 [display]
 

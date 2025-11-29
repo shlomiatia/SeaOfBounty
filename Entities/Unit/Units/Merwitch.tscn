@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ckod0fymyd54"]
+[gd_scene load_steps=18 format=3 uid="uid://ckod0fymyd54"]
 
 [ext_resource type="PackedScene" uid="uid://05oo7vpmyn03" path="res://Entities/Unit/Unit.tscn" id="1_3nn22"]
 [ext_resource type="Texture2D" uid="uid://bniddpk0xsb56" path="res://Textures/Monsters enemies/בת ים קוסמת סלע/בת ים קוסמת 2קטן.png" id="2_q136r"]
@@ -117,6 +117,44 @@ shader_parameter/modulate = Color(1, 1, 1, 1)
 shader_parameter/water_color = Color(0.752941, 0.796078, 0.862745, 0.501961)
 shader_parameter/uv_bottom = 1.0
 
+[sub_resource type="Animation" id="Animation_3nn22"]
+resource_name = "Default"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/hide_pixels")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 1.0, 2.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_q136r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/hide_pixels")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q136r"]
+_data = {
+&"Default": SubResource("Animation_3nn22"),
+&"RESET": SubResource("Animation_q136r")
+}
+
 [node name="Merwitch" groups=["enemies"] instance=ExtResource("1_3nn22")]
 damage = 60
 max_movement = 0
@@ -137,3 +175,9 @@ sprite_frames = SubResource("SpriteFrames_4gcwc")
 
 [node name="AnimationPlayer" parent="." index="2"]
 autoplay = ""
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." index="6"]
+libraries = {
+&"": SubResource("AnimationLibrary_q136r")
+}
+autoplay = "Default"

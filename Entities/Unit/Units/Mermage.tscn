@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dl1q2y4idbalt"]
+[gd_scene load_steps=18 format=3 uid="uid://dl1q2y4idbalt"]
 
 [ext_resource type="PackedScene" uid="uid://05oo7vpmyn03" path="res://Entities/Unit/Unit.tscn" id="1_0ka8v"]
 [ext_resource type="Texture2D" uid="uid://bjfqtcrwakorr" path="res://Textures/Monsters enemies/בת ים קוסמת סלע/בת ים מתקיפה קטנה .png" id="2_0ka8v"]
@@ -117,6 +117,45 @@ shader_parameter/modulate = Color(1, 1, 1, 1)
 shader_parameter/water_color = Color(0.752941, 0.796078, 0.862745, 0.501961)
 shader_parameter/uv_bottom = 1.0
 
+[sub_resource type="Animation" id="Animation_0ka8v"]
+resource_name = "Default"
+length = 2.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/hide_pixels")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 1.0, 2.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_nm1ar"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/hide_pixels")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sku1a"]
+_data = {
+&"Default": SubResource("Animation_0ka8v"),
+&"RESET": SubResource("Animation_nm1ar")
+}
+
 [node name="Mermage" groups=["enemies"] instance=ExtResource("1_0ka8v")]
 damage = 60
 max_movement = 0
@@ -137,3 +176,9 @@ sprite_frames = SubResource("SpriteFrames_4gcwc")
 
 [node name="AnimationPlayer" parent="." index="2"]
 autoplay = ""
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." index="6"]
+libraries = {
+&"": SubResource("AnimationLibrary_sku1a")
+}
+autoplay = "Default"
