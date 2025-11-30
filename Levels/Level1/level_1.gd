@@ -8,7 +8,7 @@ var stage := 0
 func _ready() -> void:
     var saved_level = SaveManager.load_progress()
     if saved_level > 1:
-        get_tree().change_scene_to_file(SaveManager.get_level_path(saved_level))
+        get_tree().change_scene_to_file.call_deferred(SaveManager.get_level_path(saved_level))
         return
 
 func _input(event: InputEvent) -> void:

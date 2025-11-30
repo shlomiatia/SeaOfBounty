@@ -10,13 +10,30 @@ signal won;
 @onready var turn_label: Label = $CanvasLayer/TurnLabel
 @onready var cursor: Cursor = $Cursor
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
-@onready var controls_label: Label = $CanvasLayer/ControlsLabel
+@onready var controls: MarginContainer = $CanvasLayer/Controls
+@onready var controls_button: HFlowContainer = $CanvasLayer/Controls/ControlsButtons
+@onready var skip_button: Button = $CanvasLayer/Controls/ControlsButtons/SkipButton
+@onready var deselect_button: Button = $CanvasLayer/Controls/ControlsButtons/DeselectButton
+@onready var controls_label: Label = $CanvasLayer/Controls/ControlsLabel
 
 var current_hero: Unit = null
 var is_input_disabled: bool = true
 
+func _ready() -> void:
+    skip_button.pressed.connect(func():
+        print("Skip button pressed")
+        skip_current_hero_turn()
+    )
+    deselect_button.pressed.connect(func():
+        print("Deselect button pressed")
+        current_hero = null
+        clear()
+    )
+
 func _process(_delta: float) -> void:
-    controls_label.visible = !is_input_disabled && current_hero != null
+    controls.visible = !is_input_disabled && current_hero != null
+    controls_button.visible = LastInput.last_input_type == LastInput.InputType.MOUSE
+    controls_label.visible = LastInput.last_input_type != LastInput.InputType.MOUSE
     controls_label.text = "%s - Skip hero turn.\n%s - Deselect hero." % [LastInput.get_text("Middle mouse button", "Backspace", "Y button"), LastInput.get_text("Right mouse button", "Esc", "B button")]
 
     if is_input_disabled:
@@ -33,14 +50,10 @@ func _input(event: InputEvent) -> void:
         return
 
     if event.is_action_pressed("skip") && current_hero:
-        play_confirm()
-        current_hero.moved = true
-        current_hero.activated = true
-        current_hero = null
-        clear()
-        start_enemy_turn_if_needed()
+        skip_current_hero_turn()
 
     if event.is_action_pressed("confirm"):
+        print("Confirm action pressed")
         if is_game_over():
             get_tree().reload_current_scene()
             return
@@ -53,6 +66,15 @@ func _input(event: InputEvent) -> void:
     elif event.is_action_pressed("cancel"):
         current_hero = null
         clear()
+
+func skip_current_hero_turn() -> void:
+    if current_hero != null:
+        play_confirm()
+        current_hero.moved = true
+        current_hero.activated = true
+        current_hero = null
+        clear()
+        start_enemy_turn_if_needed()
 
 func handle_confirm(cursor_pos: Vector2) -> void:
     var clicked_grid_pos := map.local_to_map(cursor_pos)
@@ -156,3 +178,7 @@ func is_game_over() -> bool:
 
 func is_won() -> bool:
     return get_tree().get_nodes_in_group("enemies").filter(func(hero: Unit): return hero.hp > 0).size() == 0
+
+
+func _on_skip_button_button_down() -> void:
+    prints("hello")
