@@ -19,17 +19,6 @@ signal won;
 var current_hero: Unit = null
 var is_input_disabled: bool = true
 
-func _ready() -> void:
-    skip_button.pressed.connect(func():
-        print("Skip button pressed")
-        skip_current_hero_turn()
-    )
-    deselect_button.pressed.connect(func():
-        print("Deselect button pressed")
-        current_hero = null
-        clear()
-    )
-
 func _process(_delta: float) -> void:
     controls.visible = !is_input_disabled && current_hero != null
     controls_button.visible = LastInput.last_input_type == LastInput.InputType.MOUSE
@@ -64,8 +53,7 @@ func _input(event: InputEvent) -> void:
 
         handle_confirm(cursor.position)
     elif event.is_action_pressed("cancel"):
-        current_hero = null
-        clear()
+        deselect_current_hero()
 
 func skip_current_hero_turn() -> void:
     if current_hero != null:
@@ -75,6 +63,10 @@ func skip_current_hero_turn() -> void:
         current_hero = null
         clear()
         start_enemy_turn_if_needed()
+        
+func deselect_current_hero() -> void:
+    current_hero = null
+    clear()
 
 func handle_confirm(cursor_pos: Vector2) -> void:
     var clicked_grid_pos := map.local_to_map(cursor_pos)
@@ -180,5 +172,11 @@ func is_won() -> bool:
     return get_tree().get_nodes_in_group("enemies").filter(func(hero: Unit): return hero.hp > 0).size() == 0
 
 
-func _on_skip_button_button_down() -> void:
-    prints("hello")
+func _on_skip_button_pressed() -> void:
+    prints("Skip button pressed")
+    skip_current_hero_turn()
+
+
+func _on_deselect_button_pressed() -> void:
+    prints("Skip button pressed")
+    deselect_current_hero()

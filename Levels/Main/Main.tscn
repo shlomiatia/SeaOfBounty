@@ -97,4 +97,5 @@ anchor_mode = 0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
-[connection signal="button_down" from="CanvasLayer/Controls/ControlsButtons/SkipButton" to="." method="_on_skip_button_button_down"]
+[connection signal="pressed" from="CanvasLayer/Controls/ControlsButtons/SkipButton" to="." method="_on_skip_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Controls/ControlsButtons/DeselectButton" to="." method="_on_deselect_button_pressed"]
