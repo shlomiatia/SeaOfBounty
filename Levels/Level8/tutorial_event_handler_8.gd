@@ -46,7 +46,7 @@ func _input(event: InputEvent) -> void:
 func get_tutorial_text(step: int) -> String:
     var text = DialogData.get_tutorial_level8_text(step)
     if step == 1:
-        return text % [LastInput.get_text("Middle mouse button", "Backspace", "Y button")]
+        return text % [LastInput.get_text("Backspace", "Backspace", "Y button")]
     return text
 
 func show_tutorial_at_step(step: int) -> void:

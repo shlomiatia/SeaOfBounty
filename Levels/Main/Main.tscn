@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bblitdo328h8a"]
+[gd_scene load_steps=11 format=3 uid="uid://bblitdo328h8a"]
 
 [ext_resource type="Script" uid="uid://currcp3fjqvdh" path="res://Levels/Main/main.gd" id="1_8ofus"]
 [ext_resource type="PackedScene" uid="uid://b6mjpkkw6ptwr" path="res://Entities/Map/map.tscn" id="2_avnir"]
 [ext_resource type="Theme" uid="uid://b6vxvs080c1o3" path="res://Themes/Label.tres" id="2_dchpf"]
 [ext_resource type="PackedScene" uid="uid://dnwug4pxdwecg" path="res://Entities/SinWaveTransform/Fade.tscn" id="3_ehtx6"]
 [ext_resource type="PackedScene" uid="uid://dwli7df7clyar" path="res://Entities/MovementPreview/movement_preview.tscn" id="4_7l01x"]
-[ext_resource type="FontFile" uid="uid://c5nsl86joi0vw" path="res://Fonts/Jersey10-Regular.ttf" id="4_ehtx6"]
 [ext_resource type="PackedScene" uid="uid://dn7tdn7xf0n6m" path="res://Entities/EyeCandies/EyeCandies.tscn" id="7_dl1uj"]
 [ext_resource type="PackedScene" uid="uid://df84bkpjfqdm5" path="res://Entities/Battle/Battle.tscn" id="7_tftr3"]
 [ext_resource type="PackedScene" uid="uid://lfbidqmbpqnv" path="res://Entities/MovementOverlay/MovementOverlay.tscn" id="8_ehtx6"]
@@ -37,36 +36,16 @@ horizontal_alignment = 1
 [node name="Fade" parent="CanvasLayer" instance=ExtResource("3_ehtx6")]
 visible = true
 
-[node name="Controls" type="MarginContainer" parent="CanvasLayer"]
+[node name="ControlsLabel" type="Label" parent="CanvasLayer"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -32.0
-offset_right = 92.0
+offset_left = 3.0
+offset_top = -23.0
+offset_right = 95.0
 grow_vertical = 0
-
-[node name="ControlsButtons" type="HFlowContainer" parent="CanvasLayer/Controls"]
-layout_mode = 2
-
-[node name="SkipButton" type="Button" parent="CanvasLayer/Controls/ControlsButtons"]
-z_index = 100
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("4_ehtx6")
+theme = ExtResource("2_dchpf")
 theme_override_font_sizes/font_size = 12
-text = "Skip hero turn"
-
-[node name="DeselectButton" type="Button" parent="CanvasLayer/Controls/ControlsButtons"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("4_ehtx6")
-theme_override_font_sizes/font_size = 12
-text = "Deselect hero"
-
-[node name="ControlsLabel" type="Label" parent="CanvasLayer/Controls"]
-layout_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -2
@@ -96,6 +75,3 @@ position = Vector2(320, 180)
 anchor_mode = 0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-
-[connection signal="pressed" from="CanvasLayer/Controls/ControlsButtons/SkipButton" to="." method="_on_skip_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Controls/ControlsButtons/DeselectButton" to="." method="_on_deselect_button_pressed"]

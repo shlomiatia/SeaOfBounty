@@ -7,7 +7,7 @@ class_name TutorialEventHandler extends ColorRect
 @onready var tutorial_highlight: TileMapLayer = $"../TutorialHighlight"
 @onready var tutorial_label: TypingLabel = $"../TutorialLabel"
 @onready var battle_meter: BattleMeter = $"../Main/Battle/BattleMeter"
-@onready var controls: MarginContainer = $"../Main/CanvasLayer/Controls"
+@onready var controls_label: Label = $"../Main/CanvasLayer/ControlsLabel"
 
 var tutorial_active: bool = false
 var tutorial_step: int = 0
@@ -35,7 +35,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
     check_battle_meter_tutorial()
-    controls.hide()
+    controls_label.hide()
     if current_battle_tutorial != "":
         tutorial_label.position.y = 325.0
     else:

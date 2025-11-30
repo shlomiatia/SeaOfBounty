@@ -10,20 +10,14 @@ signal won;
 @onready var turn_label: Label = $CanvasLayer/TurnLabel
 @onready var cursor: Cursor = $Cursor
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
-@onready var controls: MarginContainer = $CanvasLayer/Controls
-@onready var controls_buttons: HFlowContainer = $CanvasLayer/Controls/ControlsButtons
-@onready var skip_button: Button = $CanvasLayer/Controls/ControlsButtons/SkipButton
-@onready var deselect_button: Button = $CanvasLayer/Controls/ControlsButtons/DeselectButton
-@onready var controls_label: Label = $CanvasLayer/Controls/ControlsLabel
+@onready var controls_label: Label = $CanvasLayer/ControlsLabel
 
 var current_hero: Unit = null
 var is_input_disabled: bool = true
 
 func _process(_delta: float) -> void:
-    controls.visible = !is_input_disabled && current_hero != null
-    controls_buttons.visible = LastInput.last_input_type == LastInput.InputType.MOUSE
-    controls_label.visible = LastInput.last_input_type != LastInput.InputType.MOUSE
-    controls_label.text = "%s - Skip hero turn.\n%s - Deselect hero." % [LastInput.get_text("Middle mouse button", "Backspace", "Y button"), LastInput.get_text("Right mouse button", "Esc", "B button")]
+    controls_label.visible = !is_input_disabled && current_hero != null
+    controls_label.text = "%s - Skip hero turn.\n%s - Deselect hero." % [LastInput.get_text("Backspace", "Backspace", "Y button"), LastInput.get_text("Right mouse button", "Shift", "B button")]
 
     if is_input_disabled:
         return
@@ -42,7 +36,6 @@ func _unhandled_input(event: InputEvent) -> void:
         skip_current_hero_turn()
 
     if event.is_action_pressed("confirm"):
-        print("Confirm action pressed")
         if is_game_over():
             get_tree().reload_current_scene()
             return
@@ -170,13 +163,3 @@ func is_game_over() -> bool:
 
 func is_won() -> bool:
     return get_tree().get_nodes_in_group("enemies").filter(func(hero: Unit): return hero.hp > 0).size() == 0
-
-
-func _on_skip_button_pressed() -> void:
-    prints("Skip button pressed")
-    skip_current_hero_turn()
-
-
-func _on_deselect_button_pressed() -> void:
-    prints("Skip button pressed")
-    deselect_current_hero()
