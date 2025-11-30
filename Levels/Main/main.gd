@@ -11,7 +11,7 @@ signal won;
 @onready var cursor: Cursor = $Cursor
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var controls: MarginContainer = $CanvasLayer/Controls
-@onready var controls_button: HFlowContainer = $CanvasLayer/Controls/ControlsButtons
+@onready var controls_buttons: HFlowContainer = $CanvasLayer/Controls/ControlsButtons
 @onready var skip_button: Button = $CanvasLayer/Controls/ControlsButtons/SkipButton
 @onready var deselect_button: Button = $CanvasLayer/Controls/ControlsButtons/DeselectButton
 @onready var controls_label: Label = $CanvasLayer/Controls/ControlsLabel
@@ -21,7 +21,7 @@ var is_input_disabled: bool = true
 
 func _process(_delta: float) -> void:
     controls.visible = !is_input_disabled && current_hero != null
-    controls_button.visible = LastInput.last_input_type == LastInput.InputType.MOUSE
+    controls_buttons.visible = LastInput.last_input_type == LastInput.InputType.MOUSE
     controls_label.visible = LastInput.last_input_type != LastInput.InputType.MOUSE
     controls_label.text = "%s - Skip hero turn.\n%s - Deselect hero." % [LastInput.get_text("Middle mouse button", "Backspace", "Y button"), LastInput.get_text("Right mouse button", "Esc", "B button")]
 
@@ -34,7 +34,7 @@ func _process(_delta: float) -> void:
     movement_preview.preview_movement_path(current_hero, cursor.position)
     movement_overlay.possible_attack.preview_attack(current_hero, cursor.position)
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
     if is_input_disabled:
         return
 
