@@ -40,12 +40,9 @@ func _unhandled_input(event: InputEvent) -> void:
             get_tree().reload_current_scene()
             return
 
-        if LastInput.last_input_type == LastInput.InputType.MOUSE:
-            var mouse_pos = get_global_mouse_position()
-            cursor.set_cursor_position(mouse_pos)
-
         handle_confirm(cursor.position)
     elif event.is_action_pressed("cancel"):
+        prints("Main.cancen")
         deselect_current_hero()
 
 func skip_current_hero_turn() -> void:
@@ -63,6 +60,7 @@ func deselect_current_hero() -> void:
 
 func handle_confirm(cursor_pos: Vector2) -> void:
     var clicked_grid_pos := map.local_to_map(cursor_pos)
+    prints("Main.confirm", clicked_grid_pos, current_hero)
 
     if current_hero != null && current_hero.display_name == "Lia" && !current_hero.activated:
         var hero = Utils.get_entity_at_tile(map, clicked_grid_pos, "heroes")

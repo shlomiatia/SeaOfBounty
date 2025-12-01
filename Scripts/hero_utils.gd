@@ -18,7 +18,7 @@ static func move_and_attack(main: Main, clicked_grid_pos: Vector2i) -> bool:
             if can_move:
                 await current_hero.move_to(target_pos)
             
-            var can_attack = Utils.is_in_range(current_hero, clicked_grid_pos, map)
+            var can_attack = enemy != null && Utils.is_in_range(current_hero, clicked_grid_pos, map)
             if can_attack:
                 await battle.start(current_hero, enemy)
                 current_hero.activated = true
@@ -34,7 +34,6 @@ static func move_and_attack(main: Main, clicked_grid_pos: Vector2i) -> bool:
             if !current_hero.activated:
                 main.movement_overlay.highlight_movement_and_attack(clicked_grid_pos, "heroes")
                 main.movement_preview.preview_movement_path(current_hero, clicked_grid_pos)
-                #main.movement_overlay.possible_attack.preview_attack(current_hero, clicked_grid_pos)
             else:
                 main.current_hero = null
 
