@@ -49,13 +49,11 @@ func _input(event: InputEvent) -> void:
         return
 
     if event.is_action_pressed("cancel") || event.is_action_pressed("skip"):
-        prints("tutorial_event_handler.cancel")
         get_viewport().set_input_as_handled()
 
     if event.is_action_pressed("confirm"):
         var clicked_pos = main.cursor.position
         var clicked_cell = map.local_to_map(clicked_pos)
-        prints("tutorial_event_handler.confirm", clicked_cell)
 
         if clicked_cell == tutorial_cells[tutorial_step]:
             tutorial_active = false
